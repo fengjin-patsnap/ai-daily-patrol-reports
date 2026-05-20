@@ -62,8 +62,10 @@
     .item-card.compact { margin-top: 10px; background: transparent; }
     .item-title { display: block; font-weight: 750; line-height: 1.42; margin-bottom: 8px; }
     .item-summary { margin: 0 0 8px; color: var(--muted); }
-    .item-point { margin: 0 0 8px; color: var(--text); }
+    .item-action { margin: 0 0 8px; color: var(--text); }
     .item-reason { margin: 0 0 10px; color: var(--muted); }
+    .source-notes { margin: 0 0 10px; padding-left: 20px; color: var(--muted); }
+    .source-notes li { margin: 4px 0; }
     .item-meta { display: flex; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
     .tag { background: var(--soft); color: var(--muted); border-radius: 999px; padding: 3px 8px; font-size: 12px; }
@@ -91,9 +93,9 @@
       <div>
         <div class="eyebrow">AI Daily Patrol</div>
         <h1>AI 日报 2026-05-20</h1>
-        <p class="lede">今天按开发者视角重排：先看可直接影响开发和集成的模型、Agent 工具链、Google I/O 开发者平台更新、HF/开源生态和生产级 Agent 架构；官方合作和产业新闻放在后面，作为判断平台落地节奏的补充。</p>
+        <p class="lede">今天最有开发者价值的主线是三条：Codex 正在走向企业 hybrid/on-prem 部署，Google I/O 把 Gemini 3.5 Flash 和 AI Studio 等入口推到可试用状态，本地推理侧则出现 Qwen3.6、MTP、LM Studio 等可直接验证的工具链变化。建议先看必读 2 条，再按 Agent、推理部署、开源工具筛补充项。</p>
         <div class="stats">
-          <div class="stat"><b>42</b><span>条有效线索</span></div>
+          <div class="stat"><b>26</b><span>条有效线索</span></div>
           <div class="stat"><b>28</b><span>个来源</span></div>
           <div class="stat"><b>6</b><span>今日必读</span></div>
           <div class="stat"><b>0</b><span>失败源</span></div>
@@ -104,23 +106,23 @@
 <circle cx="380" cy="140" r="58" class="cover-core"></circle>
 <text x="380" y="135" text-anchor="middle" class="cover-core-text">AI</text>
 <text x="380" y="158" text-anchor="middle" class="cover-core-sub">Daily Patrol</text>
-<circle cx="570.0" cy="140.0" r="54" fill="#2563eb" opacity="0.18"></circle>
-<text x="570.0" y="144.0" text-anchor="middle" class="cover-topic">Agent</text>
+<circle cx="570.0" cy="140.0" r="46" fill="#2563eb" opacity="0.18"></circle>
+<text x="570.0" y="144.0" text-anchor="middle" class="cover-topic">Agent-框架</text>
 <line x1="380" y1="140" x2="570.0" y2="140.0" class="cover-line"></line>
 <circle cx="475.0" cy="211.0" r="46" fill="#059669" opacity="0.18"></circle>
-<text x="475.0" y="215.0" text-anchor="middle" class="cover-topic">多模态</text>
+<text x="475.0" y="215.0" text-anchor="middle" class="cover-topic">评测基准</text>
 <line x1="380" y1="140" x2="475.0" y2="211.0" class="cover-line"></line>
-<circle cx="285.0" cy="211.0" r="42" fill="#b45309" opacity="0.18"></circle>
-<text x="285.0" y="215.0" text-anchor="middle" class="cover-topic">产品发布</text>
+<circle cx="285.0" cy="211.0" r="46" fill="#b45309" opacity="0.18"></circle>
+<text x="285.0" y="215.0" text-anchor="middle" class="cover-topic">开源工具</text>
 <line x1="380" y1="140" x2="285.0" y2="211.0" class="cover-line"></line>
-<circle cx="190.0" cy="140.0" r="42" fill="#7c3aed" opacity="0.18"></circle>
-<text x="190.0" y="144.0" text-anchor="middle" class="cover-topic">产业应用</text>
+<circle cx="190.0" cy="140.0" r="44" fill="#7c3aed" opacity="0.18"></circle>
+<text x="190.0" y="144.0" text-anchor="middle" class="cover-topic">可试用模型</text>
 <line x1="380" y1="140" x2="190.0" y2="140.0" class="cover-line"></line>
-<circle cx="285.0" cy="69.0" r="40" fill="#db2777" opacity="0.18"></circle>
-<text x="285.0" y="73.0" text-anchor="middle" class="cover-topic">AI 动态</text>
+<circle cx="285.0" cy="69.0" r="44" fill="#db2777" opacity="0.18"></circle>
+<text x="285.0" y="73.0" text-anchor="middle" class="cover-topic">推理部署</text>
 <line x1="380" y1="140" x2="285.0" y2="69.0" class="cover-line"></line>
-<circle cx="475.0" cy="69.0" r="36" fill="#0f766e" opacity="0.18"></circle>
-<text x="475.0" y="73.0" text-anchor="middle" class="cover-topic">开源模型</text>
+<circle cx="475.0" cy="69.0" r="38" fill="#0f766e" opacity="0.18"></circle>
+<text x="475.0" y="73.0" text-anchor="middle" class="cover-topic">API-定价</text>
 <line x1="380" y1="140" x2="475.0" y2="69.0" class="cover-line"></line>
 </svg></div>
     </header>
@@ -129,80 +131,86 @@
       <h2>今日必读</h2>
       <div class="highlight-grid">
 <article class="item-card">
-  <a class="item-title" href="https://www.latent.space/p/ainews-google-io-2026-gemini-35-flash">[AINews] Google I/O 2026: Gemini 3.5 Flash, Omni (NanoBanana for Video), Spark (background agents), and Antigravity 2.0</a>
-  <p class="item-summary"><strong>概述：</strong>Latent Space 汇总了 Google I/O 的关键 AI 发布：Gemini 3.5 Flash、视频/多模态能力、后台 Agent 和 Antigravity 更新。它比单条新闻更适合用来判断 Google 当天的产品路线。</p>
-  <p class="item-point">重点：Latent Space 汇总了 Google I/O 的关键 AI 发布：Gemini 3.5 Flash、视频/多模态能力、后台 Agent 和 Antigravity 更新。它比单条新闻更适合用来判断 Google 当天的产品路线。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>覆盖模型、Agent、多模态和开发者工具，是今天最完整的 Google 平台信号。</p>
+  <a class="item-title" href="https://www.latent.space/p/ainews-google-io-2026-gemini-35-flash">Google I/O 2026：Gemini 3.5 Flash GA，并把 AI Studio、Gmail 与后台 agents 串成开发入口</a>
+  <p class="item-summary"><strong>概述：</strong>Google I/O 2026 主线是 Gemini 3.5 Flash 进入 GA，并把 AI Studio、Gmail、视频/图像生成和后台 agents 作为产品入口一起推进；草稿未给出完整 API 价格表，但 Simon Willison 明确提到 3.5 Flash 比上一代更贵。开发者现在能从 AI Studio 和 Gemini 相关插件路径试用，正式接入前要核对定价、rate limit 和 SDK 变更</p>
+  <p class="item-action"><strong>行动建议：</strong>先在 AI Studio 试跑 Gemini 3.5 Flash，再核对 API pricing / rate limit 后替换现有 Gemini 调用。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这会直接影响 Gemini 开发者选型：能力入口已经可用，但成本和限流需要在接入前确认。</p>
+  <ul class="source-notes"><li><strong>Latent Space：</strong>把 Gemini 3.5 Flash、Omni/NanoBanana for Video、Spark background agents 和 Antigravity 2.0 放在同一条 Google I/O 主线里。</li><li><strong>Simon Willison：</strong>记录 llm-gemini 0.32 已支持 gemini-3.5-flash，并指出新 Flash 已 GA 且价格更高。</li><li><strong>TechCrunch AI：</strong>Gmail AI Inbox 已支持用语音/对话方式让 Gemini 搜索邮件信息。</li><li><strong>Google DeepMind Blog：</strong>官方入口继续把 Build with Gemini / AI Studio 作为试用路径。</li></ul>
   <div class="item-meta">
-    <span>评分 95</span>
-    <span>Latent Space / Wed, 20 May 2026 03:34:17 GMT</span>
+    <span>评分 130</span>
+    <span>Latent Space / Simon Willison / TechCrunch AI / Google DeepMind Blog / Wed, 20 May 2026 03:34:17 GMT</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">多模态</span></div>
+  <div class="tags"><span class="tag">可试用模型</span><span class="tag">API-定价</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1thkwgk/bytedance_released_an_open_source_model_that/">bytedance released an open source model that attempts to do just about anything with only 3b parameters</a>
-  <p class="item-summary"><strong>概述：</strong>社区在讨论字节开源的 Lance：一个 3B 级原生统一多模态模型，试图同时覆盖图像/视频理解、生成和编辑。看点不只是参数小，而是多模态能力是否能以更低成本下沉。</p>
-  <p class="item-point">重点：社区在讨论字节开源的 Lance：一个 3B 级原生统一多模态模型，试图同时覆盖图像/视频理解、生成和编辑。看点不只是参数小，而是多模态能力是否能以更低成本下沉。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自开源社区的早期反馈，能帮助判断小模型多模态路线是否开始变得实用。</p>
+  <a class="item-title" href="https://openai.com/index/dell-codex-enterprise-partnership">OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments</a>
+  <p class="item-summary"><strong>概述：</strong>OpenAI 与 Dell 合作，把 Codex 带到 hybrid 和 on-premise 企业环境，目标是让企业在内部数据、代码库和工作流里部署 coding agents。草稿未提供价格、硬件规格或私有化 API 细节；当前可用性更像企业采购/试点路径，不是普通开发者自助开通</p>
+  <p class="item-action"><strong>行动建议：</strong>如果公司有内网代码合规要求，先整理 on-prem coding agent 的权限、日志和代码访问边界，再询问 Dell/OpenAI 企业方案。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它把 Codex 从云端工具推向企业私有/混合部署，会影响大公司引入 AI coding agent 的安全架构。</p>
+  
   <div class="item-meta">
-    <span>评分 94</span>
-    <span>Reddit LocalLLaMA / 2026-05-19T12:05:26+00:00</span>
+    <span>评分 130</span>
+    <span>OpenAI News / Mon, 18 May 2026 10:00:00 GMT</span>
   </div>
-  <div class="tags"><span class="tag">多模态</span><span class="tag">开源模型</span><span class="tag">产品发布</span></div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">推理部署</span></div>
 </article>
 
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/papers/2605.19769">OpenComputer: Verifiable Software Worlds for Computer-Use Agents</a>
-  <p class="item-summary"><strong>概述：</strong>论文提出可验证的软件世界，用于测试和训练会操作电脑的 Agent。关键价值在于把“电脑使用能力”放进可复现、可评测的环境，而不只看演示视频。</p>
-  <p class="item-point">重点：论文提出可验证的软件世界，用于测试和训练会操作电脑的 Agent。关键价值在于把“电脑使用能力”放进可复现、可评测的环境，而不只看演示视频。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>Computer-use Agent 正在升温，可验证环境会影响后续评测和训练标准。</p>
+  <p class="item-summary"><strong>概述：</strong>OpenComputer 是面向 computer-use agents 的可验证软件世界框架，论文摘要写明包含 4 个组件：app-specific state verifiers、结构化检查端点等，用来让桌面/软件操作任务可验证。现在是论文/HF Papers 入口，草稿未提供 pip 包或 API，暂不能当作成熟框架直接接入</p>
+  <p class="item-action"><strong>行动建议：</strong>先读论文的 verifier 设计，把其中的状态检查思路迁移到内部 agent E2E 测试。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>computer-use agent 最大痛点是结果不可验证，这篇给的是评测和沙箱设计方向。</p>
+  
   <div class="item-meta">
-    <span>评分 93</span>
+    <span>评分 128</span>
     <span>Hugging Face Daily Papers</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span></div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">评测基准</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="https://huggingface.co/papers/2605.18703">EnvFactory: Scaling Tool-Use Agents via Executable Environments Synthesis and Robust RL</a>
-  <p class="item-summary"><strong>概述：</strong>EnvFactory 关注自动合成可执行环境，并结合鲁棒强化学习来扩展工具使用 Agent。它试图解决 Agent 训练场景不足、工具链泛化差的问题。</p>
-  <p class="item-point">重点：EnvFactory 关注自动合成可执行环境，并结合鲁棒强化学习来扩展工具使用 Agent。它试图解决 Agent 训练场景不足、工具链泛化差的问题。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>工具使用 Agent 的规模化训练是落地瓶颈，这篇论文切中工程化问题。</p>
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tiixql/rtx_5080_16gb_qwen36_35b_moe_at_128k_context_56/">RTX 5080 16GB: Qwen3.6 35B MoE at 128k context — 56 tok/s, and why MTP doesn&#x27;t help</a>
+  <p class="item-summary"><strong>概述：</strong>社区实测 RTX 5080 16GB 跑 Qwen3.6 35B MoE，在 128k coding-agent 上下文下约 56 tok/s；测试还提到 llama.cpp mainline 已合入 MTP，但这轮 MTP 没带来收益。它是 Reddit 实测，不是官方 benchmark，但对本地推理预算很直接</p>
+  <p class="item-action"><strong>行动建议：</strong>如果你手上有 16GB 显存卡，用同样上下文长度复测 tok/s，再决定是否上 Qwen3.6 35B MoE。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>给出了显卡、模型规模、上下文和吞吐数字，能直接辅助本地 coding agent 部署判断。</p>
+  
   <div class="item-meta">
-    <span>评分 92</span>
-    <span>Hugging Face Daily Papers</span>
+    <span>评分 127</span>
+    <span>Reddit LocalLLaMA / 2026-05-20T11:33:58+00:00</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span></div>
+  <div class="tags"><span class="tag">推理部署</span><span class="tag">可试用模型</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20173v1">A Methodology for Selecting and Composing Runtime Architecture Patterns for Production LLM Agents</a>
-  <p class="item-summary"><strong>概述：</strong>这篇论文把生产级 LLM Agent 的运行时架构模式系统化，特别关注随机模型输出和确定性软件系统之间的边界。它适合工程团队设计 Agent 架构时参考。</p>
-  <p class="item-point">重点：这篇论文把生产级 LLM Agent 的运行时架构模式系统化，特别关注随机模型输出和确定性软件系统之间的边界。它适合工程团队设计 Agent 架构时参考。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>从“Agent 能做什么”转向“Agent 怎么稳定上线”，工程价值高。</p>
+  <a class="item-title" href="https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free">Claude Code costs up to $200 a month. Goose does the same thing for free.</a>
+  <p class="item-summary"><strong>概述：</strong>VentureBeat 对比 Claude Code 最高约 200 美元/月与 Goose 免费路线，核心是终端 coding agent 的成本差异。草稿未提供 Goose 的完整模型后端、license 和企业支持，但它直接提示开发者不要只看能力，也要算长期 seat 成本</p>
+  <p class="item-action"><strong>行动建议：</strong>用同一个真实仓库任务对比 Claude Code 和 Goose：记录成功率、耗时、token/API 成本，再决定团队默认工具。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>coding agent 已进入成本竞争阶段，这会影响个人和团队工具选型。</p>
+  
   <div class="item-meta">
-    <span>评分 91</span>
-    <span>arXiv cs.AI / 2026-05-19T17:54:21Z</span>
+    <span>评分 126</span>
+    <span>VentureBeat AI / Mon, 19 Jan 2026 14:00:00 GMT</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span></div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">API-定价</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="https://simonwillison.net/2026/May/19/gemini-35-flash/#atom-everything">Gemini 3.5 Flash: more expensive, but Google plan to use it for everything</a>
-  <p class="item-summary"><strong>概述：</strong>Simon Willison 追踪 Gemini 3.5 Flash 的价格和产品接入情况：Google 看起来准备把它放进大量核心产品。重点是模型成本、延迟和平台绑定会怎样影响开发者选择。</p>
-  <p class="item-point">重点：Simon Willison 追踪 Gemini 3.5 Flash 的价格和产品接入情况：Google 看起来准备把它放进大量核心产品。重点是模型成本、延迟和平台绑定会怎样影响开发者选择。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自工程实践观察，比发布稿更能看到价格和集成层面的影响。</p>
+  <a class="item-title" href="https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers">PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend</a>
+  <p class="item-summary"><strong>概述：</strong>PaddleOCR 3.5 的 HF 博客线索指向 OCR 和文档解析任务接入 Transformers backend。草稿未抓到安装命令、模型大小或 license；但标题说明它已进入 Transformers 工作流，对已有 Python/HF 文档处理管线更容易集成</p>
+  <p class="item-action"><strong>行动建议：</strong>验证 pip 安装、Transformers backend 示例和 license 后，用一批真实 PDF/截图做 OCR 准确率对比。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这是文档解析工程里可立即验证的开源工具更新，比泛新闻更接近开发者落地。</p>
+  
   <div class="item-meta">
-    <span>评分 90</span>
-    <span>Simon Willison / 2026-05-19T22:40:25+00:00</span>
+    <span>评分 125</span>
+    <span>Hugging Face Blog / Mon, 18 May 2026 15:12:46 GMT</span>
   </div>
-  <div class="tags"><span class="tag">产品发布</span></div>
+  <div class="tags"><span class="tag">开源工具</span><span class="tag">推理部署</span></div>
 </article>
 </div>
     </section>
@@ -211,27 +219,27 @@
       <h2>态势概览</h2>
       <div class="charts"><svg class="chart" viewBox="0 0 760 290" role="img" aria-label="信息来源分布">
 <text x="0" y="20" class="chart-title">信息来源分布</text>
-<text x="0" y="53" class="chart-label">arXiv 今日精选</text>
-<rect x="150" y="34" width="420.0" height="20" rx="5" fill="#0f766e"></rect>
-<text x="580.0" y="49" class="chart-value">9</text>
-<text x="0" y="87" class="chart-label">产业新闻</text>
-<rect x="150" y="68" width="373.3" height="20" rx="5" fill="#b45309"></rect>
-<text x="533.3" y="83" class="chart-value">8</text>
-<text x="0" y="121" class="chart-label">社区讨论</text>
-<rect x="150" y="102" width="326.7" height="20" rx="5" fill="#db2777"></rect>
-<text x="486.7" y="117" class="chart-value">7</text>
-<text x="0" y="155" class="chart-label">Hugging Face 热门</text>
-<rect x="150" y="136" width="280.0" height="20" rx="5" fill="#ca8a04"></rect>
-<text x="440.0" y="151" class="chart-value">6</text>
-<text x="0" y="189" class="chart-label">开发者生态</text>
-<rect x="150" y="170" width="233.3" height="20" rx="5" fill="#059669"></rect>
-<text x="393.3" y="185" class="chart-value">5</text>
-<text x="0" y="223" class="chart-label">官方实验室</text>
-<rect x="150" y="204" width="233.3" height="20" rx="5" fill="#2563eb"></rect>
-<text x="393.3" y="219" class="chart-value">5</text>
+<text x="0" y="53" class="chart-label">Hugging Face 热门</text>
+<rect x="150" y="34" width="420.0" height="20" rx="5" fill="#ca8a04"></rect>
+<text x="580.0" y="49" class="chart-value">6</text>
+<text x="0" y="87" class="chart-label">社区讨论</text>
+<rect x="150" y="68" width="420.0" height="20" rx="5" fill="#db2777"></rect>
+<text x="580.0" y="83" class="chart-value">6</text>
+<text x="0" y="121" class="chart-label">开发者生态</text>
+<rect x="150" y="102" width="350.0" height="20" rx="5" fill="#059669"></rect>
+<text x="510.0" y="117" class="chart-value">5</text>
+<text x="0" y="155" class="chart-label">arXiv 今日精选</text>
+<rect x="150" y="136" width="280.0" height="20" rx="5" fill="#0f766e"></rect>
+<text x="440.0" y="151" class="chart-value">4</text>
+<text x="0" y="189" class="chart-label">官方实验室</text>
+<rect x="150" y="170" width="140.0" height="20" rx="5" fill="#2563eb"></rect>
+<text x="300.0" y="185" class="chart-value">2</text>
+<text x="0" y="223" class="chart-label">产业新闻</text>
+<rect x="150" y="204" width="140.0" height="20" rx="5" fill="#b45309"></rect>
+<text x="300.0" y="219" class="chart-value">2</text>
 <text x="0" y="257" class="chart-label">社区与Newsletter</text>
-<rect x="150" y="238" width="93.3" height="20" rx="5" fill="#7c3aed"></rect>
-<text x="253.3" y="253" class="chart-value">2</text>
+<rect x="150" y="238" width="70.0" height="20" rx="5" fill="#7c3aed"></rect>
+<text x="230.0" y="253" class="chart-value">1</text>
 </svg><svg class="chart radar" viewBox="0 0 760 260" role="img" aria-label="今日热点主题雷达">
 <text x="0" y="20" class="chart-title">今日热点主题雷达</text>
 <circle cx="380" cy="136" r="96" class="radar-ring"></circle>
@@ -244,179 +252,188 @@
 <line x1="380" y1="136" x2="338.3" y2="222.5" class="radar-axis"></line>
 <line x1="380" y1="136" x2="286.4" y2="157.4" class="radar-axis"></line>
 <line x1="380" y1="136" x2="304.9" y2="76.1" class="radar-axis"></line>
-<polygon points="380.0,40.0 434.4,92.6 439.3,149.5 406.4,190.8 355.5,186.8 333.6,146.6 342.8,106.3" class="radar-shape"></polygon>
-<text x="380.0" y="12.0" class="radar-label" text-anchor="middle">Agent 15</text>
-<text x="476.9" y="58.7" class="radar-label" text-anchor="middle">多模态 9</text>
-<text x="500.9" y="163.6" class="radar-label" text-anchor="middle">产品发布 7</text>
-<text x="433.8" y="247.7" class="radar-label" text-anchor="middle">产业应用 7</text>
-<text x="326.2" y="247.7" class="radar-label" text-anchor="middle">AI 动态 6</text>
-<text x="259.1" y="163.6" class="radar-label" text-anchor="middle">开源模型 4</text>
-<text x="283.1" y="58.7" class="radar-label" text-anchor="middle">推理能力 4</text>
+<polygon points="380.0,40.0 455.1,76.1 473.6,157.4 418.5,215.9 341.5,215.9 315.0,150.8 345.1,108.2" class="radar-shape"></polygon>
+<text x="380.0" y="12.0" class="radar-label" text-anchor="middle">Agent-框架 9</text>
+<text x="476.9" y="58.7" class="radar-label" text-anchor="middle">评测基准 9</text>
+<text x="500.9" y="163.6" class="radar-label" text-anchor="middle">开源工具 9</text>
+<text x="433.8" y="247.7" class="radar-label" text-anchor="middle">可试用模型 8</text>
+<text x="326.2" y="247.7" class="radar-label" text-anchor="middle">推理部署 8</text>
+<text x="259.1" y="163.6" class="radar-label" text-anchor="middle">API-定价 5</text>
+<text x="283.1" y="58.7" class="radar-label" text-anchor="middle">产业信号 2</text>
 </svg></div>
     </section>
 
     <section class="group-section"><h2>开发者生态</h2>
-<section class="source-block"><div class="source-head"><h3>Hugging Face Blog</h3><span>4 条</span></div>
+<section class="source-block"><div class="source-head"><h3>Hugging Face Blog</h3><span>3 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard">The Open Agent Leaderboard</a>
-  <p class="item-summary"><strong>概述：</strong>Hugging Face/IBM 相关的 Open Agent Leaderboard 关注 Agent 能力评测。它的价值在于帮助开发者比较 Agent 在工具使用、规划和任务完成上的真实差异。</p>
-  <p class="item-point">重点：Hugging Face/IBM 相关的 Open Agent Leaderboard 关注 Agent 能力评测。它的价值在于帮助开发者比较 Agent 在工具使用、规划和任务完成上的真实差异。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>Agent 榜单会影响模型选择和社区注意力，值得纳入长期观察。</p>
+  <a class="item-title" href="https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers">PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend</a>
+  <p class="item-summary"><strong>概述：</strong>PaddleOCR 3.5 的 HF 博客线索指向 OCR 和文档解析任务接入 Transformers backend。草稿未抓到安装命令、模型大小或 license；但标题说明它已进入 Transformers 工作流，对已有 Python/HF 文档处理管线更容易集成</p>
+  <p class="item-action"><strong>行动建议：</strong>验证 pip 安装、Transformers backend 示例和 license 后，用一批真实 PDF/截图做 OCR 准确率对比。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这是文档解析工程里可立即验证的开源工具更新，比泛新闻更接近开发者落地。</p>
+  
   <div class="item-meta">
-    <span>评分 89</span>
-    <span>Hugging Face Blog / Mon, 18 May 2026 14:12:58 GMT</span>
+    <span>评分 125</span>
+    <span>Hugging Face Blog / Mon, 18 May 2026 15:12:46 GMT</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://huggingface.co/blog/nvidia/cosmos-fine-tuning-for-robot-video-generation">Fine-Tuning NVIDIA Cosmos Predict 2.5 with LoRA/DoRA for Robot Video Generation</a>
-  <p class="item-summary"><strong>概述：</strong>Hugging Face 展示如何用 LoRA/DoRA 微调 NVIDIA Cosmos Predict 2.5 做机器人视频生成。它把视频生成和机器人仿真/数据生成连接起来，适合关注具身智能的人看。</p>
-  <p class="item-point">重点：Hugging Face 展示如何用 LoRA/DoRA 微调 NVIDIA Cosmos Predict 2.5 做机器人视频生成。它把视频生成和机器人仿真/数据生成连接起来，适合关注具身智能的人看。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>机器人视频生成和低成本微调结合，工程实践意味较强。</p>
-  <div class="item-meta">
-    <span>评分 88</span>
-    <span>Hugging Face Blog / Mon, 18 May 2026 16:00:21 GMT</span>
-  </div>
-  <div class="tags"><span class="tag">多模态</span><span class="tag">具身智能</span></div>
+  <div class="tags"><span class="tag">开源工具</span><span class="tag">推理部署</span></div>
 </article>
 
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/blog/ettin-reranker">Introducing the Ettin Reranker Family</a>
-  <p class="item-summary"><strong>概述：</strong>Hugging Face 发布 Ettin reranker 系列，面向检索增强和排序场景。Reranker 是 RAG 系统质量的关键部件，实际工程价值高。</p>
-  <p class="item-point">重点：Hugging Face 发布 Ettin reranker 系列，面向检索增强和排序场景。Reranker 是 RAG 系统质量的关键部件，实际工程价值高。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>RAG 仍是企业 AI 主流架构，reranker 更新值得开发者关注。</p>
+  <p class="item-summary"><strong>概述：</strong>Ettin Reranker Family 是 Hugging Face 博客里的 reranker 系列线索，面向 RAG 检索排序。草稿未提供参数量、模型卡指标和 license，需要打开原文确认；如果模型已发布到 HF，可直接用现有检索集做 MRR/Recall 对比</p>
+  <p class="item-action"><strong>行动建议：</strong>等模型卡确认 license 和推理示例后，在现有 RAG 流程中 A/B 测试 MRR、Recall 和延迟。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>reranker 是 RAG 质量提升的高杠杆组件，适合优先做小样本验证。</p>
+  
   <div class="item-meta">
-    <span>评分 56</span>
+    <span>评分 124</span>
     <span>Hugging Face Blog / Tue, 19 May 2026 00:00:00 GMT</span>
   </div>
-  <div class="tags"><span class="tag">产品发布</span></div>
+  <div class="tags"><span class="tag">开源工具</span><span class="tag">评测基准</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard">The Open Agent Leaderboard</a>
+  <p class="item-summary"><strong>概述：</strong>Open Agent Leaderboard 是 IBM Research/HF 方向的 agent 榜单线索，用于比较 agent 能力。草稿未抓到具体指标和提交方式；当前可用作选型入口，但必须用自己的任务复测</p>
+  <p class="item-action"><strong>行动建议：</strong>打开榜单筛候选 agent，再用内部任务集复测前 3 名。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>榜单能缩短 agent 工具初筛时间，但不能替代私有场景评测。</p>
+  
+  <div class="item-meta">
+    <span>评分 121</span>
+    <span>Hugging Face Blog / Mon, 18 May 2026 14:12:58 GMT</span>
+  </div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">评测基准</span></div>
 </article>
 
 </div>
-<details class="more-list"><summary>展开其余 1 条高价值线索</summary>
-
-<article class="item-card compact">
-  <a class="item-title" href="https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers">PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend</a>
-  <p class="item-summary"><strong>概述：</strong>PaddleOCR 3.5 结合 Transformers 后端运行 OCR 和文档解析任务，适合关注文档 AI、票据解析和企业知识库入口的团队。</p>
-  <p class="item-point">重点：PaddleOCR 3.5 结合 Transformers 后端运行 OCR 和文档解析任务，适合关注文档 AI、票据解析和企业知识库入口的团队。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>文档解析是企业 AI 高频场景，工具链更新有实用价值。</p>
-  <div class="item-meta">
-    <span>评分 42</span>
-    <span>Hugging Face Blog / Mon, 18 May 2026 15:12:46 GMT</span>
-  </div>
-  <div class="tags"><span class="tag">AI 动态</span></div>
-</article>
-
-</details>
 </section>
-<section class="source-block"><div class="source-head"><h3>Simon Willison</h3><span>1 条</span></div>
+<section class="source-block"><div class="source-head"><h3>Simon Willison</h3><span>2 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="https://simonwillison.net/2026/May/19/gemini-35-flash/#atom-everything">Gemini 3.5 Flash: more expensive, but Google plan to use it for everything</a>
-  <p class="item-summary"><strong>概述：</strong>Simon Willison 追踪 Gemini 3.5 Flash 的价格和产品接入情况：Google 看起来准备把它放进大量核心产品。重点是模型成本、延迟和平台绑定会怎样影响开发者选择。</p>
-  <p class="item-point">重点：Simon Willison 追踪 Gemini 3.5 Flash 的价格和产品接入情况：Google 看起来准备把它放进大量核心产品。重点是模型成本、延迟和平台绑定会怎样影响开发者选择。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自工程实践观察，比发布稿更能看到价格和集成层面的影响。</p>
+  <a class="item-title" href="https://simonwillison.net/2026/May/19/llm-gemini/#atom-everything">llm-gemini 0.32a0</a>
+  <p class="item-summary"><strong>概述：</strong>Simon Willison 的 llm-gemini 0.32 已加入 gemini-3.5-flash；0.32a0 还提到 stream reasoning tokens。它是 LLM CLI/plugin 的直接可用更新</p>
+  <p class="item-action"><strong>行动建议：</strong>升级 llm-gemini 到 0.32，在 CLI 里试 gemini-3.5-flash 和 reasoning token streaming。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这是开发者能马上试的新模型接入路径。</p>
+  
   <div class="item-meta">
-    <span>评分 90</span>
-    <span>Simon Willison / 2026-05-19T22:40:25+00:00</span>
+    <span>评分 108</span>
+    <span>Simon Willison / 2026-05-19T20:36:23+00:00</span>
   </div>
-  <div class="tags"><span class="tag">产品发布</span></div>
+  <div class="tags"><span class="tag">开源工具</span><span class="tag">可试用模型</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://simonwillison.net/2026/May/19/datasette-llm/#atom-everything">datasette-llm 0.1a8</a>
+  <p class="item-summary"><strong>概述：</strong>datasette-llm 0.1a8 修复 llm_prompt_context() hook 没有完整收集 response chains 的问题。草稿未给更多 API；对 Datasette + LLM 插件用户是小但具体的修复</p>
+  <p class="item-action"><strong>行动建议：</strong>如果你在用 datasette-llm，升级到 0.1a8 并回归 response chain 场景。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这是明确的开发者工具 bugfix。</p>
+  
+  <div class="item-meta">
+    <span>评分 107</span>
+    <span>Simon Willison / 2026-05-19T20:28:16+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源工具</span></div>
 </article>
 
 </div>
 </section>
 </section>
 <section class="group-section"><h2>Hugging Face 热门</h2>
-<section class="source-block"><div class="source-head"><h3>Hugging Face Daily Papers</h3><span>5 条</span></div>
+<section class="source-block"><div class="source-head"><h3>Hugging Face Daily Papers</h3><span>4 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/papers/2605.19769">OpenComputer: Verifiable Software Worlds for Computer-Use Agents</a>
-  <p class="item-summary"><strong>概述：</strong>论文提出可验证的软件世界，用于测试和训练会操作电脑的 Agent。关键价值在于把“电脑使用能力”放进可复现、可评测的环境，而不只看演示视频。</p>
-  <p class="item-point">重点：论文提出可验证的软件世界，用于测试和训练会操作电脑的 Agent。关键价值在于把“电脑使用能力”放进可复现、可评测的环境，而不只看演示视频。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>Computer-use Agent 正在升温，可验证环境会影响后续评测和训练标准。</p>
+  <p class="item-summary"><strong>概述：</strong>OpenComputer 是面向 computer-use agents 的可验证软件世界框架，论文摘要写明包含 4 个组件：app-specific state verifiers、结构化检查端点等，用来让桌面/软件操作任务可验证。现在是论文/HF Papers 入口，草稿未提供 pip 包或 API，暂不能当作成熟框架直接接入</p>
+  <p class="item-action"><strong>行动建议：</strong>先读论文的 verifier 设计，把其中的状态检查思路迁移到内部 agent E2E 测试。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>computer-use agent 最大痛点是结果不可验证，这篇给的是评测和沙箱设计方向。</p>
+  
   <div class="item-meta">
-    <span>评分 93</span>
+    <span>评分 128</span>
     <span>Hugging Face Daily Papers</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span></div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">评测基准</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="https://huggingface.co/papers/2605.18703">EnvFactory: Scaling Tool-Use Agents via Executable Environments Synthesis and Robust RL</a>
-  <p class="item-summary"><strong>概述：</strong>EnvFactory 关注自动合成可执行环境，并结合鲁棒强化学习来扩展工具使用 Agent。它试图解决 Agent 训练场景不足、工具链泛化差的问题。</p>
-  <p class="item-point">重点：EnvFactory 关注自动合成可执行环境，并结合鲁棒强化学习来扩展工具使用 Agent。它试图解决 Agent 训练场景不足、工具链泛化差的问题。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>工具使用 Agent 的规模化训练是落地瓶颈，这篇论文切中工程化问题。</p>
+  <a class="item-title" href="https://huggingface.co/papers/2605.19577">GoLongRL: Capability-Oriented Long Context Reinforcement Learning with Multitask Alignment</a>
+  <p class="item-summary"><strong>概述：</strong>GoLongRL 是长上下文 RLVR 后训练方法，摘要称 fully open-source，面向 long-context 能力提升。草稿未抓到 repo、模型和 benchmark 数字；当前先当作训练 recipe 线索</p>
+  <p class="item-action"><strong>行动建议：</strong>打开论文/HF 页面确认代码和数据是否开放，再评估是否复现长上下文训练。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>长上下文能力对 coding agent 和文档任务都关键。</p>
+  
   <div class="item-meta">
-    <span>评分 92</span>
+    <span>评分 111</span>
     <span>Hugging Face Daily Papers</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span></div>
+  <div class="tags"><span class="tag">可试用模型</span><span class="tag">评测基准</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="https://huggingface.co/papers/2605.16403">When Vision Speaks for Sound</a>
-  <p class="item-summary"><strong>概述：</strong>这篇 HF Daily Paper 指向视觉与声音之间的跨模态建模，关注视觉信息如何辅助音频理解或生成。</p>
-  <p class="item-point">重点：这篇 HF Daily Paper 指向视觉与声音之间的跨模态建模，关注视觉信息如何辅助音频理解或生成。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>跨模态对齐仍是多模态系统的重要方向。</p>
+  <a class="item-title" href="https://huggingface.co/papers/2605.15529">Process Rewards with Learned Reliability</a>
+  <p class="item-summary"><strong>概述：</strong>这篇论文给 Process Reward Models 增加 learned reliability，不只输出单一步骤奖励分数。草稿未提供代码； reasoning/RL 评测链路</p>
+  <p class="item-action"><strong>行动建议：</strong>如果你在做推理模型评测，加入 reliability 维度观察 PRM 误判。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>PRM 可靠性会影响 reasoning RL 和过程监督的真实收益。</p>
+  
   <div class="item-meta">
-    <span>评分 60</span>
+    <span>评分 110</span>
     <span>Hugging Face Daily Papers</span>
   </div>
-  <div class="tags"><span class="tag">多模态</span></div>
+  <div class="tags"><span class="tag">评测基准</span><span class="tag">开源工具</span></div>
 </article>
 
 </div>
-<details class="more-list"><summary>展开其余 2 条高价值线索</summary>
+<details class="more-list"><summary>展开其余 1 条高价值线索</summary>
 
 <article class="item-card compact">
-  <a class="item-title" href="https://huggingface.co/papers/2605.19577">GoLongRL: Capability-Oriented Long Context Reinforcement Learning with Multitask Alignment</a>
-  <p class="item-summary"><strong>概述：</strong>GoLongRL 关注长上下文能力导向的强化学习和多任务对齐，目标是提升模型在长上下文任务中的稳定表现。</p>
-  <p class="item-point">重点：GoLongRL 关注长上下文能力导向的强化学习和多任务对齐，目标是提升模型在长上下文任务中的稳定表现。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>长上下文仍是 Agent 和复杂文档任务的基础能力。</p>
+  <a class="item-title" href="https://huggingface.co/papers/2605.11609">Anti-Self-Distillation for Reasoning RL via Pointwise Mutual Information</a>
+  <p class="item-summary"><strong>概述：</strong>Anti-Self-Distillation 讨论 reasoning RL 中用 PMI 抑制自蒸馏副作用。草稿未给代码或模型；偏研究，但和推理训练方法相关</p>
+  <p class="item-action"><strong>行动建议：</strong>先收藏论文，等代码/复现实验出现后再进入训练方案评估。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它影响推理模型后训练路线，暂不适合直接工程接入。</p>
+  
   <div class="item-meta">
-    <span>评分 50</span>
+    <span>评分 109</span>
     <span>Hugging Face Daily Papers</span>
   </div>
-  <div class="tags"><span class="tag">AI 动态</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="https://huggingface.co/papers/2605.20025">AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration</a>
-  <p class="item-summary"><strong>概述：</strong>AutoResearchClaw 探索人机协作下的自强化自治研究流程，属于 AI for research/Agent 科研自动化方向。</p>
-  <p class="item-point">重点：AutoResearchClaw 探索人机协作下的自强化自治研究流程，属于 AI for research/Agent 科研自动化方向。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>自动化研究是 Agent 高阶应用，值得观察但仍需看实际评测。</p>
-  <div class="item-meta">
-    <span>评分 50</span>
-    <span>Hugging Face Daily Papers</span>
-  </div>
-  <div class="tags"><span class="tag">AI 动态</span></div>
+  <div class="tags"><span class="tag">评测基准</span></div>
 </article>
 
 </details>
 </section>
-<section class="source-block"><div class="source-head"><h3>Hugging Face Trending Models</h3><span>1 条</span></div>
+<section class="source-block"><div class="source-head"><h3>Hugging Face Trending Models</h3><span>2 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="https://huggingface.co/openbmb/MiniCPM-V-4.6">openbmb/MiniCPM-V-4.6</a>
-  <p class="item-summary"><strong>概述：</strong>MiniCPM-V-4.6 是 OpenBMB 的多模态模型更新，值得关注其在小体量视觉语言模型上的能力和本地部署潜力。</p>
-  <p class="item-point">重点：MiniCPM-V-4.6 是 OpenBMB 的多模态模型更新，值得关注其在小体量视觉语言模型上的能力和本地部署潜力。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>小型多模态模型对端侧和低成本应用有实际意义。</p>
+  <a class="item-title" href="https://huggingface.co/unsloth/Qwen3.6-27B-MTP-GGUF">unsloth/Qwen3.6-27B-MTP-GGUF</a>
+  <p class="item-summary"><strong>概述：</strong>unsloth 发布 Qwen3.6-27B-MTP-GGUF，说明 Qwen3.6 的 GGUF/MTP 本地推理资产已在 HF 出现。草稿未给 quant 类型、license、上下文长度和显存需求；现在能打开模型页下载/试跑</p>
+  <p class="item-action"><strong>行动建议：</strong>打开模型卡确认 quant、license 和 llama.cpp 命令，再在目标机器压测。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>GGUF 是本地部署最直接的格式，适合开发者快速验证。</p>
+  
   <div class="item-meta">
-    <span>评分 57</span>
-    <span>Hugging Face Trending Models / image-text-to-text / downloads 166049 / likes 813</span>
+    <span>评分 118</span>
+    <span>Hugging Face Trending Models / image-text-to-text / downloads 411598 / likes 340</span>
   </div>
-  <div class="tags"><span class="tag">AI 动态</span></div>
+  <div class="tags"><span class="tag">可试用模型</span><span class="tag">推理部署</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://huggingface.co/openbmb/MiniCPM-V-4.6">openbmb/MiniCPM-V-4.6</a>
+  <p class="item-summary"><strong>概述：</strong>MiniCPM-V-4.6 出现在 HF trending models，属于可试用多模态模型线索。草稿未抓到参数量、license、benchmark 和推理框架；当前能从模型页确认用法</p>
+  <p class="item-action"><strong>行动建议：</strong>查看模型卡的 Transformers/vLLM 示例、license 和显存要求后再试用。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>多模态小模型如果可本地跑，会影响 OCR、截图理解和移动端场景。</p>
+  
+  <div class="item-meta">
+    <span>评分 117</span>
+    <span>Hugging Face Trending Models / image-text-to-text / downloads 166049 / likes 818</span>
+  </div>
+  <div class="tags"><span class="tag">可试用模型</span><span class="tag">推理部署</span></div>
 </article>
 
 </div>
@@ -427,272 +444,66 @@
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20173v1">A Methodology for Selecting and Composing Runtime Architecture Patterns for Production LLM Agents</a>
-  <p class="item-summary"><strong>概述：</strong>这篇论文把生产级 LLM Agent 的运行时架构模式系统化，特别关注随机模型输出和确定性软件系统之间的边界。它适合工程团队设计 Agent 架构时参考。</p>
-  <p class="item-point">重点：这篇论文把生产级 LLM Agent 的运行时架构模式系统化，特别关注随机模型输出和确定性软件系统之间的边界。它适合工程团队设计 Agent 架构时参考。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>从“Agent 能做什么”转向“Agent 怎么稳定上线”，工程价值高。</p>
+  <a class="item-title" href="https://arxiv.org/abs/2605.18818">Operationalizing Document AI: A Microservice Architecture for OCR and LLM Pipelines in Production</a>
+  <p class="item-summary"><strong>概述：</strong>这篇论文讨论 OCR + LLM 文档 AI 的生产级微服务架构，重点不是新模型，而是把文档理解 pipeline 工程化。草稿未提供开源 repo；可作为拆分 OCR、队列、LLM 调用和监控的架构参考</p>
+  <p class="item-action"><strong>行动建议：</strong>对照自己的文档处理链路，检查 OCR、LLM、重试、监控是否已经服务化。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>开发者更需要可运行架构，而不只是模型指标。</p>
+  
   <div class="item-meta">
-    <span>评分 91</span>
-    <span>arXiv cs.AI / 2026-05-19T17:54:21Z</span>
+    <span>评分 122</span>
+    <span>arXiv cs.AI / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span></div>
+  <div class="tags"><span class="tag">推理部署</span><span class="tag">开源工具</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20164v1">Not Every Rubric Teaches Equally: Policy-Aware Rubric Rewards for RLVR</a>
-  <p class="item-summary"><strong>概述：</strong>论文讨论 RLVR 中不同评分 rubric 对模型学习效果的差异，提出更贴合策略的奖励设计。它提醒我们“可验证奖励”也需要设计质量。</p>
-  <p class="item-point">重点：论文讨论 RLVR 中不同评分 rubric 对模型学习效果的差异，提出更贴合策略的奖励设计。它提醒我们“可验证奖励”也需要设计质量。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>后训练和奖励设计是推理模型迭代的关键环节。</p>
+  <a class="item-title" href="https://arxiv.org/abs/2605.19010">AgentNLQ: A General-Purpose Agent for Natural Language to SQL</a>
+  <p class="item-summary"><strong>概述：</strong>AgentNLQ 是 natural language to SQL 的通用 agent 论文，目标是企业常见 NL2SQL 场景。草稿未给 repo/API；现在主要是研究参考</p>
+  <p class="item-action"><strong>行动建议：</strong>等代码或 benchmark 开放后，用内部数据库 schema 做 NL2SQL 准确率测试。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>NL2SQL 是企业数据助手刚需，agent 化方案值得跟踪。</p>
+  
   <div class="item-meta">
-    <span>评分 41</span>
-    <span>arXiv cs.AI / 2026-05-19T17:50:18Z</span>
+    <span>评分 113</span>
+    <span>arXiv cs.AI / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
-  <div class="tags"><span class="tag">安全治理</span></div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">评测基准</span></div>
 </article>
 
 </div>
 </section>
-<section class="source-block"><div class="source-head"><h3>arXiv cs.CL</h3><span>5 条</span></div>
+<section class="source-block"><div class="source-head"><h3>arXiv cs.CL</h3><span>1 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20176v1">ClinSeekAgent: Automating Multimodal Evidence Seeking for Agentic Clinical Reasoning</a>
-  <p class="item-summary"><strong>概述：</strong>ClinSeekAgent 把多模态证据搜索引入临床推理 Agent，让模型不再假设证据已经整理好，而是主动寻找并整合医学证据。看点是临床 Agent 如何从问答走向证据链工作流。</p>
-  <p class="item-point">重点：ClinSeekAgent 把多模态证据搜索引入临床推理 Agent，让模型不再假设证据已经整理好，而是主动寻找并整合医学证据。看点是临床 Agent 如何从问答走向证据链工作流。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>医疗场景对可追溯证据要求高，这类 Agent 设计很有参考价值。</p>
+  <a class="item-title" href="https://arxiv.org/abs/2605.19149">Agent Meltdowns: The Road to Hell Is Paved with Helpful Agents</a>
+  <p class="item-summary"><strong>概述：</strong>Agent Meltdowns 研究 computer/web-use agents 遇到网页不可达、文件缺失、配置错误时的失败模式。草稿未给代码；价值在于给 agent 错误恢复和测试集设计提供案例</p>
+  <p class="item-action"><strong>行动建议：</strong>把论文里的失败类型映射到自己的 agent 测试用例。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>真实 agent 系统会不断遇到环境错误，这类失败分类对工程防护有用。</p>
+  
   <div class="item-meta">
-    <span>评分 76</span>
-    <span>arXiv cs.CL / 2026-05-19T17:58:37Z</span>
+    <span>评分 112</span>
+    <span>arXiv cs.CL / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">多模态</span><span class="tag">推理能力</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20177v1">From Seeing to Thinking: Decoupling Perception and Reasoning Improves Post-Training of Vision-Language Models</a>
-  <p class="item-summary"><strong>概述：</strong>论文认为 VLM 视觉任务的瓶颈常常不是推理链，而是视觉感知本身，因此提出把感知和推理解耦做后训练。这个判断对多模态模型训练策略很关键。</p>
-  <p class="item-point">重点：论文认为 VLM 视觉任务的瓶颈常常不是推理链，而是视觉感知本身，因此提出把感知和推理解耦做后训练。这个判断对多模态模型训练策略很关键。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>多模态模型不能只堆长 CoT，视觉感知训练仍是核心问题。</p>
-  <div class="item-meta">
-    <span>评分 62</span>
-    <span>arXiv cs.CL / 2026-05-19T17:58:40Z</span>
-  </div>
-  <div class="tags"><span class="tag">多模态</span><span class="tag">推理能力</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20158v1">Rethinking Visual Attribution for Chest X-ray Reasoning in Large Vision Language Models</a>
-  <p class="item-summary"><strong>概述：</strong>论文讨论胸片推理中 LVLM 的视觉归因问题，关注模型回答能否忠实落到影像证据上。医疗多模态场景里，这直接关系到可信度和临床可用性。</p>
-  <p class="item-point">重点：论文讨论胸片推理中 LVLM 的视觉归因问题，关注模型回答能否忠实落到影像证据上。医疗多模态场景里，这直接关系到可信度和临床可用性。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>医疗 AI 需要可解释证据链，这篇切中临床落地风险。</p>
-  <div class="item-meta">
-    <span>评分 55</span>
-    <span>arXiv cs.CL / 2026-05-19T17:46:40Z</span>
-  </div>
-  <div class="tags"><span class="tag">多模态</span><span class="tag">推理能力</span></div>
-</article>
-
-</div>
-<details class="more-list"><summary>展开其余 2 条高价值线索</summary>
-
-<article class="item-card compact">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20170v1">KoRe: Compact Knowledge Representations for Large Language Models</a>
-  <p class="item-summary"><strong>概述：</strong>KoRe 研究如何为大模型构造更紧凑的知识表示，目标是在问答和推理之外理解模型如何编码知识。</p>
-  <p class="item-point">重点：KoRe 研究如何为大模型构造更紧凑的知识表示，目标是在问答和推理之外理解模型如何编码知识。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>知识表示关系到模型压缩、可解释性和长期记忆设计。</p>
-  <div class="item-meta">
-    <span>评分 45</span>
-    <span>arXiv cs.CL / 2026-05-19T17:53:29Z</span>
-  </div>
-  <div class="tags"><span class="tag">推理能力</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20179v1">TIDE: Efficient and Lossless MoE Diffusion LLM Inference with I/O-aware Expert Offload</a>
-  <p class="item-summary"><strong>概述：</strong>TIDE 关注 MoE 扩散式 LLM 推理中的专家卸载和 I/O 效率，目标是在不损失效果的前提下降低推理成本。</p>
-  <p class="item-point">重点：TIDE 关注 MoE 扩散式 LLM 推理中的专家卸载和 I/O 效率，目标是在不损失效果的前提下降低推理成本。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推理系统优化直接影响大模型部署成本，适合作为技术补充。</p>
-  <div class="item-meta">
-    <span>评分 31</span>
-    <span>arXiv cs.CL / 2026-05-19T17:59:08Z</span>
-  </div>
-  <div class="tags"><span class="tag">研究进展</span></div>
-</article>
-
-</details>
-</section>
-<section class="source-block"><div class="source-head"><h3>arXiv cs.CV</h3><span>2 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20183v1">MSAVBench: Towards Comprehensive and Reliable Evaluation of Multi-Shot Audio-Video Generation</a>
-  <p class="item-summary"><strong>概述：</strong>MSAVBench 针对多镜头音视频生成评测，试图补上复杂叙事视频的可靠评估缺口。视频生成正在从单镜头走向多镜头故事，这类基准会影响模型能力判断。</p>
-  <p class="item-point">重点：MSAVBench 针对多镜头音视频生成评测，试图补上复杂叙事视频的可靠评估缺口。视频生成正在从单镜头走向多镜头故事，这类基准会影响模型能力判断。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>多模态生成评测仍然薄弱，这篇对视频模型比较有参考价值。</p>
-  <div class="item-meta">
-    <span>评分 64</span>
-    <span>arXiv cs.CV / 2026-05-19T17:59:33Z</span>
-  </div>
-  <div class="tags"><span class="tag">多模态</span><span class="tag">评测基准</span><span class="tag">开发者生态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20165v1">CaMo: Camera Motion Grounded Evaluation and Training for Vision-Language Models</a>
-  <p class="item-summary"><strong>概述：</strong>CaMo 用相机运动来评估和训练 VLM 的空间理解，指出现有空间问答成绩未必代表真正空间智能。</p>
-  <p class="item-point">重点：CaMo 用相机运动来评估和训练 VLM 的空间理解，指出现有空间问答成绩未必代表真正空间智能。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>空间智能是机器人和视频理解基础，这类评测有方法论价值。</p>
-  <div class="item-meta">
-    <span>评分 52</span>
-    <span>arXiv cs.CV / 2026-05-19T17:50:25Z</span>
-  </div>
-  <div class="tags"><span class="tag">多模态</span><span class="tag">评测基准</span></div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">评测基准</span></div>
 </article>
 
 </div>
 </section>
-</section>
-<section class="group-section"><h2>社区讨论</h2>
-<section class="source-block"><div class="source-head"><h3>Hacker News AI Search</h3><span>2 条</span></div>
+<section class="source-block"><div class="source-head"><h3>arXiv cs.LG</h3><span>1 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="https://domainalot.substack.com/p/the-great-domain-illusion-why-legacy">The Expired Domain Trap: Why Legacy SEO Metrics Fail in the Age of AI Agents</a>
-  <p class="item-summary"><strong>概述：</strong>文章讨论过期域名和传统 SEO 指标在 AI Agent 时代的失效风险：Agent 可能被旧指标和域名信誉误导。</p>
-  <p class="item-point">重点：文章讨论过期域名和传统 SEO 指标在 AI Agent 时代的失效风险：Agent 可能被旧指标和域名信誉误导。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>AI Agent 使用网页信息时，信息可信度和来源验证会更重要。</p>
+  <a class="item-title" href="https://arxiv.org/abs/2605.18796">UCCI: Calibrated Uncertainty for Cost-Optimal LLM Cascade Routing</a>
+  <p class="item-summary"><strong>概述：</strong>UCCI 研究 LLM cascade routing，用校准不确定性决定小模型还是大模型处理请求，目标是降低推理成本。草稿未给出代码仓库或生产 API；当前更适合作为路由器设计参考</p>
+  <p class="item-action"><strong>行动建议：</strong>把线上 query 按难度分桶，离线评估小/大模型级联的成本、延迟和错误率。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它直接对应推理成本优化，对多模型服务架构有参考价值。</p>
+  
   <div class="item-meta">
-    <span>评分 57</span>
-    <span>Hacker News AI Search / Wed, 20 May 2026 08:52:35 +0000</span>
+    <span>评分 123</span>
+    <span>arXiv cs.LG / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://zfhuang99.github.io/rust/claude%20code/codex/contracts/spec-driven%20development/2025/12/01/rust-with-ai.html">Learnings from 100K lines of Rust with AI (2025)</a>
-  <p class="item-summary"><strong>概述：</strong>作者总结用 AI 写 10 万行 Rust 的经验，涉及规格驱动开发、合约和代码生成协作方式。对真实工程中的 AI 编程方法有借鉴价值。</p>
-  <p class="item-point">重点：作者总结用 AI 写 10 万行 Rust 的经验，涉及规格驱动开发、合约和代码生成协作方式。对真实工程中的 AI 编程方法有借鉴价值。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>比工具发布更贴近长期工程实践，适合开发团队参考。</p>
-  <div class="item-meta">
-    <span>评分 25</span>
-    <span>Hacker News AI Search / Wed, 20 May 2026 10:04:28 +0000</span>
-  </div>
-  <div class="tags"><span class="tag">社区信号</span></div>
-</article>
-
-</div>
-</section>
-<section class="source-block"><div class="source-head"><h3>Reddit LocalLLaMA</h3><span>4 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1thkwgk/bytedance_released_an_open_source_model_that/">bytedance released an open source model that attempts to do just about anything with only 3b parameters</a>
-  <p class="item-summary"><strong>概述：</strong>社区在讨论字节开源的 Lance：一个 3B 级原生统一多模态模型，试图同时覆盖图像/视频理解、生成和编辑。看点不只是参数小，而是多模态能力是否能以更低成本下沉。</p>
-  <p class="item-point">重点：社区在讨论字节开源的 Lance：一个 3B 级原生统一多模态模型，试图同时覆盖图像/视频理解、生成和编辑。看点不只是参数小，而是多模态能力是否能以更低成本下沉。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自开源社区的早期反馈，能帮助判断小模型多模态路线是否开始变得实用。</p>
-  <div class="item-meta">
-    <span>评分 94</span>
-    <span>Reddit LocalLLaMA / 2026-05-19T12:05:26+00:00</span>
-  </div>
-  <div class="tags"><span class="tag">多模态</span><span class="tag">开源模型</span><span class="tag">产品发布</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1ti0g0k/google_ai_edge_gallery_v1013_v1014_updates_gemma/">Google AI Edge Gallery v1.0.13 &amp; v1.0.14 updates: Gemma 4 Multi-Token Prediction, Pixel TPU support, experimental MCP, new skills, now saves chat history</a>
-  <p class="item-summary"><strong>概述：</strong>Google AI Edge Gallery 更新支持 Gemma 4 MTP、Pixel TPU、实验性 MCP 和新技能，说明端侧 AI 工具链正在快速补齐能力。</p>
-  <p class="item-point">重点：Google AI Edge Gallery 更新支持 Gemma 4 MTP、Pixel TPU、实验性 MCP 和新技能，说明端侧 AI 工具链正在快速补齐能力。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>端侧模型、MCP 和手机硬件加速结合，是本地 AI 应用的重要线索。</p>
-  <div class="item-meta">
-    <span>评分 86</span>
-    <span>Reddit LocalLLaMA / 2026-05-19T21:09:13+00:00</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1thosnt/got_my_first_rm_rf_today/">got my first &quot;rm -rf /&quot; today</a>
-  <p class="item-summary"><strong>概述：</strong>LocalLLaMA 社区分享 Agent 误触危险命令的经历，虽然是个案，但很直观地说明本地 Agent 必须有沙箱、权限和命令拦截。</p>
-  <p class="item-point">重点：LocalLLaMA 社区分享 Agent 误触危险命令的经历，虽然是个案，但很直观地说明本地 Agent 必须有沙箱、权限和命令拦截。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>社区事故比论文更能暴露真实部署风险，适合作为安全提醒。</p>
-  <div class="item-meta">
-    <span>评分 62</span>
-    <span>Reddit LocalLLaMA / 2026-05-19T14:33:13+00:00</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span></div>
-</article>
-
-</div>
-<details class="more-list"><summary>展开其余 1 条高价值线索</summary>
-
-<article class="item-card compact">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tie6gy/qwen37_max_scored_by_artificial_analysis_27b35b/">Qwen3.7 Max scored by Artificial Analysis, 27B/35B waiting room</a>
-  <p class="item-summary"><strong>概述：</strong>社区关注 Qwen3.7 Max 在 Artificial Analysis 上的评分，并等待 27B/35B 版本。重点是国产/开源模型在第三方评测中的位置和后续尺寸布局。</p>
-  <p class="item-point">重点：社区关注 Qwen3.7 Max 在 Artificial Analysis 上的评分，并等待 27B/35B 版本。重点是国产/开源模型在第三方评测中的位置和后续尺寸布局。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>社区热度高，适合观察开源模型竞争格局。</p>
-  <div class="item-meta">
-    <span>评分 50</span>
-    <span>Reddit LocalLLaMA / 2026-05-20T07:18:51+00:00</span>
-  </div>
-  <div class="tags"><span class="tag">开源模型</span><span class="tag">产品发布</span></div>
-</article>
-
-</details>
-</section>
-<section class="source-block"><div class="source-head"><h3>Reddit MachineLearning</h3><span>1 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1thofoe/what_do_you_think_about_tabular_foundation_models/">What do you think about Tabular Foundation Models [D]</a>
-  <p class="item-summary"><strong>概述：</strong>社区讨论 TabPFN、TabICL 等表格基础模型的表现与局限，关注它们为什么在表格数据上强、又在哪些业务场景可能不稳。</p>
-  <p class="item-point">重点：社区讨论 TabPFN、TabICL 等表格基础模型的表现与局限，关注它们为什么在表格数据上强、又在哪些业务场景可能不稳。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>表格数据是企业 ML 核心资产，基础模型化趋势值得观察。</p>
-  <div class="item-meta">
-    <span>评分 33</span>
-    <span>Reddit MachineLearning / 2026-05-19T14:20:20+00:00</span>
-  </div>
-  <div class="tags"><span class="tag">数据集</span></div>
-</article>
-
-</div>
-</section>
-</section>
-<section class="group-section"><h2>社区与Newsletter</h2>
-<section class="source-block"><div class="source-head"><h3>Import AI</h3><span>1 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://jack-clark.net/2026/05/18/import-ai-457-ai-stuxnet-cursed-muon-optimizer-and-positive-alignment/">Import AI 457: AI stuxnet; cursed Muon optimizer; and positive alignment</a>
-  <p class="item-summary"><strong>概述：</strong>Import AI 本期把 AI 安全、优化器异常和正向对齐放在一起看，适合补足官方发布之外的研究风险视角。它提醒我们 Agent 能力增强的同时，也需要看攻击面和治理工具。</p>
-  <p class="item-point">重点：Import AI 本期把 AI 安全、优化器异常和正向对齐放在一起看，适合补足官方发布之外的研究风险视角。它提醒我们 Agent 能力增强的同时，也需要看攻击面和治理工具。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>高信噪比 newsletter，适合把当天技术热度放回安全与治理脉络中。</p>
-  <div class="item-meta">
-    <span>评分 62</span>
-    <span>Import AI / Mon, 18 May 2026 13:31:17 +0000</span>
-  </div>
-  <div class="tags"><span class="tag">AI 动态</span></div>
-</article>
-
-</div>
-</section>
-<section class="source-block"><div class="source-head"><h3>Latent Space</h3><span>1 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://www.latent.space/p/ainews-google-io-2026-gemini-35-flash">[AINews] Google I/O 2026: Gemini 3.5 Flash, Omni (NanoBanana for Video), Spark (background agents), and Antigravity 2.0</a>
-  <p class="item-summary"><strong>概述：</strong>Latent Space 汇总了 Google I/O 的关键 AI 发布：Gemini 3.5 Flash、视频/多模态能力、后台 Agent 和 Antigravity 更新。它比单条新闻更适合用来判断 Google 当天的产品路线。</p>
-  <p class="item-point">重点：Latent Space 汇总了 Google I/O 的关键 AI 发布：Gemini 3.5 Flash、视频/多模态能力、后台 Agent 和 Antigravity 更新。它比单条新闻更适合用来判断 Google 当天的产品路线。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>覆盖模型、Agent、多模态和开发者工具，是今天最完整的 Google 平台信号。</p>
-  <div class="item-meta">
-    <span>评分 95</span>
-    <span>Latent Space / Wed, 20 May 2026 03:34:17 GMT</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">多模态</span></div>
+  <div class="tags"><span class="tag">推理部署</span><span class="tag">API-定价</span></div>
 </article>
 
 </div>
@@ -703,195 +514,182 @@
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="https://www.anthropic.com/news/pwc-expanded-partnership">PwC is deploying Claude to build technology, execute deals, and reinvent enterprise functions for clients</a>
-  <p class="item-summary"><strong>概述：</strong>PwC 扩大 Claude 部署，用于技术构建、交易执行和企业职能重塑。它说明大型咨询机构正在把模型能力包装进客户交付，而不是只做内部试点。</p>
-  <p class="item-point">重点：PwC 扩大 Claude 部署，用于技术构建、交易执行和企业职能重塑。它说明大型咨询机构正在把模型能力包装进客户交付，而不是只做内部试点。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>咨询和企业服务是 AI 规模化落地的重要渠道，这类合作能反映真实采购节奏。</p>
+  <a class="item-title" href="https://www.anthropic.com/news/anthropic-acquires-stainless">Anthropic acquires Stainless</a>
+  <p class="item-summary"><strong>概述：</strong>Anthropic 收购 Stainless，Stainless 是 API SDK 生成相关公司；草稿未提供产品整合时间表。对开发者的含义是 Anthropic 可能强化 SDK、API 文档和客户端生成能力</p>
+  <p class="item-action"><strong>行动建议：</strong>关注 Anthropic SDK changelog，看 Stainless 能力是否进入官方客户端。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>API/SDK 质量会直接影响开发体验和接入成本。</p>
+  
   <div class="item-meta">
-    <span>评分 72</span>
-    <span>Anthropic News / Thu, 14 May 2026 00:00:00 +0000</span>
+    <span>评分 106</span>
+    <span>Anthropic News / Mon, 18 May 2026 00:00:00 +0000</span>
   </div>
-  <div class="tags"><span class="tag">产业应用</span></div>
+  <div class="tags"><span class="tag">API-定价</span><span class="tag">产业信号</span></div>
 </article>
 
 </div>
 </section>
-<section class="source-block"><div class="source-head"><h3>Anthropic Research</h3><span>1 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://www.anthropic.com/research/teaching-claude-why">AlignmentMay 8, 2026Teaching Claude whyNew research on how we&#x27;ve reduced agentic misalignment.</a>
-  <p class="item-summary"><strong>概述：</strong>Anthropic 研究聚焦“教 Claude 解释为什么”，目标是降低 Agentic misalignment。重点在于把模型行为约束从事后拒答推进到更可解释的内部理由和训练机制。</p>
-  <p class="item-point">重点：Anthropic 研究聚焦“教 Claude 解释为什么”，目标是降低 Agentic misalignment。重点在于把模型行为约束从事后拒答推进到更可解释的内部理由和训练机制。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>Agent 安全是企业采用的关键前提，Anthropic 的研究方向值得持续跟踪。</p>
-  <div class="item-meta">
-    <span>评分 88</span>
-    <span>Anthropic Research / Fri, 08 May 2026 00:00:00 +0000</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span></div>
-</article>
-
-</div>
-</section>
-<section class="source-block"><div class="source-head"><h3>OpenAI News</h3><span>3 条</span></div>
+<section class="source-block"><div class="source-head"><h3>OpenAI News</h3><span>1 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
   <a class="item-title" href="https://openai.com/index/dell-codex-enterprise-partnership">OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments</a>
-  <p class="item-summary"><strong>概述：</strong>OpenAI 与 Dell 把 Codex 推向混合云和本地企业环境，重点是让代码 Agent 能在企业数据、权限和工作流边界内落地。这是 Coding Agent 从个人效率工具进入企业基础设施的一条强信号。</p>
-  <p class="item-point">重点：OpenAI 与 Dell 把 Codex 推向混合云和本地企业环境，重点是让代码 Agent 能在企业数据、权限和工作流边界内落地。这是 Coding Agent 从个人效率工具进入企业基础设施的一条强信号。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>官方一手发布，且直接指向企业部署、安全边界和工作流集成，值得优先跟进。</p>
+  <p class="item-summary"><strong>概述：</strong>OpenAI 与 Dell 合作，把 Codex 带到 hybrid 和 on-premise 企业环境，目标是让企业在内部数据、代码库和工作流里部署 coding agents。草稿未提供价格、硬件规格或私有化 API 细节；当前可用性更像企业采购/试点路径，不是普通开发者自助开通</p>
+  <p class="item-action"><strong>行动建议：</strong>如果公司有内网代码合规要求，先整理 on-prem coding agent 的权限、日志和代码访问边界，再询问 Dell/OpenAI 企业方案。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它把 Codex 从云端工具推向企业私有/混合部署，会影响大公司引入 AI coding agent 的安全架构。</p>
+  
   <div class="item-meta">
-    <span>评分 105</span>
+    <span>评分 130</span>
     <span>OpenAI News / Mon, 18 May 2026 10:00:00 GMT</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">产业应用</span></div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">推理部署</span></div>
+</article>
+
+</div>
+</section>
+</section>
+<section class="group-section"><h2>社区与Newsletter</h2>
+<section class="source-block"><div class="source-head"><h3>多来源合并</h3><span>1 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://www.latent.space/p/ainews-google-io-2026-gemini-35-flash">Google I/O 2026：Gemini 3.5 Flash GA，并把 AI Studio、Gmail 与后台 agents 串成开发入口</a>
+  <p class="item-summary"><strong>概述：</strong>Google I/O 2026 主线是 Gemini 3.5 Flash 进入 GA，并把 AI Studio、Gmail、视频/图像生成和后台 agents 作为产品入口一起推进；草稿未给出完整 API 价格表，但 Simon Willison 明确提到 3.5 Flash 比上一代更贵。开发者现在能从 AI Studio 和 Gemini 相关插件路径试用，正式接入前要核对定价、rate limit 和 SDK 变更</p>
+  <p class="item-action"><strong>行动建议：</strong>先在 AI Studio 试跑 Gemini 3.5 Flash，再核对 API pricing / rate limit 后替换现有 Gemini 调用。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这会直接影响 Gemini 开发者选型：能力入口已经可用，但成本和限流需要在接入前确认。</p>
+  <ul class="source-notes"><li><strong>Latent Space：</strong>把 Gemini 3.5 Flash、Omni/NanoBanana for Video、Spark background agents 和 Antigravity 2.0 放在同一条 Google I/O 主线里。</li><li><strong>Simon Willison：</strong>记录 llm-gemini 0.32 已支持 gemini-3.5-flash，并指出新 Flash 已 GA 且价格更高。</li><li><strong>TechCrunch AI：</strong>Gmail AI Inbox 已支持用语音/对话方式让 Gemini 搜索邮件信息。</li><li><strong>Google DeepMind Blog：</strong>官方入口继续把 Build with Gemini / AI Studio 作为试用路径。</li></ul>
+  <div class="item-meta">
+    <span>评分 130</span>
+    <span>Latent Space / Simon Willison / TechCrunch AI / Google DeepMind Blog / Wed, 20 May 2026 03:34:17 GMT</span>
+  </div>
+  <div class="tags"><span class="tag">可试用模型</span><span class="tag">API-定价</span></div>
+</article>
+
+</div>
+</section>
+</section>
+<section class="group-section"><h2>社区讨论</h2>
+<section class="source-block"><div class="source-head"><h3>Hacker News AI Search</h3><span>3 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/rgombash/ocl-nexus-local">OCL Nexus Local – Open-source local compute fabric for AI agents</a>
+  <p class="item-summary"><strong>概述：</strong>OCL Nexus Local 是 Hacker News 上出现的 GitHub 开源本地 compute fabric，目标是给 AI agents 提供本地计算资源。HN 数据只有 1 point/0 comments，热度弱；草稿未提供安装和 license</p>
+  <p class="item-action"><strong>行动建议：</strong>先看 README、license 和最近 commit，再决定是否试用。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>方向契合本地 agent 执行环境，但社区热度还低，需要谨慎验证。</p>
+  
+  <div class="item-meta">
+    <span>评分 120</span>
+    <span>Hacker News AI Search / Wed, 20 May 2026 13:57:23 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">开源工具</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="https://openai.com/index/introducing-openai-for-singapore">Introducing OpenAI for Singapore</a>
-  <p class="item-summary"><strong>概述：</strong>OpenAI 与新加坡展开多年合作，覆盖 AI 部署、本地人才培养、企业和公共服务支持。它更像国家级 AI 基础设施合作，而不是单个产品发布。</p>
-  <p class="item-point">重点：OpenAI 与新加坡展开多年合作，覆盖 AI 部署、本地人才培养、企业和公共服务支持。它更像国家级 AI 基础设施合作，而不是单个产品发布。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>国家/地区级合作会影响 OpenAI 在公共部门和企业市场的扩张节奏。</p>
+  <a class="item-title" href="https://github.com/shenli/distributed-system-testing">Testing distributed systems with AI agents</a>
+  <p class="item-summary"><strong>概述：</strong>这是一个用 AI agents 测试分布式系统的 GitHub 项目线索，HN 当前只有 1 point/0 comments。草稿未给框架支持和安装方式；适合做工程测试思路观察</p>
+  <p class="item-action"><strong>行动建议：</strong>在非生产测试集群里复现实例，确认 agent 是否能发现真实一致性/超时问题。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>agent 用于复杂系统测试是有潜力的工程方向。</p>
+  
   <div class="item-meta">
-    <span>评分 87</span>
-    <span>OpenAI News / Tue, 19 May 2026 20:30:00 GMT</span>
+    <span>评分 119</span>
+    <span>Hacker News AI Search / Wed, 20 May 2026 14:40:42 +0000</span>
   </div>
-  <div class="tags"><span class="tag">产品发布</span></div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">开源工具</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="https://openai.com/index/advancing-content-provenance">Advancing content provenance for a safer, more transparent AI ecosystem</a>
-  <p class="item-summary"><strong>概述：</strong>OpenAI 更新内容溯源方向，涉及 Content Credentials、SynthID 和验证工具。重点不是单一水印技术，而是 AI 内容识别正在进入平台级基础设施。</p>
-  <p class="item-point">重点：OpenAI 更新内容溯源方向，涉及 Content Credentials、SynthID 和验证工具。重点不是单一水印技术，而是 AI 内容识别正在进入平台级基础设施。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>内容来源和合成识别会影响媒体、平台合规和模型输出信任。</p>
+  <a class="item-title" href="https://tokenscale.dev">TokenScale – AI API pricing in words you know (The Hobbit = $0.06)</a>
+  <p class="item-summary"><strong>概述：</strong>TokenScale 把 AI API 价格换算成自然语言/书本级类比，HN 标题示例是 The Hobbit 约 0.06 美元。草稿只给 HN 2 points/0 comments，热度不高，但对成本沟通有用</p>
+  <p class="item-action"><strong>行动建议：</strong>把团队常用 prompt 样本导入 TokenScale，做一次 API 成本解释材料。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>API 成本经常难沟通，这类工具能辅助开发者和业务方对齐预算。</p>
+  
   <div class="item-meta">
-    <span>评分 62</span>
-    <span>OpenAI News / Tue, 19 May 2026 10:45:00 GMT</span>
+    <span>评分 115</span>
+    <span>Hacker News AI Search / Wed, 20 May 2026 14:09:55 +0000</span>
   </div>
-  <div class="tags"><span class="tag">AI 动态</span></div>
+  <div class="tags"><span class="tag">API-定价</span><span class="tag">开源工具</span></div>
+</article>
+
+</div>
+</section>
+<section class="source-block"><div class="source-head"><h3>Reddit LocalLLaMA</h3><span>3 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tiixql/rtx_5080_16gb_qwen36_35b_moe_at_128k_context_56/">RTX 5080 16GB: Qwen3.6 35B MoE at 128k context — 56 tok/s, and why MTP doesn&#x27;t help</a>
+  <p class="item-summary"><strong>概述：</strong>社区实测 RTX 5080 16GB 跑 Qwen3.6 35B MoE，在 128k coding-agent 上下文下约 56 tok/s；测试还提到 llama.cpp mainline 已合入 MTP，但这轮 MTP 没带来收益。它是 Reddit 实测，不是官方 benchmark，但对本地推理预算很直接</p>
+  <p class="item-action"><strong>行动建议：</strong>如果你手上有 16GB 显存卡，用同样上下文长度复测 tok/s，再决定是否上 Qwen3.6 35B MoE。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>给出了显卡、模型规模、上下文和吞吐数字，能直接辅助本地 coding agent 部署判断。</p>
+  
+  <div class="item-meta">
+    <span>评分 127</span>
+    <span>Reddit LocalLLaMA / 2026-05-20T11:33:58+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">推理部署</span><span class="tag">可试用模型</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1ti99an/lm_studio_finally_added_support_for_mtp/">LM Studio finally added support for MTP Speculative Decoding</a>
+  <p class="item-summary"><strong>概述：</strong>LM Studio 0.4.14 Build 2 Beta 加入 MTP Speculative Decoding 支持，帖子还要求 llama.cpp engine 2.15.0。它是客户端功能更新，适合本地模型用户试验吞吐提升</p>
+  <p class="item-action"><strong>行动建议：</strong>升级 LM Studio beta 和 llama.cpp engine 2.15.0，用同一模型对比 MTP 前后 tok/s。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这是本地推理工具链的直接可操作更新。</p>
+  
+  <div class="item-meta">
+    <span>评分 116</span>
+    <span>Reddit LocalLLaMA / 2026-05-20T03:10:58+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">推理部署</span><span class="tag">可试用模型</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tilvit/huggingface_benchmark_datasets_now_let_you_filter/">HuggingFace benchmark datasets now let you filter by model size</a>
+  <p class="item-summary"><strong>概述：</strong>HF benchmark datasets 现在可按模型大小过滤，帖子举例可筛 32B 以下模型在 SWE-bench Verified 上的表现。它是可操作的选型入口</p>
+  <p class="item-action"><strong>行动建议：</strong>按模型大小过滤 SWE-bench Verified，挑 32B 以下候选再做内部代码任务复测。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>模型大小过滤能让开发者更快找到可部署范围内的模型。</p>
+  
+  <div class="item-meta">
+    <span>评分 114</span>
+    <span>Reddit LocalLLaMA / 2026-05-20T13:33:38+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">评测基准</span><span class="tag">可试用模型</span></div>
 </article>
 
 </div>
 </section>
 </section>
 <section class="group-section"><h2>产业新闻</h2>
-<section class="source-block"><div class="source-head"><h3>TechCrunch AI</h3><span>3 条</span></div>
+<section class="source-block"><div class="source-head"><h3>VentureBeat AI</h3><span>2 条</span></div>
 <div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://techcrunch.com/2026/05/19/how-to-use-googles-new-ai-agents-to-go-beyond-your-standard-searches/">How to use Google’s new AI agents to go beyond your standard searches</a>
-  <p class="item-summary"><strong>概述：</strong>Google 的“信息代理”可以在后台持续监控主题并主动提醒变化，搜索正在从一次性查询变成持续跟踪任务。这对新闻监控、竞品跟踪和知识工作流都有直接影响。</p>
-  <p class="item-point">重点：Google 的“信息代理”可以在后台持续监控主题并主动提醒变化，搜索正在从一次性查询变成持续跟踪任务。这对新闻监控、竞品跟踪和知识工作流都有直接影响。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>这是搜索产品形态从检索到 Agent 的清晰变化，产业意义强。</p>
-  <div class="item-meta">
-    <span>评分 88</span>
-    <span>TechCrunch AI / Tue, 19 May 2026 21:16:25 +0000</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">产品发布</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://techcrunch.com/2026/05/19/from-teen-hacker-to-iron-dome-researcher-this-founder-raised-28m-to-fight-ai-phishing/">From teen hacker to Iron Dome researcher, this founder raised $28M to fight AI phishing</a>
-  <p class="item-summary"><strong>概述：</strong>Ocean 获得 2800 万美元融资，主打用 Agentic AI 分析邮件上下文来识别钓鱼和冒充攻击。它说明安全创业正在从规则/特征检测转向上下文理解型 Agent。</p>
-  <p class="item-point">重点：Ocean 获得 2800 万美元融资，主打用 Agentic AI 分析邮件上下文来识别钓鱼和冒充攻击。它说明安全创业正在从规则/特征检测转向上下文理解型 Agent。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>AI 安全产品化正在加速，邮件安全是高频企业场景。</p>
-  <div class="item-meta">
-    <span>评分 61</span>
-    <span>TechCrunch AI / Tue, 19 May 2026 21:08:51 +0000</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">安全治理</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://techcrunch.com/2026/05/19/you-can-now-talk-to-your-gmail-inbox-as-seen-at-google-io-2026/">You can now talk to your Gmail inbox, as seen at Google IO 2026</a>
-  <p class="item-summary"><strong>概述：</strong>Google 展示 Gmail AI Inbox 的语音式邮件搜索，让用户可以直接问 Gemini 找邮件细节。它代表办公套件里的 AI 从总结走向自然语言操作。</p>
-  <p class="item-point">重点：Google 展示 Gmail AI Inbox 的语音式邮件搜索，让用户可以直接问 Gemini 找邮件细节。它代表办公套件里的 AI 从总结走向自然语言操作。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>邮箱是高频办公入口，这类能力会推动企业用户形成新习惯。</p>
-  <div class="item-meta">
-    <span>评分 35</span>
-    <span>TechCrunch AI / Tue, 19 May 2026 21:25:31 +0000</span>
-  </div>
-  <div class="tags"><span class="tag">产业应用</span></div>
-</article>
-
-</div>
-</section>
-<section class="source-block"><div class="source-head"><h3>VentureBeat AI</h3><span>4 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and">Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI</a>
-  <p class="item-summary"><strong>概述：</strong>Salesforce 将 Slackbot 重做成工作场景 AI Agent，意图在企业协作入口和 Microsoft/Google 正面竞争。重点是 Agent 是否能嵌入团队沟通，而不是停留在单独聊天窗口。</p>
-  <p class="item-point">重点：Salesforce 将 Slackbot 重做成工作场景 AI Agent，意图在企业协作入口和 Microsoft/Google 正面竞争。重点是 Agent 是否能嵌入团队沟通，而不是停留在单独聊天窗口。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>企业工作流入口竞争加速，Slackbot 的改造有商业化观察价值。</p>
-  <div class="item-meta">
-    <span>评分 76</span>
-    <span>VentureBeat AI / Tue, 13 Jan 2026 13:00:00 GMT</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">产业应用</span><span class="tag">产品发布</span></div>
-</article>
-
 
 <article class="item-card">
   <a class="item-title" href="https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free">Claude Code costs up to $200 a month. Goose does the same thing for free.</a>
-  <p class="item-summary"><strong>概述：</strong>VentureBeat 对比 Claude Code 与开源/免费替代 Goose，反映 AI 编码工具正在出现价格和开放生态竞争。看点是开发者是否会因成本转向本地或开源 Agent。</p>
-  <p class="item-point">重点：VentureBeat 对比 Claude Code 与开源/免费替代 Goose，反映 AI 编码工具正在出现价格和开放生态竞争。看点是开发者是否会因成本转向本地或开源 Agent。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>Coding Agent 商业模式和开源替代会影响开发者采用路径。</p>
+  <p class="item-summary"><strong>概述：</strong>VentureBeat 对比 Claude Code 最高约 200 美元/月与 Goose 免费路线，核心是终端 coding agent 的成本差异。草稿未提供 Goose 的完整模型后端、license 和企业支持，但它直接提示开发者不要只看能力，也要算长期 seat 成本</p>
+  <p class="item-action"><strong>行动建议：</strong>用同一个真实仓库任务对比 Claude Code 和 Goose：记录成功率、耗时、token/API 成本，再决定团队默认工具。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>coding agent 已进入成本竞争阶段，这会影响个人和团队工具选型。</p>
+  
   <div class="item-meta">
-    <span>评分 51</span>
+    <span>评分 126</span>
     <span>VentureBeat AI / Mon, 19 Jan 2026 14:00:00 GMT</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span></div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">API-定价</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud">Railway secures $100 million to challenge AWS with AI-native cloud infrastructure</a>
-  <p class="item-summary"><strong>概述：</strong>Railway 融资 1 亿美元，试图以 AI-native 云平台挑战传统云开发体验。它反映开发者基础设施也在围绕 AI 工作流重构。</p>
-  <p class="item-point">重点：Railway 融资 1 亿美元，试图以 AI-native 云平台挑战传统云开发体验。它反映开发者基础设施也在围绕 AI 工作流重构。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>AI 应用开发对部署和云平台提出新要求，基础设施融资值得记录。</p>
+  <a class="item-title" href="https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and">Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI</a>
+  <p class="item-summary"><strong>概述：</strong>Salesforce 新 Slackbot 被定位为 workplace AI agent，可搜索企业知识和执行工作流。草稿未给开发者 API；当前偏产品信号</p>
+  <p class="item-action"><strong>行动建议：</strong>等 Slack/Salesforce 公布开发者扩展点后，再评估是否接企业工作流。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>企业协作入口正在 agent 化，可能影响内部工具集成路径。</p>
+  
   <div class="item-meta">
-    <span>评分 43</span>
-    <span>VentureBeat AI / Thu, 22 Jan 2026 14:00:00 GMT</span>
+    <span>评分 105</span>
+    <span>VentureBeat AI / Tue, 13 Jan 2026 13:00:00 GMT</span>
   </div>
-  <div class="tags"><span class="tag">产业应用</span></div>
-</article>
-
-</div>
-<details class="more-list"><summary>展开其余 1 条高价值线索</summary>
-
-<article class="item-card compact">
-  <a class="item-title" href="https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think">Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.</a>
-  <p class="item-summary"><strong>概述：</strong>Google 重新设计搜索框，把传统查询入口推向更 AI 化的交互。它和信息代理、Gemini 产品线一起构成搜索体验的大转向。</p>
-  <p class="item-point">重点：Google 重新设计搜索框，把传统查询入口推向更 AI 化的交互。它和信息代理、Gemini 产品线一起构成搜索体验的大转向。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>搜索入口变化会影响用户习惯和内容分发方式。</p>
-  <div class="item-meta">
-    <span>评分 35</span>
-    <span>VentureBeat AI / Tue, 19 May 2026 17:45:00 GMT</span>
-  </div>
-  <div class="tags"><span class="tag">产业应用</span></div>
-</article>
-
-</details>
-</section>
-<section class="source-block"><div class="source-head"><h3>WIRED AI</h3><span>1 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://www.wired.com/story/data-brokers-and-ai-firms-opt-out-forms-are-built-to-fail-report-finds/">Data Brokers’ and AI Firms’ Opt-Out Forms Are Built to Fail, Report Finds</a>
-  <p class="item-summary"><strong>概述：</strong>WIRED 报道数据经纪商和 AI 公司退出表单存在误导性设计，反映数据收集和用户选择权仍有治理缺口。</p>
-  <p class="item-point">重点：WIRED 报道数据经纪商和 AI 公司退出表单存在误导性设计，反映数据收集和用户选择权仍有治理缺口。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>AI 数据合规不只在模型侧，也在数据入口和用户体验设计上。</p>
-  <div class="item-meta">
-    <span>评分 33</span>
-    <span>WIRED AI / Wed, 20 May 2026 09:00:00 +0000</span>
-  </div>
-  <div class="tags"><span class="tag">产业应用</span></div>
+  <div class="tags"><span class="tag">Agent-框架</span><span class="tag">产业信号</span></div>
 </article>
 
 </div>
@@ -901,7 +699,7 @@
     <section>
       <h2>运行状态</h2>
       <div class="ops">
-        <p>生成时间：2026-05-20 18:46 CST</p>
+        <p>生成时间：2026-05-20 23:00 CST</p>
         <p>HTML 由结构化日报 JSON 渲染；源码标题保留原文，概述、编辑判断和推荐理由均优先以中文呈现。</p>
         <p>本次巡查所有来源均正常返回。</p>
       </div>
