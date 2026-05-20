@@ -37,7 +37,7 @@
       color: var(--text);
       font: 16px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-    main { max-width: 1080px; margin: 0 auto; padding: 28px 16px 54px; }
+    main { max-width: 1360px; margin: 0 auto; padding: 28px 24px 54px; }
     a { color: var(--accent-2); overflow-wrap: anywhere; text-decoration-thickness: 1px; text-underline-offset: 2px; }
     .hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr); gap: 22px; align-items: center; margin-bottom: 22px; }
     .eyebrow { color: var(--accent); font-weight: 700; font-size: 14px; }
@@ -56,10 +56,12 @@
     section { margin-top: 28px; }
     h2 { margin: 0 0 12px; font-size: 22px; line-height: 1.35; letter-spacing: 0; }
     h3 { margin: 0; font-size: 17px; line-height: 1.35; letter-spacing: 0; }
-    .highlight-grid, .source-grid, .charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .highlight-grid, .source-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 14px; }
+    .charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .item-card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
     .item-card.compact { margin-top: 10px; background: transparent; }
     .item-title { display: block; font-weight: 750; line-height: 1.42; margin-bottom: 8px; }
+    .item-summary { margin: 0 0 8px; color: var(--muted); }
     .item-point { margin: 0 0 8px; color: var(--text); }
     .item-reason { margin: 0 0 10px; color: var(--muted); }
     .item-meta { display: flex; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
@@ -91,7 +93,7 @@
         <h1>AI 日报 2026-05-20</h1>
         <p class="lede">今天的 AI 圈重点集中在AI 动态、Agent、产业应用，高优先级线索主要来自官方实验室和Hugging Face 热门。建议先看今日必读，再按来源展开补充列表。</p>
         <div class="stats">
-          <div class="stat"><b>127</b><span>条有效线索</span></div>
+          <div class="stat"><b>129</b><span>条有效线索</span></div>
           <div class="stat"><b>28</b><span>个来源</span></div>
           <div class="stat"><b>6</b><span>今日必读</span></div>
           <div class="stat"><b>0</b><span>失败源</span></div>
@@ -111,13 +113,13 @@
 <circle cx="285.0" cy="211.0" r="54" fill="#b45309" opacity="0.18"></circle>
 <text x="285.0" y="215.0" text-anchor="middle" class="cover-topic">产业应用</text>
 <line x1="380" y1="140" x2="285.0" y2="211.0" class="cover-line"></line>
-<circle cx="190.0" cy="140.0" r="52" fill="#7c3aed" opacity="0.18"></circle>
-<text x="190.0" y="144.0" text-anchor="middle" class="cover-topic">产品发布</text>
+<circle cx="190.0" cy="140.0" r="54" fill="#7c3aed" opacity="0.18"></circle>
+<text x="190.0" y="144.0" text-anchor="middle" class="cover-topic">研究进展</text>
 <line x1="380" y1="140" x2="190.0" y2="140.0" class="cover-line"></line>
-<circle cx="285.0" cy="69.0" r="50" fill="#db2777" opacity="0.18"></circle>
-<text x="285.0" y="73.0" text-anchor="middle" class="cover-topic">研究进展</text>
+<circle cx="285.0" cy="69.0" r="52" fill="#db2777" opacity="0.18"></circle>
+<text x="285.0" y="73.0" text-anchor="middle" class="cover-topic">产品发布</text>
 <line x1="380" y1="140" x2="285.0" y2="69.0" class="cover-line"></line>
-<circle cx="475.0" cy="69.0" r="50" fill="#0f766e" opacity="0.18"></circle>
+<circle cx="475.0" cy="69.0" r="52" fill="#0f766e" opacity="0.18"></circle>
 <text x="475.0" y="73.0" text-anchor="middle" class="cover-topic">社区信号</text>
 <line x1="380" y1="140" x2="475.0" y2="69.0" class="cover-line"></line>
 </svg></div>
@@ -128,6 +130,7 @@
       <div class="highlight-grid">
 <article class="item-card">
   <a class="item-title" href="https://openai.com/index/dell-codex-enterprise-partnership">OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments</a>
+  <p class="item-summary"><strong>概述：</strong>OpenAI and Dell partner to bring Codex to hybrid and on-premise environments, helping enterprises deploy AI coding agents securely across data and workflows.</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是Agent相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化；Agent 应用和自动化能力正在成为产品落地的主线；企业应用信号能反映 AI 商业化的真实进展。</p>
   <div class="item-meta">
@@ -140,6 +143,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1thkwgk/bytedance_released_an_open_source_model_that/">bytedance released an open source model that attempts to do just about anything with only 3b parameters</a>
+  <p class="item-summary"><strong>概述：</strong>EDIT: working link https://huggingface.co/bytedance-research/Lance Lance is a lightweight native unified multimodal model that supports image and video understanding, generation, and editing within a single framework. Efficient at 3B scale. With only 3B active parameters , Lance</p>
   <p class="item-point">重点：这条社区线索关联多模态，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；多模态能力会直接影响模型交互和内容生产形态；视频生成和理解仍是高热度方向。</p>
   <div class="item-meta">
@@ -152,6 +156,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://openai.com/index/introducing-openai-for-singapore">Introducing OpenAI for Singapore</a>
+  <p class="item-summary"><strong>概述：</strong>OpenAI for Singapore launches a multi-year AI partnership to expand deployment, build local talent, and support businesses and public services with AI.</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是产品发布相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化；新发布通常意味着近期能力或平台策略变化。</p>
   <div class="item-meta">
@@ -164,6 +169,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/papers/2605.19769">OpenComputer: Verifiable Software Worlds for Computer-Use Agents</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是Agent方向是否出现可试用的新资产。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -176,6 +182,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/papers/2605.18703">EnvFactory: Scaling Tool-Use Agents via Executable Environments Synthesis and Robust RL</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是Agent方向是否出现可试用的新资产。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -188,6 +195,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://techcrunch.com/2026/05/19/how-to-use-googles-new-ai-agents-to-go-beyond-your-standard-searches/">How to use Google’s new AI agents to go beyond your standard searches</a>
+  <p class="item-summary"><strong>概述：</strong>Google is launching AI-powered “information agents” that can monitor topics in the background and proactively alert users to updates and changes.</p>
   <p class="item-point">重点：这条产业新闻关联Agent，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线；新发布通常意味着近期能力或平台策略变化。</p>
   <div class="item-meta">
@@ -203,27 +211,27 @@
       <h2>态势概览</h2>
       <div class="charts"><svg class="chart" viewBox="0 0 760 290" role="img" aria-label="信息来源分布">
 <text x="0" y="20" class="chart-title">信息来源分布</text>
-<text x="0" y="53" class="chart-label">社区讨论</text>
-<rect x="150" y="34" width="420.0" height="20" rx="5" fill="#db2777"></rect>
-<text x="580.0" y="49" class="chart-value">24</text>
-<text x="0" y="87" class="chart-label">官方实验室</text>
-<rect x="150" y="68" width="402.5" height="20" rx="5" fill="#2563eb"></rect>
-<text x="562.5" y="83" class="chart-value">23</text>
-<text x="0" y="121" class="chart-label">arXiv 今日精选</text>
-<rect x="150" y="102" width="402.5" height="20" rx="5" fill="#0f766e"></rect>
-<text x="562.5" y="117" class="chart-value">23</text>
+<text x="0" y="53" class="chart-label">arXiv 今日精选</text>
+<rect x="150" y="34" width="420.0" height="20" rx="5" fill="#0f766e"></rect>
+<text x="580.0" y="49" class="chart-value">25</text>
+<text x="0" y="87" class="chart-label">社区讨论</text>
+<rect x="150" y="68" width="403.2" height="20" rx="5" fill="#db2777"></rect>
+<text x="563.2" y="83" class="chart-value">24</text>
+<text x="0" y="121" class="chart-label">官方实验室</text>
+<rect x="150" y="102" width="386.4" height="20" rx="5" fill="#2563eb"></rect>
+<text x="546.4" y="117" class="chart-value">23</text>
 <text x="0" y="155" class="chart-label">产业新闻</text>
-<rect x="150" y="136" width="315.0" height="20" rx="5" fill="#b45309"></rect>
-<text x="475.0" y="151" class="chart-value">18</text>
+<rect x="150" y="136" width="302.4" height="20" rx="5" fill="#b45309"></rect>
+<text x="462.4" y="151" class="chart-value">18</text>
 <text x="0" y="189" class="chart-label">开发者生态</text>
-<rect x="150" y="170" width="262.5" height="20" rx="5" fill="#059669"></rect>
-<text x="422.5" y="185" class="chart-value">15</text>
+<rect x="150" y="170" width="252.0" height="20" rx="5" fill="#059669"></rect>
+<text x="412.0" y="185" class="chart-value">15</text>
 <text x="0" y="223" class="chart-label">社区与Newsletter</text>
-<rect x="150" y="204" width="245.0" height="20" rx="5" fill="#7c3aed"></rect>
-<text x="405.0" y="219" class="chart-value">14</text>
+<rect x="150" y="204" width="235.2" height="20" rx="5" fill="#7c3aed"></rect>
+<text x="395.2" y="219" class="chart-value">14</text>
 <text x="0" y="257" class="chart-label">Hugging Face 热门</text>
-<rect x="150" y="238" width="175.0" height="20" rx="5" fill="#ca8a04"></rect>
-<text x="335.0" y="253" class="chart-value">10</text>
+<rect x="150" y="238" width="168.0" height="20" rx="5" fill="#ca8a04"></rect>
+<text x="328.0" y="253" class="chart-value">10</text>
 </svg><svg class="chart radar" viewBox="0 0 760 260" role="img" aria-label="今日热点主题雷达">
 <text x="0" y="20" class="chart-title">今日热点主题雷达</text>
 <circle cx="380" cy="136" r="96" class="radar-ring"></circle>
@@ -236,14 +244,14 @@
 <line x1="380" y1="136" x2="338.3" y2="222.5" class="radar-axis"></line>
 <line x1="380" y1="136" x2="286.4" y2="157.4" class="radar-axis"></line>
 <line x1="380" y1="136" x2="304.9" y2="76.1" class="radar-axis"></line>
-<polygon points="380.0,40.0 434.1,92.8 438.8,149.4 402.3,182.3 358.5,180.7 331.6,147.0 342.6,106.2" class="radar-shape"></polygon>
+<polygon points="380.0,40.0 434.1,92.8 440.6,149.8 404.6,187.1 357.7,182.3 329.9,147.4 344.0,107.3" class="radar-shape"></polygon>
 <text x="380.0" y="12.0" class="radar-label" text-anchor="middle">AI 动态 37</text>
 <text x="476.9" y="58.7" class="radar-label" text-anchor="middle">Agent 22</text>
-<text x="500.9" y="163.6" class="radar-label" text-anchor="middle">产业应用 17</text>
-<text x="433.8" y="247.7" class="radar-label" text-anchor="middle">产品发布 12</text>
-<text x="326.2" y="247.7" class="radar-label" text-anchor="middle">研究进展 11</text>
-<text x="259.1" y="163.6" class="radar-label" text-anchor="middle">社区信号 11</text>
-<text x="283.1" y="58.7" class="radar-label" text-anchor="middle">多模态 10</text>
+<text x="500.9" y="163.6" class="radar-label" text-anchor="middle">产业应用 18</text>
+<text x="433.8" y="247.7" class="radar-label" text-anchor="middle">研究进展 15</text>
+<text x="326.2" y="247.7" class="radar-label" text-anchor="middle">产品发布 12</text>
+<text x="259.1" y="163.6" class="radar-label" text-anchor="middle">社区信号 12</text>
+<text x="283.1" y="58.7" class="radar-label" text-anchor="middle">开源模型 9</text>
 </svg></div>
     </section>
 
@@ -253,6 +261,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.anthropic.com/news/pwc-expanded-partnership">PwC is deploying Claude to build technology, execute deals, and reinvent enterprise functions for clients</a>
+  <p class="item-summary"><strong>概述：</strong>PwC is deploying Claude to build technology, execute deals, and reinvent enterprise functions for clients</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是产业应用相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化；企业应用信号能反映 AI 商业化的真实进展。</p>
   <div class="item-meta">
@@ -265,6 +274,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.anthropic.com/news/anthropic-kpmg">KPMG integrates Claude across its core business and workforce of more than 276,000 in strategic alliance</a>
+  <p class="item-summary"><strong>概述：</strong>KPMG integrates Claude across its core business and workforce of more than 276,000 in strategic alliance</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -277,6 +287,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.anthropic.com/news/widening-conversation-ai">Widening the conversation on frontier AI</a>
+  <p class="item-summary"><strong>概述：</strong>Widening the conversation on frontier AI</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -291,6 +302,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.anthropic.com/news/anthropic-acquires-stainless">Anthropic acquires Stainless</a>
+  <p class="item-summary"><strong>概述：</strong>Anthropic acquires Stainless</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -303,6 +315,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.anthropic.com/news/gates-foundation-partnership">Anthropic forms $200 million partnership with the Gates Foundation</a>
+  <p class="item-summary"><strong>概述：</strong>Anthropic forms $200 million partnership with the Gates Foundation</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -319,6 +332,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.anthropic.com/research/teaching-claude-why">AlignmentMay 8, 2026Teaching Claude whyNew research on how we&#x27;ve reduced agentic misalignment.</a>
+  <p class="item-summary"><strong>概述：</strong>AlignmentMay 8, 2026Teaching Claude whyNew research on how we&#x27;ve reduced agentic misalignment.</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是Agent相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -331,6 +345,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.anthropic.com/research/2028-ai-leadership">May 14, 2026Policy2028: Two scenarios for global AI leadership</a>
+  <p class="item-summary"><strong>概述：</strong>May 14, 2026Policy2028: Two scenarios for global AI leadership</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是安全治理相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化；政策与治理信号会影响 AI 产品落地空间。</p>
   <div class="item-meta">
@@ -343,6 +358,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.anthropic.com/research/anthropic-institute-agenda">May 7, 2026PolicyFocus areas for The Anthropic Institute</a>
+  <p class="item-summary"><strong>概述：</strong>May 7, 2026PolicyFocus areas for The Anthropic Institute</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是安全治理相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化；政策与治理信号会影响 AI 产品落地空间。</p>
   <div class="item-meta">
@@ -357,6 +373,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.anthropic.com/research/donating-open-source-petri">May 7, 2026AlignmentDonating our open-source alignment tool</a>
+  <p class="item-summary"><strong>概述：</strong>May 7, 2026AlignmentDonating our open-source alignment tool</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -369,6 +386,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.anthropic.com/research/natural-language-autoencoders">Natural Language Autoencoders: Turning Claude’s thoughts into text</a>
+  <p class="item-summary"><strong>概述：</strong>Natural Language Autoencoders: Turning Claude’s thoughts into text</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -385,6 +403,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://ai.google/science/gemini-for-science?utm_source=deepmind.google&amp;utm_medium=referral&amp;utm_campaign=gdm&amp;utm_content=">Gemini for Science</a>
+  
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -397,6 +416,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://labs.google/science?utm_source=deepmind.google&amp;utm_medium=referral&amp;utm_campaign=gdm&amp;utm_content=">Experimental Tools</a>
+  
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -409,6 +429,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://antigravity.google/use-cases/science?utm_source=deepmind.google&amp;utm_medium=referral&amp;utm_campaign=gdm&amp;utm_content=">Science Skills</a>
+  
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -423,6 +444,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://aistudio.google.com/prompts/new_chat?utm_source=deepmind.google&amp;utm_medium=referral&amp;utm_campaign=gdm&amp;utm_content=">Build with Gemini</a>
+  
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -435,6 +457,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://gemini.google.com/?utm_source=deepmind.google&amp;utm_medium=referral&amp;utm_campaign=gdm&amp;utm_content=">Try Gemini</a>
+  
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -451,6 +474,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.llama.com/?utm_source=ai_meta_site&amp;utm_medium=web&amp;utm_content=AI_nav&amp;utm_campaign=09252025_moment">Get Llama</a>
+  
   <p class="item-point">重点：这是一条官方发布线索，核心看点是开源模型相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化；开源模型生态有持续跟进价值。</p>
   <div class="item-meta">
@@ -463,6 +487,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://ai.meta.com/blog">Products</a>
+  
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -475,6 +500,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://applink.meta.ai/?utm_source=ai_meta_site&amp;utm_medium=web&amp;utm_content=AI_nav&amp;utm_campaign=04082026_moment">Try Meta AI</a>
+  
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -491,6 +517,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://openai.com/index/dell-codex-enterprise-partnership">OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments</a>
+  <p class="item-summary"><strong>概述：</strong>OpenAI and Dell partner to bring Codex to hybrid and on-premise environments, helping enterprises deploy AI coding agents securely across data and workflows.</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是Agent相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化；Agent 应用和自动化能力正在成为产品落地的主线；企业应用信号能反映 AI 商业化的真实进展。</p>
   <div class="item-meta">
@@ -503,6 +530,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://openai.com/index/introducing-openai-for-singapore">Introducing OpenAI for Singapore</a>
+  <p class="item-summary"><strong>概述：</strong>OpenAI for Singapore launches a multi-year AI partnership to expand deployment, build local talent, and support businesses and public services with AI.</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是产品发布相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化；新发布通常意味着近期能力或平台策略变化。</p>
   <div class="item-meta">
@@ -515,6 +543,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://openai.com/index/the-next-phase-of-education-for-countries">The next phase of OpenAI’s Education for Countries</a>
+  <p class="item-summary"><strong>概述：</strong>OpenAI advances Education for Countries, expanding AI adoption in schools with new partnerships, teacher training, and tools to improve global learning outcomes.</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -529,6 +558,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://openai.com/index/advancing-content-provenance">Advancing content provenance for a safer, more transparent AI ecosystem</a>
+  <p class="item-summary"><strong>概述：</strong>OpenAI advances AI content provenance with Content Credentials, SynthID, and a verification tool to help people identify and trust AI-generated media.</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -541,6 +571,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://openai.com/index/malta-chatgpt-plus-partnership">OpenAI and Malta partner to bring ChatGPT Plus to all citizens</a>
+  <p class="item-summary"><strong>概述：</strong>OpenAI and Malta partner to expand AI access, offering ChatGPT Plus and training to help citizens build practical AI skills and use AI responsibly.</p>
   <p class="item-point">重点：这是一条官方发布线索，核心看点是AI 动态相关能力、产品边界或平台策略是否发生变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自一手官方来源，通常代表产品、研究或平台策略的直接变化。</p>
   <div class="item-meta">
@@ -559,6 +590,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/blog/nvidia/cosmos-fine-tuning-for-robot-video-generation">Fine-Tuning NVIDIA Cosmos Predict 2.5 with LoRA/DoRA for Robot Video Generation</a>
+  
   <p class="item-point">重点：这条线索来自开发者生态，主要关联多模态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；视频生成和理解仍是高热度方向；机器人和具身智能是 AI 向物理世界延伸的重点线索。</p>
   <div class="item-meta">
@@ -571,6 +603,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard">The Open Agent Leaderboard</a>
+  
   <p class="item-point">重点：这条线索来自开发者生态，主要关联Agent，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -583,6 +616,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/blog/ettin-reranker">Introducing the Ettin Reranker Family</a>
+  
   <p class="item-point">重点：这条线索来自开发者生态，主要关联产品发布，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；新发布通常意味着近期能力或平台策略变化。</p>
   <div class="item-meta">
@@ -597,6 +631,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://huggingface.co/blog/allenai/olmoearth-v1-1">OlmoEarth v1.1: A more efficient family of models</a>
+  
   <p class="item-point">重点：这条线索来自开发者生态，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -609,6 +644,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers">PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend</a>
+  
   <p class="item-point">重点：这条线索来自开发者生态，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -625,6 +661,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.langchain.com/langsmith/observability">Observability See exactly what your agents are doing</a>
+  
   <p class="item-point">重点：这条线索来自开发者生态，主要关联Agent，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -637,6 +674,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.langchain.com/langsmith/deployment">Deployment Ship and scale agents in production</a>
+  
   <p class="item-point">重点：这条线索来自开发者生态，主要关联Agent，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -649,6 +687,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.langchain.com/langsmith/fleet">Fleet Agents for the whole company</a>
+  
   <p class="item-point">重点：这条线索来自开发者生态，主要关联Agent，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -663,6 +702,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.langchain.com/langsmith/evaluation">Evaluation Score and improve agent performance</a>
+  
   <p class="item-point">重点：这条线索来自开发者生态，主要关联Agent，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -675,6 +715,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.langchain.com/langsmith-platform">LangSmith Platform</a>
+  
   <p class="item-point">重点：这条线索来自开发者生态，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -691,6 +732,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://simonwillison.net/2026/May/19/llm-gemini/#atom-everything">llm-gemini 0.32a0</a>
+  <p class="item-summary"><strong>概述：</strong>Release: llm-gemini 0.32a0 Compatible with llm&gt;=0.32a0 alpha - adds the ability to stream reasoning tokens. Tags: gemini , llm</p>
   <p class="item-point">重点：这条线索来自开发者生态，主要关联推理能力，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；推理能力增强通常会传导到复杂任务和 Agent 表现；发布类信息适合优先查看变化点和可用性。</p>
   <div class="item-meta">
@@ -703,6 +745,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://simonwillison.net/2026/May/19/datasette-llm-accountant/#atom-everything">datasette-llm-accountant 0.1a4</a>
+  <p class="item-summary"><strong>概述：</strong>Release: datasette-llm-accountant 0.1a4 Fixed bug tracking chains of responses. Refs datasette-llm#7 Tags: llm , datasette</p>
   <p class="item-point">重点：这条线索来自开发者生态，主要关联产品发布，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；发布类信息适合优先查看变化点和可用性；数据集更新可能推动评测和训练实践变化。</p>
   <div class="item-meta">
@@ -715,6 +758,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://simonwillison.net/2026/May/19/datasette-llm/#atom-everything">datasette-llm 0.1a8</a>
+  <p class="item-summary"><strong>概述：</strong>Release: datasette-llm 0.1a8 Fix for bug where llm_prompt_context() hook did not fully collect chains of responses. #7</p>
   <p class="item-point">重点：这条线索来自开发者生态，主要关联产品发布，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；发布类信息适合优先查看变化点和可用性；数据集更新可能推动评测和训练实践变化。</p>
   <div class="item-meta">
@@ -729,6 +773,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://simonwillison.net/2026/May/19/llm-gemini-2/#atom-everything">llm-gemini 0.32</a>
+  <p class="item-summary"><strong>概述：</strong>Release: llm-gemini 0.32 New model gemini-3.5-flash for Gemini 3.5 Flash . See also my notes on Gemini 3.5 Flash , and the pelican I drew using this upgrade to the plugin. Tags: gemini , llm</p>
   <p class="item-point">重点：这条线索来自开发者生态，主要关联产品发布，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；发布类信息适合优先查看变化点和可用性。</p>
   <div class="item-meta">
@@ -741,6 +786,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://simonwillison.net/2026/May/19/gemini-35-flash/#atom-everything">Gemini 3.5 Flash: more expensive, but Google plan to use it for everything</a>
+  <p class="item-summary"><strong>概述：</strong>Today at Google I/O, Google released Gemini 3.5 Flash . This one skipped the -preview modifier and went straight to general availability, and Google appear to be using it for a whole lot of their key products: 3.5 Flash is available today to billions of people globally: For every</p>
   <p class="item-point">重点：这条线索来自开发者生态，主要关联产品发布，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；发布类信息适合优先查看变化点和可用性。</p>
   <div class="item-meta">
@@ -759,6 +805,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.technologyreview.com/2026/05/19/1137454/roundtables-inside-the-musk-v-altman-trial/">Roundtables: Inside the Musk v. Altman Trial</a>
+  <p class="item-summary"><strong>概述：</strong>Listen to the session or watch below Elon Musk lost his suit against OpenAI, in which he alleged CEO Sam Altman and President Greg Brockman had deceived him over the company’s non-profit status. Watch as AI reporter and attorney Michelle Kim, who covered the trial for MIT Technol</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -771,6 +818,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.technologyreview.com/2026/05/19/1137505/the-download-musk-altman-trial-smart-glasses-warfare-google-i-o/">The Download: Musk v. Altman, smart glasses for warfare, and Google I/O</a>
+  <p class="item-summary"><strong>概述：</strong>This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Here’s why Elon Musk lost his suit against OpenAI Elon Musk has lost his lawsuit against OpenAI, which centered on whether the company breache</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -783,6 +831,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.technologyreview.com/2026/05/19/1137471/colossal-biosciences-is-growing-chickens-in-a-3d-printed-container/">Colossal Biosciences is growing chickens in a 3D-printed artificial eggshell</a>
+  <p class="item-summary"><strong>概述：</strong>The baby chicks were shifting and starting to pip—or trying to hatch. But not from an egg. Instead, these chickens were growing inside transparent 3D-printed plastic cups at the Dallas headquarters of Colossal Biosciences. The biotech company today claimed it has developed a “ful</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -797,6 +846,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/">Here’s why Elon Musk lost his suit against OpenAI</a>
+  <p class="item-summary"><strong>概述：</strong>On Monday, the jury in Musk v. Altman dealt Elon Musk a major blow—reaching a unanimous advisory verdict that he had sued OpenAI too late and, as a result, his claims are barred by the applicable statutes of limitations. US District Judge Yvonne Gonzalez Rogers immediately accept</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -813,6 +863,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://techcrunch.com/2026/05/19/how-to-use-googles-new-ai-agents-to-go-beyond-your-standard-searches/">How to use Google’s new AI agents to go beyond your standard searches</a>
+  <p class="item-summary"><strong>概述：</strong>Google is launching AI-powered “information agents” that can monitor topics in the background and proactively alert users to updates and changes.</p>
   <p class="item-point">重点：这条产业新闻关联Agent，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线；新发布通常意味着近期能力或平台策略变化。</p>
   <div class="item-meta">
@@ -825,6 +876,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://techcrunch.com/2026/05/19/from-teen-hacker-to-iron-dome-researcher-this-founder-raised-28m-to-fight-ai-phishing/">From teen hacker to Iron Dome researcher, this founder raised $28M to fight AI phishing</a>
+  <p class="item-summary"><strong>概述：</strong>Ocean, an agentic email security platform, claims its AI can thoroughly analyze the context of every incoming email to detect fraud and impersonation attempts.</p>
   <p class="item-point">重点：这条产业新闻关联Agent，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线；安全相关更新对企业采用风险评估有参考价值。</p>
   <div class="item-meta">
@@ -837,6 +889,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://techcrunch.com/2026/05/19/ai-design-tools-are-the-next-big-battleground-and-google-is-going-all-in-at-io-2026/">Google just declared itself a contender in AI design at IO 2026</a>
+  <p class="item-summary"><strong>概述：</strong>Google says it&#x27;s designed the app to be accessible to everyone, from teachers to small business owners.</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -851,6 +904,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://techcrunch.com/2026/05/19/you-can-now-talk-to-your-gmail-inbox-as-seen-at-google-io-2026/">You can now talk to your Gmail inbox, as seen at Google IO 2026</a>
+  <p class="item-summary"><strong>概述：</strong>Google expands Gmail’s AI Inbox with conversational voice search, letting users ask Gemini to find buried email details.</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -863,6 +917,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://techcrunch.com/2026/05/19/elon-musk-said-sam-altman-stole-a-non-profit-but-the-trial-showed-he-had-similar-aims/">Elon Musk said Sam Altman ‘stole’ a non-profit — but the trial showed he had similar aims</a>
+  <p class="item-summary"><strong>概述：</strong>The jury&#x27;s speedy decision to reject Elon Musk&#x27;s lawsuit against the other founders of OpenAI and Microsoft confirmed what we saw in the courtroom: Musk&#x27;s case was a weak one, in part because he waited so long to file it.</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -879,6 +934,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.theverge.com/tech/934432/samsung-electronics-strike-memory-chip-supply">Samsung workers set to strike at worst possible time</a>
+  <p class="item-summary"><strong>概述：</strong>More than 47,000 Samsung Electronics workers are gearing up for an 18-day strike after bonus payment negotiations between the company and its union collapsed. The strike is set to start on Thursday and will be limited to Samsung&#x27;s domestic chipmaking plants, raising concerns arou</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -891,6 +947,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.theverge.com/tech/934323/google-wear-os-7-smartwatch-battery-life-wear-widgets-io-2026">Wear OS 7 will keep track of deliveries and sports scores on your wrist</a>
+  <p class="item-summary"><strong>概述：</strong>Amid the flurry of today&#x27;s Google I/O announcements, Google shared details about Wear OS 7, the next major update to its smartwatch platform. To help you keep track of things like deliveries and sports scores, Wear OS 7 will get the iPhone-style Live Updates that were introduced</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -903,6 +960,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.theverge.com/tech/934260/google-io-ai-singularity-demis-hassabis">Demis Hassabis said this might be the ‘foothills of the singularity.’ What?</a>
+  <p class="item-summary"><strong>概述：</strong>Welcome to a &quot;profound moment for humanity,&quot; according to Google DeepMind CEO Demis Hassabis, who closed out Google I/O&#x27;s keynote presentation on Tuesday, saying: Google&#x27;s cutting-edge research and products will help unlock AGI&#x27;s incredible potential for the benefit of the entire</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -919,6 +977,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and">Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI</a>
+  <p class="item-summary"><strong>概述：</strong>Salesforce on Tuesday launched an entirely rebuilt version of Slackbot , the company&#x27;s workplace assistant, transforming it from a simple notification tool into what executives describe as a fully powered AI agent capable of searching enterprise data, drafting documents, and taki</p>
   <p class="item-point">重点：这条产业新闻关联Agent，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线；企业应用信号能反映 AI 商业化的真实进展。</p>
   <div class="item-meta">
@@ -931,6 +990,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free">Claude Code costs up to $200 a month. Goose does the same thing for free.</a>
+  <p class="item-summary"><strong>概述：</strong>The artificial intelligence coding revolution comes with a catch: it&#x27;s expensive. Claude Code , Anthropic&#x27;s terminal-based AI agent that can write, debug, and deploy code autonomously, has captured the imagination of software developers worldwide. But its pricing — ranging from $</p>
   <p class="item-point">重点：这条产业新闻关联Agent，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -943,6 +1003,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud">Railway secures $100 million to challenge AWS with AI-native cloud infrastructure</a>
+  <p class="item-summary"><strong>概述：</strong>Railway , a San Francisco-based cloud platform that has quietly amassed two million developers without spending a dollar on marketing, announced Thursday that it raised $100 million in a Series B funding round, as surging demand for artificial intelligence applications exposes th</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；融资和创业动态可辅助判断赛道热度。</p>
   <div class="item-meta">
@@ -957,6 +1018,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think">Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.</a>
+  <p class="item-summary"><strong>概述：</strong>For a quarter century, the Google search box has been one of the most recognizable interfaces in computing: a thin white rectangle, a blinking cursor, a few typed words, and a list of blue links. On Tuesday, Google will formally retire that paradigm. At its annual I/O developer c</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -969,6 +1031,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai">Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews</a>
+  <p class="item-summary"><strong>概述：</strong>Alfred Wahlforss was running out of options. His startup, Listen Labs , needed to hire over 100 engineers, but competing against Mark Zuckerberg&#x27;s $100 million offers seemed impossible. So he spent $5,000 — a fifth of his marketing budget — on a billboard in San Francisco display</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -985,6 +1048,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.wired.com/story/data-brokers-and-ai-firms-opt-out-forms-are-built-to-fail-report-finds/">Data Brokers’ and AI Firms’ Opt-Out Forms Are Built to Fail, Report Finds</a>
+  <p class="item-summary"><strong>概述：</strong>A new study finds AI companies, defense firms, and dating apps are among 38 data collectors allegedly using manipulative design to confuse users while collecting their data.</p>
   <p class="item-point">重点：这条产业新闻关联产业应用，适合判断商业化、平台竞争或企业采用节奏。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1003,6 +1067,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://jack-clark.net/2026/04/13/import-ai-453-breaking-ai-agents-mirrorcode-and-ten-views-on-gradual-disempowerment/">Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment</a>
+  <p class="item-summary"><strong>概述：</strong>Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe. A shorter issue than usual as I was attending the 2026 Bilderberg conference this week. Subscribe now AI can reverse engineer</p>
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联Agent，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -1015,6 +1080,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://jack-clark.net/2026/04/20/import-ai-454-automating-alignment-research-safety-study-of-a-chinese-model-hifloat4/">Import AI 454: Automating alignment research; safety study of a Chinese model; HiFloat4</a>
+  <p class="item-summary"><strong>概述：</strong>Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe. Subscribe now Huawei’s HiFloat4 training format beats Western-developed MXFP4 in Ascend chip bakeoff:…Could this also be a sym</p>
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联安全治理，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；安全治理动态会影响企业采用和合规节奏。</p>
   <div class="item-meta">
@@ -1027,6 +1093,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://jack-clark.net/2026/05/18/import-ai-457-ai-stuxnet-cursed-muon-optimizer-and-positive-alignment/">Import AI 457: AI stuxnet; cursed Muon optimizer; and positive alignment</a>
+  <p class="item-summary"><strong>概述：</strong>Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you’d like to support this, please subscribe. Subscribe now Stuxnet before Stuxnet:…Fast16 bugs software likely used in weapons programs…Here’s a fascinating</p>
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1041,6 +1108,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://jack-clark.net/2026/05/11/import-ai-456-rsi-and-economic-growth-radical-optionality-for-ai-regulation-and-a-neural-computer/">Import AI 456: RSI and economic growth; radical optionality for AI regulation; and a neural computer</a>
+  <p class="item-summary"><strong>概述：</strong>Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv, cappuccinos, and feedback from readers. If you’d like to support this, please subscribe. Subscribe now Regulate? Don’t regulate. There’s a third way: Radical Optionality:…Governments should invest in t</p>
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1053,6 +1121,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://jack-clark.net/2026/05/04/import-ai-455-automating-ai-research/">Import AI 455: Automating AI Research</a>
+  <p class="item-summary"><strong>概述：</strong>Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe. Subscribe now AI systems are about to start building themselves. What does that mean? I’m writing this post because when I loo</p>
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1069,6 +1138,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.latent.space/p/ainews-google-io-2026-gemini-35-flash">[AINews] Google I/O 2026: Gemini 3.5 Flash, Omni (NanoBanana for Video), Spark (background agents), and Antigravity 2.0</a>
+  <p class="item-summary"><strong>概述：</strong>Google has been busy!</p>
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联Agent，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线；视频生成和理解仍是高热度方向。</p>
   <div class="item-meta">
@@ -1081,6 +1151,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.latent.space/p/ainews-how-to-land-a-job-at-a-frontier">[AINews] How to land a job at a frontier lab (on Pretraining)</a>
+  <p class="item-summary"><strong>概述：</strong>a quiet day before google i/o lets us amplify a notable blogpost</p>
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1093,6 +1164,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.latent.space/p/the-fourth-law">The Next War Is Already Here. The West Isn&#x27;t Ready. — Yaroslav Azhnyuk, The Fourth Law &amp; Guest Host Noah Smith, Noahpinion</a>
+  <p class="item-summary"><strong>概述：</strong>Ukrainian drone founder Yaroslav Azhnyuk went from pet cameras to AI-guided weapons. He and guest host Noah Smith make the case that the West is asleep at the wheel.</p>
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1107,6 +1179,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.latent.space/p/ainews-cerebras-60b-ipo-slowly-then">[AINews] Cerebras&#x27; $60B IPO: Slowly, then All at Once</a>
+  <p class="item-summary"><strong>概述：</strong>Congrats Big Chip!</p>
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1119,6 +1192,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.latent.space/p/ainews-everything-is-conductor">[AINews] Everything is Conductor</a>
+  <p class="item-summary"><strong>概述：</strong>an ultra quiet day lets us highlight a smaller trend.</p>
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1135,6 +1209,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://bit.ly/4nGXQoF">Transformers in Practice</a>
+  
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1147,6 +1222,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.deeplearning.ai/courses/">Explore Courses</a>
+  
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1159,6 +1235,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.deeplearning.ai/the-batch">AI Newsletter</a>
+  
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1173,6 +1250,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.deeplearning.ai/the-batch/tag/letters">Andrew&#x27;s Letter</a>
+  
   <p class="item-point">重点：这条线索来自社区与Newsletter，主要关联AI 动态，适合快速判断今天的方向变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1191,6 +1269,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://domainalot.substack.com/p/the-great-domain-illusion-why-legacy">The Expired Domain Trap: Why Legacy SEO Metrics Fail in the Age of AI Agents</a>
+  <p class="item-summary"><strong>概述：</strong>Article URL: https://domainalot.substack.com/p/the-great-domain-illusion-why-legacy Comments URL: https://news.ycombinator.com/item?id=48204875 Points: 1 # Comments: 1</p>
   <p class="item-point">重点：这条社区线索关联Agent，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -1203,6 +1282,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://autoagentprotocol.org/">Auto Agent Protocol – an A2A vertical for AI agents buying cars</a>
+  <p class="item-summary"><strong>概述：</strong>Article URL: https://autoagentprotocol.org/ Comments URL: https://news.ycombinator.com/item?id=48204856 Points: 2 # Comments: 0</p>
   <p class="item-point">重点：这条社区线索关联Agent，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -1215,6 +1295,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.gartner.com/en/newsroom/press-releases/2026-05-13-gartner-hr-research-reveals-ai-will-create-more-jobs-than-it-eliminates-beginning-in-2028">AI will create more jobs than it eliminates from 2028</a>
+  <p class="item-summary"><strong>概述：</strong>Article URL: https://www.gartner.com/en/newsroom/press-releases/2026-05-13-gartner-hr-research-reveals-ai-will-create-more-jobs-than-it-eliminates-beginning-in-2028 Comments URL: https://news.ycombinator.com/item?id=48204928 Points: 2 # Comments: 2</p>
   <p class="item-point">重点：这条社区线索关联产品发布，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；发布类信息适合优先查看变化点和可用性。</p>
   <div class="item-meta">
@@ -1228,19 +1309,21 @@
 <details class="more-list"><summary>展开其余 5 条高价值线索</summary>
 
 <article class="item-card compact">
-  <a class="item-title" href="https://gemini-omni-ai.com/">Gemini Omni AI Video Generator</a>
-  <p class="item-point">重点：这条社区线索关联多模态，适合观察早期开发者反馈和实践痛点。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；视频生成和理解仍是高热度方向。</p>
+  <a class="item-title" href="https://news.ycombinator.com/item?id=48205190">Ask HN: How to make a mono-repo AI-Ready?</a>
+  <p class="item-summary"><strong>概述：</strong>The org is pushing for AI-readiness! We run a fairly large monorepo, part of that is a shared web-platform. Our team is struggling with the inbound contributions to said web-platform from other teams seeing it as the perfect code to try out their new AI-tools on. Our idea so far</p>
+  <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
-    <span>评分 37</span>
-    <span>Hacker News AI Search / Wed, 20 May 2026 08:21:19 +0000</span>
+    <span>评分 25</span>
+    <span>Hacker News AI Search / Wed, 20 May 2026 09:32:57 +0000</span>
   </div>
-  <div class="tags"><span class="tag">多模态</span></div>
+  <div class="tags"><span class="tag">社区信号</span></div>
 </article>
 
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.kcl.ac.uk/news/one-in-five-britons-think-ai-will-create-civil-unrest-study-finds">Public have more fear than hope on AI and future of work, study finds</a>
+  <p class="item-summary"><strong>概述：</strong>Article URL: https://www.kcl.ac.uk/news/one-in-five-britons-think-ai-will-create-civil-unrest-study-finds Comments URL: https://news.ycombinator.com/item?id=48205143 Points: 4 # Comments: 1</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1252,7 +1335,8 @@
 
 
 <article class="item-card compact">
-  <a class="item-title" href="https://grid.raster.finance/en/portfolio-analytics">The AI Quant Desk for Onchain Finance</a>
+  <a class="item-title" href="https://grid.raster.finance/en/portfolio-analytics">Show HN: The AI Quant Desk for Onchain Finance</a>
+  <p class="item-summary"><strong>概述：</strong>Most Web3 tools only track basic balances and approximate wallet data. Raster brings TradFi accounting rigor to DeFi through a unified Truth, Risk, and Decision Intelligence framework. Our proprietary attribution engine reconstructs a fully auditable state from raw blockchain act</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1265,6 +1349,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://zknill.io/posts/generations-of-ai-applications/">Generations of AI applications: conversational, delegative, and collaborative</a>
+  <p class="item-summary"><strong>概述：</strong>Article URL: https://zknill.io/posts/generations-of-ai-applications/ Comments URL: https://news.ycombinator.com/item?id=48204832 Points: 1 # Comments: 0</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1277,6 +1362,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://shittyaiappidea.com">Show HN: Shitty AI App Idea Generator</a>
+  <p class="item-summary"><strong>概述：</strong>Just a little fun take on tonnes of new AI apps. It&#x27;s not meant to be serious. Only for fun and giggles. Comments URL: https://news.ycombinator.com/item?id=48204772 Points: 1 # Comments: 1</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1293,6 +1379,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1thkwgk/bytedance_released_an_open_source_model_that/">bytedance released an open source model that attempts to do just about anything with only 3b parameters</a>
+  <p class="item-summary"><strong>概述：</strong>EDIT: working link https://huggingface.co/bytedance-research/Lance Lance is a lightweight native unified multimodal model that supports image and video understanding, generation, and editing within a single framework. Efficient at 3B scale. With only 3B active parameters , Lance</p>
   <p class="item-point">重点：这条社区线索关联多模态，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；多模态能力会直接影响模型交互和内容生产形态；视频生成和理解仍是高热度方向。</p>
   <div class="item-meta">
@@ -1305,6 +1392,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1thosnt/got_my_first_rm_rf_today/">got my first &quot;rm -rf /&quot; today</a>
+  <p class="item-summary"><strong>概述：</strong>Agent decided to test if harmful command block worked by issuing a rm -rf / Thankfully it worked so only damage was a mild heart attack. I implemented a sandbox immediately afterwards. EDIT: for those wondering, I was implementing a bash command whitelist and also bubblewrap for</p>
   <p class="item-point">重点：这条社区线索关联Agent，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；Agent 应用和自动化能力正在成为产品落地的主线；开源模型生态有持续跟进价值。</p>
   <div class="item-meta">
@@ -1317,6 +1405,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1ti0g0k/google_ai_edge_gallery_v1013_v1014_updates_gemma/">Google AI Edge Gallery v1.0.13 &amp; v1.0.14 updates: Gemma 4 Multi-Token Prediction, Pixel TPU support, experimental MCP, new skills, now saves chat history</a>
+  <p class="item-summary"><strong>概述：</strong>submitted by /u/AnticitizenPrime [link] [comments]</p>
   <p class="item-point">重点：这条社区线索关联Agent，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；工具协议和上下文连接会影响后续工程集成方式；开源模型生态有持续跟进价值。</p>
   <div class="item-meta">
@@ -1331,6 +1420,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tie6gy/qwen37_max_scored_by_artificial_analysis_27b35b/">Qwen3.7 Max scored by Artificial Analysis, 27B/35B waiting room</a>
+  <p class="item-summary"><strong>概述：</strong>https://preview.redd.it/42ak5qmus82h1.png?width=1133&amp;format=png&amp;auto=webp&amp;s=744ea3dfc06c83d0c4d8aa128c39b3238b17d7be Qwen 3.7 Max sitting at 5th, pretty much on par with GPT 5.4 (xhigh) and a notch above the just released Gemini 3.5 Flash. On the other end, we see DSV4 Flash and</p>
   <p class="item-point">重点：这条社区线索关联开源模型，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；开源模型生态有持续跟进价值；发布类信息适合优先查看变化点和可用性。</p>
   <div class="item-meta">
@@ -1343,6 +1433,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1thucyj/a_tool_i_built_to_generate_3d_objects_with/">A tool I built to generate 3D objects with functional, articulated parts. It&#x27;s on github, and is mostly LLM-agnostic.</a>
+  <p class="item-summary"><strong>概述：</strong>The video shows how my pipeline produces a 3D washing machine, composed of separated, functional parts (instead of monolithic 3D blobs). There&#x27;s also hinge/socket articulation, so the internal assembly actually churns or rotates. The problem I&#x27;m solving: pretty much every text-to</p>
   <p class="item-point">重点：这条社区线索关联多模态，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；视频生成和理解仍是高热度方向；开源模型生态有持续跟进价值。</p>
   <div class="item-meta">
@@ -1355,6 +1446,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1ti99an/lm_studio_finally_added_support_for_mtp/">LM Studio finally added support for MTP Speculative Decoding</a>
+  <p class="item-summary"><strong>概述：</strong>https://preview.redd.it/1uuzjm0ll72h1.png?width=923&amp;format=png&amp;auto=webp&amp;s=1af7d7594be1e08ff7ad6797e2bc53e9410769a3 update to 0.4.14 Build 2 (Beta) and make sure your llama.cpp engine is 2.15.0 https://preview.redd.it/x0vdwjb3n72h1.png?width=742&amp;format=png&amp;auto=webp&amp;s=6367de44208</p>
   <p class="item-point">重点：这条社区线索关联开源模型，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；开源模型生态有持续跟进价值。</p>
   <div class="item-meta">
@@ -1367,6 +1459,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1ti2ga0/48gb_vram_users_what_are_your_daily_drivers_do/">48GB VRAM users, what are your daily drivers? Do you wish you had more VRAM? What would you run if you did?</a>
+  <p class="item-summary"><strong>概述：</strong>I’m upgrading from 32 to 48 soon and am excited but I’m curious what y’all run! submitted by /u/Borkato [link] [comments]</p>
   <p class="item-point">重点：这条社区线索关联开源模型，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；开源模型生态有持续跟进价值。</p>
   <div class="item-meta">
@@ -1379,6 +1472,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1thxig9/intels_crescent_island_pcb_leaks_showing_a/">Intel&#x27;s Crescent Island PCB Leaks, Showing a Massive Xe3P GPU, 16-Pin Connector, 160GB LPDDR5X as Intel Sidesteps the HBM Shortage</a>
+  <p class="item-summary"><strong>概述：</strong>Upcoming Intel Xe3P data center GPU with 20 8GBLPDDR5X modules for a total of 160GB, bypassing HBM shortages. Assuming a 32-bit interface, that&#x27;s a 640-bit wide memory interface, or 10 channel memory interface if converted to the 64-bit wide desktop equivalent. At 8800-9500MT, th</p>
   <p class="item-point">重点：这条社区线索关联开源模型，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；开源模型生态有持续跟进价值。</p>
   <div class="item-meta">
@@ -1395,6 +1489,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1thofoe/what_do_you_think_about_tabular_foundation_models/">What do you think about Tabular Foundation Models [D]</a>
+  <p class="item-summary"><strong>概述：</strong>I&#x27;ve seen TabPFN-3&#x27;s recent results, and there is a lot of buzz about foundation models for tabular data (TabICL, TabPFN). The performance that those models achieve is really amazing. What makes me a little suspicious about them? They can analyze small datasets only, so a few MB</p>
   <p class="item-point">重点：这条社区线索关联数据集，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角；数据集更新可能推动评测和训练实践变化。</p>
   <div class="item-meta">
@@ -1407,6 +1502,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1t1d2m0/d_selfpromotion_thread/">[D] Self-Promotion Thread</a>
+  <p class="item-summary"><strong>概述：</strong>Please post your personal projects, startups, product placements, collaboration needs, blogs etc. Please mention the payment and pricing requirements for products and services. Please do not post link shorteners, link aggregator websites , or auto-subscribe links. -- Any abuse of</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1419,6 +1515,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1t0gle1/d_monthly_whos_hiring_and_who_wants_to_be_hired/">[D] Monthly Who&#x27;s Hiring and Who wants to be Hired?</a>
+  <p class="item-summary"><strong>概述：</strong>For Job Postings please use this template Hiring: [Location], Salary:[], [Remote | Relocation], [Full Time | Contract | Part Time] and [Brief overview, what you&#x27;re looking for] For Those looking for jobs please use this template Want to be Hired: [Location], Salary Expectation:[]</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1433,6 +1530,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1tif576/machine_learning_on_spherical_manifold_r/">Machine Learning on Spherical Manifold [R]</a>
+  <p class="item-summary"><strong>概述：</strong>Hi, I&#x27;m interested in geometric deep learning (due to Michael M. Bronstein&#x27;s book and Maurice Weiler&#x27;s PhD thesis), and in order not to write projects to nowhere, I decided to keep a technical blog. I started with a short note about machine learning on spherical manifolds, but it</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1445,6 +1543,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1ti1tgw/icml_proceedingsonly_d/">ICML Proceedings-only [D]</a>
+  <p class="item-summary"><strong>概述：</strong>For proceedings-only papers, do we need to make a poster and submit it to the portal? Has anyone asked this question to ICML Program Chair? submitted by /u/minhquang251 [link] [comments]</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1457,6 +1556,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1ticoy5/instructions_for_icml_workshop_reviews_d/">Instructions for (ICML) workshop reviews [D]</a>
+  <p class="item-summary"><strong>概述：</strong>Hi, I am being reviewer for an ICML workshop; however, there are no guidelines on the structure of the reviews (e.g. what are the criteria, what is the grade scale, etc.). Does anyone know whether ICML workshops have some &quot;convention&quot; regardings reviews? Or do we ought to use the</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1469,6 +1569,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1thxv15/eccv_2026_no_modified_date_next_to_reviews_d/">[ECCV 2026] No modified date next to reviews [D]</a>
+  <p class="item-summary"><strong>概述：</strong>On Openreview, you can see modified date next to the review. This modified date should be recent (anything 12th May or newer) which means that reviewer gave a final justification and may have increased their score or kept the same score. In either case, it means they read the reb</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1481,6 +1582,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1tho7b2/all_fundamental_knowledge_in_ml_course_by_andrew/">All fundamental knowledge in ML Course by Andrew NG that I noted and create into a repo github [R]</a>
+  <p class="item-summary"><strong>概述：</strong>https://preview.redd.it/mikhasjiq32h1.png?width=572&amp;format=png&amp;auto=webp&amp;s=4c053200dbd9852bebf083550e2144b31579d497 https://preview.redd.it/bay5r3njq32h1.png?width=575&amp;format=png&amp;auto=webp&amp;s=2823db3d6bc534ef00330528a200cba2aca1c5d3 https://preview.redd.it/dm40ntdkq32h1.png?width=</p>
   <p class="item-point">重点：这条社区线索关联社区信号，适合观察早期开发者反馈和实践痛点。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这条信息有助于补足技术圈之外的产业和社区视角。</p>
   <div class="item-meta">
@@ -1498,36 +1600,39 @@
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20173v1">A Methodology for Selecting and Composing Runtime Architecture Patterns for Production LLM Agents</a>
+  <a class="item-title" href="https://arxiv.org/abs/2605.19010">AgentNLQ: A General-Purpose Agent for Natural Language to SQL</a>
+  <p class="item-summary"><strong>概述：</strong>Natural language to SQL (NL2SQL) conversion is an important problem for researchers and enterprises due to the ubiquitous importance of relational databases in broad-ranging practical problems. Despite the rapid advancements in the</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是Agent方向的方法、评测或任务边界是否有新变化。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；Agent 应用和自动化能力正在成为产品落地的主线。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；Agent 应用和自动化能力正在成为产品落地的主线；企业应用信号能反映 AI 商业化的真实进展。</p>
   <div class="item-meta">
-    <span>评分 63</span>
-    <span>arXiv cs.AI / 2026-05-19T17:54:21Z</span>
+    <span>评分 68</span>
+    <span>arXiv cs.AI / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span></div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">产业应用</span><span class="tag">开发者生态</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20164v1">Not Every Rubric Teaches Equally: Policy-Aware Rubric Rewards for RLVR</a>
-  <p class="item-point">重点：这是一条最新研究线索，核心看点是安全治理方向的方法、评测或任务边界是否有新变化。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；政策与治理信号会影响 AI 产品落地空间。</p>
-  <div class="item-meta">
-    <span>评分 41</span>
-    <span>arXiv cs.AI / 2026-05-19T17:50:18Z</span>
-  </div>
-  <div class="tags"><span class="tag">安全治理</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20182v1">Atoms of Thought: Universal EEG Representation Learning with Microstates</a>
+  <a class="item-title" href="https://arxiv.org/abs/2605.18801">Position: Let&#x27;s Develop Data Probes to Fundamentally Understand How Data Affects LLM Performance</a>
+  <p class="item-summary"><strong>概述：</strong>Data is fundamental to large language models (LLMs). However, understanding of what makes certain data useful for different stages of an LLM workflow, including training, tuning, alignment, in-context learning, etc., and why, remain</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
   <div class="item-meta">
     <span>评分 31</span>
-    <span>arXiv cs.AI / 2026-05-19T17:59:31Z</span>
+    <span>arXiv cs.AI / Wed, 20 May 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://arxiv.org/abs/2605.18818">Operationalizing Document AI: A Microservice Architecture for OCR and LLM Pipelines in Production</a>
+  <p class="item-summary"><strong>概述：</strong>Academic research tends to focus on new models for document understanding creating a wide gap in the literature between model definition and running models at production scale. To close that gap, we present a microservice architectu</p>
+  <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>arXiv cs.AI / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
   <div class="tags"><span class="tag">研究进展</span></div>
 </article>
@@ -1536,24 +1641,26 @@
 <details class="more-list"><summary>展开其余 2 条高价值线索</summary>
 
 <article class="item-card compact">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20172v1">Long-term Power Grid Planning via Answer Set Programming</a>
+  <a class="item-title" href="https://arxiv.org/abs/2605.18937">Evaluating the Utility of Personal Health Records in Personalized Health AI</a>
+  <p class="item-summary"><strong>概述：</strong>Patient-managed Personal Health Records (PHRs) promises to empower patients to better understand their health; but information in the record is complex, potentially hindering insights. In this study, we assess the potential of large</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
   <div class="item-meta">
     <span>评分 31</span>
-    <span>arXiv cs.AI / 2026-05-19T17:54:15Z</span>
+    <span>arXiv cs.AI / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
   <div class="tags"><span class="tag">研究进展</span></div>
 </article>
 
 
 <article class="item-card compact">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20167v1">HaorFloodAlert: Deseasonalized ML Ensemble for 72-Hour Flood Prediction in Bangladesh Haor Wetlands</a>
+  <a class="item-title" href="https://arxiv.org/abs/2605.19008">Learn-by-Wire Training Control Governance: Bounded Autonomous Training Under Stress for Stability and Efficiency</a>
+  <p class="item-summary"><strong>概述：</strong>Modern language-model training is increasingly exposed to instability, degraded runs, and wasted compute, especially under aggressive learning-rate, scale, and runtime-stress conditions. This paper introduces Learn-by-Wire Guard (LB</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
   <div class="item-meta">
     <span>评分 31</span>
-    <span>arXiv cs.AI / 2026-05-19T17:51:46Z</span>
+    <span>arXiv cs.AI / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
   <div class="tags"><span class="tag">研究进展</span></div>
 </article>
@@ -1565,6 +1672,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://arxiv.org/abs/2605.19149">Agent Meltdowns: The Road to Hell Is Paved with Helpful Agents</a>
+  <p class="item-summary"><strong>概述：</strong>Agents operating with computer and Web use inevitably encounter errors: inaccessible webpages, missing files, local and remote misconfigurations, etc. These errors do not thwart agents based on state-of-the-art models. They helpfull</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是Agent方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -1577,6 +1685,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://arxiv.org/abs/2605.19066">The Annotation Scarcity Paradox in Low-Resource NLP Evaluation: A Decade of Acceleration and Emerging Constraints</a>
+  <p class="item-summary"><strong>概述：</strong>Over the past decade, low-resource natural language processing (NLP) has experienced explosive growth, propelled by cross-lingual transfer, massively multilingual models, and the rapid proliferation of benchmarks. Yet this apparent</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是评测基准方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；评测基准变化能帮助判断能力边界是否真实提升；API 与平台变化会影响开发者集成路径。</p>
   <div class="item-meta">
@@ -1589,6 +1698,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://arxiv.org/abs/2605.19077">ReacTOD: Bounded Neuro-Symbolic Agentic NLU for Zero-Shot Dialogue State Tracking</a>
+  <p class="item-summary"><strong>概述：</strong>Task-oriented dialogue systems -- handling transactions, reservations, and service requests -- require predictable behavior, yet the moderately-sized LLMs needed for practical latency are prone to hallucination and format errors tha</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是Agent方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -1603,6 +1713,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://arxiv.org/abs/2605.19173">Prompting language influences diagnostic reasoning and accuracy of large language models</a>
+  <p class="item-summary"><strong>概述：</strong>Large language models (LLMs) are increasingly explored for clinical decision support, yet most evaluations are conducted in English, leaving their reliability in other languages uncertain. Here we evaluate the impact of prompting la</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是推理能力方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；推理能力增强通常会传导到复杂任务和 Agent 表现。</p>
   <div class="item-meta">
@@ -1615,6 +1726,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://arxiv.org/abs/2605.19069">Benchmarking Commercial ASR Systems on Code-Switching Speech: Arabic, Persian, and German</a>
+  <p class="item-summary"><strong>概述：</strong>Code-switching -- the natural alternation between two languages within a single utterance -- represents one of the most challenging and under-studied conditions for automatic speech recognition (ASR). Existing commercial ASR benchma</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是评测基准方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；评测基准变化能帮助判断能力边界是否真实提升。</p>
   <div class="item-meta">
@@ -1631,6 +1743,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://arxiv.org/abs/2605.19004">EgoTraj: Real-World Egocentric Human Trajectory Dataset for Multimodal Prediction</a>
+  <p class="item-summary"><strong>概述：</strong>Accurately forecasting human trajectories from an egocentric perspective plays a central role in applications such as humanoid robotics, wearable sensing systems, and assistive navigation. However, progress in this direction remains</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是多模态方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；多模态能力会直接影响模型交互和内容生产形态；数据集更新可能推动评测和训练实践变化。</p>
   <div class="item-meta">
@@ -1643,6 +1756,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://arxiv.org/abs/2605.18984">Artifact-Bench: Evaluating MLLMs on Detecting and Assessing the Artifacts of AI-Generated Videos</a>
+  <p class="item-summary"><strong>概述：</strong>Recent video generative models have greatly improved the realism of AI-generated videos, yet their outputs still exhibit artifacts such as temporal inconsistencies, structural distortions, and semantic incoherence. While Multimodal</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是多模态方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；多模态能力会直接影响模型交互和内容生产形态；视频生成和理解仍是高热度方向。</p>
   <div class="item-meta">
@@ -1655,6 +1769,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://arxiv.org/abs/2605.18956">MotionMERGE: A Multi-granular Framework for Human Motion Editing, Reasoning, Generation, and Explanation</a>
+  <p class="item-summary"><strong>概述：</strong>Recent motion-language models unify tasks like comprehension and generation but operate at a coarse granularity, lacking fine-grained understanding and nuanced control over body parts needed for animation or interaction. This stems</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是推理能力方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；推理能力增强通常会传导到复杂任务和 Agent 表现。</p>
   <div class="item-meta">
@@ -1669,6 +1784,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://arxiv.org/abs/2605.19020">A Systematic Failure Analysis of Vision Foundation Models for Open Set Iris Presentation Attack Detection</a>
+  <p class="item-summary"><strong>概述：</strong>Vision foundation models have demonstrated strong transferability across diverse visual recognition tasks and are increasingly considered for biometric applications. Their suitability for iris Presentation Attack Detection (PAD), pa</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是多模态方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；视觉能力更新值得关注，可能带来新的产品入口。</p>
   <div class="item-meta">
@@ -1681,6 +1797,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://arxiv.org/abs/2605.18974">Harnessing Self-Supervised Features for Art Classification</a>
+  <p class="item-summary"><strong>概述：</strong>Classifying artworks presents a significant challenge due to the complex interplay of fine-grained details and abstract features that condition the style or genre of an artwork. This paper presents a systematic investigation of the</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
   <div class="item-meta">
@@ -1692,80 +1809,43 @@
 
 </details>
 </section>
-<section class="source-block"><div class="source-head"><h3>arXiv cs.LG</h3><span>3 条</span></div>
+<section class="source-block"><div class="source-head"><h3>arXiv cs.LG</h3><span>5 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20159v1">Interpretable Computer Vision for Defect Detection in X-ray Tomography of Aerospace SiC/SiC Composites</a>
-  <p class="item-point">重点：这是一条最新研究线索，核心看点是多模态方向的方法、评测或任务边界是否有新变化。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化；视觉能力更新值得关注，可能带来新的产品入口。</p>
-  <div class="item-meta">
-    <span>评分 41</span>
-    <span>arXiv cs.LG / 2026-05-19T17:46:49Z</span>
-  </div>
-  <div class="tags"><span class="tag">多模态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20174v1">Multi-axis Analysis of Image Manipulation Localization</a>
+  <a class="item-title" href="https://arxiv.org/abs/2605.18793">Dimensional Balance Improves Large Scale Spatiotemporal Prediction Performance</a>
+  <p class="item-summary"><strong>概述：</strong>Accurate spatiotemporal pattern analysis is critical in fields such as urban traffic, meteorology, and public health monitoring. However, existing methods face performance bottlenecks, typically yielding only incremental gains and o</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
   <div class="item-meta">
     <span>评分 31</span>
-    <span>arXiv cs.LG / 2026-05-19T17:54:33Z</span>
+    <span>arXiv cs.LG / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
   <div class="tags"><span class="tag">研究进展</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20157v1">SAGE: Scalable Automatic Gating Ensemble for Confident Negative Harvesting in Fraud Detection</a>
+  <a class="item-title" href="https://arxiv.org/abs/2605.18794">Robust Basis Spline Decoupling for the Compression of Transformer Models</a>
+  <p class="item-summary"><strong>概述：</strong>Decoupling is a powerful modeling paradigm for representing multivariate functions as compositions of linear transformations and univariate nonlinear functions. A single-layer decoupling can be viewed as a fully connected neural net</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
   <div class="item-meta">
     <span>评分 31</span>
-    <span>arXiv cs.LG / 2026-05-19T17:46:31Z</span>
-  </div>
-  <div class="tags"><span class="tag">研究进展</span></div>
-</article>
-
-</div>
-</section>
-<section class="source-block"><div class="source-head"><h3>arXiv stat.ML</h3><span>5 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20145v1">Goal-Oriented Lower-Tail Calibration of Gaussian Processes for Bayesian Optimization</a>
-  <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
-  <div class="item-meta">
-    <span>评分 31</span>
-    <span>arXiv stat.ML / 2026-05-19T17:32:25Z</span>
+    <span>arXiv cs.LG / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
   <div class="tags"><span class="tag">研究进展</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20143v1">Semi-Parametric Bayesian Additive Regression Trees for Risk Prediction with High-Dimensional Epigenetic Signatures and Low-Dimensional Covariates</a>
+  <a class="item-title" href="https://arxiv.org/abs/2605.18795">HELLoRA: Hot Experts Layer-Level Low-Rank Adaptation for Mixture-of-Experts Models</a>
+  <p class="item-summary"><strong>概述：</strong>Low-Rank Adaptation (LoRA) dominates parameter-efficient fine-tuning of large language models, yet most variants target dense architectures. Mixture-of-Experts (MoE) models scale parameters at near-constant per-token compute, and th</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
   <div class="item-meta">
     <span>评分 31</span>
-    <span>arXiv stat.ML / 2026-05-19T17:31:20Z</span>
-  </div>
-  <div class="tags"><span class="tag">研究进展</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20122v1">Optimizing Computational-Statistical Runtime for Wasserstein Distance Estimation</a>
-  <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
-  <div class="item-meta">
-    <span>评分 31</span>
-    <span>arXiv stat.ML / 2026-05-19T17:10:47Z</span>
+    <span>arXiv cs.LG / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
   <div class="tags"><span class="tag">研究进展</span></div>
 </article>
@@ -1774,24 +1854,97 @@
 <details class="more-list"><summary>展开其余 2 条高价值线索</summary>
 
 <article class="item-card compact">
-  <a class="item-title" href="http://arxiv.org/abs/2605.20068v1">Tail Annealing for Heavy-Tailed Flow Matching</a>
+  <a class="item-title" href="https://arxiv.org/abs/2605.18796">UCCI: Calibrated Uncertainty for Cost-Optimal LLM Cascade Routing</a>
+  <p class="item-summary"><strong>概述：</strong>LLM cascades and model routing promise lower inference cost by sending easy queries to a small model and escalating hard ones to a large model, but most deployed routers use uncalibrated confidence scores and require per-workload th</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
   <div class="item-meta">
     <span>评分 31</span>
-    <span>arXiv stat.ML / 2026-05-19T16:22:03Z</span>
+    <span>arXiv cs.LG / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
   <div class="tags"><span class="tag">研究进展</span></div>
 </article>
 
 
 <article class="item-card compact">
-  <a class="item-title" href="http://arxiv.org/abs/2605.19938v1">Variance-Reduced Manifold Sampling via Polynomial-Maximization Density Estimation</a>
+  <a class="item-title" href="https://arxiv.org/abs/2605.18797">Simply Stabilizing the Loop via Fully Looped Transformer</a>
+  <p class="item-summary"><strong>概述：</strong>Scaling model performance typically requires increasing model size. Looped Transformer offers a compelling alternative by iteratively reusing the same Transformer blocks, trading additional computation for improved performance witho</p>
   <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
   <div class="item-meta">
     <span>评分 31</span>
-    <span>arXiv stat.ML / 2026-05-19T14:57:39Z</span>
+    <span>arXiv cs.LG / Wed, 20 May 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+</details>
+</section>
+<section class="source-block"><div class="source-head"><h3>arXiv stat.ML</h3><span>5 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://arxiv.org/abs/2605.18927">Bayesian Latent Space Models for Graphs Are Misspecified: Toward Robust Inference via Generalized Posteriors</a>
+  <p class="item-summary"><strong>概述：</strong>Bayesian latent space models offer a principled approach to network representation, but rely on correct specification of both geometry and link function. Real-world networks often violate these assumptions, exhibiting geometric mism</p>
+  <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>arXiv stat.ML / Wed, 20 May 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://arxiv.org/abs/2605.18931">Markov Chain Decoders Overcome the Heavy-Tail Limitations of Lipschitz Generative Models</a>
+  <p class="item-summary"><strong>概述：</strong>Heavy-tailed distributions are prevalent in performance evaluation, network traffic, and risk modeling. This behavior poses a fundamental challenge for modern deep generative models. Standard Variational Autoencoders (VAEs) employ G</p>
+  <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>arXiv stat.ML / Wed, 20 May 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://arxiv.org/abs/2605.19024">Conformal Prediction via Transported Beta Laws</a>
+  <p class="item-summary"><strong>概述：</strong>Split conformal prediction provides finite-sample marginal coverage under exchangeability, but this guarantee averages over the random calibration sample. We study instead the law of the calibration-conditional coverage induced by a</p>
+  <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>arXiv stat.ML / Wed, 20 May 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 2 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://arxiv.org/abs/2605.19052">Provably Data-driven Lagrangian Relaxation for Mixed Integer Linear Programming</a>
+  <p class="item-summary"><strong>概述：</strong>Lagrangian Relaxation (LR) is a powerful technique for solving large-scale Mixed Integer Linear Programming (MILP), particularly those with decomposable structures, such as vehicle routing or unit commitment problems. By relaxing th</p>
+  <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>arXiv stat.ML / Wed, 20 May 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://arxiv.org/abs/2605.19122">Dual-Channel Tensor Neural Networks: Finite-Sample Theory and Conformal Structure Selection</a>
+  <p class="item-summary"><strong>概述：</strong>Tensor-valued data arise naturally in neuroimaging, genomics, climate science, and spatiotemporal networks, where multilinear dependencies across modes carry information that is destroyed under vectorization. Existing approaches eit</p>
+  <p class="item-point">重点：这是一条最新研究线索，核心看点是研究进展方向的方法、评测或任务边界是否有新变化。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自最新论文流，适合追踪研究方向和评测口径变化。</p>
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>arXiv stat.ML / Wed, 20 May 2026 00:00:00 -0400</span>
   </div>
   <div class="tags"><span class="tag">研究进展</span></div>
 </article>
@@ -1805,6 +1958,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/papers/2605.19769">OpenComputer: Verifiable Software Worlds for Computer-Use Agents</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是Agent方向是否出现可试用的新资产。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -1817,6 +1971,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/papers/2605.18703">EnvFactory: Scaling Tool-Use Agents via Executable Environments Synthesis and Robust RL</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是Agent方向是否出现可试用的新资产。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Agent 应用和自动化能力正在成为产品落地的主线。</p>
   <div class="item-meta">
@@ -1829,6 +1984,7 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/papers/2605.16403">When Vision Speaks for Sound</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是多模态方向是否出现可试用的新资产。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；视觉能力更新值得关注，可能带来新的产品入口。</p>
   <div class="item-meta">
@@ -1843,6 +1999,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://huggingface.co/papers/2605.19577">GoLongRL: Capability-Oriented Long Context Reinforcement Learning with Multitask Alignment</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是AI 动态方向是否出现可试用的新资产。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心。</p>
   <div class="item-meta">
@@ -1855,6 +2012,7 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://huggingface.co/papers/2605.20025">AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是AI 动态方向是否出现可试用的新资产。</p>
   <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心。</p>
   <div class="item-meta">
@@ -1871,11 +2029,12 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/SulphurAI/Sulphur-2-base">SulphurAI/Sulphur-2-base</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是AI 动态方向是否出现可试用的新资产。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Hugging Face 点赞数达到 1190，有一定社区关注。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Hugging Face 点赞数达到 1191，有一定社区关注。</p>
   <div class="item-meta">
     <span>评分 60</span>
-    <span>Hugging Face Trending Models / text-to-video / downloads 1157497 / likes 1190</span>
+    <span>Hugging Face Trending Models / text-to-video / downloads 1157497 / likes 1191</span>
   </div>
   <div class="tags"><span class="tag">AI 动态</span></div>
 </article>
@@ -1883,11 +2042,12 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/openbmb/MiniCPM-V-4.6">openbmb/MiniCPM-V-4.6</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是AI 动态方向是否出现可试用的新资产。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Hugging Face 点赞数达到 811，有一定社区关注。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Hugging Face 点赞数达到 813，有一定社区关注。</p>
   <div class="item-meta">
     <span>评分 57</span>
-    <span>Hugging Face Trending Models / image-text-to-text / downloads 166049 / likes 811</span>
+    <span>Hugging Face Trending Models / image-text-to-text / downloads 166049 / likes 813</span>
   </div>
   <div class="tags"><span class="tag">AI 动态</span></div>
 </article>
@@ -1895,11 +2055,12 @@
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/Supertone/supertonic-3">Supertone/supertonic-3</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是AI 动态方向是否出现可试用的新资产。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Hugging Face 点赞数达到 478，有一定社区关注。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Hugging Face 点赞数达到 479，有一定社区关注。</p>
   <div class="item-meta">
     <span>评分 53</span>
-    <span>Hugging Face Trending Models / text-to-speech / downloads 31940 / likes 478</span>
+    <span>Hugging Face Trending Models / text-to-speech / downloads 31940 / likes 479</span>
   </div>
   <div class="tags"><span class="tag">AI 动态</span></div>
 </article>
@@ -1909,11 +2070,12 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://huggingface.co/bytedance-research/Lance">bytedance-research/Lance</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是AI 动态方向是否出现可试用的新资产。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Hugging Face 点赞数达到 377，有一定社区关注。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Hugging Face 点赞数达到 387，有一定社区关注。</p>
   <div class="item-meta">
     <span>评分 52</span>
-    <span>Hugging Face Trending Models / any-to-any / downloads 438 / likes 377</span>
+    <span>Hugging Face Trending Models / any-to-any / downloads 438 / likes 387</span>
   </div>
   <div class="tags"><span class="tag">AI 动态</span></div>
 </article>
@@ -1921,11 +2083,12 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://huggingface.co/unsloth/Qwen3.6-27B-MTP-GGUF">unsloth/Qwen3.6-27B-MTP-GGUF</a>
+  
   <p class="item-point">重点：这是模型/数据/论文生态线索，核心看点是AI 动态方向是否出现可试用的新资产。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Hugging Face 点赞数达到 334，有一定社区关注。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>来自模型/论文生态，适合判断开源社区的近期重心；Hugging Face 点赞数达到 335，有一定社区关注。</p>
   <div class="item-meta">
     <span>评分 52</span>
-    <span>Hugging Face Trending Models / image-text-to-text / downloads 411598 / likes 334</span>
+    <span>Hugging Face Trending Models / image-text-to-text / downloads 411598 / likes 335</span>
   </div>
   <div class="tags"><span class="tag">AI 动态</span></div>
 </article>
@@ -1937,7 +2100,7 @@
     <section>
       <h2>运行状态</h2>
       <div class="ops">
-        <p>生成时间：2026-05-20 17:31 CST</p>
+        <p>生成时间：2026-05-20 18:12 CST</p>
         <p>HTML 由结构化日报 JSON 渲染；源码标题保留原文，编辑判断和推荐理由均为中文规则生成。</p>
         <p>本次巡查所有来源均正常返回。</p>
       </div>
