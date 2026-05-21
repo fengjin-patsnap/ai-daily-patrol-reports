@@ -190,6 +190,14 @@
       border-radius: 6px;
       padding: 8px 10px;
     }
+    .item-caveat {
+      margin: 0 0 9px;
+      color: var(--text);
+      background: #fee2e2;
+      border: 1.5px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
     .item-reason { margin: 0 0 10px; color: var(--muted); }
     .source-notes {
       margin: 0 0 10px;
@@ -227,6 +235,18 @@
     .radar-ring, .radar-axis { fill: none; stroke: #111827; stroke-width: 1.5; opacity: .5; }
     .radar-shape { fill: var(--accent-3); opacity: .28; stroke: var(--accent-3); stroke-width: 3; }
     .source-block { margin-top: 18px; }
+    .group-editorial {
+      margin: 0 0 18px;
+      max-width: 980px;
+      color: var(--text);
+      background: #e0f2fe;
+      border: 2px solid var(--line);
+      border-left: 10px solid var(--accent-2);
+      border-radius: 8px;
+      padding: 12px 14px;
+      box-shadow: 5px 5px 0 #111827;
+      font-weight: 720;
+    }
     .source-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
     .source-head h3 {
       background: #fff;
@@ -276,8 +296,8 @@
       <div>
         <div class="eyebrow">AI Daily Patrol</div>
         <h1>AI 日报 2026-05-21</h1>
-        <p class="lede">今天的日报已经明显转向工程开发：新增 Agent 工程源后，最强信号集中在 Microsoft Agent Framework 的 MCP/Skills/Memory 更新、Harness 的 MCP/AGENTS.md/harness 设计、Hermes Agent 的高频 release、MCP 协议治理和 AutoGen/LangGraph 生产化能力。建议先看必读 2 条，再按 MCP、Agent-Harness、可观测性-评测筛补充项。
-📡 新兴术语观察：本轮未发现满足 ≥3 个不同源共同提及、且未被现有标签体系覆盖的新术语；近似候选 Claude Code（2 个来源）、Gemini Flash（2 个来源）、MCP tool（2 个来源）继续观察，暂不扩展 TOPIC_ENUM。</p>
+        <p class="lede">今天的核心判断：agent 工程已经从“功能可用”推进到“生产治理”。最值得看的不是单个模型发布，而是 MCP 工具面收敛、工具风险 annotation、host crash resume、agent eval harness、memory/checkpoint 和 provider 成本治理这些工程层变化。建议先读 Agent 工程模块，再按 action_hint 里的“马上试/先评估/继续观察”决定投入；缺少原文证据、价格、API 或 license 的条目不要进入接入决策。
+📡 新兴术语观察：本轮近似候选仍是 Claude Code、Gemini Flash、MCP tool，但未满足 ≥3 个不同源且未被现有标签覆盖的扩展条件，暂不扩展 TOPIC_ENUM。</p>
         <div class="stats">
           <div class="stat"><b>20</b><span>条有效线索</span></div>
           <div class="stat"><b>37</b><span>个来源</span></div>
@@ -324,10 +344,11 @@
       <div class="highlight-grid">
 <article class="item-card">
   <a class="item-title" href="https://github.com/microsoft/agent-framework/releases/tag/python-1.5.0">Microsoft Agent Framework 1.3-1.5：MCP metadata、Foundry Hosted Agents、RAG/Skills/Memory 样例进入 release train</a>
-  <p class="item-summary"><strong>概述：</strong>Microsoft Agent Framework 近期 Python 1.3/1.4/1.5 连续更新：1.4.0 明确加入 MCP tool call metadata 转发和 file-based skill scripts 的 list[str] 参数；1.5.0 新增 Foundry Hosted Agents 的 RAG、Skills、Memory 样例，并记录 Azure OpenAI 实际 served model。.NET 侧也有 HostedAgents 路由和 message injection 更新。现在可通过 GitHub releases 和 Python/.NET 包验证，适合评估生产级 agent 框架</p>
-  <p class="item-action"><strong>行动建议：</strong>优先试 python-1.5.0：用一个 RAG + Skills + Memory demo 验证 MCP metadata、Hosted Agents 和观测字段是否满足内部框架要求。</p>
+  <p class="item-summary"><strong>概述：</strong>这条解决的是 Microsoft/Azure 栈里 production agent 框架的可观测性和样例缺口：它把 Azure OpenAI actual served model 记录下来，并补了 Foundry Hosted Agents 的 RAG、Skills、Memory samples，方便开发者不是只看 API 名字，而是能按样例复现。跟只做多 agent 编排的框架相比，它更偏 Azure Foundry + Python/.NET 企业栈集成；现在可以用 GitHub release 和包版本验证。适合先评估，不建议直接迁生产，因为 orchestration 仍在 release candidate，durabletask 版本还做了 pin/exclusion。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：用 python-1.5.0 的 RAG + Skills + Memory sample 跑一个最小 demo，重点看 MCP metadata、actual served model 记录和 workflow intermediate outputs 是否满足内部观测要求。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>orchestrations 包仍处于 release candidate，durabletask 依赖被显式 pin/exclude；如果你已有生产 DurableTask/Foundry 工作流，需要先做兼容性回归。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这是今天最硬的工程更新：直接涉及 MCP 元数据、skills、memory、Hosted Agents 和 Python/.NET 双栈生产 agent 框架。</p>
-  <ul class="source-notes"><li><strong>Microsoft Agent Framework Releases：</strong>python-1.5.0：新增 Foundry Hosted Agents 的 RAG、Skills、Memory samples，并记录 Azure OpenAI actual served model。</li><li><strong>Microsoft Agent Framework Releases：</strong>python-1.4.0：Forward MCP tool call metadata，支持 file-based skill scripts 的 list[str] 参数。</li><li><strong>Microsoft Agent Framework Releases：</strong>python-1.3.0：加入 ClassSkill、declarative metadata 和 experimental session-mode harness context provider。</li><li><strong>Microsoft Agent Framework Releases：</strong>dotnet-1.6.1：更新 FoundryAgent HostedAgents strict URL routing，并增加 message injection 能力。</li></ul>
+  <ul class="source-notes"><li><strong>Microsoft Agent Framework Releases：</strong>python-1.5.0：记录 Azure OpenAI actual served model，新增 Foundry Hosted Agents RAG/Skills/Memory samples。</li><li><strong>Microsoft Agent Framework Releases：</strong>workflow/orchestration intermediate outputs 处理有改动，orchestrations 推到 release candidate。</li><li><strong>Microsoft Agent Framework Releases：</strong>durabletask floor pin 到 &gt;=1.4.0，并排除 1.4.1/1.4.2/1.4.3。</li></ul>
   <div class="item-meta">
     <span>评分 170</span>
     <span>Microsoft Agent Framework Releases / 2026-05-20T00:23:14Z</span>
@@ -338,10 +359,11 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.harness.io/blog/harness-mcp-server-redesign">Harness 工程线：MCP Server redesign、AGENTS.md、Agent Loop 和 Knowledge Graph 指向 agent harness 实战</a>
-  <p class="item-summary"><strong>概述：</strong>Harness Engineering Blog 这轮命中了 4 条 agent 工程内容：MCP Server redesign、AGENTS.md 标准、Agent Loop、Knowledge Graph grounding。它不是泛 CI/CD 新闻，而是在讲 agent 如何通过 MCP、仓库级指令和结构化平台数据执行真实 DevOps 工作流；草稿未给 SDK 安装命令，但内容适合抽象成企业内部 agent harness 模板</p>
-  <p class="item-action"><strong>行动建议：</strong>把 Harness 文中的 MCP server、AGENTS.md 和 structured data grounding 拆成内部仓库模板，在一个真实 pipeline/debug 场景里试跑。</p>
+  <p class="item-summary"><strong>概述：</strong>这条真正有价值的点不是 Harness 又做了一个 MCP server，而是它给出了 agent harness 的工程约束：工具太多会吞上下文，LLM 不应该当 API 路由器。v2 从 130+ 工具压到 11 个，把 200K 上下文里的工具定义成本从约 26% 降到 1.6%，还用 registry dispatch 覆盖 125+ 资源类型。现在最值得借鉴的是架构模式，而不是直接采购 Harness；如果你在做内部 MCP server，这条可以马上转成工具预算和风险控制 checklist。</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：盘点内部 MCP server 的 tool 数、tool schema token 占比和写操作权限，尝试把一组 endpoint-style tools 改成 registry dispatch + read-only/write confirmation。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>Harness 本身是 DevOps 平台，内容天然带产品视角；可复用的是 MCP 架构和安全边界，不要把 Harness 平台能力等同于通用 agent harness。</p>
   <p class="item-reason"><strong>推荐理由：</strong>它正好补上“harness engineering”视角：agent 不只是模型和框架，还要有工具协议、仓库约束、结构化数据和执行环境。</p>
-  <ul class="source-notes"><li><strong>Harness Engineering Blog：</strong>MCP redesign 强调 prompt templates、多步 workflow、agent skills 和 AGENTS.md。</li><li><strong>Harness Engineering Blog：</strong>AGENTS.md 文章把仓库级 agent 指令当作新标准，适合 coding agent 团队参考。</li><li><strong>Harness Engineering Blog：</strong>Agent Loop 文章把 MCP server / framework / custom orchestrator 类比为 agent harness 的 kernel。</li><li><strong>Harness Engineering Blog：</strong>Knowledge Graph 文章强调用 schema-driven structured data grounding，而不是把 raw API 结果全塞进 prompt。</li></ul>
+  <ul class="source-notes"><li><strong>Harness Engineering Blog：</strong>MCP v2：130+ tools -&gt; 11 tools，context cost 约 26% -&gt; 1.6%。</li><li><strong>Harness Engineering Blog：</strong>registry-based dispatch 支持 125+ resource types，避免 LLM 承担路由层职责。</li><li><strong>Harness Engineering Blog：</strong>安全控制包含 write confirmation、fail-closed deletes、read-only mode。</li></ul>
   <div class="item-meta">
     <span>评分 169</span>
     <span>Harness Engineering Blog</span>
@@ -352,10 +374,11 @@
 
 <article class="item-card">
   <a class="item-title" href="https://github.com/NousResearch/hermes-agent/releases/tag/v2026.5.16">Hermes Agent v0.14.0 / v0.13.0：808 commits、633 PRs、工具/终端/MCP 生态继续推进</a>
-  <p class="item-summary"><strong>概述：</strong>Hermes Agent v0.14.0 在 2026-05-16 发布，release 摘要写明自 v0.13.0 起有 808 commits、633 merged PRs、1393 files changed、165061 insertions、545 issues closed 和 215 contributors；v0.13.0 是 Tenacity Release。它是 MIT license 的 agent CLI/运行环境，支持工具、MCP integration、多种 terminal backend 和 messaging gateway</p>
-  <p class="item-action"><strong>行动建议：</strong>先安装/升级 Hermes，在隔离项目里验证 MCP server、terminal backend 和工具权限；不要直接连生产系统。</p>
+  <p class="item-summary"><strong>概述：</strong>Hermes 这条是一个很重的 agent CLI/runtime release，不是普通小修：808 commits、633 PRs、545 issues 和 215 contributors 说明它在快速扩张。它的开发者价值在于把 Claude Pro/ChatGPT Pro/SuperGrok 这类 OAuth provider 包成 OpenAI-compatible local proxy，让 Codex CLI、Aider、Cline、Continue 这类工具能打同一个本地端点；同时还补了 pip install、lazy deps、冷启动优化和 Browser CDP 性能。可以先试，但必须隔离，因为它同时碰 provider OAuth、终端、浏览器、消息平台和工具权限。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：只在隔离项目里 pip install hermes-agent，先验证 local proxy、MCP/tool 权限和 terminal backend，不要连接生产凭据或真实业务系统。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>release 变更面非常大，还涉及 OAuth provider 本地代理和多平台消息入口；需要确认 provider 条款、密钥隔离、工具权限和审计日志。</p>
   <p class="item-reason"><strong>推荐理由：</strong>Hermes 是这批新增源里最贴近“agent harness 实物”的项目，release 数字和活跃度都很高。</p>
-  <ul class="source-notes"><li><strong>Nous Hermes Agent Releases：</strong>v0.14.0：808 commits、633 PRs、545 issues closed、215 contributors。</li><li><strong>Nous Hermes Agent Releases：</strong>v0.13.0：Tenacity Release，继续强化长任务执行可靠性。</li><li><strong>Nous Hermes Agent Releases：</strong>v0.12.0/v0.11.0：release 摘要显示大量代码和 issue 变动，项目迭代非常密集。</li></ul>
+  <ul class="source-notes"><li><strong>Nous Hermes Agent Releases：</strong>v0.14.0：808 commits、633 PRs、165061 insertions、545 issues closed、215 contributors。</li><li><strong>Nous Hermes Agent Releases：</strong>新增 OpenAI-compatible local proxy，可让 Codex/Aider/Cline/Continue 连接 OAuth-backed providers。</li><li><strong>Nous Hermes Agent Releases：</strong>pip install hermes-agent；cold start 减少约 19 秒，Browser CDP calls 180x faster。</li></ul>
   <div class="item-meta">
     <span>评分 168</span>
     <span>Nous Hermes Agent Releases / 2026-05-16T18:55:27Z</span>
@@ -366,10 +389,11 @@
 
 <article class="item-card">
   <a class="item-title" href="https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/">MCP 2026 Roadmap + Tool Annotations：协议从工具连接走向企业级治理和风险词汇</a>
-  <p class="item-summary"><strong>概述：</strong>MCP Blog 的 2026 roadmap 提到 transport scalability、agent communication、governance maturation、enterprise readiness；Tool Annotations 文章则把 MCP 工具标注为风险词汇，用 read-only、destructive、idempotent、外部访问等 hints 描述工具行为。现在能直接作为 MCP server 设计和权限审查 checklist</p>
-  <p class="item-action"><strong>行动建议：</strong>给内部 MCP server 增加 tool annotations：至少标出 read-only/destructive/idempotent/外部访问，再接入 agent。</p>
+  <p class="item-summary"><strong>概述：</strong>这条不是今天能 pip install 的功能，而是 MCP 从“本地工具连接协议”进入企业生产治理阶段的路线图。它指出远程 MCP server 已经在生产里遇到 stateful sessions、load balancer、horizontal scaling 和能力发现问题，后续会围绕 transport scalability、agent communication、governance、enterprise readiness 推进。对开发者来说，价值是提前按 audit trail、SSO、gateway、config portability 设计 MCP server，避免现在做出的协议层选择很快变成债务。应该纳入架构评估，而不是当成已落地 spec 使用。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：给内部 MCP server 设计评审加四项检查：session/scale、agent task lifecycle、SEP/governance 跟进、enterprise auth/audit/config portability。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>这是 roadmap，不是已发布 spec；不要把 .well-known metadata、task lifecycle 等未来方向当成稳定接口直接依赖。</p>
   <p class="item-reason"><strong>推荐理由：</strong>MCP 已经不是“能连工具”这么简单，开始进入治理、风险描述和企业可用性阶段。</p>
-  <ul class="source-notes"><li><strong>Model Context Protocol Blog：</strong>2026 Roadmap：transport scalability、agent communication、governance、enterprise readiness。</li><li><strong>Model Context Protocol Blog：</strong>Tool Annotations：用风险 hints 描述工具是否只读、破坏性、幂等或访问外部环境。</li><li><strong>Model Context Protocol Blog：</strong>MCP Apps：tools 可以返回 conversation 内渲染的 interactive UI components。</li></ul>
+  <ul class="source-notes"><li><strong>Model Context Protocol Blog：</strong>2026 priority areas：transport scalability、agent communication、governance maturation、enterprise readiness。</li><li><strong>Model Context Protocol Blog：</strong>Streamable HTTP 已支持 remote services，但 stateful sessions/load balancer/horizontal scaling 仍是痛点。</li><li><strong>Model Context Protocol Blog：</strong>Enterprise readiness 关注 audit trails、SSO auth、gateway behavior、configuration portability。</li></ul>
   <div class="item-meta">
     <span>评分 167</span>
     <span>Model Context Protocol Blog / Mon, 09 Mar 2026 09:00:00 +0000</span>
@@ -380,10 +404,11 @@
 
 <article class="item-card">
   <a class="item-title" href="https://github.com/microsoft/autogen/releases/tag/python-v0.7.5">AutoGen 0.7.x：OpenAIAgent builtin tools、nested Team、MCP example、Redis memory 连续更新</a>
-  <p class="item-summary"><strong>概述：</strong>AutoGen 0.7.x release train 包含多项 agent 编排实用更新：0.7.1 支持 OpenAIAgent built-in tools 和 nested Team 作为 participant；0.7.3 修复 MCP example 并扩展 pydantic capability；0.7.5 增加 RedisMemory linear memory，并修复 Bedrock streaming tool usage 空参数加载。当前可直接从 release atom 跟进</p>
-  <p class="item-action"><strong>行动建议：</strong>升级测试 AutoGen 0.7.5，用 nested Team + RedisMemory + MCP example 做一次多 agent demo。</p>
+  <p class="item-summary"><strong>概述：</strong>AutoGen 这条不是“多 agent 框架又发布了”这么简单，v0.7.5 更像生产硬化版本：RedisMemory、MCP session failure、Bedrock streaming tool usage、OpenAI GPT-5 reasoning_effort 和 Docker executor security warning 都是实际工程会踩到的点。它跟 Microsoft Agent Framework 的区别是更偏多 agent 编排和跨 provider 兼容，而不是 Azure Foundry 一体化。现在可以试，但这不是大功能发布，更适合已有 AutoGen 用户做升级回归。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：已有 AutoGen 项目升级到 0.7.5，重点回归 RedisMemory、MCP session failure、Bedrock streaming tool usage 和 Docker executor 安全默认值。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>这轮主要是修复和生产硬化，不是架构级新能力；如果你不用 AutoGen，暂时没必要为它新开迁移。</p>
   <p class="item-reason"><strong>推荐理由：</strong>AutoGen 仍是多 agent 编排的重要框架，这轮更新集中在工具、团队嵌套、MCP 和 memory。</p>
-  <ul class="source-notes"><li><strong>Microsoft AutoGen Releases：</strong>0.7.1：OpenAIAgent supports all built-in tools；nested Team 可作为 GroupChat participant。</li><li><strong>Microsoft AutoGen Releases：</strong>0.7.3：Fix MCP example in README，并扩展 pydantic model capability。</li><li><strong>Microsoft AutoGen Releases：</strong>0.7.5：Support linear memory in RedisMemory，修复 Bedrock streaming tool usage 空参数加载。</li></ul>
+  <ul class="source-notes"><li><strong>Microsoft AutoGen Releases：</strong>0.7.5：Support linear memory in RedisMemory。</li><li><strong>Microsoft AutoGen Releases：</strong>Fix(mcp)：drain pending command futures on McpSessionActor failure。</li><li><strong>Microsoft AutoGen Releases：</strong>Add security warnings and default to DockerCommandLineCodeExecutor。</li></ul>
   <div class="item-meta">
     <span>评分 166</span>
     <span>Microsoft AutoGen Releases / 2025-09-30T06:18:26Z</span>
@@ -394,10 +419,11 @@
 
 <article class="item-card">
   <a class="item-title" href="https://github.com/langchain-ai/langgraph/releases/tag/1.2.0">LangGraph 1.2.0 / checkpoint 3.1：durable error-handler resume、StateGraph defaults、checkpoint 包同步升级</a>
-  <p class="item-summary"><strong>概述：</strong>LangGraph 1.2.0 release 摘要包含 durable error-handler resume across host crashes 和 StateGraph set_node_defaults()；checkpoint-sqlite/postgres 3.1.0、prebuilt 1.1.0、CLI 0.4.26 也同步更新。草稿未给迁移指南，但它直接关系到 agent workflow 的崩溃恢复、状态图默认值和持久化</p>
-  <p class="item-action"><strong>行动建议：</strong>在现有 LangGraph demo 里模拟 host crash，验证 durable error-handler resume 和 checkpoint 3.1 行为。</p>
+  <p class="item-summary"><strong>概述：</strong>LangGraph 这条对生产 agent workflow 比较实在：它解决的是 host crash 后 error-handler resume、StateGraph 默认值和 checkpoint snapshot 这类长任务可靠性问题。跟 AutoGen 的多 agent 编排不同，LangGraph 更像状态机/工作流骨架，所以 checkpoint 和恢复语义会直接影响线上任务是否能续跑。现在适合已有 LangGraph 项目升级评估；没有迁移指南前，不建议盲目升生产。</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：在现有 LangGraph demo 里模拟 host crash，验证 durable error-handler resume、checkpoint 3.1 和 StateGraph defaults 是否符合预期。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>release 摘要没有完整迁移指南；checkpoint 行为和 langchain-core 依赖变化需要在你自己的 postgres/sqlite 后端上回归。</p>
   <p class="item-reason"><strong>推荐理由：</strong>对生产 agent workflow 来说，崩溃恢复和 checkpoint 比单个 prompt 技巧更关键。</p>
-  <ul class="source-notes"><li><strong>LangGraph Releases：</strong>langgraph 1.2.0：durable error-handler resume across host crashes，新增 StateGraph set_node_defaults()。</li><li><strong>LangGraph Releases：</strong>checkpoint-sqlite/postgres 3.1.0 与 prebuilt 1.1.0 同步升级。</li><li><strong>LangGraph Releases：</strong>CLI 0.4.26 增加 prerelease api_versions 支持。</li></ul>
+  <ul class="source-notes"><li><strong>LangGraph Releases：</strong>1.2.0：durable error-handler resume across host crashes。</li><li><strong>LangGraph Releases：</strong>新增 StateGraph set_node_defaults()。</li><li><strong>LangGraph Releases：</strong>checkpoint：force delta channel snapshot after max supersteps since last snapshot。</li></ul>
   <div class="item-meta">
     <span>评分 165</span>
     <span>LangGraph Releases / 2026-05-12T03:46:55Z</span>
@@ -453,13 +479,15 @@
     </section>
 
     <section class="group-section"><h2>Agent 工程</h2>
+<p class="group-editorial">今天 Agent 工程的主线很清楚：框架竞争已经从“能编排 agent”转向“工具治理、崩溃恢复、memory、eval 和权限边界”。优先看 Microsoft Agent Framework、Harness MCP、Hermes、MCP Roadmap、AutoGen/LangGraph 这些有 release 或工程细节的条目；只有营销页或缺少 API/价格/迁移信息的内容要降级处理。</p>
 <section class="source-block"><div class="source-head"><h3>Anthropic Engineering</h3><span>1 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
   <a class="item-title" href="https://www.anthropic.com/engineering/claude-code-auto-mode">Claude Code auto mode: a safer way to skip permissions Mar 25, 2026</a>
   <p class="item-summary"><strong>概述：</strong>Anthropic Engineering 的 Claude Code auto mode 文章讨论更安全地跳过 permissions，主题落在 agent 执行权限和自动化边界。草稿未给配置项详情，需要打开原文确认</p>
-  <p class="item-action"><strong>行动建议：</strong>把 Claude Code/Codex 的自动执行权限按只读、写文件、运行测试、网络访问分级。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：把 Claude Code/Codex 的自动执行权限按只读、写文件、运行测试、网络访问分级。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>权限跳过是提高效率和制造事故之间的边界，适合纳入团队规范。</p>
   
   <div class="item-meta">
@@ -477,7 +505,8 @@
 <article class="item-card">
   <a class="item-title" href="https://blog.modelcontextprotocol.io/posts/2026-03-16-tool-annotations/">Tool Annotations as Risk Vocabulary: What Hints Can and Can&#x27;t Do</a>
   <p class="item-summary"><strong>概述：</strong>MCP Tool Annotations 文章把工具风险描述标准化：read-only、destructive、idempotent、是否访问外部环境。它不提供代码包，但非常适合转成 MCP server 审计表</p>
-  <p class="item-action"><strong>行动建议：</strong>给现有 MCP tools 补齐风险 annotation，并让 agent UI 在 destructive 工具前强制确认。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：给现有 MCP tools 补齐风险 annotation，并让 agent UI 在 destructive 工具前强制确认。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>tool annotation 是从 demo 走向企业治理的关键小标准。</p>
   
   <div class="item-meta">
@@ -495,7 +524,8 @@
 <article class="item-card">
   <a class="item-title" href="https://vercel.com/agent">Vercel Agent An agent that knows your stack</a>
   <p class="item-summary"><strong>概述：</strong>Vercel Changelog/Web 源抓到 Vercel Agent、AI Gateway、AI SDK、Workflow 等入口，其中 Grok Build 0.1 已在 AI Gateway 可用，模型名为 xai/grok-build-0.1；Gemini 3.5 Flash 也可用 google/gemini-3.5-flash。草稿未给完整价格，需要打开 Vercel pricing 确认</p>
-  <p class="item-action"><strong>行动建议：</strong>用 Vercel AI SDK 分别试 google/gemini-3.5-flash 和 xai/grok-build-0.1，记录延迟、失败重试和账单。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：用 Vercel AI SDK 分别试 google/gemini-3.5-flash 和 xai/grok-build-0.1，记录延迟、失败重试和账单。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>Vercel 是 JS/TS AI 应用入口，AI Gateway + model routing + agent/changelog 对前端工程团队很直接。</p>
   
   <div class="item-meta">
@@ -509,7 +539,8 @@
 <article class="item-card">
   <a class="item-title" href="https://vercel.com/changelog/grok-build-0-1-now-available-on-vercel-ai-gateway">Grok Build 0.1 now available on Vercel AI Gateway</a>
   <p class="item-summary"><strong>概述：</strong>Vercel changelog 显示 Grok Build 0.1 已可通过 Vercel AI Gateway 调用，模型名 xai/grok-build-0.1；定位是 agentic coding beta，reasoning effort 不可配置，没有 non-reasoning mode。草稿未给价格</p>
-  <p class="item-action"><strong>行动建议：</strong>用 AI SDK 调 xai/grok-build-0.1 跑一个代码重构任务，和 Claude/Codex/Gemini 记录成本与质量。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：用 AI SDK 调 xai/grok-build-0.1 跑一个代码重构任务，和 Claude/Codex/Gemini 记录成本与质量。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>这是 coding model 通过统一 AI Gateway 接入的具体变更。</p>
   
   <div class="item-meta">
@@ -523,7 +554,8 @@
 <article class="item-card">
   <a class="item-title" href="https://vercel.com/ai-gateway">AI Gateway One endpoint, all your models</a>
   <p class="item-summary"><strong>概述：</strong>Vercel AI Gateway 提供 one endpoint all models，适合统一模型调用、usage/cost tracking、重试和 provider routing。草稿未给 pricing，需要查 Vercel 当前计费</p>
-  <p class="item-action"><strong>行动建议：</strong>把一个非生产服务的模型调用切到 AI Gateway，验证 usage/cost report、重试和 fallback。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：把一个非生产服务的模型调用切到 AI Gateway，验证 usage/cost report、重试和 fallback。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>统一 gateway 会影响多模型应用的可观测性和成本治理。</p>
   
   <div class="item-meta">
@@ -540,10 +572,11 @@
 
 <article class="item-card">
   <a class="item-title" href="https://github.com/microsoft/agent-framework/releases/tag/python-1.5.0">Microsoft Agent Framework 1.3-1.5：MCP metadata、Foundry Hosted Agents、RAG/Skills/Memory 样例进入 release train</a>
-  <p class="item-summary"><strong>概述：</strong>Microsoft Agent Framework 近期 Python 1.3/1.4/1.5 连续更新：1.4.0 明确加入 MCP tool call metadata 转发和 file-based skill scripts 的 list[str] 参数；1.5.0 新增 Foundry Hosted Agents 的 RAG、Skills、Memory 样例，并记录 Azure OpenAI 实际 served model。.NET 侧也有 HostedAgents 路由和 message injection 更新。现在可通过 GitHub releases 和 Python/.NET 包验证，适合评估生产级 agent 框架</p>
-  <p class="item-action"><strong>行动建议：</strong>优先试 python-1.5.0：用一个 RAG + Skills + Memory demo 验证 MCP metadata、Hosted Agents 和观测字段是否满足内部框架要求。</p>
+  <p class="item-summary"><strong>概述：</strong>这条解决的是 Microsoft/Azure 栈里 production agent 框架的可观测性和样例缺口：它把 Azure OpenAI actual served model 记录下来，并补了 Foundry Hosted Agents 的 RAG、Skills、Memory samples，方便开发者不是只看 API 名字，而是能按样例复现。跟只做多 agent 编排的框架相比，它更偏 Azure Foundry + Python/.NET 企业栈集成；现在可以用 GitHub release 和包版本验证。适合先评估，不建议直接迁生产，因为 orchestration 仍在 release candidate，durabletask 版本还做了 pin/exclusion。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：用 python-1.5.0 的 RAG + Skills + Memory sample 跑一个最小 demo，重点看 MCP metadata、actual served model 记录和 workflow intermediate outputs 是否满足内部观测要求。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>orchestrations 包仍处于 release candidate，durabletask 依赖被显式 pin/exclude；如果你已有生产 DurableTask/Foundry 工作流，需要先做兼容性回归。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这是今天最硬的工程更新：直接涉及 MCP 元数据、skills、memory、Hosted Agents 和 Python/.NET 双栈生产 agent 框架。</p>
-  <ul class="source-notes"><li><strong>Microsoft Agent Framework Releases：</strong>python-1.5.0：新增 Foundry Hosted Agents 的 RAG、Skills、Memory samples，并记录 Azure OpenAI actual served model。</li><li><strong>Microsoft Agent Framework Releases：</strong>python-1.4.0：Forward MCP tool call metadata，支持 file-based skill scripts 的 list[str] 参数。</li><li><strong>Microsoft Agent Framework Releases：</strong>python-1.3.0：加入 ClassSkill、declarative metadata 和 experimental session-mode harness context provider。</li><li><strong>Microsoft Agent Framework Releases：</strong>dotnet-1.6.1：更新 FoundryAgent HostedAgents strict URL routing，并增加 message injection 能力。</li></ul>
+  <ul class="source-notes"><li><strong>Microsoft Agent Framework Releases：</strong>python-1.5.0：记录 Azure OpenAI actual served model，新增 Foundry Hosted Agents RAG/Skills/Memory samples。</li><li><strong>Microsoft Agent Framework Releases：</strong>workflow/orchestration intermediate outputs 处理有改动，orchestrations 推到 release candidate。</li><li><strong>Microsoft Agent Framework Releases：</strong>durabletask floor pin 到 &gt;=1.4.0，并排除 1.4.1/1.4.2/1.4.3。</li></ul>
   <div class="item-meta">
     <span>评分 170</span>
     <span>Microsoft Agent Framework Releases / 2026-05-20T00:23:14Z</span>
@@ -554,10 +587,11 @@
 
 <article class="item-card">
   <a class="item-title" href="https://www.harness.io/blog/harness-mcp-server-redesign">Harness 工程线：MCP Server redesign、AGENTS.md、Agent Loop 和 Knowledge Graph 指向 agent harness 实战</a>
-  <p class="item-summary"><strong>概述：</strong>Harness Engineering Blog 这轮命中了 4 条 agent 工程内容：MCP Server redesign、AGENTS.md 标准、Agent Loop、Knowledge Graph grounding。它不是泛 CI/CD 新闻，而是在讲 agent 如何通过 MCP、仓库级指令和结构化平台数据执行真实 DevOps 工作流；草稿未给 SDK 安装命令，但内容适合抽象成企业内部 agent harness 模板</p>
-  <p class="item-action"><strong>行动建议：</strong>把 Harness 文中的 MCP server、AGENTS.md 和 structured data grounding 拆成内部仓库模板，在一个真实 pipeline/debug 场景里试跑。</p>
+  <p class="item-summary"><strong>概述：</strong>这条真正有价值的点不是 Harness 又做了一个 MCP server，而是它给出了 agent harness 的工程约束：工具太多会吞上下文，LLM 不应该当 API 路由器。v2 从 130+ 工具压到 11 个，把 200K 上下文里的工具定义成本从约 26% 降到 1.6%，还用 registry dispatch 覆盖 125+ 资源类型。现在最值得借鉴的是架构模式，而不是直接采购 Harness；如果你在做内部 MCP server，这条可以马上转成工具预算和风险控制 checklist。</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：盘点内部 MCP server 的 tool 数、tool schema token 占比和写操作权限，尝试把一组 endpoint-style tools 改成 registry dispatch + read-only/write confirmation。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>Harness 本身是 DevOps 平台，内容天然带产品视角；可复用的是 MCP 架构和安全边界，不要把 Harness 平台能力等同于通用 agent harness。</p>
   <p class="item-reason"><strong>推荐理由：</strong>它正好补上“harness engineering”视角：agent 不只是模型和框架，还要有工具协议、仓库约束、结构化数据和执行环境。</p>
-  <ul class="source-notes"><li><strong>Harness Engineering Blog：</strong>MCP redesign 强调 prompt templates、多步 workflow、agent skills 和 AGENTS.md。</li><li><strong>Harness Engineering Blog：</strong>AGENTS.md 文章把仓库级 agent 指令当作新标准，适合 coding agent 团队参考。</li><li><strong>Harness Engineering Blog：</strong>Agent Loop 文章把 MCP server / framework / custom orchestrator 类比为 agent harness 的 kernel。</li><li><strong>Harness Engineering Blog：</strong>Knowledge Graph 文章强调用 schema-driven structured data grounding，而不是把 raw API 结果全塞进 prompt。</li></ul>
+  <ul class="source-notes"><li><strong>Harness Engineering Blog：</strong>MCP v2：130+ tools -&gt; 11 tools，context cost 约 26% -&gt; 1.6%。</li><li><strong>Harness Engineering Blog：</strong>registry-based dispatch 支持 125+ resource types，避免 LLM 承担路由层职责。</li><li><strong>Harness Engineering Blog：</strong>安全控制包含 write confirmation、fail-closed deletes、read-only mode。</li></ul>
   <div class="item-meta">
     <span>评分 169</span>
     <span>Harness Engineering Blog</span>
@@ -568,10 +602,11 @@
 
 <article class="item-card">
   <a class="item-title" href="https://github.com/NousResearch/hermes-agent/releases/tag/v2026.5.16">Hermes Agent v0.14.0 / v0.13.0：808 commits、633 PRs、工具/终端/MCP 生态继续推进</a>
-  <p class="item-summary"><strong>概述：</strong>Hermes Agent v0.14.0 在 2026-05-16 发布，release 摘要写明自 v0.13.0 起有 808 commits、633 merged PRs、1393 files changed、165061 insertions、545 issues closed 和 215 contributors；v0.13.0 是 Tenacity Release。它是 MIT license 的 agent CLI/运行环境，支持工具、MCP integration、多种 terminal backend 和 messaging gateway</p>
-  <p class="item-action"><strong>行动建议：</strong>先安装/升级 Hermes，在隔离项目里验证 MCP server、terminal backend 和工具权限；不要直接连生产系统。</p>
+  <p class="item-summary"><strong>概述：</strong>Hermes 这条是一个很重的 agent CLI/runtime release，不是普通小修：808 commits、633 PRs、545 issues 和 215 contributors 说明它在快速扩张。它的开发者价值在于把 Claude Pro/ChatGPT Pro/SuperGrok 这类 OAuth provider 包成 OpenAI-compatible local proxy，让 Codex CLI、Aider、Cline、Continue 这类工具能打同一个本地端点；同时还补了 pip install、lazy deps、冷启动优化和 Browser CDP 性能。可以先试，但必须隔离，因为它同时碰 provider OAuth、终端、浏览器、消息平台和工具权限。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：只在隔离项目里 pip install hermes-agent，先验证 local proxy、MCP/tool 权限和 terminal backend，不要连接生产凭据或真实业务系统。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>release 变更面非常大，还涉及 OAuth provider 本地代理和多平台消息入口；需要确认 provider 条款、密钥隔离、工具权限和审计日志。</p>
   <p class="item-reason"><strong>推荐理由：</strong>Hermes 是这批新增源里最贴近“agent harness 实物”的项目，release 数字和活跃度都很高。</p>
-  <ul class="source-notes"><li><strong>Nous Hermes Agent Releases：</strong>v0.14.0：808 commits、633 PRs、545 issues closed、215 contributors。</li><li><strong>Nous Hermes Agent Releases：</strong>v0.13.0：Tenacity Release，继续强化长任务执行可靠性。</li><li><strong>Nous Hermes Agent Releases：</strong>v0.12.0/v0.11.0：release 摘要显示大量代码和 issue 变动，项目迭代非常密集。</li></ul>
+  <ul class="source-notes"><li><strong>Nous Hermes Agent Releases：</strong>v0.14.0：808 commits、633 PRs、165061 insertions、545 issues closed、215 contributors。</li><li><strong>Nous Hermes Agent Releases：</strong>新增 OpenAI-compatible local proxy，可让 Codex/Aider/Cline/Continue 连接 OAuth-backed providers。</li><li><strong>Nous Hermes Agent Releases：</strong>pip install hermes-agent；cold start 减少约 19 秒，Browser CDP calls 180x faster。</li></ul>
   <div class="item-meta">
     <span>评分 168</span>
     <span>Nous Hermes Agent Releases / 2026-05-16T18:55:27Z</span>
@@ -584,10 +619,11 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/">MCP 2026 Roadmap + Tool Annotations：协议从工具连接走向企业级治理和风险词汇</a>
-  <p class="item-summary"><strong>概述：</strong>MCP Blog 的 2026 roadmap 提到 transport scalability、agent communication、governance maturation、enterprise readiness；Tool Annotations 文章则把 MCP 工具标注为风险词汇，用 read-only、destructive、idempotent、外部访问等 hints 描述工具行为。现在能直接作为 MCP server 设计和权限审查 checklist</p>
-  <p class="item-action"><strong>行动建议：</strong>给内部 MCP server 增加 tool annotations：至少标出 read-only/destructive/idempotent/外部访问，再接入 agent。</p>
+  <p class="item-summary"><strong>概述：</strong>这条不是今天能 pip install 的功能，而是 MCP 从“本地工具连接协议”进入企业生产治理阶段的路线图。它指出远程 MCP server 已经在生产里遇到 stateful sessions、load balancer、horizontal scaling 和能力发现问题，后续会围绕 transport scalability、agent communication、governance、enterprise readiness 推进。对开发者来说，价值是提前按 audit trail、SSO、gateway、config portability 设计 MCP server，避免现在做出的协议层选择很快变成债务。应该纳入架构评估，而不是当成已落地 spec 使用。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：给内部 MCP server 设计评审加四项检查：session/scale、agent task lifecycle、SEP/governance 跟进、enterprise auth/audit/config portability。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>这是 roadmap，不是已发布 spec；不要把 .well-known metadata、task lifecycle 等未来方向当成稳定接口直接依赖。</p>
   <p class="item-reason"><strong>推荐理由：</strong>MCP 已经不是“能连工具”这么简单，开始进入治理、风险描述和企业可用性阶段。</p>
-  <ul class="source-notes"><li><strong>Model Context Protocol Blog：</strong>2026 Roadmap：transport scalability、agent communication、governance、enterprise readiness。</li><li><strong>Model Context Protocol Blog：</strong>Tool Annotations：用风险 hints 描述工具是否只读、破坏性、幂等或访问外部环境。</li><li><strong>Model Context Protocol Blog：</strong>MCP Apps：tools 可以返回 conversation 内渲染的 interactive UI components。</li></ul>
+  <ul class="source-notes"><li><strong>Model Context Protocol Blog：</strong>2026 priority areas：transport scalability、agent communication、governance maturation、enterprise readiness。</li><li><strong>Model Context Protocol Blog：</strong>Streamable HTTP 已支持 remote services，但 stateful sessions/load balancer/horizontal scaling 仍是痛点。</li><li><strong>Model Context Protocol Blog：</strong>Enterprise readiness 关注 audit trails、SSO auth、gateway behavior、configuration portability。</li></ul>
   <div class="item-meta">
     <span>评分 167</span>
     <span>Model Context Protocol Blog / Mon, 09 Mar 2026 09:00:00 +0000</span>
@@ -598,10 +634,11 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://github.com/microsoft/autogen/releases/tag/python-v0.7.5">AutoGen 0.7.x：OpenAIAgent builtin tools、nested Team、MCP example、Redis memory 连续更新</a>
-  <p class="item-summary"><strong>概述：</strong>AutoGen 0.7.x release train 包含多项 agent 编排实用更新：0.7.1 支持 OpenAIAgent built-in tools 和 nested Team 作为 participant；0.7.3 修复 MCP example 并扩展 pydantic capability；0.7.5 增加 RedisMemory linear memory，并修复 Bedrock streaming tool usage 空参数加载。当前可直接从 release atom 跟进</p>
-  <p class="item-action"><strong>行动建议：</strong>升级测试 AutoGen 0.7.5，用 nested Team + RedisMemory + MCP example 做一次多 agent demo。</p>
+  <p class="item-summary"><strong>概述：</strong>AutoGen 这条不是“多 agent 框架又发布了”这么简单，v0.7.5 更像生产硬化版本：RedisMemory、MCP session failure、Bedrock streaming tool usage、OpenAI GPT-5 reasoning_effort 和 Docker executor security warning 都是实际工程会踩到的点。它跟 Microsoft Agent Framework 的区别是更偏多 agent 编排和跨 provider 兼容，而不是 Azure Foundry 一体化。现在可以试，但这不是大功能发布，更适合已有 AutoGen 用户做升级回归。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：已有 AutoGen 项目升级到 0.7.5，重点回归 RedisMemory、MCP session failure、Bedrock streaming tool usage 和 Docker executor 安全默认值。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>这轮主要是修复和生产硬化，不是架构级新能力；如果你不用 AutoGen，暂时没必要为它新开迁移。</p>
   <p class="item-reason"><strong>推荐理由：</strong>AutoGen 仍是多 agent 编排的重要框架，这轮更新集中在工具、团队嵌套、MCP 和 memory。</p>
-  <ul class="source-notes"><li><strong>Microsoft AutoGen Releases：</strong>0.7.1：OpenAIAgent supports all built-in tools；nested Team 可作为 GroupChat participant。</li><li><strong>Microsoft AutoGen Releases：</strong>0.7.3：Fix MCP example in README，并扩展 pydantic model capability。</li><li><strong>Microsoft AutoGen Releases：</strong>0.7.5：Support linear memory in RedisMemory，修复 Bedrock streaming tool usage 空参数加载。</li></ul>
+  <ul class="source-notes"><li><strong>Microsoft AutoGen Releases：</strong>0.7.5：Support linear memory in RedisMemory。</li><li><strong>Microsoft AutoGen Releases：</strong>Fix(mcp)：drain pending command futures on McpSessionActor failure。</li><li><strong>Microsoft AutoGen Releases：</strong>Add security warnings and default to DockerCommandLineCodeExecutor。</li></ul>
   <div class="item-meta">
     <span>评分 166</span>
     <span>Microsoft AutoGen Releases / 2025-09-30T06:18:26Z</span>
@@ -612,10 +649,11 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://github.com/langchain-ai/langgraph/releases/tag/1.2.0">LangGraph 1.2.0 / checkpoint 3.1：durable error-handler resume、StateGraph defaults、checkpoint 包同步升级</a>
-  <p class="item-summary"><strong>概述：</strong>LangGraph 1.2.0 release 摘要包含 durable error-handler resume across host crashes 和 StateGraph set_node_defaults()；checkpoint-sqlite/postgres 3.1.0、prebuilt 1.1.0、CLI 0.4.26 也同步更新。草稿未给迁移指南，但它直接关系到 agent workflow 的崩溃恢复、状态图默认值和持久化</p>
-  <p class="item-action"><strong>行动建议：</strong>在现有 LangGraph demo 里模拟 host crash，验证 durable error-handler resume 和 checkpoint 3.1 行为。</p>
+  <p class="item-summary"><strong>概述：</strong>LangGraph 这条对生产 agent workflow 比较实在：它解决的是 host crash 后 error-handler resume、StateGraph 默认值和 checkpoint snapshot 这类长任务可靠性问题。跟 AutoGen 的多 agent 编排不同，LangGraph 更像状态机/工作流骨架，所以 checkpoint 和恢复语义会直接影响线上任务是否能续跑。现在适合已有 LangGraph 项目升级评估；没有迁移指南前，不建议盲目升生产。</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：在现有 LangGraph demo 里模拟 host crash，验证 durable error-handler resume、checkpoint 3.1 和 StateGraph defaults 是否符合预期。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>release 摘要没有完整迁移指南；checkpoint 行为和 langchain-core 依赖变化需要在你自己的 postgres/sqlite 后端上回归。</p>
   <p class="item-reason"><strong>推荐理由：</strong>对生产 agent workflow 来说，崩溃恢复和 checkpoint 比单个 prompt 技巧更关键。</p>
-  <ul class="source-notes"><li><strong>LangGraph Releases：</strong>langgraph 1.2.0：durable error-handler resume across host crashes，新增 StateGraph set_node_defaults()。</li><li><strong>LangGraph Releases：</strong>checkpoint-sqlite/postgres 3.1.0 与 prebuilt 1.1.0 同步升级。</li><li><strong>LangGraph Releases：</strong>CLI 0.4.26 增加 prerelease api_versions 支持。</li></ul>
+  <ul class="source-notes"><li><strong>LangGraph Releases：</strong>1.2.0：durable error-handler resume across host crashes。</li><li><strong>LangGraph Releases：</strong>新增 StateGraph set_node_defaults()。</li><li><strong>LangGraph Releases：</strong>checkpoint：force delta channel snapshot after max supersteps since last snapshot。</li></ul>
   <div class="item-meta">
     <span>评分 165</span>
     <span>LangGraph Releases / 2026-05-12T03:46:55Z</span>
@@ -626,10 +664,11 @@
 
 <article class="item-card compact">
   <a class="item-title" href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">Anthropic Engineering agent 实践包：evals、infra noise、managed agents、Claude Code auto mode、long-running harness</a>
-  <p class="item-summary"><strong>概述：</strong>Anthropic Engineering 源抓到一组 agent 工程文章：agent evals、agentic coding evals 的 infrastructure noise、managed agents 的 brain/hands decoupling、Claude Code auto mode、long-running app harness。草稿多为列表页摘要，没有安装/API 信息，但主题非常集中：如何把长任务 agent 从 demo 推向可评测、可控、可恢复的系统</p>
-  <p class="item-action"><strong>行动建议：</strong>先读 evals 和 harness 两篇，把失败样本、infra noise、权限跳过条件整理成内部 agent 评测 checklist。</p>
+  <p class="item-summary"><strong>概述：</strong>Anthropic 这组内容最该被读成“agent 工程方法论”，不是新闻：它把 coding agent eval 拆成 deterministic tests、static analysis、state check、tool-call verification 和 transcript metrics，正好对应你要评估 Codex/Claude Code/内部 agent 的成功率、误报和权限行为。跟一般 benchmark 新闻相比，它给的是怎么搭 eval harness 的框架，而不是单个分数。现在可以马上转成内部评测 checklist，但不是一个可安装工具。</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：把一个真实 PR 修复任务写成 eval case，至少包含 tests、static analysis、tool-call requirement、n_turns/n_toolcalls/token metrics。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>这是方法论文章，不提供现成平台或 SDK；model-based/human grader 会带来成本和标注一致性问题，需要先小规模校准。</p>
   <p class="item-reason"><strong>推荐理由：</strong>这是今天新增源里最接近“如何工程化 agent”的一组方法论内容。</p>
-  <ul class="source-notes"><li><strong>Anthropic Engineering：</strong>Demystifying evals for AI agents：聚焦 agent 能力评测和迭代。</li><li><strong>Anthropic Engineering：</strong>Quantifying infrastructure noise：把 agentic coding evals 里的基础设施噪声单独量化。</li><li><strong>Anthropic Engineering：</strong>Scaling Managed Agents：把 brain 和 hands 解耦，用稳定接口支撑 harness 演化。</li><li><strong>Anthropic Engineering：</strong>Claude Code auto mode：讨论更安全地跳过 permissions 的条件。</li></ul>
+  <ul class="source-notes"><li><strong>Anthropic Engineering：</strong>agent evals 可组合 code-based、model-based、human graders。</li><li><strong>Anthropic Engineering：</strong>coding agents 适合用 deterministic tests、static analysis、state check、tool-call verification 和 transcript metrics。</li><li><strong>Anthropic Engineering：</strong>SWE-bench Verified 一年内从 40% 进展到 &gt;80%，但内部 eval 仍要贴真实任务。</li></ul>
   <div class="item-meta">
     <span>评分 164</span>
     <span>Anthropic Engineering</span>
@@ -641,13 +680,15 @@
 </section>
 </section>
 <section class="group-section"><h2>开发者生态</h2>
+<p class="group-editorial">开发者生态今天更偏可落地组件：OCR/文档解析、reranker、LangSmith 部署观测都能进入现有工程链路。筛选重点不是标题是否新，而是有没有安装方式、license、评测数据和能否用现有栈做 A/B。</p>
 <section class="source-block"><div class="source-head"><h3>Hugging Face Blog</h3><span>2 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers">PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend</a>
   <p class="item-summary"><strong>概述：</strong>PaddleOCR 3.5 的 HF 博客线索指向 OCR 和文档解析任务接入 Transformers backend。草稿未抓到安装命令、模型大小或 license；但标题说明它已进入 Transformers 工作流，适合 Python/HF 文档处理管线验证</p>
-  <p class="item-action"><strong>行动建议：</strong>验证 pip 安装、Transformers backend 示例和 license 后，用真实 PDF/截图做 OCR 准确率对比。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：验证 pip 安装、Transformers backend 示例和 license 后，用真实 PDF/截图做 OCR 准确率对比。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>文档解析是实际工程高频场景，这比泛模型新闻更容易落地。</p>
   
   <div class="item-meta">
@@ -661,7 +702,8 @@
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/blog/ettin-reranker">Introducing the Ettin Reranker Family</a>
   <p class="item-summary"><strong>概述：</strong>Ettin Reranker Family 是 HF 博客里的 reranker 系列线索，面向 RAG 检索排序。草稿未提供参数量、模型卡指标和 license，需要打开原文确认；如果模型已发布到 HF，可直接做 MRR/Recall 对比</p>
-  <p class="item-action"><strong>行动建议：</strong>等模型卡确认 license 和推理示例后，在现有 RAG 流程中 A/B 测试 MRR、Recall 和延迟。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：等模型卡确认 license 和推理示例后，在现有 RAG 流程中 A/B 测试 MRR、Recall 和延迟。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>reranker 是 RAG 质量提升的高杠杆组件，适合小样本先验验证。</p>
   
   <div class="item-meta">
@@ -679,7 +721,8 @@
 <article class="item-card">
   <a class="item-title" href="https://www.langchain.com/langsmith/deployment">Deployment Ship and scale agents in production</a>
   <p class="item-summary"><strong>概述：</strong>LangSmith Deployment/Observability/Evaluation 三个页面分别对应生产部署、agent trace 和效果评分。草稿未给价格/API；但它们构成 LangChain 生态的生产 agent 运维三件套</p>
-  <p class="item-action"><strong>行动建议：</strong>用一个 LangGraph agent 接 LangSmith trace/eval，先看失败步骤能否被定位。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：用一个 LangGraph agent 接 LangSmith trace/eval，先看失败步骤能否被定位。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>生产 agent 不能只有编排，还要能部署、观测和评分。</p>
   
   <div class="item-meta">
@@ -693,15 +736,17 @@
 </section>
 </section>
 <section class="group-section"><h2>Hugging Face 热门</h2>
+<p class="group-editorial">HF 论文线索集中在 agent memory。Mem-π 的方向值得观察，但当前仍是论文级材料，未看到代码、包和集成成本，不能直接排到工程必读前面。</p>
 <section class="source-block"><div class="source-head"><h3>Hugging Face Daily Papers</h3><span>1 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
   <a class="item-title" href="https://huggingface.co/papers/2605.21463">Mem-π: Adaptive Memory through Learning When and What to Generate</a>
-  <p class="item-summary"><strong>概述：</strong>Mem-π 是面向 LLM agents 的 adaptive memory 框架，核心不是固定相似度检索，而是在需要时生成 useful guidance。现在是 HF Daily Papers/论文线索，草稿未提供 pip 包或 API；适合跟踪 agent memory 设计</p>
-  <p class="item-action"><strong>行动建议：</strong>读 abstract 和方法部分，和现有 RAG memory 做对照：什么时候生成 guidance、什么时候检索外部记忆。</p>
+  <p class="item-summary"><strong>概述：</strong>Mem-π 解决的是 agent memory 里“检索到的旧经验不一定适配当前上下文”的问题：它不只做相似度召回，而是训练一个独立模型决定什么时候生成 guidance、生成什么内容。跟传统 RAG memory/skill library 比，新意在于把是否生成和生成内容拆开，用 RL 学习 abstain 或输出指导。现在还是论文线索，未看到 pip 包、代码仓库或可直接接入的 API；适合继续观察或拿思想对照内部 long-running agent memory 设计。</p>
+  <p class="item-action"><strong>行动建议：</strong>继续观察：先读方法和实验，和现有 RAG/episodic memory 对照“何时生成 guidance”这个决策点；等代码或模型放出后再评估接入。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>当前只看到论文摘要级信息，未确认代码、包、license、推理成本和与现有 memory store 的集成方式。</p>
   <p class="item-reason"><strong>推荐理由：</strong>agent memory 是长任务可靠性的关键环节，这篇和新加的 harness/managed agents 源能互相印证。</p>
-  
+  <ul class="source-notes"><li><strong>Hugging Face Daily Papers：</strong>adaptive memory：按需生成 useful guidance，而不是固定相似度检索。</li><li><strong>arXiv abstract：</strong>使用与下游 agent 分离的 language/VLM，并联合决定 when/what to generate。</li><li><strong>arXiv abstract：</strong>decision-content decoupled RL objective 允许模型在无帮助时 abstain。</li></ul>
   <div class="item-meta">
     <span>评分 163</span>
     <span>Hugging Face Daily Papers</span>
@@ -713,13 +758,15 @@
 </section>
 </section>
 <section class="group-section"><h2>官方实验室</h2>
+<p class="group-editorial">官方实验室内容今天对开发者的直接行动价值分化明显：Ramp/Codex 是工程流程案例，Singapore 更像区域落地信号。优先保留能变成内部实验指标的内容，纯平台合作新闻靠后。</p>
 <section class="source-block"><div class="source-head"><h3>OpenAI News</h3><span>2 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
   <a class="item-title" href="https://openai.com/index/ramp">How Ramp engineers accelerate code review with Codex</a>
   <p class="item-summary"><strong>概述：</strong>OpenAI 文章写 Ramp 工程师用 Codex + GPT-5.5 做 code review，把实质反馈从小时级压到分钟级。草稿未给具体接入 API、价格或评测集；但这是 coding review 工作流落地案例</p>
-  <p class="item-action"><strong>行动建议：</strong>挑一个 PR 队列试 Codex review，把“反馈耗时、命中缺陷、误报率”做成一周对比。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：挑一个 PR 队列试 Codex review，把“反馈耗时、命中缺陷、误报率”做成一周对比。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>它补充了工程组织如何用 coding agent 改代码审查，而不是单人 demo。</p>
   
   <div class="item-meta">
@@ -733,7 +780,8 @@
 <article class="item-card">
   <a class="item-title" href="https://openai.com/index/introducing-openai-for-singapore">Introducing OpenAI for Singapore</a>
   <p class="item-summary"><strong>概述：</strong>OpenAI for Singapore 是多年 AI 合作计划，偏部署和本地人才/公共服务，不是开发者 API 更新。草稿未给开发者可用接口或价格；仅作为平台落地信号保留</p>
-  <p class="item-action"><strong>行动建议：</strong>用目标硬件压测延迟、吞吐和显存，再评估部署收益。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：用目标硬件压测延迟、吞吐和显存，再评估部署收益。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>它是区域部署信号，但对今天的开发者行动价值低于 Agent 工程源。</p>
   
   <div class="item-meta">
@@ -747,13 +795,15 @@
 </section>
 </section>
 <section class="group-section"><h2>社区讨论</h2>
+<p class="group-editorial">社区讨论更适合发现本地推理和量化实践。Qwen GGUF/NTP/MTP 这类条目只有在带速度表、硬件配置和复测方法时才值得进入行动队列。</p>
 <section class="source-block"><div class="source-head"><h3>Reddit LocalLLaMA</h3><span>1 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tipihx/qwen_36_35b_gguf_ntp_vs_mtp_quantization_results/">Qwen 3.6 35B GGUF: NTP vs MTP quantization results across GPUs and CPUs</a>
   <p class="item-summary"><strong>概述：</strong>社区发布 Qwen 3.6 35B GGUF 的 NTP/MTP quantization 结果，标题说明覆盖 GPUs 和 CPUs；另有 unsloth/Qwen3.6-27B-MTP-GGUF 模型页。草稿未给完整速度表，但这类 GGUF/MTP 资产可直接影响本地 coding agent 部署</p>
-  <p class="item-action"><strong>行动建议：</strong>按自己的显卡/CPU 复测 NTP 与 MTP quant，记录 tok/s、内存和长上下文稳定性。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：按自己的显卡/CPU 复测 NTP 与 MTP quant，记录 tok/s、内存和长上下文稳定性。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>本地推理资产和 quant 结果对开发者选型很实用。</p>
   
   <div class="item-meta">
@@ -767,13 +817,15 @@
 </section>
 </section>
 <section class="group-section"><h2>产业新闻</h2>
+<p class="group-editorial">产业新闻主要提供成本和选型压力信号。Claude Code 与 Goose 的对比有参考价值，但媒体文章需要回到真实仓库任务里复测成功率、耗时和 seat/API 成本。</p>
 <section class="source-block"><div class="source-head"><h3>VentureBeat AI</h3><span>1 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
   <a class="item-title" href="https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free">Claude Code costs up to $200 a month. Goose does the same thing for free.</a>
   <p class="item-summary"><strong>概述：</strong>VentureBeat 对比 Claude Code 最高约 200 美元/月和 Goose 免费路线。它不是框架 release，但给出了 coding agent 的 seat 成本压力；草稿未验证 Goose 的 license、模型后端和企业支持</p>
-  <p class="item-action"><strong>行动建议：</strong>拿同一个真实仓库任务对比 Claude Code、Goose、Codex：记录成功率、耗时和月度 seat/API 成本。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：拿同一个真实仓库任务对比 Claude Code、Goose、Codex：记录成功率、耗时和月度 seat/API 成本。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>agent 工具开始进入成本竞争，开发团队选型不能只看能力。</p>
   
   <div class="item-meta">
@@ -790,7 +842,7 @@
     <section>
       <h2>运行状态</h2>
       <div class="ops">
-        <p>生成时间：2026-05-21 17:28 CST</p>
+        <p>生成时间：2026-05-21 18:12 CST</p>
         <p>HTML 由结构化日报 JSON 渲染；源码标题保留原文，编辑判断和推荐理由均为中文规则生成。</p>
         <p>本次巡查所有来源均正常返回。</p>
       </div>
