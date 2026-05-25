@@ -328,12 +328,12 @@
       <div>
         <div class="eyebrow">AI Daily Patrol</div>
         <h1>AI 日报 2026-05-25</h1>
-        <p class="lede">今天的主线不是单个模型刷屏，而是 agent 工程进入“可控执行层”阶段：GUI fallback、持久记忆、长程执行 harness、技能沉淀研究同时出现。最值得优先看的是 Clawd Cursor、mcp-memory-service 和 GEODE，它们分别对应真实桌面接管、跨会话记忆和长程任务编排。同时，arXiv 的 agent skills 论文、Datasette 的开发者体验更新，以及 RDNA3 上 Qwen 推理优化，分别代表方法论、工具体验和部署成本三个补充方向。</p>
+        <p class="lede">18 点这轮抓取有 3 个 GitHub Search 源超时，但仍拿到 129 条有效线索。今天最清晰的主线是 agent 工程从“会调用工具”进入“可治理、可记忆、可理解代码库”的阶段。钉钉只推 MemClaw、model-generated agent skills 论文和 Codewalk：分别代表 fleet memory、skill 方法论和代码库理解这三个更可落地的方向。pentest-ai 证据强但属于 offensive-security 场景，已放入 HTML 重点并标注授权边界，不放进钉钉 Top 3。</p>
         <div class="stats">
-          <div class="stat"><b>140</b><span>条有效线索</span></div>
+          <div class="stat"><b>129</b><span>条有效线索</span></div>
           <div class="stat"><b>35</b><span>个来源</span></div>
           <div class="stat"><b>6</b><span>今日必读</span></div>
-          <div class="stat"><b>0</b><span>失败源</span></div>
+          <div class="stat"><b>3</b><span>失败源</span></div>
         </div>
       </div>
       <div><svg class="cover-svg" viewBox="0 0 760 280" role="img" aria-label="AI 日报主题图谱">
@@ -351,22 +351,22 @@
 <text x="380" y="154" text-anchor="middle" class="cover-core-sub">Daily Patrol</text>
 <polygon points="52,44 254,52 244,108 42,100" fill="#2563eb" opacity="0.88"></polygon>
 <text x="58" y="78" class="cover-topic">Agent</text>
-<text x="58" y="96" class="cover-topic-sub">48 条</text>
+<text x="58" y="96" class="cover-topic-sub">39 条</text>
 <polygon points="254,44 476,52 486,108 264,100" fill="#f97316" opacity="0.88"></polygon>
 <text x="280" y="78" class="cover-topic">AI 动态</text>
-<text x="280" y="96" class="cover-topic-sub">31 条</text>
+<text x="280" y="96" class="cover-topic-sub">30 条</text>
 <polygon points="496,44 698,52 688,108 486,100" fill="#db2777" opacity="0.88"></polygon>
 <text x="502" y="78" class="cover-topic">产业应用</text>
-<text x="502" y="96" class="cover-topic-sub">17 条</text>
+<text x="502" y="96" class="cover-topic-sub">19 条</text>
 <polygon points="32,142 254,150 264,206 42,198" fill="#059669" opacity="0.88"></polygon>
-<text x="58" y="176" class="cover-topic">开源模型</text>
-<text x="58" y="194" class="cover-topic-sub">16 条</text>
+<text x="58" y="176" class="cover-topic">研究进展</text>
+<text x="58" y="194" class="cover-topic-sub">11 条</text>
 <polygon points="274,142 476,150 466,206 264,198" fill="#7c3aed" opacity="0.88"></polygon>
-<text x="280" y="176" class="cover-topic">产品发布</text>
-<text x="280" y="194" class="cover-topic-sub">13 条</text>
+<text x="280" y="176" class="cover-topic">社区信号</text>
+<text x="280" y="194" class="cover-topic-sub">11 条</text>
 <polygon points="476,142 698,150 708,206 486,198" fill="#ca8a04" opacity="0.88"></polygon>
-<text x="502" y="176" class="cover-topic">多模态</text>
-<text x="502" y="194" class="cover-topic-sub">12 条</text>
+<text x="502" y="176" class="cover-topic">开发者生态</text>
+<text x="502" y="194" class="cover-topic-sub">10 条</text>
 </svg></div>
     </header>
 
@@ -374,78 +374,38 @@
       <h2>今日必读</h2>
       <div class="highlight-grid">
 <article class="item-card">
-  <a class="item-title" href="https://github.com/AmrDab/clawdcursor">AmrDab/clawdcursor</a>
-  <p class="item-one-liner"><strong>结论：</strong>本地 MCP fallback 层，让 Claude Code、Cursor、Windsurf 等工具调用型 agent 在 API 或集成缺失时通过 GUI 点击、输入、读屏继续完成任务。</p>
-  <p class="item-summary"><strong>概述：</strong>Clawd Cursor 的价值不在“又一个 MCP server”，而在补上 agent 落地里最常见的断点：没有 API、网页不开放接口、老系统只能靠 GUI 操作。它强调本地运行、127.0.0.1 绑定、默认无遥测，并把所有工具调用收敛到 safety.evaluate() 这类安全关口，说明作者意识到桌面自动化的风险。现在可以做小样本验证，但不应直接放进生产机器；它更适合先作为受控沙箱里的 fallback 执行层。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐优先看，因为它把 MCP、桌面自动化和安全边界放在同一层设计，代表 agent 从“调用工具”走向“接管真实工作流”的关键方向。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 336 / forks 54 / updated 2026-05-25 / license MIT / topics: ai-agent, ai-tools, anthropic, automation, cl；摘要证据：Description: MCP-powered fallback layer that lets AI agents execute tasks through the GUI when APIs, tools, or direct integrations are unavailable. Cross-OS, accessibility-first, local-only. README: Clawd Cursor The loca…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、桌面自动化、RPA、内部工具平台、安全合规团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：在隔离账号和测试机器上跑一个只读/低风险 GUI 任务，重点验证权限边界、截图留存、工具调用审计和误操作回滚。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>GUI 控制天然高风险；需要确认权限隔离、敏感信息遮蔽、操作审计、失败回滚和跨 OS 稳定性，不能直接接入真实生产桌面。</p>
-  
-  <div class="item-meta">
-    <span>评分 97</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: MCP Servers / TypeScript / ⭐ 336 / forks 54 / updated 2026-05-25 / license MIT / topics: ai-agent, ai-tools, anthropic, automation, cl</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span><span class="tag">安全治理</span><span class="tag">开发者生态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/doobidoo/mcp-memory-service">doobidoo/mcp-memory-service</a>
-  <p class="item-one-liner"><strong>结论：</strong>自托管 agent 记忆服务，把 LangGraph、CrewAI、AutoGen、Claude/OpenCode 等工作流的决策、知识图谱和上下文检索统一到一个后端。</p>
-  <p class="item-summary"><strong>概述：</strong>mcp-memory-service 直接打中长程 agent 的核心问题：上下文会断、不同 agent 之间不能共享决策、知识沉淀缺少可审计结构。README 给出了 REST API、MCP、OAuth、CLI、dashboard、知识图谱和毫秒级检索这些明确工程入口，证据比普通概念项目更完整。它适合先用在内部低风险 agent pipeline 中验证“记忆写入、检索、合并、遗忘/修正”的闭环，而不是只看 demo。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐优先看，因为持久记忆是多 agent 工作流从 demo 走向可运营系统的基础设施；这个项目同时覆盖协议、API 和管理界面，便于快速验证。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 1881 / forks 291 / updated 2026-05-25 / license Apache-2.0 / topics: agent-memory, agentic-ai, ai-agents, aut；摘要证据：Description: Open-source persistent memory for AI agent pipelines (LangGraph, CrewAI, AutoGen) and Claude. REST API + knowledge graph + autonomous consolidation. README: mcp-memory-service Persistent Shared Memory for AI…</p>
+  <a class="item-title" href="https://github.com/caura-ai/caura-memclaw">caura-ai/caura-memclaw</a>
+  <p class="item-one-liner"><strong>结论：</strong>MemClaw 是给多 agent fleet 用的持久记忆后端，把 agent 的经验写入、检索、治理和持续改进收敛成一个开源服务。</p>
+  <p class="item-summary"><strong>概述：</strong>MemClaw 今天最值得优先看，因为它直指 agent 规模化后的核心问题：单个 agent 的记忆不够，fleet 之间还要共享、治理、检索和避免重复犯错。README 给出了 Quick Start、MCP、API Reference、Plugin Docs 等明确入口，说明它不是只有概念页。现在适合用一个低风险 agent pipeline 试“写入-回忆-治理-清理”的闭环，先评估记忆污染和权限边界，再考虑长期接入。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：多 agent 系统一旦进入长期任务，记忆层会变成基础设施；MemClaw 把 fleet memory、治理和 MCP/API 放在同一设计里，工程验证价值高。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 43 / forks 3 / updated 2026-05-25 / license Apache-2.0；摘要证据：Description: MemClaw — persistent memory for AI agent fleets (OSS) README: Fleet memory for AI agents — governed, shared, self-improving. Quick Start · Features · Performance · MCP · API Reference · Plugin Docs · Contributing · Discord --- MemClaw — Fleet memo。</p>
   <p class="item-audience"><strong>适合：</strong>Agent 平台、AI Infra、RAG/知识图谱、内部自动化团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：选一个已有 agent pipeline，把任务决策、错误修复和用户偏好写入该服务，观察跨会话检索质量和错误记忆清理成本。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>需要重点验证权限模型、数据隔离、记忆污染、错误知识的回滚机制，以及与现有向量库/知识图谱方案的重复建设成本。</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：选一个内部低风险 agent 流程，把任务决策、用户偏好和失败修复写入 MemClaw，验证跨会话召回、权限隔离和错误记忆清理成本。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>需要重点验证多租户隔离、记忆污染、错误知识回滚、敏感数据脱敏，以及与现有向量库/知识图谱的重复建设成本。</p>
   
   <div class="item-meta">
-    <span>评分 92</span>
+    <span>评分 94</span>
     <span>证据 strong</span>
     <span>新发布</span>
-    <span>GitHub Search: Codex Cursor Workflow README / Python / ⭐ 1881 / forks 291 / updated 2026-05-25 / license Apache-2.0 / topics: agent-memory, agentic-ai, ai-agents, aut</span>
+    <span>GitHub Search: Coding Agent Skills README / Python / ⭐ 43 / forks 3 / updated 2026-05-25 / license Apache-2.0</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span><span class="tag">开发者生态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/mangowhoiscloud/geode">mangowhoiscloud/geode</a>
-  <p class="item-one-liner"><strong>结论：</strong>长程自主执行 harness，把规划、工具调用、hook、安全预算、验证和多模型 provider 容错包装成一个可运行 agent 外壳。</p>
-  <p class="item-summary"><strong>概述：</strong>GEODE 的信号价值在于它不是单点工具，而是试图把长时间运行 agent 所需的执行循环、安全预算、验证层和 provider 韧性放进同一个 harness。README 暴露出 54 tools、13 MCP、46 hook events、成本上限和多层验证等具体设计点，适合用于对比你现有自动化任务的执行框架缺口。它现在更适合评估架构，不建议直接迁移核心任务。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐进入今日 Top 3，是因为它把“长程 agent 怎么不失控”这个问题工程化了：预算、hook、验证和 provider resilience 都是自动化日报这类任务会遇到的真实问题。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 5 / forks 2 / updated 2026-05-25 / license Apache-2.0；摘要证据：Description: GEODE v0.84.0: 범용 자율 실행 에이전트 하네스 · while(tool_use) AgenticLoop · 54 Tools + 13 MCP · 46 Hook Events (L1→L4 성숙도) · Autonomous Safety (비용 상한 + 래칫 + 다양성) · 5-Layer Verification · 3-Provider Resilience README: Docs · 한국어 GEODE v0.99.54 — Long-running 。</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 平台、自动化框架、AI Infra、工具编排团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：拆解它的安全预算、hook、验证和 provider 切换设计，和当前自动化 runner 做对照，先复用设计思想，再决定是否试跑。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>项目涉及订阅路由和第三方模型使用边界，需要确认服务条款、凭据隔离和长程任务失控保护；不要直接接入真实账号。</p>
-  
-  <div class="item-meta">
-    <span>评分 82</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Codex Cursor Workflow README / Python / ⭐ 5 / forks 2 / updated 2026-05-25 / license Apache-2.0</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">安全治理</span><span class="tag">产业应用</span><span class="tag">开发者生态</span></div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">评测基准</span><span class="tag">开发者生态</span></div>
 </article>
 
 
 <article class="item-card">
   <a class="item-title" href="http://arxiv.org/abs/2605.23899v1">From Raw Experience to Skill Consumption: A Systematic Study of Model-Generated Agent Skills</a>
-  <p class="item-one-liner"><strong>结论：</strong>一篇系统研究 model-generated agent skills 的论文，关注 agent 如何从原始经验提炼、复用和消费结构化技能。</p>
-  <p class="item-summary"><strong>概述：</strong>这条是今天最贴近 skill 体系本身的研究线索：它讨论的不是单个 prompt 技巧，而是 agent 如何把经验沉淀成可复用 procedural artifact。摘要显示论文关注 domain-level 和 model-generated skills 的效率与泛化，但目前只有 arXiv 摘要级证据，尚不能判断代码、数据和评测是否足够完整。适合先读原文，提炼可落到 ai-daily-patrol skill 的设计原则。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐放进 HTML Top 6，因为它能反向指导当前日报 skill 的演进：哪些内容应该写成 skill，哪些应留在脚本层，哪些需要模型编辑判断。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自 arXiv 摘要；2026-05-22T17:59:12Z；摘要证据：Language agents increasingly improve by reusing \emph{skills} -- structured procedural artifacts distilled from past experience. In particular, \emph{domain-level} and \emph{model-generated} skills are especially promising. They offer fast。</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 研究、Codex skill 设计、自动化平台、AI Infra 团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：读原文里的任务设定和评测口径，提取 3 条可用于改造现有 skill 的原则，再决定是否跟进实验。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>目前只有摘要证据；未确认代码、数据集和评测细节，不能直接当作工程最佳实践。</p>
+  <p class="item-one-liner"><strong>结论：</strong>一篇系统研究 agent skills 的论文，关注模型如何从原始经验提炼、评估、复用并消费结构化技能。</p>
+  <p class="item-summary"><strong>概述：</strong>这篇论文和当前日报 skill 的演进高度相关：它讨论的不是单次 prompt，而是 agent 如何把经验转成可复用 procedural artifact。草稿里已经有 arXiv 原文二次抓取，摘要说明它关注 domain-level 和 model-generated skills 的快速适配、规模化和理解缺口。它适合优先阅读，用来反推哪些逻辑应该留给模型判断，哪些应该沉淀成脚本或 skill 规范。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：它能直接指导“模型能力 + 脚本工具层”的边界设计，是今天最贴近你这套 AI Daily Patrol 架构的研究线索。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；2026-05-22T17:59:12Z；摘要证据：Language agents increasingly improve by reusing \emph{skills} -- structured procedural artifacts distilled from past experience. In particular, \emph{domain-level} and \emph{model-generated} skills are especially promising. They offer fast 原文二次抓取：--&gt; Computer 。</p>
+  <p class="item-audience"><strong>适合：</strong>Codex skill 设计、Agent 研究、自动化平台、AI Infra 团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：读原文的任务设定、skill 抽取方法和评测维度，提炼 3 条可用于改造 ai-daily-patrol skill 的原则。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>虽然已有 arXiv 原文证据，但仍需确认代码、数据集和评测可复现性；不要直接当作工程最佳实践。</p>
   
   <div class="item-meta">
-    <span>评分 71</span>
-    <span>证据 medium</span>
+    <span>评分 90</span>
+    <span>证据 strong</span>
     <span>新发布</span>
     <span>arXiv cs.AI / 2026-05-22T17:59:12Z</span>
   </div>
@@ -454,17 +414,57 @@
 
 
 <article class="item-card">
-  <a class="item-title" href="https://simonwillison.net/2026/May/24/datasette/#atom-everything">datasette 1.0a30</a>
-  <p class="item-one-liner"><strong>结论：</strong>Datasette 1.0a30 的开发者体验更新：新增可定制 “Jump to...” 菜单，可在数据工具里快速跳转和扩展导航入口。</p>
-  <p class="item-summary"><strong>概述：</strong>这条不是大模型发布，但对工具产品有实际参考价值：Datasette 在 1.0 alpha 中把“跳转入口”做成可扩展菜单，说明成熟开发者工具正在把快捷导航、插件生态和可发现性作为核心体验。它可以作为 AI 工具台/内部数据工具的交互参考，而不是模型能力线索。当前证据来自 Simon Willison RSS 摘要，足以做产品体验评估。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐放进完整报告重点，因为 agent 和数据工具集成后，真正影响使用频率的往往是这类可扩展导航和插件入口。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-24T23:52:37+00:00；摘要证据：Release: datasette 1.0a30 The big new feature in this alpha is a new customizable &quot;Jump to...&quot; menu, described in detail in The extensible &quot;Jump to&quot; menu in Datasette 1.0a30 on the Datasette blog. You can try it out by hitting / on latest.datasette.io - it loo。</p>
-  <p class="item-audience"><strong>适合：</strong>开发者工具、数据平台、内部工具产品、插件生态负责人</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：打开 latest.datasette.io 试用 Jump to 交互，判断是否可借鉴到内部 AI 工具台、知识库或数据查询入口。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>这是 alpha 版本体验更新，不是稳定生产能力；接入前需要看插件 API、兼容性和后续 1.0 变更。</p>
+  <a class="item-title" href="https://github.com/gupta29470/codewalk">gupta29470/codewalk</a>
+  <p class="item-one-liner"><strong>结论：</strong>Codewalk 是 AI 代码库理解工具：解析模块、依赖图、变更影响面和阅读顺序，再用本地 LLM/RAG 回答代码问题。</p>
+  <p class="item-summary"><strong>概述：</strong>Codewalk 的实用价值明确：大型代码库里，coding agent 最大的问题之一是乱读文件和误判依赖。它把 module detection、dependency graph、blast radius、reading order、execution flow 和 AI chat 放在一起，能直接改善 agent onboarding 和改代码前的上下文准备。现在适合在中等规模仓库上做一次离线试用，比较 agent 使用前后的定位速度和误改率。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：相比泛泛 agent 壳，代码图谱和阅读顺序是更容易验证 ROI 的基础能力；它能降低 coding agent 在陌生仓库里的上下文成本。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 4 / forks 0 / updated 2026-05-25 / license MIT / topics: ai-agents, code-analysis, codebase-onboarding, devel；摘要证据：Description: AI-powered codebase onboarding tool — point it at any repo and ask questions about the code. Uses tree-sitter parsing, RAG, and local LLMs. README: CODEWALK AI-powered codebase onboarding tool Point it at an…</p>
+  <p class="item-audience"><strong>适合：</strong>AI coding、平台工程、代码理解工具、研发效能团队</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：拿一个中等规模内部仓库生成模块图和变更影响面，让 agent 基于 Codewalk 输出做一次 bug 定位或重构前分析。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>需要确认语言覆盖、超大仓库性能、本地模型质量，以及依赖图与实际运行时行为不一致的风险。</p>
   
   <div class="item-meta">
-    <span>评分 66</span>
+    <span>评分 86</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Codex Cursor Workflow README / Python / ⭐ 4 / forks 0 / updated 2026-05-25 / license MIT / topics: ai-agents, code-analysis, codebase-onboarding, devel</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">安全治理</span><span class="tag">开发者生态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/0xSteph/pentest-ai">0xSteph/pentest-ai</a>
+  <p class="item-one-liner"><strong>结论：</strong>pentest-ai 是面向授权渗透测试的 MCP/CLI 工具，包装 205 个工具、17 个专用 agent 和 OWASP Top 10 探测能力。</p>
+  <p class="item-summary"><strong>概述：</strong>pentest-ai 证据很强，README 有安装、文档、benchmark、agents 和明确的 authorized testing only 声明。它的工程信号在于安全测试也正在 agent 化：工具包装、报告生成、攻击路径串联会成为安全团队的新工作流。但由于它是 offensive tooling，不适合进钉钉 Top 3 扩散；应在 HTML 里作为安全/合规重点，并明确只允许授权测试。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：它显示 MCP 正在进入安全测试高风险场景，值得安全团队评估防护、审计和授权边界。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 523 / forks 99 / updated 2026-05-25 / license MIT / topics: ai-security, bug-bounty, claude, ctf, cybersecuri；摘要证据：Description: Offensive-security MCP server with 205 wrapped tools, 17 specialist agents, and 60 SPA-aware probes for OWASP Top 10. CLI + MCP, BYO LLM. No API key needed on MCP path. README: pentest-ai **Autonomous pentes…</p>
+  <p class="item-audience"><strong>适合：</strong>安全团队、红队、合规、Agent 安全治理团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：只在授权靶场或内部测试环境运行，重点检查 AUP、日志、报告可审计性、工具调用边界和误伤控制。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>这是 offensive-security 工具，必须限制在授权范围；需要确认法律边界、审计日志、速率限制、破坏性探测开关和凭据保护。</p>
+  
+  <div class="item-meta">
+    <span>评分 84</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Codex Cursor Workflow README / Python / ⭐ 523 / forks 99 / updated 2026-05-25 / license MIT / topics: ai-security, bug-bounty, claude, ctf, cybersecuri</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">评测基准</span><span class="tag">安全治理</span><span class="tag">开发者生态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://simonwillison.net/2026/May/24/datasette/#atom-everything">datasette 1.0a30</a>
+  <p class="item-one-liner"><strong>结论：</strong>Datasette 1.0a30 的开发者体验更新：新增可定制 “Jump to...” 菜单，可快速跳转并扩展数据工具入口。</p>
+  <p class="item-summary"><strong>概述：</strong>这条不是模型发布，但对工具产品有实际参考价值。Datasette 把快捷跳转做成可扩展菜单，说明成熟开发者工具正在把插件入口、导航效率和可发现性变成核心体验。它适合给 AI 工具台、内部数据查询系统和知识库产品做交互参考。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：agent 和数据工具结合后，用户是否持续使用，往往取决于导航、插件入口和操作可发现性这类细节。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-24T23:52:37+00:00；摘要证据：Release: datasette 1.0a30 The big new feature in this alpha is a new customizable &quot;Jump to...&quot; menu, described in detail in The extensible &quot;Jump to&quot; menu in Datasette 1.0a30 on the Datasette blog. You can try it out by hitting / on latest.datasette.io - it loo。</p>
+  <p class="item-audience"><strong>适合：</strong>开发者工具、数据平台、内部工具产品、插件生态负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：试用 latest.datasette.io 的 Jump to 交互，判断是否可借鉴到内部 AI 工具台或数据查询入口。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>这是 alpha 版本体验更新，不是稳定生产能力；需要关注插件 API 和 1.0 后续兼容性。</p>
+  
+  <div class="item-meta">
+    <span>评分 68</span>
     <span>证据 medium</span>
     <span>新发布</span>
     <span>Simon Willison / 2026-05-24T23:52:37+00:00</span>
@@ -474,22 +474,22 @@
 
 
 <article class="item-card">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tmq4s6/hipengine_fast_native_qwen_36_inference_for_rdna3/">hipEngine: Fast Native Qwen 3.6 Inference for RDNA3 (Strix Halo, 7900 XTX)</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个社区开源推理引擎信号：面向 RDNA3 显卡优化 Qwen 3.6 MoE 原生推理，关注 AMD 本地推理性能。</p>
-  <p class="item-summary"><strong>概述：</strong>hipEngine 的价值是硬件生态信号：本地大模型推理不再只围绕 CUDA，社区开始针对 RDNA3/7900 XTX/Strix Halo 写更贴近硬件的 kernel。当前证据来自 Reddit 摘要，属于中等证据；需要回到项目页确认代码质量、license、benchmark 方法和可复现脚本。适合作为本地推理路线观察，不建议直接纳入生产评估。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐进入 HTML Top 6，因为它补足了今天报告中过度偏 Agent 的问题，也代表开源模型部署成本和硬件选择的一个真实趋势。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-24T22:21:21+00:00；摘要证据：A few weeks ago, after finishing FastDMS , I started toying around writing some RDNA3 kernels again to see how fast I could get Qwen 3.6 MoE running. It turned out well enough, so over the past couple weeks, I turned those experiments into hipEngine , a new op。</p>
-  <p class="item-audience"><strong>适合：</strong>本地推理、模型部署、硬件性能优化、开源模型团队</p>
-  <p class="item-action"><strong>行动建议：</strong>继续观察：先确认仓库、license、benchmark 脚本和复测结果；如果内部有 RDNA3 设备，再做一次小样本性能复现。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>证据来自社区帖，benchmark 可能受 batch、量化、驱动和模型配置影响；需要第三方复测后再做选型判断。</p>
+  <a class="item-title" href="https://github.com/yschimke/compose-ai-tools">yschimke/compose-ai-tools</a>
+  <p class="item-one-liner"><strong>结论：</strong>compose-ai-tools 把 Jetpack Compose/Compose Multiplatform 预览渲染成 PNG/GIF，并提供给 coding agent 做视觉反馈和审查。</p>
+  <p class="item-summary"><strong>概述：</strong>compose-ai-tools 的价值在于补齐前端/客户端 agent 的视觉闭环：agent 不只改代码，还要看到 UI 预览、动画帧和可访问性检查。README 提到可在 Android Studio 外渲染 @Preview、生成 GIF/单帧、做 ATF accessibility overlay，这对移动端 AI coding 流程很具体。适合 Android/Compose 团队小样本试用。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：AI coding 的质量瓶颈经常在“模型看不到 UI 实际效果”，这类渲染和审查工具能直接提升可验证性。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Kotlin / ⭐ 87 / forks 2 / updated 2026-05-25 / license Apache-2.0 / topics: agent-skills, android, claude-code, claude-s；摘要证据：Description: Helping the Agents Compose the Things README: compose-ai-tools **Documentation** — install, VS Code Marketplace, and one-page-per-product reference for each data extension. Render `@Preview` composables to P…</p>
+  <p class="item-audience"><strong>适合：</strong>Android 团队、客户端平台、AI coding、设计工程团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：在一个 Compose 模块里跑预览渲染，让 agent 根据截图修一个 UI 问题，比较人工审查成本是否下降。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>需要验证复杂工程里的 Gradle/Robolectric 配置成本、渲染稳定性和截图与真机表现差异。</p>
   
   <div class="item-meta">
-    <span>评分 58</span>
-    <span>证据 medium</span>
+    <span>评分 66</span>
+    <span>证据 strong</span>
     <span>新发布</span>
-    <span>Reddit LocalLLaMA / 2026-05-24T22:21:21+00:00</span>
+    <span>GitHub Search: Claude Skills / Kotlin / ⭐ 87 / forks 2 / updated 2026-05-25 / license Apache-2.0 / topics: agent-skills, android, claude-code, claude-s</span>
   </div>
-  <div class="tags"><span class="tag">开源模型</span></div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">产品发布</span></div>
 </article>
 </div>
     </section>
@@ -498,30 +498,30 @@
       <h2>态势概览</h2>
       <div class="charts"><svg class="chart" viewBox="0 0 760 324" role="img" aria-label="信息来源分布">
 <text x="0" y="20" class="chart-title">信息来源分布</text>
-<text x="0" y="53" class="chart-label">Agent 工程</text>
-<rect x="150" y="34" width="420.0" height="20" rx="5" fill="#2563eb"></rect>
-<text x="580.0" y="49" class="chart-value">33</text>
-<text x="0" y="87" class="chart-label">社区讨论</text>
-<rect x="150" y="68" width="305.5" height="20" rx="5" fill="#db2777"></rect>
-<text x="465.5" y="83" class="chart-value">24</text>
+<text x="0" y="53" class="chart-label">社区讨论</text>
+<rect x="150" y="34" width="420.0" height="20" rx="5" fill="#db2777"></rect>
+<text x="580.0" y="49" class="chart-value">24</text>
+<text x="0" y="87" class="chart-label">Agent 工程</text>
+<rect x="150" y="68" width="385.0" height="20" rx="5" fill="#2563eb"></rect>
+<text x="545.0" y="83" class="chart-value">22</text>
 <text x="0" y="121" class="chart-label">arXiv 今日精选</text>
-<rect x="150" y="102" width="241.8" height="20" rx="5" fill="#0f766e"></rect>
-<text x="401.8" y="117" class="chart-value">19</text>
+<rect x="150" y="102" width="332.5" height="20" rx="5" fill="#0f766e"></rect>
+<text x="492.5" y="117" class="chart-value">19</text>
 <text x="0" y="155" class="chart-label">产业新闻</text>
-<rect x="150" y="136" width="216.4" height="20" rx="5" fill="#b45309"></rect>
-<text x="376.4" y="151" class="chart-value">17</text>
+<rect x="150" y="136" width="297.5" height="20" rx="5" fill="#b45309"></rect>
+<text x="457.5" y="151" class="chart-value">17</text>
 <text x="0" y="189" class="chart-label">官方实验室</text>
-<rect x="150" y="170" width="203.6" height="20" rx="5" fill="#2563eb"></rect>
-<text x="363.6" y="185" class="chart-value">16</text>
+<rect x="150" y="170" width="280.0" height="20" rx="5" fill="#2563eb"></rect>
+<text x="440.0" y="185" class="chart-value">16</text>
 <text x="0" y="223" class="chart-label">开发者生态</text>
-<rect x="150" y="204" width="140.0" height="20" rx="5" fill="#059669"></rect>
-<text x="300.0" y="219" class="chart-value">11</text>
+<rect x="150" y="204" width="192.5" height="20" rx="5" fill="#059669"></rect>
+<text x="352.5" y="219" class="chart-value">11</text>
 <text x="0" y="257" class="chart-label">社区与Newsletter</text>
-<rect x="150" y="238" width="140.0" height="20" rx="5" fill="#7c3aed"></rect>
-<text x="300.0" y="253" class="chart-value">11</text>
+<rect x="150" y="238" width="192.5" height="20" rx="5" fill="#7c3aed"></rect>
+<text x="352.5" y="253" class="chart-value">11</text>
 <text x="0" y="291" class="chart-label">Hugging Face 热门</text>
-<rect x="150" y="272" width="114.5" height="20" rx="5" fill="#ca8a04"></rect>
-<text x="274.5" y="287" class="chart-value">9</text>
+<rect x="150" y="272" width="157.5" height="20" rx="5" fill="#ca8a04"></rect>
+<text x="317.5" y="287" class="chart-value">9</text>
 </svg><svg class="chart radar" viewBox="0 0 760 260" role="img" aria-label="今日热点主题雷达">
 <text x="0" y="20" class="chart-title">今日热点主题雷达</text>
 <circle cx="380" cy="136" r="96" class="radar-ring"></circle>
@@ -534,125 +534,21 @@
 <line x1="380" y1="136" x2="338.3" y2="222.5" class="radar-axis"></line>
 <line x1="380" y1="136" x2="286.4" y2="157.4" class="radar-axis"></line>
 <line x1="380" y1="136" x2="304.9" y2="76.1" class="radar-axis"></line>
-<polygon points="380.0,40.0 436.8,90.7 432.0,147.9 402.6,182.9 359.2,179.1 334.7,146.3 344.7,107.9" class="radar-shape"></polygon>
-<text x="380.0" y="12.0" class="radar-label" text-anchor="middle">Agent 48</text>
-<text x="476.9" y="58.7" class="radar-label" text-anchor="middle">AI 动态 31</text>
-<text x="500.9" y="163.6" class="radar-label" text-anchor="middle">产业应用 17</text>
-<text x="433.8" y="247.7" class="radar-label" text-anchor="middle">开源模型 16</text>
-<text x="326.2" y="247.7" class="radar-label" text-anchor="middle">产品发布 13</text>
-<text x="259.1" y="163.6" class="radar-label" text-anchor="middle">多模态 12</text>
-<text x="283.1" y="58.7" class="radar-label" text-anchor="middle">开发者生态 11</text>
+<polygon points="380.0,40.0 443.1,85.6 440.6,149.8 401.1,179.8 358.9,179.8 334.3,146.4 343.3,106.7" class="radar-shape"></polygon>
+<text x="380.0" y="12.0" class="radar-label" text-anchor="middle">Agent 39</text>
+<text x="476.9" y="58.7" class="radar-label" text-anchor="middle">AI 动态 30</text>
+<text x="500.9" y="163.6" class="radar-label" text-anchor="middle">产业应用 19</text>
+<text x="433.8" y="247.7" class="radar-label" text-anchor="middle">研究进展 11</text>
+<text x="326.2" y="247.7" class="radar-label" text-anchor="middle">社区信号 11</text>
+<text x="259.1" y="163.6" class="radar-label" text-anchor="middle">开发者生态 10</text>
+<text x="283.1" y="58.7" class="radar-label" text-anchor="middle">开源模型 10</text>
 </svg></div>
     </section>
 
     <section class="group-section"><h2>Agent 工程</h2>
-<p class="group-editorial">今天 Agent 工程的共同主题是“执行可控性”：GUI fallback、持久记忆、长程 harness、远程控制平面和代码上下文索引同时出现。优先看有明确 README、安装入口、安全边界和可复现 demo 的项目；涉及桌面接管、凭据、第三方订阅路由的项目必须先做隔离验证。</p>
-<section class="source-block"><div class="source-head"><h3>GitHub Search: Agent Harness</h3><span>3 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/jaylooloomi/harness-marketplace">jaylooloomi/harness-marketplace</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、开源模型的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>jaylooloomi/harness-marketplace 的核心看点是 Agent、开源模型。Description: Anthropic Harness architecture + agency-agents-zh dynamic role selection. Auto-select roles, plan, generate, evaluate, iterate. README: Harness Marketplace &gt; 基於 Anthro。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。可以优先进入今天的人工阅读和小样本验证。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、开源模型是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；开源生态变化会影响本地部署和成本结构。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Shell / ⭐ 0 / forks 0 / updated 2026-05-25；摘要证据：Description: Anthropic Harness architecture + agency-agents-zh dynamic role selection. Auto-select roles, plan, generate, evaluate, iterate. README: Harness Marketplace &gt; 基於 Anthropic Harness 架構 + agency-agents-zh 動態選角的自動迭代生成系統 ![License: MIT](https://opensour。</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
-  
-  
-  <div class="item-meta">
-    <span>评分 75</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Agent Harness / Shell / ⭐ 0 / forks 0 / updated 2026-05-25</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span><span class="tag">产品发布</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/nordbyte/nordrelay">nordbyte/nordrelay</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、产品发布的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>nordbyte/nordrelay 的核心看点是 Agent、产品发布。Description: NordRelay is a secure remote control bridge for coding agents, connecting Codex, Pi, Hermes, OpenClaw and Claude Code to Telegram, Discord, Slack, WebUI with streaming。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、产品发布是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；发布类信息适合优先查看变化点和可用性。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 7 / forks 2 / updated 2026-05-25 / license MIT / topics: anthropic, claude, claude-code, claw, codex；摘要证据：Description: NordRelay is a secure remote control bridge for coding agents, connecting Codex, Pi, Hermes, OpenClaw and Claude Code to Telegram, Discord, Slack, WebUI with streaming replies, sessions, files, voice, queues, art…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
-  
-  
-  <div class="item-meta">
-    <span>评分 60</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Agent Harness / TypeScript / ⭐ 7 / forks 2 / updated 2026-05-25 / license MIT / topics: anthropic, claude, claude-code, claw, codex</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">产品发布</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/t9242540001/vibecoding-workspace">t9242540001/vibecoding-workspace</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>t9242540001/vibecoding-workspace 的核心看点是 Agent。Description: Workspace infrastructure for Vibe Coding: standards, skills, templates, rules, tools, and project knowledge structure. README: vibecoding-workspace Workspace infrastru。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Shell / ⭐ 0 / forks 0 / updated 2026-05-25；摘要证据：Description: Workspace infrastructure for Vibe Coding: standards, skills, templates, rules, tools, and project knowledge structure. README: vibecoding-workspace Workspace infrastructure for Vibe Coding: standards, skills, templates, rules, tools, and project k。</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供可执行接入入口、license，接入前需要补证据。</p>
-  
-  <div class="item-meta">
-    <span>评分 32</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Agent Harness / Shell / ⭐ 0 / forks 0 / updated 2026-05-25</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span></div>
-</article>
-
-</div>
-</section>
+<p class="group-editorial">今天 Agent 工程的主题集中在 fleet memory、代码库理解、计划文件、UI 反馈和安全测试。优先看能明确降低长程任务失败率或上下文成本的项目；涉及渗透测试、桌面/系统权限和凭据的项目必须先做隔离验证。</p>
 <section class="source-block"><div class="source-head"><h3>GitHub Search: Claude Code Ecosystem</h3><span>6 条</span></div>
 <div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/nick-pape/grackle">nick-pape/grackle</a>
-  <p class="item-one-liner"><strong>结论：</strong>AI coding agents 的远程控制平面，用于跨 Docker、SSH、Codespaces、本地环境编排 Claude Code、Copilot、Codex、Goose 等。</p>
-  <p class="item-summary"><strong>概述：</strong>Grackle 抓住了多 agent 多机器协作的管理痛点：凭据、环境、生命周期、可见性和异常恢复。它的 README 明确提示 pre-1.0 且不建议生产使用，所以今天适合作为控制平面设计参考，而不是马上部署。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>适合进入完整报告，因为它代表 coding agent 从单终端走向多环境编排的趋势。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 15 / forks 4 / updated 2026-05-25 / license MIT / topics: acp, agent-client-protocol, agentic-workflow, a；摘要证据：Description: Manage and orchestrate AI coding agents (Claude Code, Copilot, Goose, etc.) on remote machines — task decomposition, multi-agent coordination, and real-time visibility across environments. README: Grackle &gt;…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、平台工程、远程开发环境、DevOps 团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：阅读它的架构和安全提示，抽取环境编排与凭据管理设计，不要直接接入生产仓库。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>项目自述仍是 pre-1.0，可能存在安全问题和坏工作流；生产使用风险较高。</p>
-  
-  <div class="item-meta">
-    <span>评分 68</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Claude Code Ecosystem / TypeScript / ⭐ 15 / forks 4 / updated 2026-05-25 / license MIT / topics: acp, agent-client-protocol, agentic-workflow, a</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">多模态</span><span class="tag">安全治理</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/STiFLeR7/memex">STiFLeR7/memex</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>STiFLeR7/memex 的核心看点是 Agent。Description: Persistent memory for AI coding agents via MCP — a bitemporal knowledge graph of your codebase, served to Claude Code, Cursor, Gemini CLI, and any MCP client. Tree-sit。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；工具协议和上下文连接会影响后续工程集成方式。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 11 / forks 0 / updated 2026-05-25 / license MIT / topics: agent-memory, ai-agents, ai-coding-assistant, anthr；摘要证据：Description: Persistent memory for AI coding agents via MCP — a bitemporal knowledge graph of your codebase, served to Claude Code, Cursor, Gemini CLI, and any MCP client. Tree-sitter + Gemini Flash → Neo4j (via Graphiti…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
-  
-  
-  <div class="item-meta">
-    <span>评分 62</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Claude Code Ecosystem / Python / ⭐ 11 / forks 0 / updated 2026-05-25 / license MIT / topics: agent-memory, ai-agents, ai-coding-assistant, anthr</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span></div>
-</article>
-
 
 <article class="item-card">
   <a class="item-title" href="https://github.com/modu-ai/moai-adk">modu-ai/moai-adk</a>
@@ -673,66 +569,106 @@
   <div class="tags"><span class="tag">Agent</span><span class="tag">开发者生态</span></div>
 </article>
 
-</div>
-<details class="more-list"><summary>展开其余 3 条高价值线索</summary>
 
-<article class="item-card compact">
-  <a class="item-title" href="https://github.com/irahardianto/awesome-agv">irahardianto/awesome-agv</a>
+<article class="item-card">
+  <a class="item-title" href="https://github.com/getpaseo/paseo">getpaseo/paseo</a>
   <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
-  
+  <p class="item-summary"><strong>概述：</strong>getpaseo/paseo 的核心看点是 Agent。Description: Coding agents from your phone, desktop and CLI README: Paseo One interface for Claude Code, Codex, Copilot, OpenCode, and Pi agents. --- Run agents in parallel on your。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
   <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Shell / ⭐ 144 / forks 47 / updated 2026-05-25 / license MIT / topics: agent-rules, ai-agent, ai-coding, antigravity, bes；摘要证据：Description: Comprehensive sets of stand…</p>
-  
-  
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 6679 / forks 634 / updated 2026-05-25 / license NOASSERTION / topics: ade, agents, claude-code, codex, co；摘要证据：Description: Coding agents from your phone, desktop and CLI README: Paseo One interface for Claude Code, Codex, Copilot, OpenCode, and Pi agents. --- Run agents in parallel on your own machines. Ship from your phone or y…</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供可执行接入入口，接入前需要补证据。</p>
   
   <div class="item-meta">
     <span>评分 48</span>
     <span>证据 strong</span>
     <span>新发布</span>
-    <span>GitHub Search: Claude Code Ecosystem / Shell / ⭐ 144 / forks 47 / updated 2026-05-25 / license MIT / topics: agent-rules, ai-agent, ai-coding, antigravity, bes</span>
+    <span>GitHub Search: Claude Code Ecosystem / TypeScript / ⭐ 6679 / forks 634 / updated 2026-05-25 / license NOASSERTION / topics: ade, agents, claude-code, codex, co</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/fitlab-ai/agent-infra">fitlab-ai/agent-infra</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
+  <p class="item-summary"><strong>概述：</strong>fitlab-ai/agent-infra 的核心看点是 Agent。Description: Collaboration infrastructure for AI coding agents | AI 编程代理的协作基础设施 README: Agent Infra Collaboration infrastructure for AI coding agents — skills, workflows, and sandb。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 58 / forks 3 / updated 2026-05-25 / license MIT / topics: ai, ai-collaboration, claude-code, cli, codex；摘要证据：Description: Collaboration infrastructure for AI coding agents | AI 编程代理的协作基础设施 README: Agent Infra Collaboration infrastructure for AI coding agents — skills, workflows, and sandboxes for Claude Code, Codex, Gemini CLI, a…</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供可执行接入入口，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 48</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Code Ecosystem / TypeScript / ⭐ 58 / forks 3 / updated 2026-05-25 / license MIT / topics: ai, ai-collaboration, claude-code, cli, codex</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 3 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://github.com/intellectronica/ruler">intellectronica/ruler</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 2714 / forks 143 / updated 2026-05-25 / license MIT / topics: agents, ai, aider, claude-code, codex；摘要证据：Description: Ruler — apply the same rules to a…</p>
+  
+  
+  
+  
+  <div class="item-meta">
+    <span>评分 48</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Code Ecosystem / TypeScript / ⭐ 2714 / forks 143 / updated 2026-05-25 / license MIT / topics: agents, ai, aider, claude-code, codex</span>
   </div>
   <div class="tags"><span class="tag">Agent</span></div>
 </article>
 
 
 <article class="item-card compact">
-  <a class="item-title" href="https://github.com/shinpr/galley">shinpr/galley</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、产品发布的开源工程线索，需要看 README、license 和可复现入口。</p>
+  <a class="item-title" href="https://github.com/Forcesoftware109/claude-code-hub">Forcesoftware109/claude-code-hub</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕产业应用、开发者生态的开源工程线索，需要看 README、license 和可复现入口。</p>
   
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、产品发布是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；发布类信息适合优先查看变化点和可用性。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Go / ⭐ 7 / forks 0 / updated 2026-05-25 / license MIT / topics: ai-agents, automation, claude-code, codex, daemon；摘要证据：Description: Local-first task runner for Claude…</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断产业应用、开发者生态是否已进入可复现阶段；企业应用信号能反映 AI 商业化的真实进展；API 与平台变化会影响开发者集成路径。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 6 / forks 1 / updated 2026-05-25 / license MIT / topics: ai-development, autonomous-programming, bun, cc-；摘要证据：Description: 🌐 Centralize AI service man…</p>
   
   
   
   
   <div class="item-meta">
-    <span>评分 44</span>
+    <span>评分 37</span>
     <span>证据 strong</span>
     <span>新发布</span>
-    <span>GitHub Search: Claude Code Ecosystem / Go / ⭐ 7 / forks 0 / updated 2026-05-25 / license MIT / topics: ai-agents, automation, claude-code, codex, daemon</span>
+    <span>GitHub Search: Claude Code Ecosystem / TypeScript / ⭐ 6 / forks 1 / updated 2026-05-25 / license MIT / topics: ai-development, autonomous-programming, bun, cc-</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">产品发布</span></div>
+  <div class="tags"><span class="tag">产业应用</span><span class="tag">开发者生态</span></div>
 </article>
 
 
 <article class="item-card compact">
-  <a class="item-title" href="https://github.com/amys94fr/Snap2Link">amys94fr/Snap2Link</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕开源模型的开源工程线索，需要看 README、license 和可复现入口。</p>
+  <a class="item-title" href="https://github.com/verseles/codewalk">verseles/codewalk</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕开发者生态的开源工程线索，需要看 README、license 和可复现入口。</p>
   
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断开源模型是否已进入可复现阶段；开源生态变化会影响本地部署和成本结构。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 9 / forks 0 / updated 2026-05-25 / license MIT / topics: ai-tools, chatgpt, claude, claude-code, clipboar；摘要证据：Description: Paste screenshots into Clau…</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断开发者生态是否已进入可复现阶段；API 与平台变化会影响开发者集成路径。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Dart / ⭐ 156 / forks 14 / updated 2026-05-25 / license NOASSERTION / topics: ai, anthropic, claude-code, codex, crush；摘要证据：Description: A native (really fast!!) cross…</p>
   
   
-  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供可执行接入入口，接入前需要补证据。</p>
+  
   
   <div class="item-meta">
-    <span>评分 31</span>
+    <span>评分 26</span>
     <span>证据 strong</span>
     <span>新发布</span>
-    <span>GitHub Search: Claude Code Ecosystem / TypeScript / ⭐ 9 / forks 0 / updated 2026-05-25 / license MIT / topics: ai-tools, chatgpt, claude, claude-code, clipboar</span>
+    <span>GitHub Search: Claude Code Ecosystem / Dart / ⭐ 156 / forks 14 / updated 2026-05-25 / license NOASSERTION / topics: ai, anthropic, claude-code, codex, crush</span>
   </div>
-  <div class="tags"><span class="tag">开源模型</span></div>
+  <div class="tags"><span class="tag">开发者生态</span></div>
 </article>
 
 </details>
@@ -741,504 +677,334 @@
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="https://github.com/teng-lin/notebooklm-py">teng-lin/notebooklm-py</a>
-  <p class="item-one-liner"><strong>结论：</strong>NotebookLM 的非官方 Python API 和 agent skill，可让 Claude Code、Codex 等通过程序化方式访问 NotebookLM 能力。</p>
-  <p class="item-summary"><strong>概述：</strong>这是有工程入口的 NotebookLM 自动化线索，适合做个人研究流或原型验证。问题也很明确：它使用非官方 Google API，随时可能因内部接口变化、限流或条款变化而失效，因此不适合承担稳定生产链路。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>适合关注，因为 NotebookLM 这类知识产品正在被 agent 化；但非官方 API 风险高，只能先做原型。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 15035 / forks 2065 / updated 2026-05-25 / license MIT / topics: agentic-skill, api, claude, claude-skills, go；摘要证据：Description: Unofficial Python API and agentic skill for Google NotebookLM. Full programmatic access to NotebookLM&#x27;s features—including capabilities the web UI doesn&#x27;t expose—via Python, CLI, and AI agents like Claude Co…</p>
-  <p class="item-audience"><strong>适合：</strong>研究工作流、知识管理、Agent 工程、原型团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：用测试账号验证读写能力、限流和失败模式，不要绑定主账号或关键资料。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>非官方 API，可能随 Google 内部接口变化而失效；需要确认账号风险、限流和数据权限边界。</p>
+  <a class="item-title" href="https://github.com/yschimke/compose-ai-tools">yschimke/compose-ai-tools</a>
+  <p class="item-one-liner"><strong>结论：</strong>compose-ai-tools 把 Jetpack Compose/Compose Multiplatform 预览渲染成 PNG/GIF，并提供给 coding agent 做视觉反馈和审查。</p>
+  <p class="item-summary"><strong>概述：</strong>compose-ai-tools 的价值在于补齐前端/客户端 agent 的视觉闭环：agent 不只改代码，还要看到 UI 预览、动画帧和可访问性检查。README 提到可在 Android Studio 外渲染 @Preview、生成 GIF/单帧、做 ATF accessibility overlay，这对移动端 AI coding 流程很具体。适合 Android/Compose 团队小样本试用。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：AI coding 的质量瓶颈经常在“模型看不到 UI 实际效果”，这类渲染和审查工具能直接提升可验证性。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Kotlin / ⭐ 87 / forks 2 / updated 2026-05-25 / license Apache-2.0 / topics: agent-skills, android, claude-code, claude-s；摘要证据：Description: Helping the Agents Compose the Things README: compose-ai-tools **Documentation** — install, VS Code Marketplace, and one-page-per-product reference for each data extension. Render `@Preview` composables to P…</p>
+  <p class="item-audience"><strong>适合：</strong>Android 团队、客户端平台、AI coding、设计工程团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：在一个 Compose 模块里跑预览渲染，让 agent 根据截图修一个 UI 问题，比较人工审查成本是否下降。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>需要验证复杂工程里的 Gradle/Robolectric 配置成本、渲染稳定性和截图与真机表现差异。</p>
   
   <div class="item-meta">
-    <span>评分 73</span>
+    <span>评分 66</span>
     <span>证据 strong</span>
     <span>新发布</span>
-    <span>GitHub Search: Claude Skills / Python / ⭐ 15035 / forks 2065 / updated 2026-05-25 / license MIT / topics: agentic-skill, api, claude, claude-skills, go</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span><span class="tag">开发者生态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/JimLiu/baoyu-skills">JimLiu/baoyu-skills</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、产品发布的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>JimLiu/baoyu-skills 的核心看点是 Agent、产品发布。README: baoyu-skills English | 中文 Skills shared by Baoyu for improving daily work efficiency with AI Agents (Claude Code, Codex, etc.). Prerequisites - Node.js environment installe。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、产品发布是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；发布类信息适合优先查看变化点和可用性。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 19413 / forks 2263 / updated 2026-05-25 / topics: agent-skills, claude-skills, codex-skills, openclaw-ski；摘要证据：README: baoyu-skills English | 中文 Skills shared by Baoyu for improving daily work efficiency with AI Agents (Claude Code, Codex, etc.). Prerequisites - Node.js environment installed - Ability to run `npx bun` commands In…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
-  
-  
-  <div class="item-meta">
-    <span>评分 60</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Claude Skills / TypeScript / ⭐ 19413 / forks 2263 / updated 2026-05-25 / topics: agent-skills, claude-skills, codex-skills, openclaw-ski</span>
+    <span>GitHub Search: Claude Skills / Kotlin / ⭐ 87 / forks 2 / updated 2026-05-25 / license Apache-2.0 / topics: agent-skills, android, claude-code, claude-s</span>
   </div>
   <div class="tags"><span class="tag">Agent</span><span class="tag">产品发布</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="https://github.com/georgekhananaev/claude-skills-vault">georgekhananaev/claude-skills-vault</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、安全治理的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>georgekhananaev/claude-skills-vault 的核心看点是 Agent、安全治理。Description: A curated collection of high impact skills for Claude Code designed to supercharge the senior full stack workflow. This vault automates the repetitive parts of develop。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、安全治理是否已进入可复现阶段；工具协议和上下文连接会影响后续工程集成方式；安全相关更新对企业采用风险评估有参考价值。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 23 / forks 6 / updated 2026-05-25 / license MIT / topics: claude, claude-code, claude-commands, claude-mcp, c；摘要证据：Description: A curated collection of high impact skills for Claude Code designed to supercharge the senior full stack workflow. This vault automates the repetitive parts of development like architectural reviews, TDD cyc…</p>
-  <p class="item-audience"><strong>适合：</strong>安全/合规、AI Infra、平台工程团队</p>
+  <a class="item-title" href="https://github.com/OthmanAdi/planning-with-files">OthmanAdi/planning-with-files</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个 Claude Code skill，用持久 Markdown 文件实现 Manus 风格的计划、执行和状态延续。</p>
+  <p class="item-summary"><strong>概述：</strong>planning-with-files 的实用点在于把 agent 的计划显式落到文件，解决长任务上下文断裂和状态不可审计的问题。README 带有较强营销叙事，不能只看“Manus 风格”标签；更应该评估它的文件结构、状态流转和是否能减少重复规划。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：持久计划文件是低成本提升 agent 长任务可靠性的办法，适合和当前日报自动化的 marker/状态记录思路对照。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 22033 / forks 1954 / updated 2026-05-25 / license MIT / topics: adal, agent-skills, antigravity, claude, clau；摘要证据：Description: Claude Code skill implementing Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition. README: Planning with Files &gt; **Work like Manus** — the AI agent company Meta acquir…</p>
+  <p class="item-audience"><strong>适合：</strong>Codex/Claude Code 用户、Agent workflow 设计、自动化任务维护者</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：把一个多步任务用它的计划文件跑一遍，检查中断恢复和审计可读性是否真的变好。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>README 营销成分较重；需要确认实际 skill 激活、状态更新和失败恢复是否稳定。</p>
+  
+  <div class="item-meta">
+    <span>评分 64</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / Python / ⭐ 22033 / forks 1954 / updated 2026-05-25 / license MIT / topics: adal, agent-skills, antigravity, claude, clau</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span><span class="tag">评测基准</span><span class="tag">安全治理</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/jabrena/cursor-rules-java">jabrena/cursor-rules-java</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、产业应用的开源工程线索，需要看 README、license 和可复现入口。</p>
+  <p class="item-summary"><strong>概述：</strong>jabrena/cursor-rules-java 的核心看点是 Agent、产业应用。Description: A curated and opinionated collection of Skills and Agents to be used in modern SDLC workflows for Java Enterprise development with your favorite AI Agent harness. READ。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、产业应用是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；企业应用信号能反映 AI 商业化的真实进展。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Java / ⭐ 390 / forks 78 / updated 2026-05-25 / license Apache-2.0 / topics: agent-skills, ai-skills, claude, claude-code；摘要证据：Description: A curated and opinionated collection of Skills and Agents to be used in modern SDLC workflows for Java Enterprise development with your favorite AI Agent harness. README: Skills &amp; Agents for Java ![Stargazer…</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
   <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
   
   
   <div class="item-meta">
-    <span>评分 52</span>
+    <span>评分 59</span>
     <span>证据 strong</span>
     <span>新发布</span>
-    <span>GitHub Search: Claude Skills / Python / ⭐ 23 / forks 6 / updated 2026-05-25 / license MIT / topics: claude, claude-code, claude-commands, claude-mcp, c</span>
+    <span>GitHub Search: Claude Skills / Java / ⭐ 390 / forks 78 / updated 2026-05-25 / license Apache-2.0 / topics: agent-skills, ai-skills, claude, claude-code</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">安全治理</span><span class="tag">产品发布</span></div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">产业应用</span></div>
 </article>
 
 </div>
 <details class="more-list"><summary>展开其余 3 条高价值线索</summary>
 
 <article class="item-card compact">
-  <a class="item-title" href="https://github.com/jakubs2623/notebooklm-skill">jakubs2623/notebooklm-skill</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、产品发布的开源工程线索，需要看 README、license 和可复现入口。</p>
+  <a class="item-title" href="https://github.com/elementalsouls/Claude-BugHunter">elementalsouls/Claude-BugHunter</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、安全治理的开源工程线索，需要看 README、license 和可复现入口。</p>
   
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、产品发布是否已进入可复现阶段；工具协议和上下文连接会影响后续工程集成方式；发布类信息适合优先查看变化点和可用性。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 4 / forks 2 / updated 2026-05-25 / license MIT / topics: agentic-skill, ai-agents, ai-research, antigravity,；摘要证据：Description: Connect NotebookLM research…</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、安全治理是否已进入可复现阶段；工具协议和上下文连接会影响后续工程集成方式；安全相关更新对企业采用风险评估有参考价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 787 / forks 108 / updated 2026-05-25 / license NOASSERTION / topics: ai-security, anthropic, application-secu；摘要证据：Description: A Claude Code skill bundle…</p>
   
   
+  
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / Python / ⭐ 787 / forks 108 / updated 2026-05-25 / license NOASSERTION / topics: ai-security, anthropic, application-secu</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">安全治理</span><span class="tag">产业应用</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://github.com/softcane/human-state-skills">softcane/human-state-skills</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；⭐ 34 / forks 2 / updated 2026-05-25 / license MIT / topics: adhd-friendly, ai-agents, burnout, claude-skills, codex-skil；摘要证据：Description: Small response modes for AI…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供可执行接入入口，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 48</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / ⭐ 34 / forks 2 / updated 2026-05-25 / license MIT / topics: adhd-friendly, ai-agents, burnout, claude-skills, codex-skil</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://github.com/HugoVeltorai/publicskills">HugoVeltorai/publicskills</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕AI 动态的开源工程线索，需要看 README、license 和可复现入口。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断AI 动态是否已进入可复现阶段。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；⭐ 4 / forks 0 / updated 2026-05-25 / license MIT / topics: ceo, ceo-tools, claude-skill, claude-skills, consulting；摘要证据：Description: A collection of Claude Skills for…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供可执行接入入口，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 16</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / ⭐ 4 / forks 0 / updated 2026-05-25 / license MIT / topics: ceo, ceo-tools, claude-skill, claude-skills, consulting</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+</details>
+</section>
+<section class="source-block"><div class="source-head"><h3>GitHub Search: Codex Cursor Workflow README</h3><span>6 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/gupta29470/codewalk">gupta29470/codewalk</a>
+  <p class="item-one-liner"><strong>结论：</strong>Codewalk 是 AI 代码库理解工具：解析模块、依赖图、变更影响面和阅读顺序，再用本地 LLM/RAG 回答代码问题。</p>
+  <p class="item-summary"><strong>概述：</strong>Codewalk 的实用价值明确：大型代码库里，coding agent 最大的问题之一是乱读文件和误判依赖。它把 module detection、dependency graph、blast radius、reading order、execution flow 和 AI chat 放在一起，能直接改善 agent onboarding 和改代码前的上下文准备。现在适合在中等规模仓库上做一次离线试用，比较 agent 使用前后的定位速度和误改率。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：相比泛泛 agent 壳，代码图谱和阅读顺序是更容易验证 ROI 的基础能力；它能降低 coding agent 在陌生仓库里的上下文成本。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 4 / forks 0 / updated 2026-05-25 / license MIT / topics: ai-agents, code-analysis, codebase-onboarding, devel；摘要证据：Description: AI-powered codebase onboarding tool — point it at any repo and ask questions about the code. Uses tree-sitter parsing, RAG, and local LLMs. README: CODEWALK AI-powered codebase onboarding tool Point it at an…</p>
+  <p class="item-audience"><strong>适合：</strong>AI coding、平台工程、代码理解工具、研发效能团队</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：拿一个中等规模内部仓库生成模块图和变更影响面，让 agent 基于 Codewalk 输出做一次 bug 定位或重构前分析。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>需要确认语言覆盖、超大仓库性能、本地模型质量，以及依赖图与实际运行时行为不一致的风险。</p>
+  
+  <div class="item-meta">
+    <span>评分 86</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Codex Cursor Workflow README / Python / ⭐ 4 / forks 0 / updated 2026-05-25 / license MIT / topics: ai-agents, code-analysis, codebase-onboarding, devel</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">安全治理</span><span class="tag">开发者生态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/0xSteph/pentest-ai">0xSteph/pentest-ai</a>
+  <p class="item-one-liner"><strong>结论：</strong>pentest-ai 是面向授权渗透测试的 MCP/CLI 工具，包装 205 个工具、17 个专用 agent 和 OWASP Top 10 探测能力。</p>
+  <p class="item-summary"><strong>概述：</strong>pentest-ai 证据很强，README 有安装、文档、benchmark、agents 和明确的 authorized testing only 声明。它的工程信号在于安全测试也正在 agent 化：工具包装、报告生成、攻击路径串联会成为安全团队的新工作流。但由于它是 offensive tooling，不适合进钉钉 Top 3 扩散；应在 HTML 里作为安全/合规重点，并明确只允许授权测试。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：它显示 MCP 正在进入安全测试高风险场景，值得安全团队评估防护、审计和授权边界。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 523 / forks 99 / updated 2026-05-25 / license MIT / topics: ai-security, bug-bounty, claude, ctf, cybersecuri；摘要证据：Description: Offensive-security MCP server with 205 wrapped tools, 17 specialist agents, and 60 SPA-aware probes for OWASP Top 10. CLI + MCP, BYO LLM. No API key needed on MCP path. README: pentest-ai **Autonomous pentes…</p>
+  <p class="item-audience"><strong>适合：</strong>安全团队、红队、合规、Agent 安全治理团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：只在授权靶场或内部测试环境运行，重点检查 AUP、日志、报告可审计性、工具调用边界和误伤控制。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>这是 offensive-security 工具，必须限制在授权范围；需要确认法律边界、审计日志、速率限制、破坏性探测开关和凭据保护。</p>
+  
+  <div class="item-meta">
+    <span>评分 84</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Codex Cursor Workflow README / Python / ⭐ 523 / forks 99 / updated 2026-05-25 / license MIT / topics: ai-security, bug-bounty, claude, ctf, cybersecuri</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">评测基准</span><span class="tag">安全治理</span><span class="tag">开发者生态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/openclaw/Peekaboo">openclaw/Peekaboo</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
+  <p class="item-summary"><strong>概述：</strong>openclaw/Peekaboo 的核心看点是 Agent。Description: Peekaboo is a macOS CLI &amp; optional MCP server that enables AI agents to capture screenshots of applications, or the entire system, with optional visual question answer。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；工具协议和上下文连接会影响后续工程集成方式。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Swift / ⭐ 4489 / forks 334 / updated 2026-05-25 / license MIT / topics: ai, macos, mcp, screenshots, swift；摘要证据：Description: Peekaboo is a macOS CLI &amp; optional MCP server that enables AI agents to capture screenshots of applications, or the entire system, with optional visual question answering through local or remote AI models.。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供可执行接入入口，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 62</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>GitHub Search: Codex Cursor Workflow README / Swift / ⭐ 4489 / forks 334 / updated 2026-05-25 / license MIT / topics: ai, macos, mcp, screenshots, swift</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 3 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://github.com/itechmeat/open-second-brain">itechmeat/open-second-brain</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；工具协议和上下文连接会影响后续工程集成方式。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 7 / forks 0 / updated 2026-05-25 / license MIT；摘要证据：Description: SecondBrain for Hermes, OpenClaw, Claude Code, Codex, etc. Works with Obsidian. README…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供可执行接入入口，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 62</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Codex Cursor Workflow README / TypeScript / ⭐ 7 / forks 0 / updated 2026-05-25 / license MIT</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://github.com/t8y2/dbx">t8y2/dbx</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Rust / ⭐ 1945 / forks 141 / updated 2026-05-25 / license AGPL-3.0 / topics: clickhouse, database, database-client, datab；摘要证据：Description: 15MB, lightweight, cross-pl…</p>
+  
+  
+  
+  
+  <div class="item-meta">
+    <span>评分 32</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Codex Cursor Workflow README / Rust / ⭐ 1945 / forks 141 / updated 2026-05-25 / license AGPL-3.0 / topics: clickhouse, database, database-client, datab</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://github.com/peteromallet/megaplan">peteromallet/megaplan</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 67 / forks 5 / updated 2026-05-25 / license NOASSERTION；摘要证据：Description: General-purpose planning and execution harness for LLMs — structured phases, crit…</p>
+  
+  
+  
+  
+  <div class="item-meta">
+    <span>评分 32</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Codex Cursor Workflow README / Python / ⭐ 67 / forks 5 / updated 2026-05-25 / license NOASSERTION</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+</details>
+</section>
+<section class="source-block"><div class="source-head"><h3>GitHub Search: Coding Agent Skills README</h3><span>4 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/caura-ai/caura-memclaw">caura-ai/caura-memclaw</a>
+  <p class="item-one-liner"><strong>结论：</strong>MemClaw 是给多 agent fleet 用的持久记忆后端，把 agent 的经验写入、检索、治理和持续改进收敛成一个开源服务。</p>
+  <p class="item-summary"><strong>概述：</strong>MemClaw 今天最值得优先看，因为它直指 agent 规模化后的核心问题：单个 agent 的记忆不够，fleet 之间还要共享、治理、检索和避免重复犯错。README 给出了 Quick Start、MCP、API Reference、Plugin Docs 等明确入口，说明它不是只有概念页。现在适合用一个低风险 agent pipeline 试“写入-回忆-治理-清理”的闭环，先评估记忆污染和权限边界，再考虑长期接入。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：多 agent 系统一旦进入长期任务，记忆层会变成基础设施；MemClaw 把 fleet memory、治理和 MCP/API 放在同一设计里，工程验证价值高。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 43 / forks 3 / updated 2026-05-25 / license Apache-2.0；摘要证据：Description: MemClaw — persistent memory for AI agent fleets (OSS) README: Fleet memory for AI agents — governed, shared, self-improving. Quick Start · Features · Performance · MCP · API Reference · Plugin Docs · Contributing · Discord --- MemClaw — Fleet memo。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 平台、AI Infra、RAG/知识图谱、内部自动化团队</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：选一个内部低风险 agent 流程，把任务决策、用户偏好和失败修复写入 MemClaw，验证跨会话召回、权限隔离和错误记忆清理成本。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>需要重点验证多租户隔离、记忆污染、错误知识回滚、敏感数据脱敏，以及与现有向量库/知识图谱的重复建设成本。</p>
+  
+  <div class="item-meta">
+    <span>评分 94</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Coding Agent Skills README / Python / ⭐ 43 / forks 3 / updated 2026-05-25 / license Apache-2.0</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">评测基准</span><span class="tag">开发者生态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/DeemosTech/rodin3d-skills">DeemosTech/rodin3d-skills</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、开发者生态的开源工程线索，需要看 README、license 和可复现入口。</p>
+  <p class="item-summary"><strong>概述：</strong>DeemosTech/rodin3d-skills 的核心看点是 Agent、开发者生态。Description: Official skills from Hyper3d for Rodin 3D generation. These skills provide prompting guidelines and API integration patterns. README: Rodin3D Skills A Skill for genera。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、开发者生态是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；API 与平台变化会影响开发者集成路径。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 13 / forks 0 / updated 2026-05-25；摘要证据：Description: Official skills from Hyper3d for Rodin 3D generation. These skills provide prompting guidelines and API integration patterns. README: Rodin3D Skills A Skill for generating 3D models from image/multiview images or text prompts using the Hyper3D Rod。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：确认价格、API 可用性和接入限制后，再用一个小流量场景验证 Agent、开发者生态 是否值得迁移。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供license，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 42</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Coding Agent Skills README / Python / ⭐ 13 / forks 0 / updated 2026-05-25</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">开发者生态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research">brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、安全治理的开源工程线索，需要看 README、license 和可复现入口。</p>
+  <p class="item-summary"><strong>概述：</strong>brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research 的核心看点是 Agent、安全治理。Description: 🔬 A curated collection of 23,000+ agent skills for empirical research across 8 social science disciplines. | 精选 23,000+ AI Agent 技能库，覆盖8大社会科学学科的实证研究。CoPaper.AI 20分钟完成一。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、安全治理是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；安全相关更新对企业采用风险评估有参考价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Stata / ⭐ 1211 / forks 191 / updated 2026-05-25 / license NOASSERTION / topics: academic-research, agent-skills, ai-agen；摘要证据：Description: 🔬 A curated collection of 23,000+ agent skills for empirical research across 8 social science disciplines. | 精选 23,000+ AI Agent 技能库，覆盖8大社会科学学科的实证研究。CoPaper.AI 20分钟完成一篇可复现的规范实证论文，并支持用户上传 Skills。-- Maintained…</p>
+  <p class="item-audience"><strong>适合：</strong>安全/合规、AI Infra、平台工程团队</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
   
   
   <div class="item-meta">
     <span>评分 42</span>
     <span>证据 strong</span>
     <span>新发布</span>
-    <span>GitHub Search: Claude Skills / Python / ⭐ 4 / forks 2 / updated 2026-05-25 / license MIT / topics: agentic-skill, ai-agents, ai-research, antigravity, </span>
+    <span>GitHub Search: Coding Agent Skills README / Stata / ⭐ 1211 / forks 191 / updated 2026-05-25 / license NOASSERTION / topics: academic-research, agent-skills, ai-agen</span>
   </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">产品发布</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="https://github.com/mickpletcher/AI-Skills">mickpletcher/AI-Skills</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕AI 动态的开源工程线索，需要看 README、license 和可复现入口。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断AI 动态是否已进入可复现阶段。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；PowerShell / ⭐ 8 / forks 2 / updated 2026-05-25 / license NOASSERTION / topics: ai-skills, ai-workflows, automation, cha；摘要证据：Description: A portable library of reusa…</p>
-  
-  
-  
-  
-  <div class="item-meta">
-    <span>评分 16</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Claude Skills / PowerShell / ⭐ 8 / forks 2 / updated 2026-05-25 / license NOASSERTION / topics: ai-skills, ai-workflows, automation, cha</span>
-  </div>
-  <div class="tags"><span class="tag">AI 动态</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="https://github.com/vigo/claude-skills">vigo/claude-skills</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕AI 动态的开源工程线索，需要看 README、license 和可复现入口。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断AI 动态是否已进入可复现阶段。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；⭐ 4 / forks 0 / updated 2026-05-25 / license MIT / topics: claude-code, claude-skills；摘要证据：Description: My humble Claude-Code skills repo README: Claude-Code Skills W…</p>
-  
-  
-  
-  
-  <div class="item-meta">
-    <span>评分 16</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Claude Skills / ⭐ 4 / forks 0 / updated 2026-05-25 / license MIT / topics: claude-code, claude-skills</span>
-  </div>
-  <div class="tags"><span class="tag">AI 动态</span></div>
-</article>
-
-</details>
-</section>
-<section class="source-block"><div class="source-head"><h3>GitHub Search: Codex Cursor Workflow README</h3><span>4 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/doobidoo/mcp-memory-service">doobidoo/mcp-memory-service</a>
-  <p class="item-one-liner"><strong>结论：</strong>自托管 agent 记忆服务，把 LangGraph、CrewAI、AutoGen、Claude/OpenCode 等工作流的决策、知识图谱和上下文检索统一到一个后端。</p>
-  <p class="item-summary"><strong>概述：</strong>mcp-memory-service 直接打中长程 agent 的核心问题：上下文会断、不同 agent 之间不能共享决策、知识沉淀缺少可审计结构。README 给出了 REST API、MCP、OAuth、CLI、dashboard、知识图谱和毫秒级检索这些明确工程入口，证据比普通概念项目更完整。它适合先用在内部低风险 agent pipeline 中验证“记忆写入、检索、合并、遗忘/修正”的闭环，而不是只看 demo。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐优先看，因为持久记忆是多 agent 工作流从 demo 走向可运营系统的基础设施；这个项目同时覆盖协议、API 和管理界面，便于快速验证。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 1881 / forks 291 / updated 2026-05-25 / license Apache-2.0 / topics: agent-memory, agentic-ai, ai-agents, aut；摘要证据：Description: Open-source persistent memory for AI agent pipelines (LangGraph, CrewAI, AutoGen) and Claude. REST API + knowledge graph + autonomous consolidation. README: mcp-memory-service Persistent Shared Memory for AI…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 平台、AI Infra、RAG/知识图谱、内部自动化团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：选一个已有 agent pipeline，把任务决策、错误修复和用户偏好写入该服务，观察跨会话检索质量和错误记忆清理成本。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>需要重点验证权限模型、数据隔离、记忆污染、错误知识的回滚机制，以及与现有向量库/知识图谱方案的重复建设成本。</p>
-  
-  <div class="item-meta">
-    <span>评分 92</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Codex Cursor Workflow README / Python / ⭐ 1881 / forks 291 / updated 2026-05-25 / license Apache-2.0 / topics: agent-memory, agentic-ai, ai-agents, aut</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span><span class="tag">开发者生态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/mangowhoiscloud/geode">mangowhoiscloud/geode</a>
-  <p class="item-one-liner"><strong>结论：</strong>长程自主执行 harness，把规划、工具调用、hook、安全预算、验证和多模型 provider 容错包装成一个可运行 agent 外壳。</p>
-  <p class="item-summary"><strong>概述：</strong>GEODE 的信号价值在于它不是单点工具，而是试图把长时间运行 agent 所需的执行循环、安全预算、验证层和 provider 韧性放进同一个 harness。README 暴露出 54 tools、13 MCP、46 hook events、成本上限和多层验证等具体设计点，适合用于对比你现有自动化任务的执行框架缺口。它现在更适合评估架构，不建议直接迁移核心任务。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐进入今日 Top 3，是因为它把“长程 agent 怎么不失控”这个问题工程化了：预算、hook、验证和 provider resilience 都是自动化日报这类任务会遇到的真实问题。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 5 / forks 2 / updated 2026-05-25 / license Apache-2.0；摘要证据：Description: GEODE v0.84.0: 범용 자율 실행 에이전트 하네스 · while(tool_use) AgenticLoop · 54 Tools + 13 MCP · 46 Hook Events (L1→L4 성숙도) · Autonomous Safety (비용 상한 + 래칫 + 다양성) · 5-Layer Verification · 3-Provider Resilience README: Docs · 한국어 GEODE v0.99.54 — Long-running 。</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 平台、自动化框架、AI Infra、工具编排团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：拆解它的安全预算、hook、验证和 provider 切换设计，和当前自动化 runner 做对照，先复用设计思想，再决定是否试跑。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>项目涉及订阅路由和第三方模型使用边界，需要确认服务条款、凭据隔离和长程任务失控保护；不要直接接入真实账号。</p>
-  
-  <div class="item-meta">
-    <span>评分 82</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Codex Cursor Workflow README / Python / ⭐ 5 / forks 2 / updated 2026-05-25 / license Apache-2.0</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">安全治理</span><span class="tag">产业应用</span><span class="tag">开发者生态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/Dicklesworthstone/eidetic_engine_cli">Dicklesworthstone/eidetic_engine_cli</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>Dicklesworthstone/eidetic_engine_cli 的核心看点是 Agent。Description: Durable, local-first, explainable memory for coding agents. A Rust CLI memory substrate built on the franken-stack (Asupersync, FrankenSQLite, Frankensearch, FrankenNe。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Rust / ⭐ 16 / forks 1 / updated 2026-05-25 / license NOASSERTION；摘要证据：Description: Durable, local-first, explainable memory for coding agents. A Rust CLI memory substrate built on the franken-stack (Asupersync, FrankenSQLite, Frankensearch, FrankenNetworkX). README: Eidetic Engine (`ee`) **Durable, local-first, explainable memor。</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
-  
-  
-  <div class="item-meta">
-    <span>评分 48</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Codex Cursor Workflow README / Rust / ⭐ 16 / forks 1 / updated 2026-05-25 / license NOASSERTION</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span></div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">安全治理</span></div>
 </article>
 
 </div>
 <details class="more-list"><summary>展开其余 1 条高价值线索</summary>
 
 <article class="item-card compact">
-  <a class="item-title" href="https://github.com/Dicklesworthstone/frankenredis">Dicklesworthstone/frankenredis</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕安全治理的开源工程线索，需要看 README、license 和可复现入口。</p>
+  <a class="item-title" href="https://github.com/jonnyparris/dodo">jonnyparris/dodo</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
   
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断安全治理是否已进入可复现阶段；安全治理动态会影响企业采用和合规节奏。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Rust / ⭐ 11 / forks 3 / updated 2026-05-25 / license NOASSERTION / topics: clean-room, compatibility, conformance, distr；摘要证据：Description: Memory-safe clean-room Redi…</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 5 / forks 1 / updated 2026-05-25 / license MIT；摘要证据：Description: Autonomous coding agent on Cloudflare Workers + Durable Objects README: Dodo A coding…</p>
   
   
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供可执行接入入口，接入前需要补证据。</p>
   
   <div class="item-meta">
-    <span>评分 28</span>
+    <span>评分 32</span>
     <span>证据 strong</span>
     <span>新发布</span>
-    <span>GitHub Search: Codex Cursor Workflow README / Rust / ⭐ 11 / forks 3 / updated 2026-05-25 / license NOASSERTION / topics: clean-room, compatibility, conformance, distr</span>
-  </div>
-  <div class="tags"><span class="tag">安全治理</span></div>
-</article>
-
-</details>
-</section>
-<section class="source-block"><div class="source-head"><h3>GitHub Search: Coding Agent Skills README</h3><span>6 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/mguozhen/voc-amazon-reviews">mguozhen/voc-amazon-reviews</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、开发者生态的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>mguozhen/voc-amazon-reviews 的核心看点是 Agent、开发者生态。Description: Review Analyzer — agent-native VOC for e-commerce. 6 MCP tools, ASIN or CSV input, black-gold dashboard. Backed by Shulex VOC OpenAPI (10 markets). README: Review Anal。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、开发者生态是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；工具协议和上下文连接会影响后续工程集成方式。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 21 / forks 6 / updated 2026-05-25 / topics: amazon, amazon-fba, amazon-seller-tools, ecommerce, helium10-alte；摘要证据：Description: Review Analyzer — agent-native VOC for e-commerce. 6 MCP tools, ASIN or CSV input, black-gold dashboard. Backed by Shulex VOC OpenAPI (10 markets). README: Review Analyzer Agent-native voice-of-customer for…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供license，接入前需要补证据。</p>
-  
-  <div class="item-meta">
-    <span>评分 56</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Coding Agent Skills README / Python / ⭐ 21 / forks 6 / updated 2026-05-25 / topics: amazon, amazon-fba, amazon-seller-tools, ecommerce, helium10-alte</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开发者生态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/saberjack/SHTUCodeProxy">saberjack/SHTUCodeProxy</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、产品发布的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>saberjack/SHTUCodeProxy 的核心看点是 Agent、产品发布。Description: 上海科技大学校内 GenAI API 接入 Claude Code 和Codex的 Windows 及Linux图形化本地代理工具。 README: SHTUCodeProxy 让 Claude Code、Codex 、各种支持自定义API的工具与校园 GenAI API 真正连起来 面向真实 AI 编程工作流的本地协议适配层,把模。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、产品发布是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；发布类信息适合优先查看变化点和可用性。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 8 / forks 1 / updated 2026-05-25 / license MIT；摘要证据：Description: 上海科技大学校内 GenAI API 接入 Claude Code 和Codex的 Windows 及Linux图形化本地代理工具。 README: SHTUCodeProxy 让 Claude Code、Codex 、各种支持自定义API的工具与校园 GenAI API 真正连起来 面向真实 AI 编程工作流的本地协议适配层,把模型路由、客户端配置、工具调用、多轮上下文、配置恢复和跨平台打包整合在一起，让校园 GenAI API 更容易进入日常研发和学习场景。 目前尚未测试其对第三方 A。</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：确认价格、API 可用性和接入限制后，再用一个小流量场景验证 Agent、产品发布 是否值得迁移。</p>
-  
-  
-  <div class="item-meta">
-    <span>评分 54</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Coding Agent Skills README / Python / ⭐ 8 / forks 1 / updated 2026-05-25 / license MIT</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">产品发布</span><span class="tag">开发者生态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/ldclabs/anda-brain">ldclabs/anda-brain</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>ldclabs/anda-brain 的核心看点是 Agent。Description: 🧠 A native graph-based memory system for autonomous AI agents, featuring bio-inspired sleep-based memory consolidation and powered by KIP &amp; AndaDB. README: 🧠 Anda Brai。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Rust / ⭐ 58 / forks 5 / updated 2026-05-25 / license Apache-2.0 / topics: agent-memory, cognitive, kip, knowledge-graph,；摘要证据：Description: 🧠 A native graph-based memory system for autonomous AI agents, featuring bio-inspired sleep-based memory consolidation and powered by KIP &amp; AndaDB. README: 🧠 Anda Brain — Autonomous Graph Memory Built for AI…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供可执行接入入口，接入前需要补证据。</p>
-  
-  <div class="item-meta">
-    <span>评分 48</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Coding Agent Skills README / Rust / ⭐ 58 / forks 5 / updated 2026-05-25 / license Apache-2.0 / topics: agent-memory, cognitive, kip, knowledge-graph,</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span></div>
-</article>
-
-</div>
-<details class="more-list"><summary>展开其余 3 条高价值线索</summary>
-
-<article class="item-card compact">
-  <a class="item-title" href="https://github.com/1jehuang/jcode">1jehuang/jcode</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、产品发布的开源工程线索，需要看 README、license 和可复现入口。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、产品发布是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；发布类信息适合优先查看变化点和可用性。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Rust / ⭐ 6520 / forks 735 / updated 2026-05-25 / license MIT / topics: ai, claude, cli, coding-agent, llm；摘要证据：Description: Coding Agent Harness README: jcode ![Lates…</p>
-  
-  
-  
-  
-  <div class="item-meta">
-    <span>评分 44</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Coding Agent Skills README / Rust / ⭐ 6520 / forks 735 / updated 2026-05-25 / license MIT / topics: ai, claude, cli, coding-agent, llm</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">产品发布</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="https://github.com/heyu-233/engineering-figure-agent">heyu-233/engineering-figure-agent</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、安全治理的开源工程线索，需要看 README、license 和可复现入口。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、安全治理是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；安全治理动态会影响企业采用和合规节奏。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 193 / forks 9 / updated 2026-05-25 / license MIT；摘要证据：Description: Engineering Figure Banana is a Codex skill for generating publication-style engineering…</p>
-  
-  
-  
-  
-  <div class="item-meta">
-    <span>评分 44</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Coding Agent Skills README / Python / ⭐ 193 / forks 9 / updated 2026-05-25 / license MIT</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">安全治理</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="https://github.com/nexu-io/open-design">nexu-io/open-design</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、多模态的开源工程线索，需要看 README、license 和可复现入口。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、多模态是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；视频生成和理解仍是高热度方向。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 51453 / forks 5880 / updated 2026-05-25 / license Apache-2.0 / topics: agent-skills, ai-agents, ai-design；摘要证据：Description: 🎨 Local-first, open-source…</p>
-  
-  
-  
-  
-  <div class="item-meta">
-    <span>评分 44</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: Coding Agent Skills README / TypeScript / ⭐ 51453 / forks 5880 / updated 2026-05-25 / license Apache-2.0 / topics: agent-skills, ai-agents, ai-design</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">多模态</span></div>
-</article>
-
-</details>
-</section>
-<section class="source-block"><div class="source-head"><h3>GitHub Search: MCP Servers</h3><span>3 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/AmrDab/clawdcursor">AmrDab/clawdcursor</a>
-  <p class="item-one-liner"><strong>结论：</strong>本地 MCP fallback 层，让 Claude Code、Cursor、Windsurf 等工具调用型 agent 在 API 或集成缺失时通过 GUI 点击、输入、读屏继续完成任务。</p>
-  <p class="item-summary"><strong>概述：</strong>Clawd Cursor 的价值不在“又一个 MCP server”，而在补上 agent 落地里最常见的断点：没有 API、网页不开放接口、老系统只能靠 GUI 操作。它强调本地运行、127.0.0.1 绑定、默认无遥测，并把所有工具调用收敛到 safety.evaluate() 这类安全关口，说明作者意识到桌面自动化的风险。现在可以做小样本验证，但不应直接放进生产机器；它更适合先作为受控沙箱里的 fallback 执行层。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐优先看，因为它把 MCP、桌面自动化和安全边界放在同一层设计，代表 agent 从“调用工具”走向“接管真实工作流”的关键方向。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 336 / forks 54 / updated 2026-05-25 / license MIT / topics: ai-agent, ai-tools, anthropic, automation, cl；摘要证据：Description: MCP-powered fallback layer that lets AI agents execute tasks through the GUI when APIs, tools, or direct integrations are unavailable. Cross-OS, accessibility-first, local-only. README: Clawd Cursor The loca…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、桌面自动化、RPA、内部工具平台、安全合规团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：在隔离账号和测试机器上跑一个只读/低风险 GUI 任务，重点验证权限边界、截图留存、工具调用审计和误操作回滚。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>GUI 控制天然高风险；需要确认权限隔离、敏感信息遮蔽、操作审计、失败回滚和跨 OS 稳定性，不能直接接入真实生产桌面。</p>
-  
-  <div class="item-meta">
-    <span>评分 97</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: MCP Servers / TypeScript / ⭐ 336 / forks 54 / updated 2026-05-25 / license MIT / topics: ai-agent, ai-tools, anthropic, automation, cl</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span><span class="tag">安全治理</span><span class="tag">开发者生态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/Xquik-dev/tweetclaw">Xquik-dev/tweetclaw</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、开发者生态的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>Xquik-dev/tweetclaw 的核心看点是 Agent、开发者生态。Description: OpenClaw plugin to search tweets, search replies, post tweets, export followers, manage media, monitor X/Twitter, and run giveaway draws via Xquik. README: TweetClaw !。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、开发者生态是否已进入可复现阶段；工具协议和上下文连接会影响后续工程集成方式；API 与平台变化会影响开发者集成路径。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 62 / forks 5 / updated 2026-05-25 / license MIT / topics: ai-agent, automation, clawhub, context7, data-e；摘要证据：Description: OpenClaw plugin to search tweets, search replies, post tweets, export followers, manage media, monitor X/Twitter, and run giveaway draws via Xquik. README: TweetClaw ![npm](https://www.npmjs.com/package/@xqu…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
-  
-  
-  <div class="item-meta">
-    <span>评分 40</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: MCP Servers / TypeScript / ⭐ 62 / forks 5 / updated 2026-05-25 / license MIT / topics: ai-agent, automation, clawhub, context7, data-e</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开发者生态</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/aaronsb/knowledge-graph-system">aaronsb/knowledge-graph-system</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>aaronsb/knowledge-graph-system 的核心看点是 Agent。Description: Kappa Graph — κ(G). A semantic knowledge graph where knowledge has weight. Extracts concepts, measures grounding strength, preserves disagreement, traces everything to。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；工具协议和上下文连接会影响后续工程集成方式。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 39 / forks 4 / updated 2026-05-25 / license Apache-2.0 / topics: apache-age, concept-extraction, docker, fast；摘要证据：Description: Kappa Graph — κ(G). A semantic knowledge graph where knowledge has weight. Extracts concepts, measures grounding strength, preserves disagreement, traces everything to source. README: Kappa Graph — κ(G) A se…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
-  
-  
-  <div class="item-meta">
-    <span>评分 30</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: MCP Servers / Python / ⭐ 39 / forks 4 / updated 2026-05-25 / license Apache-2.0 / topics: apache-age, concept-extraction, docker, fast</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span></div>
-</article>
-
-</div>
-</section>
-<section class="source-block"><div class="source-head"><h3>GitHub Search: New AI Agents</h3><span>5 条</span></div>
-<div class="source-grid">
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/lessweb/deepcode-cli">lessweb/deepcode-cli</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、产品发布的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>lessweb/deepcode-cli 的核心看点是 Agent、产品发布。Description: Deep Code 是专为 deepseek-v4 模型优化的终端 AI 编码助手，支持深度思考、推理强度控制以及 Agent Skills。 README: Deep Code CLI [![][npm-release-shield]][npm-release-link] [![][npm-downloads-shield]][n。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。可以优先进入今天的人工阅读和小样本验证。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、产品发布是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；工具协议和上下文连接会影响后续工程集成方式。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 896 / forks 70 / updated 2026-05-25 / license MIT / topics: ai-agent, deepseek；摘要证据：Description: Deep Code 是专为 deepseek-v4 模型优化的终端 AI 编码助手，支持深度思考、推理强度控制以及 Agent Skills。 README: Deep Code CLI [![][npm-release-shield]][npm-release-link] [![][npm-downloads-shield]][npm-downloads-link] [![][github-contributors-shield]][github-contrib…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：确认价格、API 可用性和接入限制后，再用一个小流量场景验证 Agent、产品发布 是否值得迁移。</p>
-  
-  
-  <div class="item-meta">
-    <span>评分 74</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: New AI Agents / TypeScript / ⭐ 896 / forks 70 / updated 2026-05-25 / license MIT / topics: ai-agent, deepseek</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">产品发布</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/ozgurcd/gograph">ozgurcd/gograph</a>
-  <p class="item-one-liner"><strong>结论：</strong>面向 Go 代码库的本地 AST/type-aware 上下文索引器，帮助 AI coding agent 用更少文件读取理解包、符号、调用和测试结构。</p>
-  <p class="item-summary"><strong>概述：</strong>gograph 是一个更具体、风险更低的 agent 工具：它不尝试替代 IDE，而是生成紧凑代码图，减少 coding agent 的盲目读文件和上下文浪费。当前只支持 Go，但 README 说明了包、符号、调用、路由、配置读取、测试和质量信号等索引对象，适合 Go 团队小样本试用。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>适合关注，因为代码库上下文压缩是 coding agent 稳定性的底层问题，这类本地索引工具比泛泛的 agent 壳更容易验证价值。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；HTML / ⭐ 145 / forks 8 / updated 2026-05-25 / license MIT / topics: agentic-coding, ai-agent, ai-coding-assistant, antig；摘要证据：Description: A fast, local-only CLI tool to generate repository structures and improve IDE context awareness for Go codebases. README: gograph ![Go Report Card](https://goreportcard.com/report/github.com/ozgurcd/gograph)…</p>
-  <p class="item-audience"><strong>适合：</strong>Go 后端团队、AI coding、代码理解工具、平台工程</p>
-  <p class="item-action"><strong>行动建议：</strong>马上试：在一个中等规模 Go 仓库上生成代码图，比较 agent 使用前后的文件读取量、定位速度和错误率。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>当前主要支持 Go；跨语言能力、超大仓库性能和与 gopls/现有代码搜索工具的边界需要验证。</p>
-  
-  <div class="item-meta">
-    <span>评分 63</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: New AI Agents / HTML / ⭐ 145 / forks 8 / updated 2026-05-25 / license MIT / topics: agentic-coding, ai-agent, ai-coding-assistant, antig</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://github.com/TheSyart/emperor-agent">TheSyart/emperor-agent</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent、开发者生态的开源工程线索，需要看 README、license 和可复现入口。</p>
-  <p class="item-summary"><strong>概述：</strong>TheSyart/emperor-agent 的核心看点是 Agent、开发者生态。Description: Local Emperor-style AI agent with Vue WebUI, multi-provider LLMs, streaming chat, tools, skills, memory, and token telemetry. README: Emperor Agent · 皇帝智能体 本地运行的个人 Pyt。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent、开发者生态是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线；API 与平台变化会影响开发者集成路径。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Python / ⭐ 45 / forks 15 / updated 2026-05-25 / topics: ai-agent, aiohttp, deepseek, llm, memory；摘要证据：Description: Local Emperor-style AI agent with Vue WebUI, multi-provider LLMs, streaming chat, tools, skills, memory, and token telemetry. README: Emperor Agent · 皇帝智能体 本地运行的个人 Python 智能体 多 Provider · 三层记忆 · 子代理派遣 · 流式 WebUI · 像素风纸质美术 --- &gt; 用户下…</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：确认价格、API 可用性和接入限制后，再用一个小流量场景验证 Agent、开发者生态 是否值得迁移。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供license，接入前需要补证据。</p>
-  
-  <div class="item-meta">
-    <span>评分 58</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: New AI Agents / Python / ⭐ 45 / forks 15 / updated 2026-05-25 / topics: ai-agent, aiohttp, deepseek, llm, memory</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">开发者生态</span></div>
-</article>
-
-</div>
-<details class="more-list"><summary>展开其余 2 条高价值线索</summary>
-
-<article class="item-card compact">
-  <a class="item-title" href="https://github.com/simpx/loopat">simpx/loopat</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；TypeScript / ⭐ 41 / forks 7 / updated 2026-05-25 / license Apache-2.0 / topics: agentic-ai, ai-agent, claude, claude-age；摘要证据：Description: Self-hosted AI workspace bu…</p>
-  
-  
-  
-  
-  <div class="item-meta">
-    <span>评分 48</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: New AI Agents / TypeScript / ⭐ 41 / forks 7 / updated 2026-05-25 / license Apache-2.0 / topics: agentic-ai, ai-agent, claude, claude-age</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="https://github.com/jaccen/Awesome-Gaussian-Skills">jaccen/Awesome-Gaussian-Skills</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个围绕Agent的开源工程线索，需要看 README、license 和可复现入口。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>它提供了可查看的工程实现或 README 线索，能帮助判断Agent是否已进入可复现阶段；Agent 应用和自动化能力正在成为产品落地的主线。</p>
-  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；HTML / ⭐ 72 / forks 7 / updated 2026-05-25 / license Apache-2.0 / topics: 3d-gaussian-splatting, 3d-reconstruction, 3dgs；摘要证据：Description: AI Agent Skills for 3D Gaus…</p>
-  
-  
-  
-  
-  <div class="item-meta">
-    <span>评分 48</span>
-    <span>证据 strong</span>
-    <span>新发布</span>
-    <span>GitHub Search: New AI Agents / HTML / ⭐ 72 / forks 7 / updated 2026-05-25 / license Apache-2.0 / topics: 3d-gaussian-splatting, 3d-reconstruction, 3dgs</span>
+    <span>GitHub Search: Coding Agent Skills README / TypeScript / ⭐ 5 / forks 1 / updated 2026-05-25 / license MIT</span>
   </div>
   <div class="tags"><span class="tag">Agent</span></div>
 </article>
@@ -1247,7 +1013,7 @@
 </section>
 </section>
 <section class="group-section"><h2>官方实验室</h2>
-<p class="group-editorial">官方实验室内容用于判断平台策略和一手发布边界。今天没有比 Agent 工程更强的官方发布信号；阅读时优先确认 API 可用性、价格、模型限制和区域可用性。</p>
+<p class="group-editorial">官方实验室内容用于判断平台策略和一手发布边界。本轮更强信号来自 Agent 工程；官方内容阅读时优先确认 API、价格、模型限制和可用区域。</p>
 <section class="source-block"><div class="source-head"><h3>Anthropic News</h3><span>5 条</span></div>
 <div class="source-grid">
 
@@ -1592,7 +1358,7 @@
 </section>
 </section>
 <section class="group-section"><h2>开发者生态</h2>
-<p class="group-editorial">开发者生态今天最有用的是 Datasette 这类成熟工具的体验演进：插件入口、快捷导航和数据工具的可扩展性，会直接影响 AI 工具台的使用效率。此类内容不一定高热，但适合产品和平台团队借鉴。</p>
+<p class="group-editorial">开发者生态今天以 Datasette 的体验更新为代表，说明成熟工具正在强化快捷导航和插件入口。对 AI 工具台来说，这类交互细节会直接影响日常使用频率。</p>
 <section class="source-block"><div class="source-head"><h3>Hugging Face Blog</h3><span>5 条</span></div>
 <div class="source-grid">
 
@@ -1790,16 +1556,16 @@
 
 <article class="item-card">
   <a class="item-title" href="https://simonwillison.net/2026/May/24/datasette/#atom-everything">datasette 1.0a30</a>
-  <p class="item-one-liner"><strong>结论：</strong>Datasette 1.0a30 的开发者体验更新：新增可定制 “Jump to...” 菜单，可在数据工具里快速跳转和扩展导航入口。</p>
-  <p class="item-summary"><strong>概述：</strong>这条不是大模型发布，但对工具产品有实际参考价值：Datasette 在 1.0 alpha 中把“跳转入口”做成可扩展菜单，说明成熟开发者工具正在把快捷导航、插件生态和可发现性作为核心体验。它可以作为 AI 工具台/内部数据工具的交互参考，而不是模型能力线索。当前证据来自 Simon Willison RSS 摘要，足以做产品体验评估。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐放进完整报告重点，因为 agent 和数据工具集成后，真正影响使用频率的往往是这类可扩展导航和插件入口。</p>
+  <p class="item-one-liner"><strong>结论：</strong>Datasette 1.0a30 的开发者体验更新：新增可定制 “Jump to...” 菜单，可快速跳转并扩展数据工具入口。</p>
+  <p class="item-summary"><strong>概述：</strong>这条不是模型发布，但对工具产品有实际参考价值。Datasette 把快捷跳转做成可扩展菜单，说明成熟开发者工具正在把插件入口、导航效率和可发现性变成核心体验。它适合给 AI 工具台、内部数据查询系统和知识库产品做交互参考。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：agent 和数据工具结合后，用户是否持续使用，往往取决于导航、插件入口和操作可发现性这类细节。</p>
   <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-24T23:52:37+00:00；摘要证据：Release: datasette 1.0a30 The big new feature in this alpha is a new customizable &quot;Jump to...&quot; menu, described in detail in The extensible &quot;Jump to&quot; menu in Datasette 1.0a30 on the Datasette blog. You can try it out by hitting / on latest.datasette.io - it loo。</p>
   <p class="item-audience"><strong>适合：</strong>开发者工具、数据平台、内部工具产品、插件生态负责人</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：打开 latest.datasette.io 试用 Jump to 交互，判断是否可借鉴到内部 AI 工具台、知识库或数据查询入口。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>这是 alpha 版本体验更新，不是稳定生产能力；接入前需要看插件 API、兼容性和后续 1.0 变更。</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：试用 latest.datasette.io 的 Jump to 交互，判断是否可借鉴到内部 AI 工具台或数据查询入口。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>这是 alpha 版本体验更新，不是稳定生产能力；需要关注插件 API 和 1.0 后续兼容性。</p>
   
   <div class="item-meta">
-    <span>评分 66</span>
+    <span>评分 68</span>
     <span>证据 medium</span>
     <span>新发布</span>
     <span>Simon Willison / 2026-05-24T23:52:37+00:00</span>
@@ -1831,7 +1597,7 @@
 </section>
 </section>
 <section class="group-section"><h2>产业新闻</h2>
-<p class="group-editorial">产业新闻里旧内容补抓较多，今天不应占据 Top 推荐。保留它们用于观察企业 AI 助手、AI 原生云和搜索入口变化，但行动前必须回到原文核对日期、产品状态和价格。</p>
+<p class="group-editorial">产业新闻里旧内容补抓较多，本轮不占用 Top 推荐。阅读时重点核对发布时间、产品状态、价格和区域可用性，避免把旧新闻误判为新发布。</p>
 <section class="source-block"><div class="source-head"><h3>MIT Technology Review</h3><span>4 条</span></div>
 <div class="source-grid">
 
@@ -2196,23 +1962,23 @@
 </section>
 </section>
 <section class="group-section"><h2>社区与Newsletter</h2>
-<p class="group-editorial">Newsletter 内容适合做趋势背景，尤其是 agent 可靠性、安全和长期治理问题。但旧内容补抓不能当作今日新闻；只把它作为完整报告里的背景阅读。</p>
+<p class="group-editorial">Newsletter 更适合作趋势背景。旧内容补抓不进入今日重点；如果主题涉及 agent 可靠性、安全和治理，可以放在完整报告中作为背景阅读。</p>
 <section class="source-block"><div class="source-head"><h3>Import AI</h3><span>5 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
   <a class="item-title" href="https://jack-clark.net/2026/04/13/import-ai-453-breaking-ai-agents-mirrorcode-and-ten-views-on-gradual-disempowerment/">Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment</a>
   <p class="item-one-liner"><strong>结论：</strong>Agent相关线索：Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment。</p>
-  <p class="item-summary"><strong>概述：</strong>Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment 的核心看点是 Agent。Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe. A shorter issue than usual。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
+  <p class="item-summary"><strong>概述：</strong>Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment 的核心看点是 Agent。Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe. A shorter issue than usual。当前有可验证摘要、原文/README 或论文证据；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
   <p class="item-reason"><strong>推荐理由：</strong>它补充了Agent方向的社区或生态信号，适合和官方发布、开源项目交叉验证；Agent 应用和自动化能力正在成为产品落地的主线。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Mon, 13 Apr 2026 10:02:22 +0000；摘要证据：Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe. A shorter issue than usual as I was attending the 2026 Bilderberg conference this week. Subscribe now AI c。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；Mon, 13 Apr 2026 10:02:22 +0000；摘要证据：Welcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe. A shorter issue than usual as I was attending the 2026 Bilderberg conference this week. Subscribe now AI c。</p>
   <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
   <p class="item-action"><strong>行动建议：</strong>仅作信号：这是旧内容补抓，只用于趋势背景；除非原文有明确新发布或新能力，否则不进入试用队列。</p>
   <p class="item-caveat"><strong>风险提示：</strong>发布时间较早，今天抓到不等于今天发布；需要回到原文确认是否仍有行动价值。</p>
   
   <div class="item-meta">
     <span>评分 45</span>
-    <span>证据 medium</span>
+    <span>证据 strong</span>
     <span>旧内容补抓</span>
     <span>Import AI / Mon, 13 Apr 2026 10:02:22 +0000</span>
   </div>
@@ -2435,138 +2201,118 @@
 </section>
 </section>
 <section class="group-section"><h2>社区讨论</h2>
-<p class="group-editorial">社区讨论主要提供硬件推理、开源模型部署和早期 benchmark 信号。今天的 hipEngine 值得观察，但社区帖证据通常不足，必须确认仓库、license、复测脚本和第三方结果后再进入选型。</p>
+<p class="group-editorial">社区讨论提供本地推理、硬件优化和早期 benchmark 信号，但证据通常不足。只把社区帖作为观察入口，真正选型前必须补仓库、license、benchmark 脚本和第三方复测。</p>
 <section class="source-block"><div class="source-head"><h3>Hacker News AI Search</h3><span>8 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="https://pretzel.shukant.com/?nickname=Anonymous&amp;role=stage">Show HN: Live AI music sequencing agent</a>
-  <p class="item-one-liner"><strong>结论：</strong>Agent相关线索：Show HN: Live AI music sequencing agent。</p>
-  <p class="item-summary"><strong>概述：</strong>Show HN: Live AI music sequencing agent 的核心看点是 Agent。Pretzel is an experiment in live AI agents for music. It&#x27;s a web synchronized music sequencer that is controlled by an AI agent. Everyone chats with the same AI agent and hears the。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>它补充了Agent方向的社区或生态信号，适合和官方发布、开源项目交叉验证；Agent 应用和自动化能力正在成为产品落地的主线。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Mon, 25 May 2026 03:53:09 +0000；摘要证据：Pretzel is an experiment in live AI agents for music. It&#x27;s a web synchronized music sequencer that is controlled by an AI agent. Everyone chats with the same AI agent and hears the same music at any time. I&#x27;m no audio engineer so it&#x27;s a pretty basic tune, and 。</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：读原文确认可用性和限制，再判断这条 Agent 线索是否进入内部试验队列。</p>
-  
-  
-  <div class="item-meta">
-    <span>评分 57</span>
-    <span>证据 medium</span>
-    <span>新发布</span>
-    <span>Hacker News AI Search / Mon, 25 May 2026 03:53:09 +0000</span>
-  </div>
-  <div class="tags"><span class="tag">Agent</span></div>
-</article>
-
-
-<article class="item-card">
-  <a class="item-title" href="https://geerttheys.substack.com/p/i-agent-deterministic-coding-flow">My AI coding flow was burning tokens to do things code should do</a>
-  <p class="item-one-liner"><strong>结论：</strong>Agent相关线索：My AI coding flow was burning tokens to do things code should do。</p>
-  <p class="item-summary"><strong>概述：</strong>My AI coding flow was burning tokens to do things code should do 的核心看点是 Agent。Article URL: https://geerttheys.substack.com/p/i-agent-deterministic-coding-flow Comments URL: https://news.ycombinator.com/item?id=48263366 Points: 1 # Comments: 1。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <a class="item-title" href="https://github.com/espenandreass1/agentslice">AgentSlice – Make AI coding agents ask before they edit</a>
+  <p class="item-one-liner"><strong>结论：</strong>Agent相关线索：AgentSlice – Make AI coding agents ask before they edit。</p>
+  <p class="item-summary"><strong>概述：</strong>AgentSlice – Make AI coding agents ask before they edit 的核心看点是 Agent。Article URL: https://github.com/espenandreass1/agentslice Comments URL: https://news.ycombinator.com/item?id=48265057 Points: 1 # Comments: 0。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
   <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为Agent方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 04:22:34 +0000；摘要证据：Article URL: https://geerttheys.substack.com/p/i-agent-deterministic-coding-flow Comments URL: https://news.ycombinator.com/item?id=48263366 Points: 1 # Comments: 1。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 09:43:19 +0000；摘要证据：Article URL: https://github.com/espenandreass1/agentslice Comments URL: https://news.ycombinator.com/item?id=48265057 Points: 1 # Comments: 0。</p>
   <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
   <p class="item-action"><strong>行动建议：</strong>仅作信号：证据不足，先补原文、发布时间、代码/API 或模型卡信息，再判断是否值得投入。</p>
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
   
   <div class="item-meta">
-    <span>评分 41</span>
+    <span>评分 51</span>
     <span>证据 weak</span>
     <span>新发布</span>
-    <span>Hacker News AI Search / Mon, 25 May 2026 04:22:34 +0000</span>
+    <span>Hacker News AI Search / Mon, 25 May 2026 09:43:19 +0000</span>
   </div>
   <div class="tags"><span class="tag">Agent</span></div>
 </article>
 
 
 <article class="item-card">
-  <a class="item-title" href="https://socket.dev/blog/ai-has-taken-over-open-source">AI Has Taken over Open Source</a>
-  <p class="item-one-liner"><strong>结论：</strong>开源模型相关线索：AI Has Taken over Open Source。</p>
-  <p class="item-summary"><strong>概述：</strong>AI Has Taken over Open Source 的核心看点是 开源模型。Article URL: https://socket.dev/blog/ai-has-taken-over-open-source Comments URL: https://news.ycombinator.com/item?id=48263001 Points: 2 # Comments: 1。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为开源模型方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 02:53:05 +0000；摘要证据：Article URL: https://socket.dev/blog/ai-has-taken-over-open-source Comments URL: https://news.ycombinator.com/item?id=48263001 Points: 2 # Comments: 1。</p>
+  <a class="item-title" href="https://medium.com/@kukushkinav/my-ai-agent-called-my-code-shit-took-an-unannounced-vacation-mid-sprint-and-helped-me-ship-anyway-250c032e7d52">My AI agent called my code shit and took an unannounced vacation mid-sprint</a>
+  <p class="item-one-liner"><strong>结论：</strong>Agent相关线索：My AI agent called my code shit and took an unannounced vacation mid-sprint。</p>
+  <p class="item-summary"><strong>概述：</strong>My AI agent called my code shit and took an unannounced vacation mid-sprint 的核心看点是 Agent。Article URL: https://medium.com/@kukushkinav/my-ai-agent-called-my-code-shit-took-an-unannounced-vacation-mid-sprint-and-helped-me-ship-anyway-250c032e7d52 Comments URL: https://ne。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了Agent方向的社区或生态信号，适合和官方发布、开源项目交叉验证；Agent 应用和自动化能力正在成为产品落地的主线。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Mon, 25 May 2026 09:28:25 +0000；摘要证据：Article URL: https://medium.com/@kukushkinav/my-ai-agent-called-my-code-shit-took-an-unannounced-vacation-mid-sprint-and-helped-me-ship-anyway-250c032e7d52 Comments URL: https://news.ycombinator.com/item?id=48264968 Points: 2 # Comments: 0。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  
+  
+  <div class="item-meta">
+    <span>评分 41</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Hacker News AI Search / Mon, 25 May 2026 09:28:25 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.ft.com/content/5630ed79-a263-41ed-9a1a-321617ae310e">AI guardrails stripped from Meta and Google models in minutes</a>
+  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：AI guardrails stripped from Meta and Google models in minutes。</p>
+  <p class="item-summary"><strong>概述：</strong>AI guardrails stripped from Meta and Google models in minutes 的核心看点是 社区信号。Article URL: https://www.ft.com/content/5630ed79-a263-41ed-9a1a-321617ae310e Comments URL: https://news.ycombinator.com/item?id=48265131 Points: 1 # Comments: 1。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为社区信号方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 09:54:51 +0000；摘要证据：Article URL: https://www.ft.com/content/5630ed79-a263-41ed-9a1a-321617ae310e Comments URL: https://news.ycombinator.com/item?id=48265131 Points: 1 # Comments: 1。</p>
   <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
   <p class="item-action"><strong>行动建议：</strong>仅作信号：证据不足，先补原文、发布时间、代码/API 或模型卡信息，再判断是否值得投入。</p>
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
   
   <div class="item-meta">
-    <span>评分 40</span>
+    <span>评分 25</span>
     <span>证据 weak</span>
     <span>新发布</span>
-    <span>Hacker News AI Search / Mon, 25 May 2026 02:53:05 +0000</span>
+    <span>Hacker News AI Search / Mon, 25 May 2026 09:54:51 +0000</span>
   </div>
-  <div class="tags"><span class="tag">开源模型</span></div>
+  <div class="tags"><span class="tag">社区信号</span></div>
 </article>
 
 </div>
 <details class="more-list"><summary>展开其余 5 条高价值线索</summary>
 
 <article class="item-card compact">
-  <a class="item-title" href="https://www.youtube.com/watch?v=FQpZdCKgc6w">Sign in Nobody Wants AI Anymore [video][12 mins]</a>
-  <p class="item-one-liner"><strong>结论：</strong>多模态相关线索：Sign in Nobody Wants AI Anymore [video][12 mins]。</p>
+  <a class="item-title" href="https://www.wsj.com/tech/ai/meta-andrew-bosworth-ai-3df12d4f">Mark Zuckerberg&#x27;s Right-Hand Man Who&#x27;s Unleashing AI at Meta</a>
+  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：Mark Zuckerberg&#x27;s Right-Hand Man Who&#x27;s Unleashing AI at Meta。</p>
   
-  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为多模态方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 02:58:20 +0000；摘要证据：Article URL: https://www.youtube.com/watch?v=FQpZdCKgc6w Comments URL: https://news.ycombinator.com/item?id=48263020 Points: 2 # Co…</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为社区信号方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 09:50:03 +0000；摘要证据：Article URL: https://www.wsj.com/tech/ai/meta-andrew-bosworth-ai-3df12d4f Comments URL: https://news.ycombinator.com/item?id=482651…</p>
   
   
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
   
   <div class="item-meta">
-    <span>评分 37</span>
+    <span>评分 25</span>
     <span>证据 weak</span>
     <span>新发布</span>
-    <span>Hacker News AI Search / Mon, 25 May 2026 02:58:20 +0000</span>
+    <span>Hacker News AI Search / Mon, 25 May 2026 09:50:03 +0000</span>
   </div>
-  <div class="tags"><span class="tag">多模态</span></div>
+  <div class="tags"><span class="tag">社区信号</span></div>
 </article>
 
 
 <article class="item-card compact">
-  <a class="item-title" href="https://news.ycombinator.com/item?id=48262990">How to Teach AI the &quot;Taste&quot;</a>
-  <p class="item-one-liner"><strong>结论：</strong>多模态相关线索：How to Teach AI the &quot;Taste&quot;。</p>
+  <a class="item-title" href="https://theincidentchallenge.com/">Show HN: I Built a Debugging Challenge for the AI Coding Age</a>
+  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：Show HN: I Built a Debugging Challenge for the AI Coding Age。</p>
   
-  <p class="item-reason"><strong>推荐理由：</strong>它补充了多模态方向的社区或生态信号，适合和官方发布、开源项目交叉验证；视频生成和理解仍是高热度方向。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Mon, 25 May 2026 02:50:39 +0000；摘要证据：I am trying to use low cost model to generate high quality video. However, those model doesn&#x27;t seem to have a good taste. My goal…</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了社区信号方向的社区或生态信号，适合和官方发布、开源项目交叉验证。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Mon, 25 May 2026 09:38:35 +0000；摘要证据：Hi all, I&#x27;m sure some of the best engineers out here are having a hard time standing out nowadays. It&#x27;s hard to evaluate and impro…</p>
   
   
   
   
   <div class="item-meta">
-    <span>评分 37</span>
+    <span>评分 25</span>
     <span>证据 medium</span>
     <span>新发布</span>
-    <span>Hacker News AI Search / Mon, 25 May 2026 02:50:39 +0000</span>
-  </div>
-  <div class="tags"><span class="tag">多模态</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="https://www.cbc.ca/news/world/kevin-oleary-data-centre-utah-9.7207716">Kevin O&#x27;Leary wants AI data centre in Utah. Some residents aren&#x27;t happy</a>
-  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：Kevin O&#x27;Leary wants AI data centre in Utah. Some residents aren&#x27;t happy。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为社区信号方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 05:05:43 +0000；摘要证据：Article URL: https://www.cbc.ca/news/world/kevin-oleary-data-centre-utah-9.7207716 Comments URL: https://news.ycombinator.com/item?…</p>
-  
-  
-  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
-  
-  <div class="item-meta">
-    <span>评分 25</span>
-    <span>证据 weak</span>
-    <span>新发布</span>
-    <span>Hacker News AI Search / Mon, 25 May 2026 05:05:43 +0000</span>
+    <span>Hacker News AI Search / Mon, 25 May 2026 09:38:35 +0000</span>
   </div>
   <div class="tags"><span class="tag">社区信号</span></div>
 </article>
 
 
 <article class="item-card compact">
-  <a class="item-title" href="https://www.outcryai.com/research/the-dark-between-the-stars">AI Interpretability Is a Revolutionary Skill</a>
-  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：AI Interpretability Is a Revolutionary Skill。</p>
+  <a class="item-title" href="https://posit.co/blog/gemma-4-new-budget-focused-model-posit-ai">Gemma 4: A new, budget-focused model in Posit AI</a>
+  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：Gemma 4: A new, budget-focused model in Posit AI。</p>
   
   <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为社区信号方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 03:41:32 +0000；摘要证据：Article URL: https://www.outcryai.com/research/the-dark-between-the-stars Comments URL: https://news.ycombinator.com/item?id=482632…</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 09:37:15 +0000；摘要证据：Article URL: https://posit.co/blog/gemma-4-new-budget-focused-model-posit-ai Comments URL: https://news.ycombinator.com/item?id=482…</p>
   
   
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
@@ -2575,18 +2321,18 @@
     <span>评分 25</span>
     <span>证据 weak</span>
     <span>新发布</span>
-    <span>Hacker News AI Search / Mon, 25 May 2026 03:41:32 +0000</span>
+    <span>Hacker News AI Search / Mon, 25 May 2026 09:37:15 +0000</span>
   </div>
   <div class="tags"><span class="tag">社区信号</span></div>
 </article>
 
 
 <article class="item-card compact">
-  <a class="item-title" href="https://github.com/lynote-ai/humanize-text">Lynote Humanize Text – Open-source AI text humanization toolkit</a>
-  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：Lynote Humanize Text – Open-source AI text humanization toolkit。</p>
+  <a class="item-title" href="https://medium.com/@vishalmisra/shannon-got-ai-this-far-kolmogorov-shows-where-it-stops-c81825f89ca0">Shannon Got AI This Far. Kolmogorov Shows Where It Stops</a>
+  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：Shannon Got AI This Far. Kolmogorov Shows Where It Stops。</p>
   
   <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为社区信号方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 03:09:57 +0000；摘要证据：Article URL: https://github.com/lynote-ai/humanize-text Comments URL: https://news.ycombinator.com/item?id=48263078 Points: 2 # Com…</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 09:32:13 +0000；摘要证据：Article URL: https://medium.com/@vishalmisra/shannon-got-ai-this-far-kolmogorov-shows-where-it-stops-c81825f89ca0 Comments URL: htt…</p>
   
   
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
@@ -2595,7 +2341,27 @@
     <span>评分 25</span>
     <span>证据 weak</span>
     <span>新发布</span>
-    <span>Hacker News AI Search / Mon, 25 May 2026 03:09:57 +0000</span>
+    <span>Hacker News AI Search / Mon, 25 May 2026 09:32:13 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">社区信号</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://chromewebstore.google.com/detail/html-deployer-1-click-ai/gihmknkabkkghpiocgnoiejagngdegea">Show HN: HTML Deployer – AI Code to Website Publisher</a>
+  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：Show HN: HTML Deployer – AI Code to Website Publisher。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为社区信号方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 25 May 2026 09:14:41 +0000；摘要证据：Article URL: https://chromewebstore.google.com/detail/html-deployer-1-click-ai/gihmknkabkkghpiocgnoiejagngdegea Comments URL: https…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 25</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>Hacker News AI Search / Mon, 25 May 2026 09:14:41 +0000</span>
   </div>
   <div class="tags"><span class="tag">社区信号</span></div>
 </article>
@@ -2606,17 +2372,37 @@
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tmq4s6/hipengine_fast_native_qwen_36_inference_for_rdna3/">hipEngine: Fast Native Qwen 3.6 Inference for RDNA3 (Strix Halo, 7900 XTX)</a>
-  <p class="item-one-liner"><strong>结论：</strong>一个社区开源推理引擎信号：面向 RDNA3 显卡优化 Qwen 3.6 MoE 原生推理，关注 AMD 本地推理性能。</p>
-  <p class="item-summary"><strong>概述：</strong>hipEngine 的价值是硬件生态信号：本地大模型推理不再只围绕 CUDA，社区开始针对 RDNA3/7900 XTX/Strix Halo 写更贴近硬件的 kernel。当前证据来自 Reddit 摘要，属于中等证据；需要回到项目页确认代码质量、license、benchmark 方法和可复现脚本。适合作为本地推理路线观察，不建议直接纳入生产评估。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐进入 HTML Top 6，因为它补足了今天报告中过度偏 Agent 的问题，也代表开源模型部署成本和硬件选择的一个真实趋势。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-24T22:21:21+00:00；摘要证据：A few weeks ago, after finishing FastDMS , I started toying around writing some RDNA3 kernels again to see how fast I could get Qwen 3.6 MoE running. It turned out well enough, so over the past couple weeks, I turned those experiments into hipEngine , a new op。</p>
-  <p class="item-audience"><strong>适合：</strong>本地推理、模型部署、硬件性能优化、开源模型团队</p>
-  <p class="item-action"><strong>行动建议：</strong>继续观察：先确认仓库、license、benchmark 脚本和复测结果；如果内部有 RDNA3 设备，再做一次小样本性能复现。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>证据来自社区帖，benchmark 可能受 batch、量化、驱动和模型配置影响；需要第三方复测后再做选型判断。</p>
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tn0jyp/server_fix_checkpoints_creation_by_jacekpoplawski/">server: fix checkpoints creation by jacekpoplawski · Pull Request #22929 · ggml-org/llama.cpp</a>
+  <p class="item-one-liner"><strong>结论：</strong>Agent、开源模型相关线索：server: fix checkpoints creation by jacekpoplawski · Pull Request #22929 · ggml-org/llama.cpp。</p>
+  <p class="item-summary"><strong>概述：</strong>server: fix checkpoints creation by jacekpoplawski · Pull Request #22929 · ggml-org/llama.cpp 的核心看点是 Agent、开源模型。Imagine you are using a local model for agentic coding. You discuss the idea (50k tokens), then say “implement it”. The agent reads files, writes files, runs commands, produces ano。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了Agent、开源模型方向的社区或生态信号，适合和官方发布、开源项目交叉验证；Agent 应用和自动化能力正在成为产品落地的主线；开源模型生态有持续跟进价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-25T06:22:12+00:00；摘要证据：Imagine you are using a local model for agentic coding. You discuss the idea (50k tokens), then say “implement it”. The agent reads files, writes files, runs commands, produces another 20k tokens and the code is ready. Then your next prompt is just “thank you”。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：读原文确认可用性和限制，再判断这条 Agent、开源模型 线索是否进入内部试验队列。</p>
+  
   
   <div class="item-meta">
-    <span>评分 58</span>
+    <span>评分 54</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-05-25T06:22:12+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">开源模型</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tmq4s6/hipengine_fast_native_qwen_36_inference_for_rdna3/">hipEngine: Fast Native Qwen 3.6 Inference for RDNA3 (Strix Halo, 7900 XTX)</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型相关线索：hipEngine: Fast Native Qwen 3.6 Inference for RDNA3 (Strix Halo, 7900 XTX)。</p>
+  <p class="item-summary"><strong>概述：</strong>hipEngine: Fast Native Qwen 3.6 Inference for RDNA3 (Strix Halo, 7900 XTX) 的核心看点是 开源模型。A few weeks ago, after finishing FastDMS , I started toying around writing some RDNA3 kernels again to see how fast I could get Qwen 3.6 MoE running. It turned out well enough, so 。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源生态变化会影响本地部署和成本结构；开源模型生态有持续跟进价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-24T22:21:21+00:00；摘要证据：A few weeks ago, after finishing FastDMS , I started toying around writing some RDNA3 kernels again to see how fast I could get Qwen 3.6 MoE running. It turned out well enough, so over the past couple weeks, I turned those experiments into hipEngine , a new op。</p>
+  <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：读原文确认可用性和限制，再判断这条 开源模型 线索是否进入内部试验队列。</p>
+  
+  
+  <div class="item-meta">
+    <span>评分 53</span>
     <span>证据 medium</span>
     <span>新发布</span>
     <span>Reddit LocalLLaMA / 2026-05-24T22:21:21+00:00</span>
@@ -2626,13 +2412,75 @@
 
 
 <article class="item-card">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tmwgis/opensource_music_reccomendation_playlist_similar/">opensource music reccomendation / playlist, similar to spotify radio / YT music mix?</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型相关线索：opensource music reccomendation / playlist, similar to spotify radio / YT music mix?。</p>
+  <p class="item-summary"><strong>概述：</strong>opensource music reccomendation / playlist, similar to spotify radio / YT music mix? 的核心看点是 开源模型。Any recommendations for this? Initially, i was thinking that LLMs probably not the right thing for this (assuming your source data is all listening metrics), HOWEVER, if you combin。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源生态变化会影响本地部署和成本结构；开源模型生态有持续跟进价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-25T03:01:09+00:00；摘要证据：Any recommendations for this? Initially, i was thinking that LLMs probably not the right thing for this (assuming your source data is all listening metrics), HOWEVER, if you combine a) user listening data; AND b) user comments / text data / reccs/ reviews / fo。</p>
+  <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：读原文确认可用性和限制，再判断这条 开源模型 线索是否进入内部试验队列。</p>
+  
+  
+  <div class="item-meta">
+    <span>评分 53</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-05-25T03:01:09+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 5 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tn3455/mimov25coder/">MiMo-V2.5-coder</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型、产品发布相关线索：MiMo-V2.5-coder。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型、产品发布方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源模型生态有持续跟进价值；发布类信息适合优先查看变化点和可用性。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-25T08:39:35+00:00；摘要证据：Hi, I&#x27;ve just released MiMo-V2.5-coder. If you have 128 Gb, this is an excellent alternative to Qwen3.6 and DS4, especially for coding.…</p>
+  
+  
+  
+  
+  <div class="item-meta">
+    <span>评分 50</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-05-25T08:39:35+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">产品发布</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tn0t7u/qwen_36_benchmarks_on_2x_rtx_pro_6000/">Qwen 3.6 benchmarks on 2x RTX PRO 6000</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型、评测基准相关线索：Qwen 3.6 benchmarks on 2x RTX PRO 6000。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型、评测基准方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源模型生态有持续跟进价值；评测基准变化能帮助判断能力边界是否真实提升。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-25T06:35:35+00:00；摘要证据：Got a chance to play around with 2x RTX PRO 6000 setup so sharing some number for Qwen 3.6. All these were run using latest stable VLLM…</p>
+  
+  
+  
+  
+  <div class="item-meta">
+    <span>评分 49</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-05-25T06:35:35+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">评测基准</span></div>
+</article>
+
+
+<article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tmyln6/1000_tps_generation_on_qwen36_27b_with_v100s/">1000 tps generation on Qwen3.6 27B with V100s</a>
   <p class="item-one-liner"><strong>结论：</strong>开源模型相关线索：1000 tps generation on Qwen3.6 27B with V100s。</p>
-  <p class="item-summary"><strong>概述：</strong>1000 tps generation on Qwen3.6 27B with V100s 的核心看点是 开源模型。I wanted to see what the absolute best case scenario for generation on this setup was and was not disappointed. 128 concurrent requests is so far removed from what I need but it’s 。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源模型生态有持续跟进价值。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-25T04:42:54+00:00；摘要证据：I wanted to see what the absolute best case scenario for generation on this setup was and was not disappointed. 128 concurrent requests is so far removed from what I need but it’s funny to see big number. For single user (batch 1 not 128) the generation is aro。</p>
-  <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
-  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-25T04:42:54+00:00；摘要证据：I wanted to see what the absolute best case scenario for generation on this setup was and was not disappointed. 128 concurrent requests…</p>
+  
+  
   
   
   <div class="item-meta">
@@ -2645,14 +2493,14 @@
 </article>
 
 
-<article class="item-card">
+<article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tmkaua/is_nvidia_still_the_default_best_choice_for_local/">Is NVIDIA still the default best choice for local LLMs in 2026?</a>
   <p class="item-one-liner"><strong>结论：</strong>开源模型相关线索：Is NVIDIA still the default best choice for local LLMs in 2026?。</p>
-  <p class="item-summary"><strong>概述：</strong>Is NVIDIA still the default best choice for local LLMs in 2026? 的核心看点是 开源模型。submitted by /u/pmv143 [link] [comments]。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  
   <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为开源模型方向的背景线索，暂不建议投入试用。</p>
   <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；2026-05-24T18:34:33+00:00；摘要证据：submitted by /u/pmv143 [link] [comments]。</p>
-  <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
-  <p class="item-action"><strong>行动建议：</strong>仅作信号：证据不足，先补原文、发布时间、代码/API 或模型卡信息，再判断是否值得投入。</p>
+  
+  
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
   
   <div class="item-meta">
@@ -2660,28 +2508,6 @@
     <span>证据 weak</span>
     <span>新发布</span>
     <span>Reddit LocalLLaMA / 2026-05-24T18:34:33+00:00</span>
-  </div>
-  <div class="tags"><span class="tag">开源模型</span></div>
-</article>
-
-</div>
-<details class="more-list"><summary>展开其余 5 条高价值线索</summary>
-
-<article class="item-card compact">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tmbola/qwen3635ba3b_vs_gemma426ba4b/">Qwen3.6-35B-A3B vs Gemma4-26B-A4B</a>
-  <p class="item-one-liner"><strong>结论：</strong>开源模型相关线索：Qwen3.6-35B-A3B vs Gemma4-26B-A4B。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源模型生态有持续跟进价值。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-24T13:05:37+00:00；摘要证据：Just wondering how are people&#x27;s experience with both these models! I&#x27;ve had some nice results with Qwen but Gemma4 runs so much faster h…</p>
-  
-  
-  
-  
-  <div class="item-meta">
-    <span>评分 38</span>
-    <span>证据 medium</span>
-    <span>新发布</span>
-    <span>Reddit LocalLLaMA / 2026-05-24T13:05:37+00:00</span>
   </div>
   <div class="tags"><span class="tag">开源模型</span></div>
 </article>
@@ -2702,66 +2528,6 @@
     <span>证据 medium</span>
     <span>新发布</span>
     <span>Reddit LocalLLaMA / 2026-05-25T04:19:50+00:00</span>
-  </div>
-  <div class="tags"><span class="tag">开源模型</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tmllua/what_frontend_do_you_guys_use/">What frontend do you guys use?</a>
-  <p class="item-one-liner"><strong>结论：</strong>开源模型相关线索：What frontend do you guys use?。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为开源模型方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；2026-05-24T19:23:23+00:00；摘要证据：I’m using vim lmao with a custom made plugin for completing text, so I was curious what yall use. Llama-server seems like a sensible defa…</p>
-  
-  
-  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
-  
-  <div class="item-meta">
-    <span>评分 38</span>
-    <span>证据 weak</span>
-    <span>新发布</span>
-    <span>Reddit LocalLLaMA / 2026-05-24T19:23:23+00:00</span>
-  </div>
-  <div class="tags"><span class="tag">开源模型</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tmoxio/generative_recursive_education_creating_custom/">Generative Recursive Education: Creating Custom Interactive Textbooks on the Fly.</a>
-  <p class="item-one-liner"><strong>结论：</strong>开源模型相关线索：Generative Recursive Education: Creating Custom Interactive Textbooks on the Fly.。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为开源模型方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；2026-05-24T21:32:35+00:00；摘要证据：submitted by /u/Ryoiki-Tokuiten [link] [comments]。</p>
-  
-  
-  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
-  
-  <div class="item-meta">
-    <span>评分 38</span>
-    <span>证据 weak</span>
-    <span>新发布</span>
-    <span>Reddit LocalLLaMA / 2026-05-24T21:32:35+00:00</span>
-  </div>
-  <div class="tags"><span class="tag">开源模型</span></div>
-</article>
-
-
-<article class="item-card compact">
-  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1tmf63y/bitcpmcann_native_158bit_large_language_model/">BitCPM-CANN: Native 1.58-Bit Large Language Model Training on Ascend NPU</a>
-  <p class="item-one-liner"><strong>结论：</strong>开源模型相关线索：BitCPM-CANN: Native 1.58-Bit Large Language Model Training on Ascend NPU。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源模型生态有持续跟进价值。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-24T15:24:26+00:00；摘要证据：Paper: https://github.com/OpenBMB/MiniCPM/blob/main/docs/BitCPM_CANN.pdf Abstract We present BitCPM-CANN, a systematic family-level stud…</p>
-  
-  
-  
-  
-  <div class="item-meta">
-    <span>评分 38</span>
-    <span>证据 medium</span>
-    <span>新发布</span>
-    <span>Reddit LocalLLaMA / 2026-05-24T15:24:26+00:00</span>
   </div>
   <div class="tags"><span class="tag">开源模型</span></div>
 </article>
@@ -2894,6 +2660,26 @@
 
 
 <article class="item-card compact">
+  <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1tn1rtk/if_you_use_nvidia_isaac_sim_for_reinforcement/">If you use NVIDIA Isaac Sim for reinforcement learning, do you use Isaac Lab with it? Just want to get a sense of what the status quo is. [D]</a>
+  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：If you use NVIDIA Isaac Sim for reinforcement learning, do you use Isaac Lab with it? Just want to get a sense of what t。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了社区信号方向的社区或生态信号，适合和官方发布、开源项目交叉验证。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-25T07:26:30+00:00；摘要证据：The reason for this query is that I am in the process of shifting to Isaac Sim / Isaac Lab since that is what seems to be in use nowaday…</p>
+  
+  
+  
+  
+  <div class="item-meta">
+    <span>评分 24</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Reddit MachineLearning / 2026-05-25T07:26:30+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">社区信号</span></div>
+</article>
+
+
+<article class="item-card compact">
   <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1tmq1eb/mergenb_an_intuitive_merge_conflict_resolver/">MergeNB: An intuitive merge conflict resolver built for Jupyter notebooks in VS Code [P]</a>
   <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：MergeNB: An intuitive merge conflict resolver built for Jupyter notebooks in VS Code [P]。</p>
   
@@ -2912,47 +2698,27 @@
   <div class="tags"><span class="tag">社区信号</span></div>
 </article>
 
-
-<article class="item-card compact">
-  <a class="item-title" href="https://www.reddit.com/r/MachineLearning/comments/1tmrd2z/ai_solved_one_of_maths_greatest_challenges_but_it/">&quot;AI solved one of math&#x27;s greatest challenges, but it cannot add two numbers reliably?!&quot; [D]</a>
-  <p class="item-one-liner"><strong>结论：</strong>社区信号相关线索：&quot;AI solved one of math&#x27;s greatest challenges, but it cannot add two numbers reliably?!&quot; [D]。</p>
-  
-  <p class="item-reason"><strong>推荐理由：</strong>它补充了社区信号方向的社区或生态信号，适合和官方发布、开源项目交叉验证。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-05-24T23:12:53+00:00；摘要证据：Suppose your friend, a mathematician, woke up from a 5-year coma. How would you explain this to him? Do we even have an explanation othe…</p>
-  
-  
-  
-  
-  <div class="item-meta">
-    <span>评分 24</span>
-    <span>证据 medium</span>
-    <span>新发布</span>
-    <span>Reddit MachineLearning / 2026-05-24T23:12:53+00:00</span>
-  </div>
-  <div class="tags"><span class="tag">社区信号</span></div>
-</article>
-
 </details>
 </section>
 </section>
 <section class="group-section"><h2>arXiv 今日精选</h2>
-<p class="group-editorial">论文侧重点集中在 agent skills、自演化技能、多模态推理和视频生成对齐。今天这些论文更适合作为设计雷达，而不是直接工程接入；优先阅读与 skill 生成、评估和消费相关的论文。</p>
+<p class="group-editorial">论文侧重点集中在 agent skills、自演化技能、多模态推理和视频生成对齐。今天最贴近工程架构的是 model-generated agent skills，可用于反推 skill 与脚本的职责边界。</p>
 <section class="source-block"><div class="source-head"><h3>arXiv cs.AI</h3><span>5 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
   <a class="item-title" href="http://arxiv.org/abs/2605.23899v1">From Raw Experience to Skill Consumption: A Systematic Study of Model-Generated Agent Skills</a>
-  <p class="item-one-liner"><strong>结论：</strong>一篇系统研究 model-generated agent skills 的论文，关注 agent 如何从原始经验提炼、复用和消费结构化技能。</p>
-  <p class="item-summary"><strong>概述：</strong>这条是今天最贴近 skill 体系本身的研究线索：它讨论的不是单个 prompt 技巧，而是 agent 如何把经验沉淀成可复用 procedural artifact。摘要显示论文关注 domain-level 和 model-generated skills 的效率与泛化，但目前只有 arXiv 摘要级证据，尚不能判断代码、数据和评测是否足够完整。适合先读原文，提炼可落到 ai-daily-patrol skill 的设计原则。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>推荐放进 HTML Top 6，因为它能反向指导当前日报 skill 的演进：哪些内容应该写成 skill，哪些应留在脚本层，哪些需要模型编辑判断。</p>
-  <p class="item-evidence"><strong>证据：</strong>中等证据：来自 arXiv 摘要；2026-05-22T17:59:12Z；摘要证据：Language agents increasingly improve by reusing \emph{skills} -- structured procedural artifacts distilled from past experience. In particular, \emph{domain-level} and \emph{model-generated} skills are especially promising. They offer fast。</p>
-  <p class="item-audience"><strong>适合：</strong>Agent 研究、Codex skill 设计、自动化平台、AI Infra 团队</p>
-  <p class="item-action"><strong>行动建议：</strong>先评估：读原文里的任务设定和评测口径，提取 3 条可用于改造现有 skill 的原则，再决定是否跟进实验。</p>
-  <p class="item-caveat"><strong>风险提示：</strong>目前只有摘要证据；未确认代码、数据集和评测细节，不能直接当作工程最佳实践。</p>
+  <p class="item-one-liner"><strong>结论：</strong>一篇系统研究 agent skills 的论文，关注模型如何从原始经验提炼、评估、复用并消费结构化技能。</p>
+  <p class="item-summary"><strong>概述：</strong>这篇论文和当前日报 skill 的演进高度相关：它讨论的不是单次 prompt，而是 agent 如何把经验转成可复用 procedural artifact。草稿里已经有 arXiv 原文二次抓取，摘要说明它关注 domain-level 和 model-generated skills 的快速适配、规模化和理解缺口。它适合优先阅读，用来反推哪些逻辑应该留给模型判断，哪些应该沉淀成脚本或 skill 规范。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>推荐原因：它能直接指导“模型能力 + 脚本工具层”的边界设计，是今天最贴近你这套 AI Daily Patrol 架构的研究线索。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：原文二次抓取成功；2026-05-22T17:59:12Z；摘要证据：Language agents increasingly improve by reusing \emph{skills} -- structured procedural artifacts distilled from past experience. In particular, \emph{domain-level} and \emph{model-generated} skills are especially promising. They offer fast 原文二次抓取：--&gt; Computer 。</p>
+  <p class="item-audience"><strong>适合：</strong>Codex skill 设计、Agent 研究、自动化平台、AI Infra 团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：读原文的任务设定、skill 抽取方法和评测维度，提炼 3 条可用于改造 ai-daily-patrol skill 的原则。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>虽然已有 arXiv 原文证据，但仍需确认代码、数据集和评测可复现性；不要直接当作工程最佳实践。</p>
   
   <div class="item-meta">
-    <span>评分 71</span>
-    <span>证据 medium</span>
+    <span>评分 90</span>
+    <span>证据 strong</span>
     <span>新发布</span>
     <span>arXiv cs.AI / 2026-05-22T17:59:12Z</span>
   </div>
@@ -3345,27 +3111,27 @@
 </section>
 </section>
 <section class="group-section"><h2>Hugging Face 热门</h2>
-<p class="group-editorial">Hugging Face 热门更适合补充模型、数据集和论文生态信号。今天没有足够强的一手模型卡进入 Top 3；完整报告中可按模型卡、license、demo 和下载量再做二次筛选。</p>
+<p class="group-editorial">Hugging Face 热门用于补充模型、数据集和论文生态。今天没有足够强的一手模型卡进入钉钉 Top 3；完整报告中按 license、demo、下载量和复现成本继续筛。</p>
 <section class="source-block"><div class="source-head"><h3>Hugging Face Daily Papers</h3><span>4 条</span></div>
 <div class="source-grid">
 
 <article class="item-card">
-  <a class="item-title" href="https://huggingface.co/papers/2605.18018">See What I Mean: Aligning Vision and Language Representations for Video Fine-grained Object Understanding</a>
-  <p class="item-one-liner"><strong>结论：</strong>多模态相关线索：See What I Mean: Aligning Vision and Language Representations for Video Fine-grained Object Understanding。</p>
-  <p class="item-summary"><strong>概述：</strong>See What I Mean: Aligning Vision and Language Representations for Video Fine-grained Object Understanding 的核心看点是 多模态。arXiv: https://arxiv.org/abs/2605.18018。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
-  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为多模态方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2605.18018。</p>
-  <p class="item-audience"><strong>适合：</strong>多模态产品、算法研究、应用创新团队</p>
+  <a class="item-title" href="https://huggingface.co/papers/2605.21573">Lens: Rethinking Training Efficiency for Foundational Text-to-Image Models</a>
+  <p class="item-one-liner"><strong>结论：</strong>AI 动态相关线索：Lens: Rethinking Training Efficiency for Foundational Text-to-Image Models。</p>
+  <p class="item-summary"><strong>概述：</strong>Lens: Rethinking Training Efficiency for Foundational Text-to-Image Models 的核心看点是 AI 动态。arXiv: https://arxiv.org/abs/2605.21573。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2605.21573。</p>
+  <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
   <p class="item-action"><strong>行动建议：</strong>仅作信号：证据不足，先补原文、发布时间、代码/API 或模型卡信息，再判断是否值得投入。</p>
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
   
   <div class="item-meta">
-    <span>评分 51</span>
+    <span>评分 50</span>
     <span>证据 weak</span>
     <span>发布时间未知</span>
     <span>Hugging Face Daily Papers</span>
   </div>
-  <div class="tags"><span class="tag">多模态</span></div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
 </article>
 
 
@@ -3390,11 +3156,11 @@
 
 
 <article class="item-card">
-  <a class="item-title" href="https://huggingface.co/papers/2605.21573">Lens: Rethinking Training Efficiency for Foundational Text-to-Image Models</a>
-  <p class="item-one-liner"><strong>结论：</strong>AI 动态相关线索：Lens: Rethinking Training Efficiency for Foundational Text-to-Image Models。</p>
-  <p class="item-summary"><strong>概述：</strong>Lens: Rethinking Training Efficiency for Foundational Text-to-Image Models 的核心看点是 AI 动态。arXiv: https://arxiv.org/abs/2605.21573。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <a class="item-title" href="https://huggingface.co/papers/2605.23463">StepAudio 2.5 Technical Report</a>
+  <p class="item-one-liner"><strong>结论：</strong>AI 动态相关线索：StepAudio 2.5 Technical Report。</p>
+  <p class="item-summary"><strong>概述：</strong>StepAudio 2.5 Technical Report 的核心看点是 AI 动态。arXiv: https://arxiv.org/abs/2605.23463。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
   <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2605.21573。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2605.23463。</p>
   <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
   <p class="item-action"><strong>行动建议：</strong>仅作信号：证据不足，先补原文、发布时间、代码/API 或模型卡信息，再判断是否值得投入。</p>
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
@@ -3412,11 +3178,11 @@
 <details class="more-list"><summary>展开其余 1 条高价值线索</summary>
 
 <article class="item-card compact">
-  <a class="item-title" href="https://huggingface.co/papers/2605.23463">StepAudio 2.5 Technical Report</a>
-  <p class="item-one-liner"><strong>结论：</strong>AI 动态相关线索：StepAudio 2.5 Technical Report。</p>
+  <a class="item-title" href="https://huggingface.co/papers/2605.22878">SciAtlas: A Large-Scale Knowledge Graph for Automated Scientific Research</a>
+  <p class="item-one-liner"><strong>结论：</strong>AI 动态相关线索：SciAtlas: A Large-Scale Knowledge Graph for Automated Scientific Research。</p>
   
   <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2605.23463。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2605.22878。</p>
   
   
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
@@ -3440,7 +3206,7 @@
   <p class="item-one-liner"><strong>结论：</strong>AI 动态相关线索，但当前证据不足，需要先补原文。</p>
   <p class="item-summary"><strong>概述：</strong>bytedance-research/Lance 目前只提供了 AI 动态 方向的标题级线索。原文未提供足够摘要，无法判断是否值得接入。需要先补齐发布日期、正文摘要、API/安装方式、license 或评测数据。在补齐证据前仅作为线索保留。</p>
   <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；any-to-any / downloads 1474 / likes 771。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；any-to-any / downloads 1679 / likes 779。</p>
   <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
   <p class="item-action"><strong>行动建议：</strong>仅作信号：证据不足，先补原文、发布时间、代码/API 或模型卡信息，再判断是否值得投入。</p>
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
@@ -3449,7 +3215,7 @@
     <span>评分 51</span>
     <span>证据 weak</span>
     <span>发布时间未知</span>
-    <span>Hugging Face Trending Models / any-to-any / downloads 1474 / likes 771</span>
+    <span>Hugging Face Trending Models / any-to-any / downloads 1679 / likes 779</span>
   </div>
   <div class="tags"><span class="tag">AI 动态</span></div>
 </article>
@@ -3460,7 +3226,7 @@
   <p class="item-one-liner"><strong>结论：</strong>AI 动态相关线索，但当前证据不足，需要先补原文。</p>
   <p class="item-summary"><strong>概述：</strong>tencent/Hy-MT2-1.8B 目前只提供了 AI 动态 方向的标题级线索。原文未提供足够摘要，无法判断是否值得接入。需要先补齐发布日期、正文摘要、API/安装方式、license 或评测数据。在补齐证据前仅作为线索保留。</p>
   <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；translation / downloads 4534 / likes 646。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；translation / downloads 5552 / likes 694。</p>
   <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
   <p class="item-action"><strong>行动建议：</strong>仅作信号：证据不足，先补原文、发布时间、代码/API 或模型卡信息，再判断是否值得投入。</p>
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
@@ -3469,7 +3235,7 @@
     <span>评分 51</span>
     <span>证据 weak</span>
     <span>发布时间未知</span>
-    <span>Hugging Face Trending Models / translation / downloads 4534 / likes 646</span>
+    <span>Hugging Face Trending Models / translation / downloads 5552 / likes 694</span>
   </div>
   <div class="tags"><span class="tag">AI 动态</span></div>
 </article>
@@ -3480,7 +3246,7 @@
   <p class="item-one-liner"><strong>结论：</strong>AI 动态相关线索，但当前证据不足，需要先补原文。</p>
   <p class="item-summary"><strong>概述：</strong>NemoStation/Marlin-2B 目前只提供了 AI 动态 方向的标题级线索。原文未提供足够摘要，无法判断是否值得接入。需要先补齐发布日期、正文摘要、API/安装方式、license 或评测数据。在补齐证据前仅作为线索保留。</p>
   <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；video-text-to-text / downloads 6032 / likes 312。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；video-text-to-text / downloads 7291 / likes 320。</p>
   <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
   <p class="item-action"><strong>行动建议：</strong>仅作信号：证据不足，先补原文、发布时间、代码/API 或模型卡信息，再判断是否值得投入。</p>
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
@@ -3489,7 +3255,7 @@
     <span>评分 51</span>
     <span>证据 weak</span>
     <span>发布时间未知</span>
-    <span>Hugging Face Trending Models / video-text-to-text / downloads 6032 / likes 312</span>
+    <span>Hugging Face Trending Models / video-text-to-text / downloads 7291 / likes 320</span>
   </div>
   <div class="tags"><span class="tag">AI 动态</span></div>
 </article>
@@ -3502,7 +3268,7 @@
   <p class="item-one-liner"><strong>结论：</strong>AI 动态相关线索，但当前证据不足，需要先补原文。</p>
   
   <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；translation / downloads 1243 / likes 316。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；translation / downloads 1494 / likes 318。</p>
   
   
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
@@ -3511,18 +3277,18 @@
     <span>评分 51</span>
     <span>证据 weak</span>
     <span>发布时间未知</span>
-    <span>Hugging Face Trending Models / translation / downloads 1243 / likes 316</span>
+    <span>Hugging Face Trending Models / translation / downloads 1494 / likes 318</span>
   </div>
   <div class="tags"><span class="tag">AI 动态</span></div>
 </article>
 
 
 <article class="item-card compact">
-  <a class="item-title" href="https://huggingface.co/Supertone/supertonic-3">Supertone/supertonic-3</a>
-  <p class="item-one-liner"><strong>结论：</strong>AI 动态相关线索，但当前证据不足，需要先补原文。</p>
+  <a class="item-title" href="https://huggingface.co/sapientinc/HRM-Text-1B">sapientinc/HRM-Text-1B</a>
+  <p class="item-one-liner"><strong>结论：</strong>开发者生态相关线索，但当前证据不足，需要先补原文。</p>
   
-  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
-  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；text-to-speech / downloads 43119 / likes 648。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为开发者生态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；text-generation / downloads 90026 / likes 274。</p>
   
   
   <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
@@ -3531,9 +3297,9 @@
     <span>评分 51</span>
     <span>证据 weak</span>
     <span>发布时间未知</span>
-    <span>Hugging Face Trending Models / text-to-speech / downloads 43119 / likes 648</span>
+    <span>Hugging Face Trending Models / text-generation / downloads 90026 / likes 274</span>
   </div>
-  <div class="tags"><span class="tag">AI 动态</span></div>
+  <div class="tags"><span class="tag">开发者生态</span></div>
 </article>
 
 </details>
@@ -3543,9 +3309,9 @@
     <section>
       <h2>运行状态</h2>
       <div class="ops">
-        <p>生成时间：2026-05-25 13:30 CST</p>
+        <p>生成时间：2026-05-25 18:17 CST</p>
         <p>HTML 由结构化日报 JSON 渲染；源码标题保留原文，编辑判断和推荐理由均为中文规则生成。</p>
-        <p>本次巡查所有来源均正常返回。</p>
+        <ul><li>GitHub Search: MCP Servers: RuntimeError: TimeoutError: The read operation timed out</li><li>GitHub Search: Agent Harness: RuntimeError: TimeoutError: The read operation timed out</li><li>GitHub Search: New AI Agents: RuntimeError: TimeoutError: The read operation timed out</li></ul>
       </div>
     </section>
   </main>
