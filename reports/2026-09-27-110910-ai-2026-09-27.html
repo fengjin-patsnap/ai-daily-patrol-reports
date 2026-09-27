@@ -1,0 +1,1813 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 日报 2026-09-27</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fff7ed;
+      --panel: #fffefb;
+      --panel-strong: #111827;
+      --text: #151515;
+      --muted: #514a45;
+      --line: #111827;
+      --soft: #fff0b8;
+      --accent: #f97316;
+      --accent-2: #2563eb;
+      --accent-3: #db2777;
+      --accent-4: #059669;
+      --accent-5: #7c3aed;
+      --warn: #ca8a04;
+      --shadow: 7px 7px 0 #111827;
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--bg); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, .12) 0 10%, transparent 10% 100%),
+        linear-gradient(45deg, transparent 0 46%, rgba(219, 39, 119, .12) 46% 54%, transparent 54% 100%),
+        repeating-linear-gradient(0deg, rgba(17, 24, 39, .055) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(90deg, rgba(17, 24, 39, .045) 0 1px, transparent 1px 24px),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.62 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(112deg, transparent 0 65%, rgba(249, 115, 22, .18) 65% 76%, transparent 76%),
+        linear-gradient(18deg, transparent 0 72%, rgba(5, 150, 105, .16) 72% 84%, transparent 84%);
+      mix-blend-mode: multiply;
+    }
+    main { max-width: 1360px; margin: 0 auto; padding: 34px 24px 64px; position: relative; }
+    a { color: var(--accent-2); overflow-wrap: anywhere; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr);
+      gap: 26px;
+      align-items: stretch;
+      margin-bottom: 26px;
+      padding: 22px;
+      background: var(--panel);
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(249, 115, 22, .18) 0 22%, transparent 22% 100%),
+        linear-gradient(24deg, transparent 0 70%, rgba(37, 99, 235, .14) 70% 82%, transparent 82% 100%);
+      pointer-events: none;
+    }
+    .hero > * { position: relative; }
+    .eyebrow {
+      display: inline-block;
+      color: #fff;
+      background: var(--panel-strong);
+      border: 2px solid var(--line);
+      border-radius: 4px;
+      padding: 4px 9px;
+      font-weight: 900;
+      font-size: 13px;
+      transform: rotate(-1deg);
+    }
+    h1 {
+      margin: 14px 0 12px;
+      font-size: 42px;
+      line-height: 1.12;
+      letter-spacing: 0;
+      font-weight: 950;
+      max-width: 820px;
+    }
+    .lede {
+      color: var(--text);
+      font-size: 17px;
+      margin: 0;
+      background: rgba(255, 240, 184, .86);
+      border-left: 8px solid var(--accent-3);
+      padding: 12px 14px;
+      border-radius: 6px;
+    }
+    .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .stat {
+      background: #ffffff;
+      border: 2px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 12px;
+      min-width: 118px;
+      box-shadow: 4px 4px 0 #111827;
+      transform: rotate(.5deg);
+    }
+    .stat:nth-child(2) { background: #dbeafe; transform: rotate(-.6deg); }
+    .stat:nth-child(3) { background: #fce7f3; transform: rotate(.8deg); }
+    .stat:nth-child(4) { background: #dcfce7; transform: rotate(-.4deg); }
+    .stat b { display: block; font-size: 26px; line-height: 1.1; font-weight: 950; }
+    .stat span { color: var(--muted); font-size: 13px; font-weight: 750; }
+    .cover-image, .cover-svg {
+      width: 100%;
+      min-height: 280px;
+      border-radius: 8px;
+      border: 2px solid var(--line);
+      background: var(--panel);
+      display: block;
+      box-shadow: 6px 6px 0 #111827;
+    }
+    .cover-bg { fill: #111827; }
+    .cover-stripe { fill: #fde047; opacity: .94; }
+    .cover-stripe-alt { fill: #a7f3d0; opacity: .92; }
+    .cover-core { fill: #fff7ed; stroke: #111827; stroke-width: 4; }
+    .cover-core-text { fill: #111827; font-size: 40px; font-weight: 950; }
+    .cover-core-sub { fill: #111827; font-size: 14px; font-weight: 850; }
+    .cover-topic { fill: #fff; font-size: 15px; font-weight: 900; }
+    .cover-topic-sub { fill: #fff; font-size: 12px; font-weight: 750; opacity: .92; }
+    .cover-line { stroke: rgba(255,255,255,.4); stroke-width: 2; stroke-dasharray: 8 7; }
+    section { margin-top: 34px; }
+    h2 {
+      display: inline-block;
+      margin: 0 0 16px;
+      font-size: 25px;
+      line-height: 1.25;
+      letter-spacing: 0;
+      font-weight: 950;
+      background: var(--panel-strong);
+      color: #fff;
+      border: 2px solid var(--line);
+      border-radius: 6px;
+      padding: 6px 12px;
+      box-shadow: 5px 5px 0 var(--accent);
+      transform: rotate(-.7deg);
+    }
+    h3 { margin: 0; font-size: 18px; line-height: 1.35; letter-spacing: 0; font-weight: 900; }
+    .highlight-grid, .source-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+    .charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .item-card {
+      background: var(--panel);
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 6px 6px 0 #111827;
+      position: relative;
+      overflow: hidden;
+    }
+    .item-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 7px;
+      background: linear-gradient(90deg, var(--accent-2), var(--accent-3), var(--accent), var(--accent-4));
+    }
+    .item-card:nth-child(4n+2) { background: #f0f9ff; }
+    .item-card:nth-child(4n+3) { background: #fff7ed; }
+    .item-card:nth-child(4n+4) { background: #fdf2f8; }
+    .item-card.compact { margin-top: 12px; box-shadow: 4px 4px 0 #111827; background: #fffefb; }
+    .item-card.compact .item-title { font-size: 15px; margin-bottom: 8px; }
+    .item-title {
+      display: block;
+      font-weight: 900;
+      line-height: 1.38;
+      margin: 7px 0 10px;
+      font-size: 17px;
+    }
+    .item-one-liner {
+      margin: 0 0 10px;
+      color: var(--text);
+      background: #fef3c7;
+      border: 1.5px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-weight: 760;
+    }
+    .item-summary { margin: 0 0 9px; color: var(--text); }
+    .item-evidence {
+      margin: 0 0 9px;
+      color: var(--text);
+      background: #e0f2fe;
+      border: 1.5px dashed var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+    .item-audience {
+      margin: 0 0 9px;
+      color: var(--text);
+      background: #f5f3ff;
+      border-left: 6px solid var(--accent-3);
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+    .item-action {
+      margin: 0 0 9px;
+      color: var(--text);
+      background: #dcfce7;
+      border: 1.5px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+    .item-caveat {
+      margin: 0 0 9px;
+      color: var(--text);
+      background: #fee2e2;
+      border: 1.5px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+    .item-reason { margin: 0 0 10px; color: var(--muted); }
+    .item-card.compact .item-one-liner,
+    .item-card.compact .item-evidence,
+    .item-card.compact .item-caveat {
+      padding: 7px 9px;
+      margin-bottom: 8px;
+    }
+    .source-notes {
+      margin: 0 0 10px;
+      padding: 9px 10px 9px 26px;
+      color: var(--muted);
+      background: #fef9c3;
+      border: 1.5px dashed var(--line);
+      border-radius: 6px;
+    }
+    .source-notes li { margin: 4px 0; }
+    .item-meta { display: flex; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tag {
+      background: var(--soft);
+      color: #111827;
+      border: 1.5px solid var(--line);
+      border-radius: 4px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 850;
+      box-shadow: 2px 2px 0 #111827;
+    }
+    .tag:nth-child(2n) { background: #dbeafe; }
+    .tag:nth-child(3n) { background: #fce7f3; }
+    .chart {
+      width: 100%;
+      background: var(--panel);
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: 6px 6px 0 #111827;
+    }
+    .chart-title { fill: var(--text); font-size: 19px; font-weight: 900; }
+    .chart-label, .chart-value, .radar-label { fill: var(--muted); font-size: 13px; }
+    .radar-ring, .radar-axis { fill: none; stroke: #111827; stroke-width: 1.5; opacity: .5; }
+    .radar-shape { fill: var(--accent-3); opacity: .28; stroke: var(--accent-3); stroke-width: 3; }
+    .source-block { margin-top: 18px; }
+    .group-editorial {
+      margin: 0 0 18px;
+      max-width: 980px;
+      color: var(--text);
+      background: #e0f2fe;
+      border: 2px solid var(--line);
+      border-left: 10px solid var(--accent-2);
+      border-radius: 8px;
+      padding: 12px 14px;
+      box-shadow: 5px 5px 0 #111827;
+      font-weight: 720;
+    }
+    .source-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+    .source-head h3 {
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: 6px;
+      padding: 5px 10px;
+      box-shadow: 4px 4px 0 var(--accent-2);
+    }
+    .source-head span {
+      color: #fff;
+      background: var(--accent-3);
+      border: 2px solid var(--line);
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 13px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+    details.more-list {
+      margin-top: 14px;
+      border: 2px dashed var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: rgba(255,255,255,.55);
+    }
+    details.more-list summary { cursor: pointer; color: var(--accent-2); font-weight: 900; }
+    .ops {
+      background: var(--panel);
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+      color: var(--muted);
+      box-shadow: 6px 6px 0 #111827;
+    }
+    @media (max-width: 760px) {
+      main { padding: 22px 12px 42px; }
+      .hero, .highlight-grid, .source-grid, .charts { grid-template-columns: 1fr; }
+      .hero { padding: 16px; box-shadow: 4px 4px 0 #111827; }
+      h1 { font-size: 30px; }
+      .item-card, .chart, .ops, .cover-image, .cover-svg { box-shadow: 4px 4px 0 #111827; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div>
+        <div class="eyebrow">AI Daily Patrol</div>
+        <h1>AI 日报 2026-09-27</h1>
+        <p class="lede">本轮共收录 59 条，覆盖 37 个配置源；24 个源因 SSL 中断、远端断连或限流失败，因此官方实验室与 GitHub 搜索覆盖明显不足。编辑上只把已拿到原文、完整摘要或 README 的条目放进 Top 6，优先保留可直接影响机器人重规划、扩散模型训练、消息代理边界和本地推理正确性的内容；只有强证据条目进入钉钉 Top 3。</p>
+        <div class="stats">
+          <div class="stat"><b>59</b><span>条有效线索</span></div>
+          <div class="stat"><b>37</b><span>个来源</span></div>
+          <div class="stat"><b>6</b><span>今日必读</span></div>
+          <div class="stat"><b>24</b><span>失败源</span></div>
+        </div>
+      </div>
+      <div><svg class="cover-svg" viewBox="0 0 760 280" role="img" aria-label="AI 日报主题图谱">
+<rect width="760" height="280" rx="18" class="cover-bg"></rect>
+<path d="M0 54 L760 14 L760 92 L0 132 Z" class="cover-stripe"></path>
+<path d="M0 214 L760 170 L760 244 L0 278 Z" class="cover-stripe cover-stripe-alt"></path>
+<line x1="382" y1="140" x2="148.0" y2="76.0" class="cover-line"></line>
+<line x1="382" y1="140" x2="370.0" y2="76.0" class="cover-line"></line>
+<line x1="382" y1="140" x2="592.0" y2="76.0" class="cover-line"></line>
+<line x1="382" y1="140" x2="146.0" y2="174.0" class="cover-line"></line>
+<line x1="382" y1="140" x2="368.0" y2="174.0" class="cover-line"></line>
+<line x1="382" y1="140" x2="582.0" y2="174.0" class="cover-line"></line>
+<rect x="308" y="86" width="144" height="96" rx="8" class="cover-core"></rect>
+<text x="380" y="127" text-anchor="middle" class="cover-core-text">AI</text>
+<text x="380" y="154" text-anchor="middle" class="cover-core-sub">Daily Patrol</text>
+<polygon points="52,44 254,52 244,108 42,100" fill="#2563eb" opacity="0.88"></polygon>
+<text x="58" y="78" class="cover-topic">产业应用</text>
+<text x="58" y="96" class="cover-topic-sub">12 条</text>
+<polygon points="254,44 476,52 486,108 264,100" fill="#f97316" opacity="0.88"></polygon>
+<text x="280" y="78" class="cover-topic">AI 动态</text>
+<text x="280" y="96" class="cover-topic-sub">11 条</text>
+<polygon points="496,44 698,52 688,108 486,100" fill="#db2777" opacity="0.88"></polygon>
+<text x="502" y="78" class="cover-topic">研究进展</text>
+<text x="502" y="96" class="cover-topic-sub">9 条</text>
+<polygon points="32,142 250,150 260,206 42,198" fill="#059669" opacity="0.88"></polygon>
+<text x="58" y="176" class="cover-topic">开源模型</text>
+<text x="58" y="194" class="cover-topic-sub">8 条</text>
+<polygon points="274,142 472,150 462,206 264,198" fill="#7c3aed" opacity="0.88"></polygon>
+<text x="280" y="176" class="cover-topic">Agent</text>
+<text x="280" y="194" class="cover-topic-sub">8 条</text>
+<polygon points="476,142 678,150 688,206 486,198" fill="#ca8a04" opacity="0.88"></polygon>
+<text x="502" y="176" class="cover-topic">多模态</text>
+<text x="502" y="194" class="cover-topic-sub">4 条</text>
+</svg></div>
+    </header>
+
+    <section>
+      <h2>今日必读</h2>
+      <div class="highlight-grid">
+<article class="item-card">
+  <a class="item-title" href="http://arxiv.org/abs/2609.30247v1">Rolling-WAM: World Action Models with Rolling Imagination</a>
+  <p class="item-one-liner"><strong>结论：</strong>Rolling-WAM 把视频与动作的联合去噪摊到连续重规划周期中，在保持操作表现的同时把机器人稳定状态重规划提速 4.5 倍。</p>
+  <p class="item-summary"><strong>概述：</strong>世界动作模型通常每次重规划都从头完成整段视频与动作去噪，闭环更新因此被延迟。Rolling-WAM 保留不同噪声层级的滑动窗口，只把即将执行的动作块完全去噪，并持续细化更远期块。论文在三个环境中报告竞争性操作表现和 4.5 倍稳定状态提速，说明它直击具身系统的在线延迟瓶颈。现在适合先复现项目页的时延与成功率，再判断能否替换现有分块策略。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它给出了明确机制、跨仿真与真机评测以及可量化的 4.5 倍重规划提速，对做机器人策略和世界模型推理的团队有直接价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：已读取 arXiv 原文摘要。论文在 LIBERO、RoboTwin 和真实 Unitree G1 上评估，通过跨重规划周期滚动去噪，将稳定状态重规划速度提升 4.5 倍；论文仍在评审中。</p>
+  <p class="item-audience"><strong>适合：</strong>具身智能、机器人策略、世界模型与实时推理团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：在现有机器人任务上复现端到端重规划时延、成功率和显存占用，并与当前分块或缓存方案对照。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>论文仍在评审中；4.5 倍是相对标准联合 WAM 的稳定状态结果，迁移到其他硬件、观测频率和控制栈后的收益尚未验证。</p>
+  
+  <div class="item-meta">
+    <span>评分 92</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>arXiv cs.CV / 2026-09-24T17:58:03Z</span>
+  </div>
+  <div class="tags"><span class="tag">多模态</span><span class="tag">具身智能</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1wr0wki/improved_and_fixed_template_for_gptoss_again/">Improved and fixed template for GPT-OSS (again). Includes preserve_thinking and fix for Unsloth-induced bug</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个 GPT-OSS 聊天模板分支会在回放含推理轨迹的历史消息时只保留 thinking、丢掉最终回答，可能让多轮推理明显失真。</p>
+  <p class="item-summary"><strong>概述：</strong>问题出在历史消息同时含 content 与 thinking 时，模板分支只渲染 analysis 通道，最终回答没有进入上下文。作者称这一逻辑继承自 Unsloth 模板，并观察到 GPT-OSS 20B 会因此偏离任务，而 120B 有时能靠推理轨迹恢复。修正版同时加入 preserve_thinking，可利用前缀缓存提速，但会增加上下文 token。使用相关模板的团队应立即做多轮回放测试，而不是只看单轮输出。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这是具体到模板分支的正确性问题，影响多轮代理和本地推理服务，修复成本低且可以用回归样例快速验证。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：已读取完整社区原帖和代码片段。作者指出含 thinking 与 content 的历史消息只渲染 thinking、丢失最终回答，并链接修正版模板与 OpenAI 参考模板；尚缺独立回归测试。</p>
+  <p class="item-audience"><strong>适合：</strong>本地模型部署、推理服务、代理框架和聊天模板维护者</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：构造同时包含 thinking 与 content 的两轮历史，检查实际渲染提示词并对修复前后输出做回归。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>结论来自社区作者与单方观察，尚无独立复测；保留 thinking 会提高 token 使用量，并可能改变隐私与日志保留边界。</p>
+  
+  <div class="item-meta">
+    <span>评分 71</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-09-26T20:35:32+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">推理能力</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/hraness/textbutler">hraness/textbutler</a>
+  <p class="item-one-liner"><strong>结论：</strong>Textbutler 是一套运行在 Mac 上的本地消息代理，把 iMessage、WhatsApp 与 Beeper 的读取、草拟和显式授权发送做成可审计工作流。</p>
+  <p class="item-summary"><strong>概述：</strong>它不是简单的自动回复脚本，而是把消息连接、联系人上下文、草稿审阅、发送摘要和未知结果恢复都显式化。新安装默认暂停、联系人自动回复默认关闭，模型本身不持有工具，降低了误发范围。仓库已有 242 次提交和 MIT 许可，但当前仍需从源码运行，WhatsApp 与 Beeper 也要求用户自行实测。适合安全或代理平台团队拆解其授权与审计设计，不适合直接接管生产消息。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它把高风险消息代理的权限、审阅、发送和恢复边界落实为具体 CLI 与状态机，对设计可控代理比单纯功能演示更有参考价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：已读取 GitHub README。仓库为 MIT 许可，提供 JSON CLI、显式授权发送、默认暂停和联系人级自动回复开关；项目明确标注 In development，AI 回复需本地构建及 Claude Code 或 Codex 订阅。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 平台、安全工程、个人 AI 助手和 macOS 自动化团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：只接测试账号，验证暂停、联系人授权、草稿摘要、重复发送阻断和未知结果恢复，再决定是否扩大范围。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>项目处于开发中且没有正式 Textbutler 安装包；会接触私密消息历史，并依赖 Ghostget、xcb 及外部消息平台权限，误发与数据暴露风险需要单独审计。</p>
+  
+  <div class="item-meta">
+    <span>评分 86</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / TypeScript / ⭐ 5 / forks 0 / updated 2026-09-27 / license MIT / topics: agent-skill, agent-skills, ai-assistant, beeper,</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://arxiv.org/abs/2609.28561">CARE: Condition-Aware Representation Regularization for Diffusion Models</a>
+  <p class="item-one-liner"><strong>结论：</strong>CARE 用条件相似度动态约束扩散模型特征分布，以插件式正则化改善样本质量和收敛稳定性。</p>
+  <p class="item-summary"><strong>概述：</strong>常见表征正则化没有显式利用标签或文本条件，CARE 则让相似条件形成更紧的特征簇，且不需要额外监督或显式对齐损失。摘要给出了 ImageNet 与文本生成图像两类任务的量化收益，并声称可叠加现有正则化方法。它最值得验证的是收益是否来自同等算力和训练配方，而不是额外调参。对正在训练扩散模型的团队，可以用小规模消融先验证收敛速度和语义对齐。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>方法改动轻、指标明确，并同时覆盖类别条件与文本条件扩散训练，具备较低成本的实验价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：已读取 arXiv 原文摘要。作者报告 ImageNet 400k 步 FID 降低 19.08%、训练加速 3.5 倍；文本生成图像在 200k 步 FID 降低 16.61%，并改善文本语义对齐。</p>
+  <p class="item-audience"><strong>适合：</strong>扩散模型训练、视觉生成、训练效率和表征学习团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：在现有训练配方中做等算力消融，记录 FID、语义对齐、收敛步数及不同条件分布下的稳定性。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>目前依据论文自报结果，摘要未提供独立复现或代码入口；3.5 倍加速的定义和硬件条件需要在正文中核对。</p>
+  
+  <div class="item-meta">
+    <span>评分 82</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>arXiv cs.LG / Sat, 26 Sep 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://arxiv.org/abs/2609.28553">SMILESGNN: Interpretable Clinical Toxicity Prediction via SMILES-Graph Cross-Attention Fusion</a>
+  <p class="item-one-liner"><strong>结论：</strong>SMILESGNN 用交叉注意力融合 SMILES 序列与分子图，在保持小模型规模的同时保留可定位毒性子结构的图解释路径。</p>
+  <p class="item-summary"><strong>概述：</strong>序列模型和图网络分别擅长分子字符串上下文与结构归因，SMILESGNN 将两者通过交叉注意力融合，并保留 GNNExplainer 可解释分支。ClinTox 上的结果很强且参数量仅 0.4M，但 Tox21 上只是与 ChemBERTa-2 及拼接基线相当。它的实际价值更多在可解释性与模型体量，而不是所有任务上都显著领先。药物发现团队应优先检查 scaffold split、类别不平衡处理和解释稳定性。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它把临床毒性预测的性能、轻量化和图结构解释放在同一条建模链路中，适合做药物安全筛查原型比较。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：已读取 arXiv 原文摘要。SMILESGNN 以 0.4M 参数在 ClinTox 报告 AUC-ROC 0.987、F1 0.906；预训练变体在 Tox21 的 12 个任务上平均 AUC-ROC 0.750。</p>
+  <p class="item-audience"><strong>适合：</strong>计算化学、药物发现、毒性预测和可解释机器学习团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：按 scaffold split 复现 ClinTox 与 Tox21，并人工核查高风险子结构解释是否稳定且符合化学知识。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>结果集中在两个公开基准，跨化学空间和真实临床外推仍未证明；解释可视化不能直接当作因果或监管证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 77</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>arXiv cs.LG / Sat, 26 Sep 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://arxiv.org/abs/2609.28563">SpaFactor: Lightweight Spatial Context-Aware Gene Program Modeling for Histology-to-Transcriptomics Inference</a>
+  <p class="item-one-liner"><strong>结论：</strong>SpaFactor 用多尺度组织图像上下文和低秩基因程序分解，从常规 H&amp;E 切片预测空间转录组，避免重型图网络。</p>
+  <p class="item-summary"><strong>概述：</strong>该方法把中心 spot 与局部、区域组织上下文融合，再由残差 MLP 映射到低维基因程序并共享解码到多基因表达。相比逐基因独立预测，它显式利用基因协同结构，同时降低高维噪声和过拟合风险。五个公开队列的摘要结果支持其作为轻量替代方案，但还没有说明跨实验室染色差异和外部队列鲁棒性。适合有病理图像与空间组学配对数据的团队做内部基线。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它用较轻的结构处理昂贵空间转录组的替代预测问题，兼顾组织上下文、基因协同和计算成本。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：已读取 arXiv 原文摘要。方法在五个公开队列上进行评估，使用多尺度组织上下文、残差 MLP 与低秩基因程序分解，作者报告聚合表现最佳，尤其改善空间变异基因预测。</p>
+  <p class="item-audience"><strong>适合：</strong>数字病理、空间组学、生物信息和多模态医疗研究团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：在外部实验室或不同染色批次上做跨队列验证，并比较空间变异基因、总体相关性和计算成本。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>摘要未给出代码入口和跨中心外部验证细节；公开队列上的聚合领先不等于临床或新组织类型可直接泛化。</p>
+  
+  <div class="item-meta">
+    <span>评分 73</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>arXiv cs.LG / Sat, 26 Sep 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+</div>
+    </section>
+
+    <section>
+      <h2>态势概览</h2>
+      <div class="charts"><svg class="chart" viewBox="0 0 760 256" role="img" aria-label="信息来源分布">
+<text x="0" y="20" class="chart-title">信息来源分布</text>
+<text x="0" y="53" class="chart-label">arXiv 今日精选</text>
+<rect x="150" y="34" width="420.0" height="20" rx="5" fill="#0f766e"></rect>
+<text x="580.0" y="49" class="chart-value">14</text>
+<text x="0" y="87" class="chart-label">产业新闻</text>
+<rect x="150" y="68" width="330.0" height="20" rx="5" fill="#b45309"></rect>
+<text x="490.0" y="83" class="chart-value">11</text>
+<text x="0" y="121" class="chart-label">官方实验室</text>
+<rect x="150" y="102" width="300.0" height="20" rx="5" fill="#2563eb"></rect>
+<text x="460.0" y="117" class="chart-value">10</text>
+<text x="0" y="155" class="chart-label">Hugging Face 热门</text>
+<rect x="150" y="136" width="300.0" height="20" rx="5" fill="#ca8a04"></rect>
+<text x="460.0" y="151" class="chart-value">10</text>
+<text x="0" y="189" class="chart-label">社区讨论</text>
+<rect x="150" y="170" width="240.0" height="20" rx="5" fill="#db2777"></rect>
+<text x="400.0" y="185" class="chart-value">8</text>
+<text x="0" y="223" class="chart-label">Agent 工程</text>
+<rect x="150" y="204" width="180.0" height="20" rx="5" fill="#2563eb"></rect>
+<text x="340.0" y="219" class="chart-value">6</text>
+</svg><svg class="chart radar" viewBox="0 0 760 260" role="img" aria-label="今日热点主题雷达">
+<text x="0" y="20" class="chart-title">今日热点主题雷达</text>
+<circle cx="380" cy="136" r="96" class="radar-ring"></circle>
+<circle cx="380" cy="136" r="64" class="radar-ring"></circle>
+<circle cx="380" cy="136" r="32" class="radar-ring"></circle>
+<line x1="380" y1="136" x2="380.0" y2="40.0" class="radar-axis"></line>
+<line x1="380" y1="136" x2="455.1" y2="76.1" class="radar-axis"></line>
+<line x1="380" y1="136" x2="473.6" y2="157.4" class="radar-axis"></line>
+<line x1="380" y1="136" x2="421.7" y2="222.5" class="radar-axis"></line>
+<line x1="380" y1="136" x2="338.3" y2="222.5" class="radar-axis"></line>
+<line x1="380" y1="136" x2="286.4" y2="157.4" class="radar-axis"></line>
+<line x1="380" y1="136" x2="304.9" y2="76.1" class="radar-axis"></line>
+<polygon points="380.0,40.0 450.8,79.6 457.5,153.7 412.1,202.7 347.9,202.7 329.3,147.6 339.3,103.6" class="radar-shape"></polygon>
+<text x="380.0" y="12.0" class="radar-label" text-anchor="middle">产业应用 12</text>
+<text x="476.9" y="58.7" class="radar-label" text-anchor="middle">AI 动态 11</text>
+<text x="500.9" y="163.6" class="radar-label" text-anchor="middle">研究进展 9</text>
+<text x="433.8" y="247.7" class="radar-label" text-anchor="middle">开源模型 8</text>
+<text x="326.2" y="247.7" class="radar-label" text-anchor="middle">Agent 8</text>
+<text x="259.1" y="163.6" class="radar-label" text-anchor="middle">多模态 4</text>
+<text x="283.1" y="58.7" class="radar-label" text-anchor="middle">产品发布 4</text>
+</svg></div>
+    </section>
+
+    <section class="group-section"><h2>Agent 工程</h2>
+<p class="group-editorial">今天可验证的工程信号集中在本地消息代理，而不是通用框架。Textbutler 把自动回复、显式授权发送、暂停开关和本地上下文做成可审计流程，但仍处于开发中，适合隔离试用，不适合直接托管真实联系人。</p>
+<section class="source-block"><div class="source-head"><h3>GitHub Search: Claude Skills</h3><span>6 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/hraness/textbutler">hraness/textbutler</a>
+  <p class="item-one-liner"><strong>结论：</strong>Textbutler 是一套运行在 Mac 上的本地消息代理，把 iMessage、WhatsApp 与 Beeper 的读取、草拟和显式授权发送做成可审计工作流。</p>
+  <p class="item-summary"><strong>概述：</strong>它不是简单的自动回复脚本，而是把消息连接、联系人上下文、草稿审阅、发送摘要和未知结果恢复都显式化。新安装默认暂停、联系人自动回复默认关闭，模型本身不持有工具，降低了误发范围。仓库已有 242 次提交和 MIT 许可，但当前仍需从源码运行，WhatsApp 与 Beeper 也要求用户自行实测。适合安全或代理平台团队拆解其授权与审计设计，不适合直接接管生产消息。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它把高风险消息代理的权限、审阅、发送和恢复边界落实为具体 CLI 与状态机，对设计可控代理比单纯功能演示更有参考价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：已读取 GitHub README。仓库为 MIT 许可，提供 JSON CLI、显式授权发送、默认暂停和联系人级自动回复开关；项目明确标注 In development，AI 回复需本地构建及 Claude Code 或 Codex 订阅。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 平台、安全工程、个人 AI 助手和 macOS 自动化团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：只接测试账号，验证暂停、联系人授权、草稿摘要、重复发送阻断和未知结果恢复，再决定是否扩大范围。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>项目处于开发中且没有正式 Textbutler 安装包；会接触私密消息历史，并依赖 Ghostget、xcb 及外部消息平台权限，误发与数据暴露风险需要单独审计。</p>
+  
+  <div class="item-meta">
+    <span>评分 86</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / TypeScript / ⭐ 5 / forks 0 / updated 2026-09-27 / license MIT / topics: agent-skill, agent-skills, ai-assistant, beeper,</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/hraness/wordcell">hraness/wordcell</a>
+  <p class="item-one-liner"><strong>结论：</strong>wordcell 的定位是「Wordcell keeps decisions, plans, and sources as Markdown beside your code, so coding agents can find them from the file they are about to change.」，重点验证它在真实仓库里的上下文读取、编辑计划和命令执行边界。</p>
+  <p class="item-summary"><strong>概述：</strong>wordcell 的定位是「Wordcell keeps decisions, plans, and sources as Markdown beside your code, so coding agents can find them from the file they are about to change.」，重点验证它在真实仓库里的上下文读取、编辑计划和命令执行边界。README/摘要里的关键描述是：Wordcell keeps decisions, plans, and sources as Markdown beside your code, so coding agents can find them from the file they are about to change.。当前证据偏弱，无法支撑立即试用；更适合作为背景信号或后续补证据线索。接入前优先检查安装命令、license、维护活跃度和能否用内部任务复现。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为Agent方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；TypeScript / ⭐ 15 / forks 2 / updated 2026-09-27 / license MIT / topics: agent-memory, agent-skills, agents-md, ai-agent；摘要证据：Description: Wordcell keeps decisions, plans, and sources as Markdown beside your code, so coding agents can find them from the file they are about to change.。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、可执行接入入口，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 48</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / TypeScript / ⭐ 15 / forks 2 / updated 2026-09-27 / license MIT / topics: agent-memory, agent-skills, agents-md, ai-agent</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://github.com/smk-labs/claude-plugins">smk-labs/claude-plugins</a>
+  <p class="item-one-liner"><strong>结论：</strong>claude-plugins 是 agent skills/插件集合，重点筛可复用脚本、维护质量和与现有工具链的兼容性。</p>
+  <p class="item-summary"><strong>概述：</strong>claude-plugins 是 agent skills/插件集合，重点筛可复用脚本、维护质量和与现有工具链的兼容性。README/摘要里的关键描述是：One marketplace for everything I have built for Claude Code: plugins, skills, commands, and agents, organized by category.。当前证据偏弱，无法支撑立即试用；更适合作为背景信号或后续补证据线索。接入前优先检查安装命令、license、维护活跃度和能否用内部任务复现。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为Agent方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；JavaScript / ⭐ 11 / forks 1 / updated 2026-09-27 / license MIT / topics: claude, claude-code, claude-code-marketplace, c；摘要证据：Description: One marketplace for everything I have built for Claude Code: plugins, skills, commands, and agents, organized by category.。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、可执行接入入口，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 48</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / JavaScript / ⭐ 11 / forks 1 / updated 2026-09-27 / license MIT / topics: claude, claude-code, claude-code-marketplace, c</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 3 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://github.com/linny006/trending-claude-skills">linny006/trending-claude-skills</a>
+  <p class="item-one-liner"><strong>结论：</strong>trending-claude-skills 是 agent skills/插件集合，重点筛可复用脚本、维护质量和与现有工具链的兼容性。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为Agent方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Python / ⭐ 48 / forks 4 / updated 2026-09-27 / topics: ai-agents, ai-coding, ai-development, ai-tools, ai-workflow；摘要证据：Description: Auto-updated leaderboard of trendin…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、可执行接入入口、license，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 32</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / Python / ⭐ 48 / forks 4 / updated 2026-09-27 / topics: ai-agents, ai-coding, ai-development, ai-tools, ai-workflow</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://github.com/martinambrus/haive">martinambrus/haive</a>
+  <p class="item-one-liner"><strong>结论：</strong>haive 的项目定位是「Project orchestration and AI agentic workflow utility.」；先用最小场景验证核心能力、安装入口和 license。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为Agent方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；TypeScript / ⭐ 5 / forks 0 / updated 2026-09-27 / license MIT / topics: ai, ai-agents, ai-tools, claude, claude-ai；摘要证据：Description: Project orchestration and AI agenti…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、可执行接入入口，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 32</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / TypeScript / ⭐ 5 / forks 0 / updated 2026-09-27 / license MIT / topics: ai, ai-agents, ai-tools, claude, claude-ai</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://github.com/kurone-kito/idd-skill">kurone-kito/idd-skill</a>
+  <p class="item-one-liner"><strong>结论：</strong>idd-skill 是 agent skills/插件集合，重点筛可复用脚本、维护质量和与现有工具链的兼容性。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；TypeScript / ⭐ 11 / forks 1 / updated 2026-09-27 / license MIT / topics: claude-skills, codex-skills, copilot-skills, de；摘要证据：Description: 🤖 An automated setup kit for…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、可执行接入入口，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 16</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>GitHub Search: Claude Skills / TypeScript / ⭐ 11 / forks 1 / updated 2026-09-27 / license MIT / topics: claude-skills, codex-skills, copilot-skills, de</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+</details>
+</section>
+</section>
+<section class="group-section"><h2>官方实验室</h2>
+<p class="group-editorial">多个官方源抓取失败，现有条目多数只有标题级证据，无法判断 API、价格、能力边界或发布范围。今天不从该模块提升必读项，待官方原文恢复后再评估。</p>
+<section class="source-block"><div class="source-head"><h3>Anthropic News</h3><span>10 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">Claude discovers a novel enzyme system with CRISPR-like repeats</a>
+  <p class="item-one-liner"><strong>结论：</strong>官方发布：Claude discovers a novel enzyme system with CRISPR-like repeats，重点确认 模型发布 的可用范围、API/价格和对现有部署路径的影响。</p>
+  <p class="item-summary"><strong>概述：</strong>Claude discovers a novel enzyme system with CRISPR-like repeats 是一手发布信号，关键不在标题热度，而在它是否改变 模型发布 的可用渠道、权限边界或企业采购路径。Claude discovers a novel enzyme system with CRISPR-like repeats。当前证据偏弱，无法支撑立即试用；更适合作为背景信号或后续补证据线索。下一步应补齐原文里的价格、区域、API 和部署限制。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这条已被近期日报重点推送过；除非出现实质更新，否则保留为背景线索即可。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Wed, 23 Sep 2026 00:00:00 +0000；摘要证据：Claude discovers a novel enzyme system with CRISPR-like repeats。</p>
+  <p class="item-audience"><strong>适合：</strong>平台选型、产品负责人、AI Infra</p>
+  <p class="item-action"><strong>行动建议：</strong>继续观察：这条已在近期日报 Top 位置推送过；除非原文出现新版本、价格、API 或评测更新，否则不再占用头条。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。 已在近期日报高亮或钉钉推送过，本次只作为背景，不再重复占用 Top 位置。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>已推送过</span>
+    <span>Anthropic News / Wed, 23 Sep 2026 00:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">模型发布</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.anthropic.com/news/enterprise-frontier-safeguards">Developing Enterprise Frontier Safeguards with our customers</a>
+  <p class="item-one-liner"><strong>结论：</strong>官方发布：Developing Enterprise Frontier Safeguards with our customers，重点确认 产业应用 的可用范围、API/价格和对现有部署路径的影响。</p>
+  <p class="item-summary"><strong>概述：</strong>Developing Enterprise Frontier Safeguards with our customers 是一手发布信号，关键不在标题热度，而在它是否改变 产业应用 的可用渠道、权限边界或企业采购路径。Developing Enterprise Frontier Safeguards with our customers。当前证据偏弱，无法支撑立即试用；更适合作为背景信号或后续补证据线索。下一步应补齐原文里的价格、区域、API 和部署限制。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为产业应用方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Tue, 01 Sep 2026 00:00:00 +0000；摘要证据：Developing Enterprise Frontier Safeguards with our customers。</p>
+  <p class="item-audience"><strong>适合：</strong>平台选型、产品负责人、AI Infra</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>旧内容补抓</span>
+    <span>Anthropic News / Tue, 01 Sep 2026 00:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.anthropic.com/news/expanding-support-for-scientists">Expanding our support for scientists</a>
+  <p class="item-one-liner"><strong>结论：</strong>官方发布：Expanding our support for scientists，重点确认 AI 动态 的可用范围、API/价格和对现有部署路径的影响。</p>
+  <p class="item-summary"><strong>概述：</strong>Expanding our support for scientists 是一手发布信号，关键不在标题热度，而在它是否改变 AI 动态 的可用渠道、权限边界或企业采购路径。Expanding our support for scientists。当前证据偏弱，无法支撑立即试用；更适合作为背景信号或后续补证据线索。下一步应补齐原文里的价格、区域、API 和部署限制。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Thu, 27 Aug 2026 00:00:00 +0000；摘要证据：Expanding our support for scientists。</p>
+  <p class="item-audience"><strong>适合：</strong>平台选型、产品负责人、AI Infra</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>旧内容补抓</span>
+    <span>Anthropic News / Thu, 27 Aug 2026 00:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 7 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.anthropic.com/news/wellbeing-research-grants">Funding better evaluations of AI’s impact on wellbeing</a>
+  <p class="item-one-liner"><strong>结论：</strong>官方发布：Funding better evaluations of AI’s impact on wellbeing，重点确认 产业应用 的可用范围、API/价格和对现有部署路径的影响。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为产业应用方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Tue, 25 Aug 2026 00:00:00 +0000；摘要证据：Funding better evaluations of AI’s impact on wellbeing。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>旧内容补抓</span>
+    <span>Anthropic News / Tue, 25 Aug 2026 00:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.anthropic.com/news/claude-text-watermark">How Claude’s text watermark works</a>
+  <p class="item-one-liner"><strong>结论：</strong>官方发布：How Claude’s text watermark works，重点确认 模型发布 的可用范围、API/价格和对现有部署路径的影响。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为模型发布方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Fri, 14 Aug 2026 00:00:00 +0000；摘要证据：How Claude’s text watermark works。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>旧内容补抓</span>
+    <span>Anthropic News / Fri, 14 Aug 2026 00:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">模型发布</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards">Improving Fable 5&#x27;s biology safeguards</a>
+  <p class="item-one-liner"><strong>结论：</strong>官方发布：Improving Fable 5&#x27;s biology safeguards，重点确认 模型发布 的可用范围、API/价格和对现有部署路径的影响。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为模型发布方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Fri, 07 Aug 2026 00:00:00 +0000；摘要证据：Improving Fable 5&#x27;s biology safeguards。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>旧内容补抓</span>
+    <span>Anthropic News / Fri, 07 Aug 2026 00:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">模型发布</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.anthropic.com/news/improving-alignment-security-efforts">Improving our alignment and security efforts</a>
+  <p class="item-one-liner"><strong>结论：</strong>官方发布：Improving our alignment and security efforts，重点确认 安全治理 的可用范围、API/价格和对现有部署路径的影响。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为安全治理方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Mon, 31 Aug 2026 00:00:00 +0000；摘要证据：Improving our alignment and security efforts。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>旧内容补抓</span>
+    <span>Anthropic News / Mon, 31 Aug 2026 00:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">安全治理</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.anthropic.com/news/life-sciences-verification-program">Introducing the Life Sciences Verification Program</a>
+  <p class="item-one-liner"><strong>结论：</strong>官方发布：Introducing the Life Sciences Verification Program，重点确认 产品发布 的可用范围、API/价格和对现有部署路径的影响。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>这条已被近期日报重点推送过；除非出现实质更新，否则保留为背景线索即可。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Thu, 17 Sep 2026 00:00:00 +0000；摘要证据：Introducing the Life Sciences Verification Program。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。 已在近期日报高亮或钉钉推送过，本次只作为背景，不再重复占用 Top 位置。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>已推送过</span>
+    <span>Anthropic News / Thu, 17 Sep 2026 00:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">产品发布</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.anthropic.com/news/accenture-embedded-evaluation">Partnering with Accenture on embedded evaluation</a>
+  <p class="item-one-liner"><strong>结论：</strong>官方发布：Partnering with Accenture on embedded evaluation，重点确认 AI 动态 的可用范围、API/价格和对现有部署路径的影响。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Fri, 18 Sep 2026 00:00:00 +0000；摘要证据：Partnering with Accenture on embedded evaluation。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>旧内容补抓</span>
+    <span>Anthropic News / Fri, 18 Sep 2026 00:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.anthropic.com/news/model-hardware-standard-research-preview">Previewing the Model Hardware Standard</a>
+  <p class="item-one-liner"><strong>结论：</strong>官方发布：Previewing the Model Hardware Standard，重点确认 模型发布 的可用范围、API/价格和对现有部署路径的影响。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为模型发布方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Thu, 27 Aug 2026 00:00:00 +0000；摘要证据：Previewing the Model Hardware Standard。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>旧内容补抓</span>
+    <span>Anthropic News / Thu, 27 Aug 2026 00:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">模型发布</span></div>
+</article>
+
+</details>
+</section>
+</section>
+<section class="group-section"><h2>产业新闻</h2>
+<p class="group-editorial">产业侧出现模型训练暂停、AI 治理和基础设施商业模式等信号，但本轮主要来自二手媒体。可用于识别需要核验的方向，涉及产品决策时仍应等待公司公告、监管文件或技术报告。</p>
+<section class="source-block"><div class="source-head"><h3>MIT Technology Review</h3><span>5 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://www.technologyreview.com/2026/09/24/1145048/ai-climate-week/">AI is dominating the conversation at Climate Week</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：AI is dominating the conversation at Climate Week，重点看它是否改变 安全治理 的采购、部署、合规或竞争节奏。</p>
+  <p class="item-summary"><strong>概述：</strong>AI is dominating the conversation at Climate Week 关联 安全治理，摘要里的可验证信息是：This week, world leaders descended on Manhattan for the UN General Assembly.。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它能反映安全治理在企业或平台竞争里的采用节奏，适合产品和战略判断；政策与治理信号会影响 AI 产品落地空间。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Thu, 24 Sep 2026 10:00:00 +0000；摘要证据：This week, world leaders descended on Manhattan for the UN General Assembly. It’s also New York Climate Week—investors, policymakers, advocates, and journalists are colliding at panels, talks, and fancy dinners. With so many climate voices in one place, the di。</p>
+  <p class="item-audience"><strong>适合：</strong>安全/合规、AI Infra、平台工程团队</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 45</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>MIT Technology Review / Thu, 24 Sep 2026 10:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">安全治理</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.technologyreview.com/2026/09/24/1145064/the-download-bid-scrap-virtual-wall-ai-climate-week/">The Download: a bid to scrap the virtual wall and AI hits Climate Week</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：The Download: a bid to scrap the virtual wall and AI hits Climate Week，重点看它是否改变 产业应用 的采购、部署、合规或竞争节奏。</p>
+  <p class="item-summary"><strong>概述：</strong>The Download: a bid to scrap the virtual wall and AI hits Climate Week 关联 产业应用，摘要里的可验证信息是：This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology.。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它能反映产业应用在企业或平台竞争里的采用节奏，适合产品和战略判断。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Thu, 24 Sep 2026 12:10:00 +0000；摘要证据：This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A congressional representative just proposed killing America’s border tower program Delia Ramirez, a Democratic US represe。</p>
+  <p class="item-audience"><strong>适合：</strong>产品负责人、战略/市场、业务技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 35</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>MIT Technology Review / Thu, 24 Sep 2026 12:10:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.technologyreview.com/2026/09/25/1145157/the-download-pentagon-ai-lie-detector-young-organ-limits/">The Download: the Pentagon’s AI-powered lie detector and young organ limits</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：The Download: the Pentagon’s AI-powered lie detector and young organ limits，重点看它是否改变 产业应用 的采购、部署、合规或竞争节奏。</p>
+  <p class="item-summary"><strong>概述：</strong>The Download: the Pentagon’s AI-powered lie detector and young organ limits 关联 产业应用，摘要里的可验证信息是：This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology.。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它能反映产业应用在企业或平台竞争里的采用节奏，适合产品和战略判断。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Fri, 25 Sep 2026 12:10:00 +0000；摘要证据：This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The Pentagon wants $30 million to build an AI-powered lie detector The US government wants to spend $30.3 million over the。</p>
+  <p class="item-audience"><strong>适合：</strong>产品负责人、战略/市场、业务技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  
+  
+  <div class="item-meta">
+    <span>评分 35</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>MIT Technology Review / Fri, 25 Sep 2026 12:10:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 2 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.technologyreview.com/2026/09/25/1145144/pentagon-ai-lie-detector/">The Pentagon wants $30 million to build an AI-powered lie detector</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：The Pentagon wants $30 million to build an AI-powered lie detector，重点看它是否改变 产业应用 的采购、部署、合规或竞争节奏。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它能反映产业应用在企业或平台竞争里的采用节奏，适合产品和战略判断。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Fri, 25 Sep 2026 09:16:25 +0000；摘要证据：The US government wants to spend $30.3 million over the next five years on an improved form of lie detector, according to a Depart…</p>
+  
+  
+  
+  
+  <div class="item-meta">
+    <span>评分 35</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>MIT Technology Review / Fri, 25 Sep 2026 09:16:25 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.technologyreview.com/2026/09/25/1145083/young-organs-may-not-be-a-fountain-of-youth-for-recipients/">Young organs may not be a fountain of youth for recipients</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：Young organs may not be a fountain of youth for recipients，重点看它是否改变 产业应用 的采购、部署、合规或竞争节奏。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它能反映产业应用在企业或平台竞争里的采用节奏，适合产品和战略判断。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；Fri, 25 Sep 2026 09:00:00 +0000；摘要证据：Around this time last year I was attending an aging conference in Manchester, listening to a talk about fly aging, when my phone s…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 35</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>MIT Technology Review / Fri, 25 Sep 2026 09:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+</details>
+</section>
+<section class="source-block"><div class="source-head"><h3>The Verge</h3><span>3 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://www.theverge.com/podcast/1000344/cloudflare-matthew-prince-google-zero-ai-web-advertising">Can Cloudflare CEO Matthew Prince save the web from AI?</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：Can Cloudflare CEO Matthew Prince save the web from AI?，重点看它是否改变 产业应用 的采购、部署、合规或竞争节奏。</p>
+  <p class="item-summary"><strong>概述：</strong>Can Cloudflare CEO Matthew Prince save the web from AI? 关联 产业应用，摘要里的可验证信息是：Today, I’m talking with Matthew Prince, who is CEO of Cloudflare.。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它能反映产业应用在企业或平台竞争里的采用节奏，适合产品和战略判断。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-09-26T10:00:00-04:00；摘要证据：Today, I’m talking with Matthew Prince, who is CEO of Cloudflare. This episode is part of a two-part series on the future of business. Matthew last joined us on the show about two and a half years ago, at what we thought then was a wild pivot point for the int。</p>
+  <p class="item-audience"><strong>适合：</strong>产品负责人、战略/市场、业务技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 33</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>The Verge / 2026-09-26T10:00:00-04:00</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.theverge.com/entertainment/1001056/this-american-life-npr-kids-group-chat-comment-section">Kids turned the comment section of an NPR podcast into a group chat</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：Kids turned the comment section of an NPR podcast into a group chat，重点看它是否改变 产业应用 的采购、部署、合规或竞争节奏。</p>
+  <p class="item-summary"><strong>概述：</strong>Kids turned the comment section of an NPR podcast into a group chat 关联 产业应用，摘要里的可验证信息是：Middle schoolers, likely blocked from other apps and social networks, apparently turned the Spotify comment section under an episode of NPR&#x27;s Wild Card into an impromptu group chat。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它能反映产业应用在企业或平台竞争里的采用节奏，适合产品和战略判断。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-09-26T13:32:35-04:00；摘要证据：Middle schoolers, likely blocked from other apps and social networks, apparently turned the Spotify comment section under an episode of NPR&#x27;s Wild Card into an impromptu group chat. In a new episode of This American Life, host Ira Glass digs into how the kids 。</p>
+  <p class="item-audience"><strong>适合：</strong>产品负责人、战略/市场、业务技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 33</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>The Verge / 2026-09-26T13:32:35-04:00</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.theverge.com/ai-artificial-intelligence/1001049/openai-training-pause">OpenAI pauses training of its ‘most capable models’</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：OpenAI pauses training of its ‘most capable models’，重点看它是否改变 产业应用 的采购、部署、合规或竞争节奏。</p>
+  <p class="item-summary"><strong>概述：</strong>OpenAI pauses training of its ‘most capable models’ 关联 产业应用，摘要里的可验证信息是：As reports of OpenAI&#x27;s models breaking containment, hacking sites, and generally getting out of control pile up, the company has made the decision to pause training of its most pow。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它能反映产业应用在企业或平台竞争里的采用节奏，适合产品和战略判断。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-09-26T12:34:59-04:00；摘要证据：As reports of OpenAI&#x27;s models breaking containment, hacking sites, and generally getting out of control pile up, the company has made the decision to pause training of its most powerful models. The decision was made after a model being tested within a sandbox 。</p>
+  <p class="item-audience"><strong>适合：</strong>产品负责人、战略/市场、业务技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 33</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>The Verge / 2026-09-26T12:34:59-04:00</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+</div>
+</section>
+<section class="source-block"><div class="source-head"><h3>WIRED AI</h3><span>3 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://www.wired.com/story/meta-muse-is-adults-only-why-does-it-look-like-a-cute-kids-toy/">Meta’s Muse Is Adults-Only. Why Does It Look Like a Kids’ Toy?</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：Meta’s Muse Is Adults-Only. Why Does It Look Like a Kids’ Toy?，重点看它是否改变 产业应用 的采购、部署、合规或竞争节奏。</p>
+  <p class="item-summary"><strong>概述：</strong>Meta’s Muse Is Adults-Only. Why Does It Look Like a Kids’ Toy? 关联 产业应用，摘要里的可验证信息是：Meta says Muse is just for adults, though its cuddly, Labubu-like mascot—and upcoming Tamagotchi-style AI device—may be disarming for users of all ages.。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为产业应用方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Sat, 26 Sep 2026 10:30:00 +0000；摘要证据：Meta says Muse is just for adults, though its cuddly, Labubu-like mascot—and upcoming Tamagotchi-style AI device—may be disarming for users of all ages.。</p>
+  <p class="item-audience"><strong>适合：</strong>产品负责人、战略/市场、业务技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 33</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>WIRED AI / Sat, 26 Sep 2026 10:30:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.wired.com/story/kernel-panic-old-timey-credit-card-scams/">Old-School Credit Card Scams Are Far From Dead</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：Old-School Credit Card Scams Are Far From Dead，重点看它是否改变 产业应用 的采购、部署、合规或竞争节奏。</p>
+  <p class="item-summary"><strong>概述：</strong>Old-School Credit Card Scams Are Far From Dead 关联 产业应用，摘要里的可验证信息是：In an era of increasingly sophisticated AI-fueled scams, a retro threat may be lurking in your mailbox.。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为产业应用方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Sat, 26 Sep 2026 12:00:00 +0000；摘要证据：In an era of increasingly sophisticated AI-fueled scams, a retro threat may be lurking in your mailbox.。</p>
+  <p class="item-audience"><strong>适合：</strong>产品负责人、战略/市场、业务技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、价格，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 33</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>WIRED AI / Sat, 26 Sep 2026 12:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.wired.com/story/tuck-browser-extension-lets-you-snooze-open-tabs-until-later/">This Browser Extension Lets You Snooze Open Tabs Until Later</a>
+  <p class="item-one-liner"><strong>结论：</strong>产业信号：This Browser Extension Lets You Snooze Open Tabs Until Later，重点看它是否改变 产业应用 的采购、部署、合规或竞争节奏。</p>
+  <p class="item-summary"><strong>概述：</strong>This Browser Extension Lets You Snooze Open Tabs Until Later 关联 产业应用，摘要里的可验证信息是：The free add-on Tuck brings one of the best features of modern email—the ability to hide something for a bit—to that tangle of tabs in your browser.。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为产业应用方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；Sat, 26 Sep 2026 10:00:00 +0000；摘要证据：The free add-on Tuck brings one of the best features of modern email—the ability to hide something for a bit—to that tangle of tabs in your browser.。</p>
+  <p class="item-audience"><strong>适合：</strong>产品负责人、战略/市场、业务技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 33</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>WIRED AI / Sat, 26 Sep 2026 10:00:00 +0000</span>
+  </div>
+  <div class="tags"><span class="tag">产业应用</span></div>
+</article>
+
+</div>
+</section>
+</section>
+<section class="group-section"><h2>社区讨论</h2>
+<p class="group-editorial">社区里最有行动价值的是 GPT-OSS 模板的多轮上下文渲染缺陷，它有明确代码路径和可复现失败模式。其余关于 Qwen 架构与速度的讨论仍偏推测，应和模型卡、模板及基准实测交叉验证。</p>
+<section class="source-block"><div class="source-head"><h3>Reddit LocalLLaMA</h3><span>8 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1wr0wki/improved_and_fixed_template_for_gptoss_again/">Improved and fixed template for GPT-OSS (again). Includes preserve_thinking and fix for Unsloth-induced bug</a>
+  <p class="item-one-liner"><strong>结论：</strong>一个 GPT-OSS 聊天模板分支会在回放含推理轨迹的历史消息时只保留 thinking、丢掉最终回答，可能让多轮推理明显失真。</p>
+  <p class="item-summary"><strong>概述：</strong>问题出在历史消息同时含 content 与 thinking 时，模板分支只渲染 analysis 通道，最终回答没有进入上下文。作者称这一逻辑继承自 Unsloth 模板，并观察到 GPT-OSS 20B 会因此偏离任务，而 120B 有时能靠推理轨迹恢复。修正版同时加入 preserve_thinking，可利用前缀缓存提速，但会增加上下文 token。使用相关模板的团队应立即做多轮回放测试，而不是只看单轮输出。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这是具体到模板分支的正确性问题，影响多轮代理和本地推理服务，修复成本低且可以用回归样例快速验证。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：已读取完整社区原帖和代码片段。作者指出含 thinking 与 content 的历史消息只渲染 thinking、丢失最终回答，并链接修正版模板与 OpenAI 参考模板；尚缺独立回归测试。</p>
+  <p class="item-audience"><strong>适合：</strong>本地模型部署、推理服务、代理框架和聊天模板维护者</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：构造同时包含 thinking 与 content 的两轮历史，检查实际渲染提示词并对修复前后输出做回归。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>结论来自社区作者与单方观察，尚无独立复测；保留 thinking 会提高 token 使用量，并可能改变隐私与日志保留边界。</p>
+  
+  <div class="item-meta">
+    <span>评分 71</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-09-26T20:35:32+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">推理能力</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1wqzx12/qwen_38_flash_next_is_based_on_qwen_4/">Qwen 3.8 flash next is based on Qwen 4 architecture, if the announced Qwen 4 27b is also the same architecture with n-grams does it mean I can actually have faster inference on a s</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型、产品发布 线索：I wish Qwen also released dataset and method to fully train a model ourselves but it is what it is.</p>
+  <p class="item-summary"><strong>概述：</strong>Qwen 3.8 flash next is based on Qwen 4 architecture, if the announced Qwen 4 27b is also the same architecture with n-gr 关联 开源模型、产品发布，摘要里的可验证信息是：I wish Qwen also released dataset and method to fully train a model ourselves but it is what it is.。当前证据能支撑初步判断，但还缺少完整原文或复现信息；下一步要确认 API、价格、license、部署方式或评测数据。适合先评估原文，再决定是否进入试验队列。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型、产品发布方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源模型生态有持续跟进价值；发布类信息适合优先查看变化点和可用性。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-09-26T19:54:27+00:00；摘要证据：I wish Qwen also released dataset and method to fully train a model ourselves but it is what it is. However, I come here with my stupid question because someone can answer it better. And will the model still be an over thinker of faster inference will make up 。</p>
+  <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>马上试：在隔离 demo 里复现 release 里的关键能力，记录安装成本、失败模式和与现有方案的差异。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文二次抓取失败，缺少可验证细节；这条最多作为线索，不能直接作为接入依据。</p>
+  
+  <div class="item-meta">
+    <span>评分 59</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-09-26T19:54:27+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">产品发布</span><span class="tag">数据集</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1wr3esw/koboldcpp_v1122_released/">Koboldcpp v1.122 released</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型、产品发布 线索：submitted by /u/Fcking_Chuck [link] [comments]</p>
+  <p class="item-summary"><strong>概述：</strong>Koboldcpp v1.122 released 关联 开源模型、产品发布，摘要里的可验证信息是：submitted by /u/Fcking_Chuck [link] [comments]。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为开源模型、产品发布方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；2026-09-26T22:24:22+00:00；摘要证据：submitted by /u/Fcking_Chuck [link] [comments]。</p>
+  <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 50</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-09-26T22:24:22+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">产品发布</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 5 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1wqwzk3/new_to_playing_around_with_local_ai_why_are_they/">New to playing around with local ai. why are they free?</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型、产品发布 线索：I am new to playing around with local ai and have a ton to learn about it but I was curious, why are they (who is they?) releasing them for free, don&#x27;t they wan</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型、产品发布方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源模型生态有持续跟进价值；发布类信息适合优先查看变化点和可用性。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-09-26T17:56:16+00:00；摘要证据：I am new to playing around with local ai and have a ton to learn about it but I was curious, why are they (who is they?) releasing them…</p>
+  
+  
+  
+  
+  <div class="item-meta">
+    <span>评分 50</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-09-26T17:56:16+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">产品发布</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1wqs2t8/2400cc_inference_racer_dual_rtx_3090_motors/">2400cc Inference Racer: Dual RTX 3090 motors, NVLink turbo, naked 7840U ThinkPad ECU, VW Golf radiator</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型 线索：Today I present a fine piece of engineering, carefully assembled inside a custom chipboard chassis: the 2400cc Inference Racer , a.k.a. my winter heater.</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源模型生态有持续跟进价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-09-26T14:34:51+00:00；摘要证据：Today I present a fine piece of engineering, carefully assembled inside a custom chipboard chassis: the 2400cc Inference Racer , a.k.a.…</p>
+  
+  
+  
+  
+  <div class="item-meta">
+    <span>评分 38</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-09-26T14:34:51+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1wr5ylm/42x_faster_prompt_lookup_drafting_in_llamacpp/">42x Faster Prompt Lookup Drafting in llama.cpp</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型 线索：submitted by /u/Available_Pressure47 [link] [comments]</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为开源模型方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；2026-09-27T00:23:41+00:00；摘要证据：submitted by /u/Available_Pressure47 [link] [comments]。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 38</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-09-27T00:23:41+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1wqkb3v/swift_15_27b_swift_qwen_just_got_faster/">Swift 1.5 27b: Swift Qwen just got faster</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型 线索：Enjoy!</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为开源模型方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；2026-09-26T07:28:27+00:00；摘要证据：Enjoy! Fucking loving it. submitted by /u/sleight42 [link] [comments]。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 38</span>
+    <span>证据 weak</span>
+    <span>新发布</span>
+    <span>Reddit LocalLLaMA / 2026-09-26T07:28:27+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://www.reddit.com/r/LocalLLaMA/comments/1wgcpww/biweekly_megathread_project_showcase/">[Bi-Weekly Megathread] Project Showcase</a>
+  <p class="item-one-liner"><strong>结论：</strong>开源模型 线索：Do you have something you&#x27;d like to share with the r/LocalLLaMA community.</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它补充了开源模型方向的社区或生态信号，适合和官方发布、开源项目交叉验证；开源模型生态有持续跟进价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自来源摘要；2026-09-14T19:03:23+00:00；摘要证据：Do you have something you&#x27;d like to share with the r/LocalLLaMA community. This is the place for it! Recommendation on presentation: Ple…</p>
+  
+  
+  
+  
+  <div class="item-meta">
+    <span>评分 38</span>
+    <span>证据 medium</span>
+    <span>旧内容补抓</span>
+    <span>Reddit LocalLLaMA / 2026-09-14T19:03:23+00:00</span>
+  </div>
+  <div class="tags"><span class="tag">开源模型</span></div>
+</article>
+
+</details>
+</section>
+</section>
+<section class="group-section"><h2>arXiv 今日精选</h2>
+<p class="group-editorial">论文信号横跨机器人重规划、扩散模型训练和生物医药小样本建模，主线是用更轻的结构换取速度、稳定性或可解释性。优先看给出明确任务、数据集和量化结果的工作；没有代码或外部复现的结果先按研究线索处理。</p>
+<section class="source-block"><div class="source-head"><h3>arXiv cs.CL</h3><span>5 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="http://arxiv.org/abs/2609.30250v1">Agentic Detection of Online Conspiracies</a>
+  <p class="item-one-liner"><strong>结论：</strong>这篇论文围绕 Agent 提出「Agentic Detection of Online Conspiracies」：Conspiratorial discourse on social media is not always expressed through explicit claims or stable lexical markers.</p>
+  <p class="item-summary"><strong>概述：</strong>这篇论文围绕 Agent 提出「Agentic Detection of Online Conspiracies」：Conspiratorial discourse on social media is not always expressed through explicit claims or stable lexical markers.当前证据能支撑初步判断，但还缺少完整原文或复现信息；更适合作为背景信号或后续补证据线索。如果要进入工程侧，应先确认是否开放代码、数据、环境或足够完整的评测细节。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了新的论文摘要和任务设定，适合补充Agent方向的研究雷达；Agent 应用和自动化能力正在成为产品落地的主线。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自 arXiv 摘要；2026-09-24T17:58:43Z；摘要证据：Conspiratorial discourse on social media is not always expressed through explicit claims or stable lexical markers. The same surface content may express endorsement, legitimate concerns, criticism, satire, or mockery. The main challenge is。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供代码/数据或评测细节，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 47</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>arXiv cs.CL / 2026-09-24T17:58:43Z</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="http://arxiv.org/abs/2609.30238v1">SemMSA: Latent Semantic-Aided Robust Multimodal Sentiment Analysis with Incomplete Data</a>
+  <p class="item-one-liner"><strong>结论：</strong>这篇论文围绕 多模态 提出「SemMSA: Latent Semantic-Aided Robust Multimodal Sentiment Analysis with Incomplete Data」：Recent research on Multimodal Sentiment Analysis (MSA) has focused on learning from language, visual, and acoustic modalities with incomplete data to infer human sentiment.</p>
+  <p class="item-summary"><strong>概述：</strong>这篇论文围绕 多模态 提出「SemMSA: Latent Semantic-Aided Robust Multimodal Sentiment Analysis with Incomplete Data」：Recent research on Multimodal Sentiment Analysis (MSA) has focused on learning from language, visual, and acoustic modalities with incomplete data to infer human sentiment.当前证据能支撑初步判断，但还缺少完整原文或复现信息；更适合作为背景信号或后续补证据线索。如果要进入工程侧，应先确认是否开放代码、数据、环境或足够完整的评测细节。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了新的论文摘要和任务设定，适合补充多模态方向的研究雷达；多模态能力会直接影响模型交互和内容生产形态。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自 arXiv 摘要；2026-09-24T17:55:31Z；摘要证据：Recent research on Multimodal Sentiment Analysis (MSA) has focused on learning from language, visual, and acoustic modalities with incomplete data to infer human sentiment. Most studies typically compensate for missing information by recons。</p>
+  <p class="item-audience"><strong>适合：</strong>多模态产品、算法研究、应用创新团队</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供代码/数据或评测细节，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 46</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>arXiv cs.CL / 2026-09-24T17:55:31Z</span>
+  </div>
+  <div class="tags"><span class="tag">多模态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="http://arxiv.org/abs/2609.30227v1">To Trust or Not to Trust: Retrieval-Augmented Fact Checking in Speech</a>
+  <p class="item-one-liner"><strong>结论：</strong>这篇论文围绕 多模态 提出「To Trust or Not to Trust: Retrieval-Augmented Fact Checking in Speech」：Online misinformation increasingly appears in spoken formats such as news clips, podcasts, interviews, political speeches, and social media videos, creating a need for fact-checkin</p>
+  <p class="item-summary"><strong>概述：</strong>这篇论文围绕 多模态 提出「To Trust or Not to Trust: Retrieval-Augmented Fact Checking in Speech」：Online misinformation increasingly appears in spoken formats such as news clips, podcasts, interviews, political speeches, and social media videos, creating a need for fact-checkin当前证据能支撑初步判断，但还缺少完整原文或复现信息；更适合作为背景信号或后续补证据线索。如果要进入工程侧，应先确认是否开放代码、数据、环境或足够完整的评测细节。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了新的论文摘要和任务设定，适合补充多模态方向的研究雷达；视频生成和理解仍是高热度方向。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自 arXiv 摘要；2026-09-24T17:50:40Z；摘要证据：Online misinformation increasingly appears in spoken formats such as news clips, podcasts, interviews, political speeches, and social media videos, creating a need for fact-checking systems that can verify claims directly from speech. We in。</p>
+  <p class="item-audience"><strong>适合：</strong>多模态产品、算法研究、应用创新团队</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供代码/数据或评测细节，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 43</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>arXiv cs.CL / 2026-09-24T17:50:40Z</span>
+  </div>
+  <div class="tags"><span class="tag">多模态</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 2 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="http://arxiv.org/abs/2609.30243v1">JevOut: Natural Context Can Flip Decision Models</a>
+  <p class="item-one-liner"><strong>结论：</strong>这篇论文围绕 研究进展 提出「JevOut: Natural Context Can Flip Decision Models」：Dedicated decision models such as Jev map unstructured language to probability distributions over finite choices, allowing their outputs to directly route…</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了新的论文摘要和任务设定，适合补充研究进展方向的研究雷达。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自 arXiv 摘要；2026-09-24T17:57:07Z；摘要证据：Dedicated decision models such as Jev map unstructured language to probability distributions over finite choices, allowing their outputs…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供代码/数据或评测细节，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>arXiv cs.CL / 2026-09-24T17:57:07Z</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="http://arxiv.org/abs/2609.30226v1">PoEM: Predicting RL Outcomes from Existing Policies</a>
+  <p class="item-one-liner"><strong>结论：</strong>这篇论文围绕 研究进展 提出「PoEM: Predicting RL Outcomes from Existing Policies」：Foundation models are post-trained with reinforcement learning (RL) to maximize specific rewards, such as human alignment, correctness, or instruction…</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了新的论文摘要和任务设定，适合补充研究进展方向的研究雷达。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自 arXiv 摘要；2026-09-24T17:50:25Z；摘要证据：Foundation models are post-trained with reinforcement learning (RL) to maximize specific rewards, such as human alignment, correctness,…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供代码/数据或评测细节，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>arXiv cs.CL / 2026-09-24T17:50:25Z</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+</details>
+</section>
+<section class="source-block"><div class="source-head"><h3>arXiv cs.CV</h3><span>4 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="http://arxiv.org/abs/2609.30247v1">Rolling-WAM: World Action Models with Rolling Imagination</a>
+  <p class="item-one-liner"><strong>结论：</strong>Rolling-WAM 把视频与动作的联合去噪摊到连续重规划周期中，在保持操作表现的同时把机器人稳定状态重规划提速 4.5 倍。</p>
+  <p class="item-summary"><strong>概述：</strong>世界动作模型通常每次重规划都从头完成整段视频与动作去噪，闭环更新因此被延迟。Rolling-WAM 保留不同噪声层级的滑动窗口，只把即将执行的动作块完全去噪，并持续细化更远期块。论文在三个环境中报告竞争性操作表现和 4.5 倍稳定状态提速，说明它直击具身系统的在线延迟瓶颈。现在适合先复现项目页的时延与成功率，再判断能否替换现有分块策略。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它给出了明确机制、跨仿真与真机评测以及可量化的 4.5 倍重规划提速，对做机器人策略和世界模型推理的团队有直接价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：已读取 arXiv 原文摘要。论文在 LIBERO、RoboTwin 和真实 Unitree G1 上评估，通过跨重规划周期滚动去噪，将稳定状态重规划速度提升 4.5 倍；论文仍在评审中。</p>
+  <p class="item-audience"><strong>适合：</strong>具身智能、机器人策略、世界模型与实时推理团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：在现有机器人任务上复现端到端重规划时延、成功率和显存占用，并与当前分块或缓存方案对照。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>论文仍在评审中；4.5 倍是相对标准联合 WAM 的稳定状态结果，迁移到其他硬件、观测频率和控制栈后的收益尚未验证。</p>
+  
+  <div class="item-meta">
+    <span>评分 92</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>arXiv cs.CV / 2026-09-24T17:58:03Z</span>
+  </div>
+  <div class="tags"><span class="tag">多模态</span><span class="tag">具身智能</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="http://arxiv.org/abs/2609.30249v1">RAPID: Robot Agentic Programming from Demonstrations</a>
+  <p class="item-one-liner"><strong>结论：</strong>这篇论文围绕 Agent、开发者生态 提出「RAPID: Robot Agentic Programming from Demonstrations」：Coding agents have demonstrated enormous success in solving complex programming problems.</p>
+  <p class="item-summary"><strong>概述：</strong>这篇论文围绕 Agent、开发者生态 提出「RAPID: Robot Agentic Programming from Demonstrations」：Coding agents have demonstrated enormous success in solving complex programming problems.当前证据能支撑初步判断，但还缺少完整原文或复现信息；适合先评估原文，再决定是否进入试验队列。如果要进入工程侧，应先确认是否开放代码、数据、环境或足够完整的评测细节。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这条已被近期日报重点推送过；除非出现实质更新，否则保留为背景线索即可。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自 arXiv 摘要；2026-09-24T17:58:21Z；摘要证据：Coding agents have demonstrated enormous success in solving complex programming problems. To leverage their potential for robot systems, this work introduces Robot Agentic Programming from Demonstrations (RAPID), which automatically generat。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>继续观察：这条已在近期日报 Top 位置推送过；除非原文出现新版本、价格、API 或评测更新，否则不再占用头条。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供代码/数据或评测细节，接入前需要补证据。 已在近期日报高亮或钉钉推送过，本次只作为背景，不再重复占用 Top 位置。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 medium</span>
+    <span>已推送过</span>
+    <span>arXiv cs.CV / 2026-09-24T17:58:21Z</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">开发者生态</span><span class="tag">具身智能</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="http://arxiv.org/abs/2609.30234v1">OmniFabric: Coherent UV Space Texture Synthesis for 3D Garment Reconstruction</a>
+  <p class="item-one-liner"><strong>结论：</strong>这篇论文围绕 研究进展 提出「OmniFabric: Coherent UV Space Texture Synthesis for 3D Garment Reconstruction」：Automated generation of production-ready 3D garment assets from a single image is a central challenge in digital content creation.</p>
+  <p class="item-summary"><strong>概述：</strong>这篇论文围绕 研究进展 提出「OmniFabric: Coherent UV Space Texture Synthesis for 3D Garment Reconstruction」：Automated generation of production-ready 3D garment assets from a single image is a central challenge in digital content creation.当前证据能支撑初步判断，但还缺少完整原文或复现信息；更适合作为背景信号或后续补证据线索。如果要进入工程侧，应先确认是否开放代码、数据、环境或足够完整的评测细节。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了新的论文摘要和任务设定，适合补充研究进展方向的研究雷达。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自 arXiv 摘要；2026-09-24T17:53:55Z；摘要证据：Automated generation of production-ready 3D garment assets from a single image is a central challenge in digital content creation. While recent generative models have significantly advanced 3D geometry reconstruction, synthesizing high-qual。</p>
+  <p class="item-audience"><strong>适合：</strong>研究跟踪、模型评测、算法团队</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先收藏原文，等出现代码、API、价格或社区复测后再决定是否投入。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供代码/数据或评测细节，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>arXiv cs.CV / 2026-09-24T17:53:55Z</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 1 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="http://arxiv.org/abs/2609.30245v1">Towards Practical Compression of 3D Gaussian Splatting</a>
+  <p class="item-one-liner"><strong>结论：</strong>这篇论文围绕 研究进展 提出「Towards Practical Compression of 3D Gaussian Splatting」：3D Gaussian Splatting (3DGS) enables high-quality novel-view synthesis but requires substantial storage.</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了新的论文摘要和任务设定，适合补充研究进展方向的研究雷达。</p>
+  <p class="item-evidence"><strong>证据：</strong>中等证据：来自 arXiv 摘要；2026-09-24T17:57:56Z；摘要证据：3D Gaussian Splatting (3DGS) enables high-quality novel-view synthesis but requires substantial storage. Existing compression methods of…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供代码/数据或评测细节，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>证据 medium</span>
+    <span>新发布</span>
+    <span>arXiv cs.CV / 2026-09-24T17:57:56Z</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+</details>
+</section>
+<section class="source-block"><div class="source-head"><h3>arXiv cs.LG</h3><span>5 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://arxiv.org/abs/2609.28561">CARE: Condition-Aware Representation Regularization for Diffusion Models</a>
+  <p class="item-one-liner"><strong>结论：</strong>CARE 用条件相似度动态约束扩散模型特征分布，以插件式正则化改善样本质量和收敛稳定性。</p>
+  <p class="item-summary"><strong>概述：</strong>常见表征正则化没有显式利用标签或文本条件，CARE 则让相似条件形成更紧的特征簇，且不需要额外监督或显式对齐损失。摘要给出了 ImageNet 与文本生成图像两类任务的量化收益，并声称可叠加现有正则化方法。它最值得验证的是收益是否来自同等算力和训练配方，而不是额外调参。对正在训练扩散模型的团队，可以用小规模消融先验证收敛速度和语义对齐。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>方法改动轻、指标明确，并同时覆盖类别条件与文本条件扩散训练，具备较低成本的实验价值。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：已读取 arXiv 原文摘要。作者报告 ImageNet 400k 步 FID 降低 19.08%、训练加速 3.5 倍；文本生成图像在 200k 步 FID 降低 16.61%，并改善文本语义对齐。</p>
+  <p class="item-audience"><strong>适合：</strong>扩散模型训练、视觉生成、训练效率和表征学习团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：在现有训练配方中做等算力消融，记录 FID、语义对齐、收敛步数及不同条件分布下的稳定性。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>目前依据论文自报结果，摘要未提供独立复现或代码入口；3.5 倍加速的定义和硬件条件需要在正文中核对。</p>
+  
+  <div class="item-meta">
+    <span>评分 82</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>arXiv cs.LG / Sat, 26 Sep 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://arxiv.org/abs/2609.28553">SMILESGNN: Interpretable Clinical Toxicity Prediction via SMILES-Graph Cross-Attention Fusion</a>
+  <p class="item-one-liner"><strong>结论：</strong>SMILESGNN 用交叉注意力融合 SMILES 序列与分子图，在保持小模型规模的同时保留可定位毒性子结构的图解释路径。</p>
+  <p class="item-summary"><strong>概述：</strong>序列模型和图网络分别擅长分子字符串上下文与结构归因，SMILESGNN 将两者通过交叉注意力融合，并保留 GNNExplainer 可解释分支。ClinTox 上的结果很强且参数量仅 0.4M，但 Tox21 上只是与 ChemBERTa-2 及拼接基线相当。它的实际价值更多在可解释性与模型体量，而不是所有任务上都显著领先。药物发现团队应优先检查 scaffold split、类别不平衡处理和解释稳定性。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它把临床毒性预测的性能、轻量化和图结构解释放在同一条建模链路中，适合做药物安全筛查原型比较。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：已读取 arXiv 原文摘要。SMILESGNN 以 0.4M 参数在 ClinTox 报告 AUC-ROC 0.987、F1 0.906；预训练变体在 Tox21 的 12 个任务上平均 AUC-ROC 0.750。</p>
+  <p class="item-audience"><strong>适合：</strong>计算化学、药物发现、毒性预测和可解释机器学习团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：按 scaffold split 复现 ClinTox 与 Tox21，并人工核查高风险子结构解释是否稳定且符合化学知识。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>结果集中在两个公开基准，跨化学空间和真实临床外推仍未证明；解释可视化不能直接当作因果或监管证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 77</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>arXiv cs.LG / Sat, 26 Sep 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://arxiv.org/abs/2609.28563">SpaFactor: Lightweight Spatial Context-Aware Gene Program Modeling for Histology-to-Transcriptomics Inference</a>
+  <p class="item-one-liner"><strong>结论：</strong>SpaFactor 用多尺度组织图像上下文和低秩基因程序分解，从常规 H&amp;E 切片预测空间转录组，避免重型图网络。</p>
+  <p class="item-summary"><strong>概述：</strong>该方法把中心 spot 与局部、区域组织上下文融合，再由残差 MLP 映射到低维基因程序并共享解码到多基因表达。相比逐基因独立预测，它显式利用基因协同结构，同时降低高维噪声和过拟合风险。五个公开队列的摘要结果支持其作为轻量替代方案，但还没有说明跨实验室染色差异和外部队列鲁棒性。适合有病理图像与空间组学配对数据的团队做内部基线。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>它用较轻的结构处理昂贵空间转录组的替代预测问题，兼顾组织上下文、基因协同和计算成本。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：已读取 arXiv 原文摘要。方法在五个公开队列上进行评估，使用多尺度组织上下文、残差 MLP 与低秩基因程序分解，作者报告聚合表现最佳，尤其改善空间变异基因预测。</p>
+  <p class="item-audience"><strong>适合：</strong>数字病理、空间组学、生物信息和多模态医疗研究团队</p>
+  <p class="item-action"><strong>行动建议：</strong>先评估：在外部实验室或不同染色批次上做跨队列验证，并比较空间变异基因、总体相关性和计算成本。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>摘要未给出代码入口和跨中心外部验证细节；公开队列上的聚合领先不等于临床或新组织类型可直接泛化。</p>
+  
+  <div class="item-meta">
+    <span>评分 73</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>arXiv cs.LG / Sat, 26 Sep 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 2 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://arxiv.org/abs/2609.28558">CFD Correction of Open Tip Clearance Flow in a Compressor Cascade Using VAE Latent Space Adaptation</a>
+  <p class="item-one-liner"><strong>结论：</strong>这篇论文围绕 研究进展 提出「CFD Correction of Open Tip Clearance Flow in a Compressor Cascade Using VAE Latent Space Adaptation」：arXiv:2609.28558v1 Announce Type: new Abstract: CFD predictions of open tip clearance flow in compresso…</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提供了新的论文摘要和任务设定，适合补充研究进展方向的研究雷达。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：来自 arXiv 摘要；Sat, 26 Sep 2026 00:00:00 -0400；摘要证据：arXiv:2609.28558v1 Announce Type: new Abstract: CFD predictions of open tip clearance flow in compressor cascades are subject…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供代码/数据或评测细节，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 31</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>arXiv cs.LG / Sat, 26 Sep 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://arxiv.org/abs/2609.28502">Stable and Faithful Explanations for Knowledge Tracing</a>
+  <p class="item-one-liner"><strong>结论：</strong>该研究为知识追踪模型建立同时检验预测力、解释稳定性和删特征忠实度的验证协议，并发现数据泄漏会改变性能与解释排序。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>它提醒教育预测团队先审计数据构造与信息可得性，再比较模型和解释方法。</p>
+  <p class="item-evidence"><strong>证据：</strong>强证据：来自 arXiv 摘要；Sat, 26 Sep 2026 00:00:00 -0400；摘要证据：arXiv:2609.28502v1 Announce Type: new Abstract: Knowledge tracing (KT) models predict student performance opaquely, limiting p…</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文已超过七天，不进入 Top 6；结论来自特定 ASSISTments 数据，个体解释不能直接转化为教学干预。</p>
+  
+  <div class="item-meta">
+    <span>评分 24</span>
+    <span>证据 strong</span>
+    <span>新发布</span>
+    <span>arXiv cs.LG / Sat, 26 Sep 2026 00:00:00 -0400</span>
+  </div>
+  <div class="tags"><span class="tag">研究进展</span></div>
+</article>
+
+</details>
+</section>
+</section>
+<section class="group-section"><h2>Hugging Face 热门</h2>
+<p class="group-editorial">热门模型和论文卡片大多缺少足够摘要或原始评测，下载量与点赞数不能替代能力证据。今天不把弱证据条目放入 Top 6，后续应补模型卡、许可证、推理入口和独立复测。</p>
+<section class="source-block"><div class="source-head"><h3>Hugging Face Daily Papers</h3><span>5 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://huggingface.co/papers/2609.28416">Agent-Editing World Model: Rethinking World Modeling for LLM Agents</a>
+  <p class="item-one-liner"><strong>结论：</strong>Agent 线索：arXiv: https://arxiv.org/abs/2609.28416</p>
+  <p class="item-summary"><strong>概述：</strong>Agent-Editing World Model: Rethinking World Modeling for LLM Agents 关联 Agent，摘要里的可验证信息是：arXiv: https://arxiv.org/abs/2609.28416。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>这条已被近期日报重点推送过；除非出现实质更新，否则保留为背景线索即可。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2609.28416。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>继续观察：这条已在近期日报 Top 位置推送过；除非原文出现新版本、价格、API 或评测更新，否则不再占用头条。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。 已在近期日报高亮或钉钉推送过，本次只作为背景，不再重复占用 Top 位置。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>已推送过</span>
+    <span>Hugging Face Daily Papers</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://huggingface.co/papers/2609.23407">OmniEcho: Spatial Audio Understanding for Embodied Agents</a>
+  <p class="item-one-liner"><strong>结论：</strong>Agent 线索：arXiv: https://arxiv.org/abs/2609.23407</p>
+  <p class="item-summary"><strong>概述：</strong>OmniEcho: Spatial Audio Understanding for Embodied Agents 关联 Agent，摘要里的可验证信息是：arXiv: https://arxiv.org/abs/2609.23407。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为Agent方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2609.23407。</p>
+  <p class="item-audience"><strong>适合：</strong>Agent 工程、AI Infra、开发工具团队</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>发布时间未知</span>
+    <span>Hugging Face Daily Papers</span>
+  </div>
+  <div class="tags"><span class="tag">Agent</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://huggingface.co/papers/2609.30221">WanPE: Towards Cinematic Prompt Enhancement for Modern Text-to-Video Generation</a>
+  <p class="item-one-liner"><strong>结论：</strong>多模态 线索：arXiv: https://arxiv.org/abs/2609.30221</p>
+  <p class="item-summary"><strong>概述：</strong>WanPE: Towards Cinematic Prompt Enhancement for Modern Text-to-Video Generation 关联 多模态，摘要里的可验证信息是：arXiv: https://arxiv.org/abs/2609.30221。当前证据偏弱，无法支撑立即试用；下一步要确认 API、价格、license、部署方式或评测数据。更适合作为背景信号或后续补证据线索。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为多模态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2609.30221。</p>
+  <p class="item-audience"><strong>适合：</strong>多模态产品、算法研究、应用创新团队</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>发布时间未知</span>
+    <span>Hugging Face Daily Papers</span>
+  </div>
+  <div class="tags"><span class="tag">多模态</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 2 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://huggingface.co/papers/2609.28654">Training Object Permanence in World Models</a>
+  <p class="item-one-liner"><strong>结论：</strong>AI 动态 线索：arXiv: https://arxiv.org/abs/2609.28654</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2609.28654。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 50</span>
+    <span>证据 weak</span>
+    <span>发布时间未知</span>
+    <span>Hugging Face Daily Papers</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://huggingface.co/papers/2609.29845">Your Transformer Can Hold Two Thoughts at Once: Evidence of Linear Superposition in LLMs</a>
+  <p class="item-one-liner"><strong>结论：</strong>AI 动态 线索：arXiv: https://arxiv.org/abs/2609.29845</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：来自来源摘要；摘要证据：arXiv: https://arxiv.org/abs/2609.29845。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 50</span>
+    <span>证据 weak</span>
+    <span>发布时间未知</span>
+    <span>Hugging Face Daily Papers</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+</details>
+</section>
+<section class="source-block"><div class="source-head"><h3>Hugging Face Trending Models</h3><span>5 条</span></div>
+<div class="source-grid">
+
+<article class="item-card">
+  <a class="item-title" href="https://huggingface.co/Qwen/Qwen-Image-2.1">Qwen/Qwen-Image-2.1</a>
+  <p class="item-one-liner"><strong>结论：</strong>AI 动态 线索：Qwen/Qwen-Image-2.1；当前证据不足，需要先补原文。</p>
+  <p class="item-summary"><strong>概述：</strong>Qwen/Qwen-Image-2.1 目前只提供了 AI 动态 方向的标题级线索。原文未提供足够摘要，无法判断是否值得接入。需要先补齐发布日期、正文摘要、API/安装方式、license 或评测数据。在补齐证据前仅作为线索保留。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；text-to-image / downloads 48361 / likes 2405。</p>
+  <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>发布时间未知</span>
+    <span>Hugging Face Trending Models / text-to-image / downloads 48361 / likes 2405</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B">XingChen-AGI/Xing4.0-29B-A4B</a>
+  <p class="item-one-liner"><strong>结论：</strong>AI 动态 线索：XingChen-AGI/Xing4.0-29B-A4B；当前证据不足，需要先补原文。</p>
+  <p class="item-summary"><strong>概述：</strong>XingChen-AGI/Xing4.0-29B-A4B 目前只提供了 AI 动态 方向的标题级线索。原文未提供足够摘要，无法判断是否值得接入。需要先补齐发布日期、正文摘要、API/安装方式、license 或评测数据。在补齐证据前仅作为线索保留。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；text-generation / downloads 43947 / likes 1728。</p>
+  <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>发布时间未知</span>
+    <span>Hugging Face Trending Models / text-generation / downloads 43947 / likes 1728</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+
+<article class="item-card">
+  <a class="item-title" href="https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-GGUF">abenzerps/Qwen-Image-2.1-Uncensored-GGUF</a>
+  <p class="item-one-liner"><strong>结论：</strong>AI 动态 线索：abenzerps/Qwen-Image-2.1-Uncensored-GGUF；当前证据不足，需要先补原文。</p>
+  <p class="item-summary"><strong>概述：</strong>abenzerps/Qwen-Image-2.1-Uncensored-GGUF 目前只提供了 AI 动态 方向的标题级线索。原文未提供足够摘要，无法判断是否值得接入。需要先补齐发布日期、正文摘要、API/安装方式、license 或评测数据。在补齐证据前仅作为线索保留。</p>
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；text-to-image / downloads 876673 / likes 1946。</p>
+  <p class="item-audience"><strong>适合：</strong>趋势观察、产品/技术负责人</p>
+  <p class="item-action"><strong>行动建议：</strong>仅作信号：先补原文、发布日期和可用性证据；在证据补齐前不要进入试用队列。</p>
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>发布时间未知</span>
+    <span>Hugging Face Trending Models / text-to-image / downloads 876673 / likes 1946</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+</div>
+<details class="more-list"><summary>展开其余 2 条高价值线索</summary>
+
+<article class="item-card compact">
+  <a class="item-title" href="https://huggingface.co/convaiinnovations/laya">convaiinnovations/laya</a>
+  <p class="item-one-liner"><strong>结论：</strong>AI 动态 线索：convaiinnovations/laya；当前证据不足，需要先补原文。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；text-classification / downloads 0 / likes 3910。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>发布时间未知</span>
+    <span>Hugging Face Trending Models / text-classification / downloads 0 / likes 3910</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+
+<article class="item-card compact">
+  <a class="item-title" href="https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf">prism-ml/Ternary-Bonsai-2-27B-gguf</a>
+  <p class="item-one-liner"><strong>结论：</strong>AI 动态 线索：prism-ml/Ternary-Bonsai-2-27B-gguf；当前证据不足，需要先补原文。</p>
+  
+  <p class="item-reason"><strong>推荐理由：</strong>证据不足，只适合作为AI 动态方向的背景线索，暂不建议投入试用。</p>
+  <p class="item-evidence"><strong>证据：</strong>弱证据：缺少可验证摘要；text-generation / downloads 3247527 / likes 2143。</p>
+  
+  
+  <p class="item-caveat"><strong>风险提示：</strong>原文或摘要未明确提供原文证据不足、license、发布时间，接入前需要补证据。</p>
+  
+  <div class="item-meta">
+    <span>评分 51</span>
+    <span>证据 weak</span>
+    <span>发布时间未知</span>
+    <span>Hugging Face Trending Models / text-generation / downloads 3247527 / likes 2143</span>
+  </div>
+  <div class="tags"><span class="tag">AI 动态</span></div>
+</article>
+
+</details>
+</section>
+</section>
+
+    <section>
+      <h2>运行状态</h2>
+      <div class="ops">
+        <p>生成时间：2026-09-27 15:00 CST</p>
+        <p>HTML 由结构化日报 JSON 渲染；源码标题保留原文，编辑判断和推荐理由均为中文规则生成。</p>
+        <ul><li>arXiv cs.AI: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>arXiv stat.ML: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>OpenAI News: RuntimeError: http.client.IncompleteRead: IncompleteRead(457661 bytes read)</li><li>Anthropic News Direct: URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>Anthropic Research: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>Google DeepMind Blog: URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>Meta AI Blog: URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>Hugging Face Blog: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>LangChain Blog: URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>Simon Willison: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>Latent Space: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>Import AI: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>The Batch: URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>VentureBeat AI: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>TechCrunch AI: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>Hacker News AI Search: RuntimeError: http.client.RemoteDisconnected: Remote end closed connection without response</li><li>Reddit MachineLearning: RuntimeError: urllib.error.HTTPError: HTTP Error 429: Too Many Requests</li><li>GitHub Search: Claude Code Ecosystem: RuntimeError: http.client.RemoteDisconnected: Remote end closed connection without response</li><li>GitHub Search: Coding Agent Skills README: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>GitHub Search: Codex Cursor Workflow README: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>GitHub Search: MCP Servers: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>GitHub Search: Agent Harness: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>GitHub Search: New AI Agents: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li><li>GitHub Search: Agent Loop: RuntimeError: urllib.error.URLError: &lt;urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)&gt;</li></ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
